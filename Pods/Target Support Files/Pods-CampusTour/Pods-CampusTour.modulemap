@@ -1,0 +1,6 @@
+framework module Pods_CampusTour {
+  umbrella header "Pods-CampusTour-umbrella.h"
+
+  export *
+  module * { export * }
+}
