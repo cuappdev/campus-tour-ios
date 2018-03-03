@@ -6,3 +6,10 @@ target 'CampusTour' do
 
   # Pods for CampusTour
 end
+
+plugin 'cocoapods-keys', {
+    :project => "CampusTour",
+    :keys => [
+        "GoogleMapsAPI"
+    ]
+}
