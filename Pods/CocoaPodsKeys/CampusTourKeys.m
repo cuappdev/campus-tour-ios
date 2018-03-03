@@ -13,6 +13,7 @@
 
 @implementation CampusTourKeys
 
+  @dynamic googleMapsAPI;
 
 #pragma clang diagnostic pop
 
@@ -21,6 +22,10 @@
   NSString *key = NSStringFromSelector(name);
   NSString * (*implementation)(CampusTourKeys *, SEL) = NULL;
 
+  if ([key isEqualToString:@"googleMapsAPI"]) {
+    implementation = _podKeysc08b649877b1fe04ec7fbb8d08209440;
+  }
+
   if (!implementation) {
     return [super resolveInstanceMethod:name];
   }
@@ -28,12 +33,23 @@
   return class_addMethod([self class], name, (IMP)implementation, "@@:");
 }
 
+static NSString *_podKeysc08b649877b1fe04ec7fbb8d08209440(CampusTourKeys *self, SEL _cmd)
+{
+  
+    
+      char cString[3] = { CampusTourKeysData[46], CampusTourKeysData[65], '\0' };
+    
+    return [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
+  
+}
 
-static char CampusTourKeysData[2] = "\\\"";
+
+static char CampusTourKeysData[74] = "ziMAQU5mRVe/GLo1KlxL4KeKK3lKbrXF5QZf8iUt05j8CuhmJxle2T3qqAIijzYpziUc9ii1\\\"";
 
 - (NSString *)description
 {
   return [@{
+            @"googleMapsAPI": self.googleMapsAPI,
   } description];
 }
 
