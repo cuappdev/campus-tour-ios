@@ -1,8 +1,14 @@
 PODS:
+  - GoogleMaps (2.6.0):
+    - GoogleMaps/Maps (= 2.6.0)
+  - GoogleMaps/Base (2.6.0)
+  - GoogleMaps/Maps (2.6.0):
+    - GoogleMaps/Base
   - Keys (1.0.0)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
+  - GoogleMaps (~> 2.6.0)
   - Keys (from `Pods/CocoaPodsKeys`)
   - SnapKit (~> 4.0.0)
 
@@ -11,9 +17,10 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 1ec9d8e9bb29a18ac79cb84b7508bb889785f957
+PODFILE CHECKSUM: f0205ecd52fd904757bb62dfd704af67c346ab34
 
 COCOAPODS: 1.4.0
