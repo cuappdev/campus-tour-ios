@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Keys
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,10 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //Google maps
+        let keys = CampusTourKeys()
+        GMSServices.provideAPIKey(keys.googleMapsAPI)
+        
+        //set up gui
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
+        
         return true
     }
 
