@@ -14,6 +14,8 @@
 		CCCE124420476BA900DCCC39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCCE124320476BA900DCCC39 /* Assets.xcassets */; };
 		CCCE124720476BA900DCCC39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCE124520476BA900DCCC39 /* LaunchScreen.storyboard */; };
 		CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */; };
+		CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */; };
+		CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CCCE124620476BA900DCCC39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCCE124820476BA900DCCC39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCE123E20476BA900DCCC39 /* ViewController.swift */,
+				CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */,
 				CC10D019204C8DD2009B7808 /* POIMapViewController.swift */,
 			);
 			path = ViewControllers;
@@ -90,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCE123C20476BA900DCCC39 /* AppDelegate.swift */,
+				CCE0A4ED2051B3990083BAE7 /* Helpers */,
 				CCE0A4E8204F3D250083BAE7 /* Model */,
 				CC10D018204B5DF8009B7808 /* ViewControllers */,
 				CCCE124320476BA900DCCC39 /* Assets.xcassets */,
@@ -105,6 +111,14 @@
 				CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CCE0A4ED2051B3990083BAE7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +256,10 @@
 			files = (
 				CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */,
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
+				CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */,
 				CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
+				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

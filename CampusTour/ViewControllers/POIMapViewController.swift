@@ -20,7 +20,8 @@ class POIMapViewController: UIViewController {
     }
     
     override func loadView() {
-        let currentLocation = try! AppDelegate.shared!.locationProvider.getLocation()
+        let currentLocation = (try? AppDelegate.shared!.locationProvider.getLocation()) ??
+            CLLocation(latitude: 0.0, longitude: 0.0)
         let cameraPos = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude,
                                                  longitude: currentLocation.coordinate.longitude, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPos)
@@ -34,5 +35,6 @@ class POIMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarItem = UITabBarItem.poiMapItem
     }
 }

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //set up gui
         window = UIWindow()
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        window?.rootViewController = MainTabBarController(())
         window?.makeKeyAndVisible()
         
         return true
