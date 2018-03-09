@@ -2,9 +2,14 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            let data = try ParseData()
+            print(data.locations)
+        } catch {
+        }
         
         buildUI()
     }
