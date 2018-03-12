@@ -14,8 +14,15 @@ enum LocationError: Error {
 }
 
 class LocationProvider: NSObject {
+    typealias LocationListener = (CLLocation) -> ()
+    struct LocationListenerWrapper {
+        let listener: LocationListener
+        let repeats: Bool
+    }
+    
     private var _currentLocation: CLLocation?
     private let locationManager: CLLocationManager
+    private var locationListeners: [LocationListenerWrapper] = []
     
     override init() {
         locationManager = CLLocationManager()
@@ -32,11 +39,28 @@ class LocationProvider: NSObject {
         return currentLocation
     }
     
+    /// To remove this listener, just deallocate your reference to it
+    /// Listener will only be called as long as there exists a strong reference to it
+    func addLocationListener(repeats: Bool, listener: @escaping LocationListener) {
+        locationListeners.append(LocationListenerWrapper(
+            listener: listener,
+            repeats: repeats
+        ))
+    }
+    
 }
 
 extension LocationProvider: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self._currentLocation = locations.first
+        if let location = locations.first {
+            self._currentLocation = location
+            updateLocationListeners(location: location)
+        }
+    }
+    
+    func updateLocationListeners(location: CLLocation) {
+        locationListeners.forEach {$0.listener(location)}
+        locationListeners = locationListeners.filter {$0.repeats}
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
