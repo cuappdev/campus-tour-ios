@@ -1,0 +1,5110 @@
+
+	{
+	"locations":[
+
+			{
+			"Name":"A-Lot Staff Parking",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45844166666667",
+			"Lng":"-76.47668888888889",
+			"Notes":"A Lot",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"A. D. White Gardens",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16496/huge/3d1823d5d412fbd89b226723466e404d9f4fa43b.jpg",
+			"Address":"",
+			"Lat":"42.44780277777777",
+			"Lng":"-76.48188888888889",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"A. D. White House",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16497/huge/02f3d1eb8c86e664b5a8c84839d3b5ecd1f6dc4b.jpg",
+			"Address":"",
+			"Lat":"42.44827539927017",
+			"Lng":"-76.48199256088425",
+			"Notes":"A. D. White House",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"AAP Downtown Facility",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44296111111111",
+			"Lng":"-76.51018611111111",
+			"Notes":"531 Esty St.",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"AAP New York City Center",
+			"Folder":"NYC",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"40.73868611111111",
+			"Lng":"-73.99462375719648",
+			"Notes":"AAP NYC; 50 West 17th St., New York, NY",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"AAP in Rome",
+			"Folder":"World",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"41.89516666666667",
+			"Lng":"12.47551388888889",
+			"Notes":"Palazzo Lazzaroni;Cornell in Rome; QuickWorld; http://aap.cornell.edu/rome/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Acacia",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"318 Highland Road, Ithaca, NY 14850",
+			"Lat":"42.45871",
+			"Lng":"-76.48725899999999",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Academic Surge Facility A",
+			"Folder":"Ag",
+			"ImageURL":"",
+			"Address":"222 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.448307",
+			"Lng":"-76.478316",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Academic Surge Facility B",
+			"Folder":"Ag",
+			"ImageURL":"",
+			"Address":"220 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.448063",
+			"Lng":"-76.478309",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Africana Studies and Research Center",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16498/huge/7ef9231932f3e8ccaf23dd3f5ae0be4e4984114a.jpg",
+			"Address":"",
+			"Lat":"42.45742908810382",
+			"Lng":"-76.48233306045474",
+			"Notes":"John Henrik Clarke Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ag Quad",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16499/huge/98f14a316d3650d49c54ec7e47d7301c4817e350.jpg",
+			"Address":"",
+			"Lat":"42.44874223637841",
+			"Lng":"-76.47859920035884",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Agriculture Waste Management Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"236 Gallus Rd, Ithaca, NY 14850",
+			"Lat":"42.444322",
+			"Lng":"-76.452278",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Chi Omega",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"509 Wyckoff Road, Ithaca, NY 14850",
+			"Lat":"42.457199",
+			"Lng":"-76.487083",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Delta Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"777 Stewart Avenue, Ithaca, NY 14850",
+			"Lat":"42.450802",
+			"Lng":"-76.4898",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Epsilon Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"435 Wyckoff Ave Ithaca, NY 14850",
+			"Lat":"42.456589",
+			"Lng":"-76.48542",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Epsilon Pi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"140 Thurston Ave., Ithaca, NY 14850",
+			"Lat":"42.454239",
+			"Lng":"-76.48828899999999",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Gamma Rho",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"203 Highland Ave., Ithaca, NY 14850",
+			"Lat":"42.455681",
+			"Lng":"-76.48519899999999",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"411 Thurston Ave., Ithaca, NY 14850",
+			"Lat":"42.453281",
+			"Lng":"-76.483879",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Sigma Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"804 Stewart Ave., Ithaca, NY 14850",
+			"Lat":"42.452129",
+			"Lng":"-76.49073",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Xi Delta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"40 Ridgewood, Ithaca, NY 14850",
+			"Lat":"42.45538",
+			"Lng":"-76.48967",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alpha Zeta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"214 Thurston Ave., Ithaca, NY 14850",
+			"Lat":"42.454121",
+			"Lng":"-76.487228",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alumni Affairs and Development, Ithaca",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44064709196398",
+			"Lng":"-76.4975857737418",
+			"Notes":"130 E. Seneca St., Ithaca, NY 14850",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alumni Affairs and Development, NYC",
+			"Folder":"NYC",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"40.74584500000003",
+			"Lng":"-73.98210799999998",
+			"Notes":"230 Park Avenue, New York, NY 10169",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Alumni House",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16502/huge/68625642e6d7a7d70c887e1289d39a16a126330b.jpg",
+			"Address":"",
+			"Lat":"42.45180308662604",
+			"Lng":"-76.48087705296938",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"American Indian Program House",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/500/huge/IGfQWIRvqW0kqQYz.jpg?1298662372",
+			"Address":"115 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.456146",
+			"Lng":"-76.480432",
+			"Notes":"Housing; Akwekon; Akwe:kon",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Anabel Taylor Hall",
+			"Folder":"Law",
+			"ImageURL":"http://images-cf.localist.com/photos/16503/huge/8f25cd2ddb1b94cf2bc87a6147c20737b226ade0.jpg",
+			"Address":"548 College Ave, Ithaca, NY 14850",
+			"Lat":"42.444933",
+			"Lng":"-76.485615",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/moosewood-at-anabel-taylor.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Animal Science Teaching and Research Barns",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44498333333333",
+			"Lng":"-76.46722739706648",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Anna Comstock House",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/018/820/huge/3HmiEoqDfccFIdVY.jpg?1308651696",
+			"Address":"520 Thurston Ave, Ithaca, NY 14850",
+			"Lat":"42.453918",
+			"Lng":"-76.482343",
+			"Notes":"Anna Comstock Hall (Latino Living Center); Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Appel Basketball Courts",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16504/huge/55a081701402a94c9f6cab8eeb41fb16ee7f9da5.jpg",
+			"Address":"",
+			"Lat":"42.45641904040157",
+			"Lng":"-76.47451510079988",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Appel South Fields and Tennis Courts",
+			"Folder":"North Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45414376031689",
+			"Lng":"-76.47476155731965",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Appledore Island, Gulf of Maine",
+			"Folder":"World",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.98771388888889",
+			"Lng":"-70.61504615280131",
+			"Notes":"Shoals Marine Lab; SML; QuickWorld; http://www.sml.cornell.edu/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Aquaculture Building",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.441875",
+			"Lng":"-76.46795640613645",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Arecibo Observatory",
+			"Folder":"World",
+			"ImageURL":"http://images-cf.localist.com/photos/16506/huge/734018abc43fa8ee27667669843ee0e3d0e456af.jpg",
+			"Address":"",
+			"Lat":"18.34412100530012",
+			"Lng":"-66.75273185884147",
+			"Notes":"National Astronomy and Ionosphere Center (NAIC); QuickWorld; http://www.naic.edu/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Arnot Teaching and Research Forest",
+			"Folder":"State",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.26295850898513",
+			"Lng":"-76.62686198584412",
+			"Notes":"Natural Resources; QuickState",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Arthropod Research Facility",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"226 Gallus Rd, Ithaca, NY 14850",
+			"Lat":"42.444271",
+			"Lng":"-76.451763",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Arts Quad",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16507/huge/16d2ab730c77f665e4a16e8478d677641c42394a.jpg",
+			"Address":"",
+			"Lat":"42.44927341600597",
+			"Lng":"-76.48453236734474",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"B-Lot Staff Parking",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44626111111111",
+			"Lng":"-76.46345000000001",
+			"Notes":"B Lot",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"B-Lot Visitor Parking",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44565314890922",
+			"Lng":"-76.46475548239978",
+			"Notes":"Metered Parking; B Lot",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bailey Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16671/huge/30920a9324131f8ce386ea59df684436f75a8117.jpg",
+			"Address":"230 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.449223",
+			"Lng":"-76.480123",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Baker Institute for Animal Health",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16510/huge/ab4357228962c5cea72fff9bbe2fd1a83b13312b.jpg",
+			"Address":"",
+			"Lat":"42.4280182269747",
+			"Lng":"-76.45397840393025",
+			"Notes":"Veterinary; Hungerford Hill",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Baker Laboratory",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/511/huge/gHPvoNPdmHPwfM9M.jpg?1298662426",
+			"Address":"259 East Ave, Ithaca, NY 14850",
+			"Lat":"42.450151",
+			"Lng":"-76.481771",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Baker North",
+			"Folder":"West Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/605/huge/NV3tntVk8fSsXTAd.jpg?1298662875",
+			"Address":"117 Gothics Way, Ithaca, NY 14850",
+			"Lat":"42.448714",
+			"Lng":"-76.488661",
+			"Notes":"North Baker Hall; Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Baker South",
+			"Folder":"West Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"123 Gothics Way, Ithaca, NY 14850",
+			"Lat":"42.448494",
+			"Lng":"-76.488357",
+			"Notes":"South Baker Hall; Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Baker Tower",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16512/huge/328f19998f630e798ee3a3cd3beb7c193bf4235c.jpg",
+			"Address":"356 West Ave, Ithaca, NY 14850",
+			"Lat":"42.448928",
+			"Lng":"-76.488153",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Balch Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16513/huge/5e918c099e9ddf9554ebf259faf42eb9757fa507.jpg",
+			"Address":"600 Thurston Ave, Ithaca, NY 14850",
+			"Lat":"42.452988",
+			"Lng":"-76.479677",
+			"Notes":"Housing; Cafe (www.campuslife.cornell.edu/campuslife/dining/carols-cafe.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bard Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16514/huge/243a723fecf40197930f5c7018c7f275b73de31c.jpg",
+			"Address":"126 Hollister Dr, Ithaca, NY 14850",
+			"Lat":"42.443878",
+			"Lng":"-76.484026",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Barnes Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16515/huge/6f1658b7f7bfeafbffd2a69d6451d64612884493.jpg",
+			"Address":"129 Ho Plz, Ithaca, NY 14850",
+			"Lat":"42.446429",
+			"Lng":"-76.484324",
+			"Notes":"Organ; organs",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bartels Hall",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16516/huge/100c95f58dc502cf5333718080917ea072b7aa4d.jpg",
+			"Address":"554 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.445755",
+			"Lng":"-76.476204",
+			"Notes":"Basketball; Volleyball",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Barton Hall",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16517/huge/0a31158a905a7e3b9332c26eea4bc4ad1878e57a.jpg",
+			"Address":"117 Statler Dr, Ithaca, NY 14850",
+			"Lat":"42.445954",
+			"Lng":"-76.480718",
+			"Notes":"Police; ROTC; Track and Field",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Barton Laboratory",
+			"Folder":"State",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.87526236037491",
+			"Lng":"-77.00568277583521",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bauer Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16518/huge/5f60c45da67cf67d91df4fbf1b1d0adf7b544ee3.jpg",
+			"Address":"148 Cradit Farm Dr, Ithaca, NY 14850",
+			"Lat":"42.453612",
+			"Lng":"-76.478462",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Beebe Dam",
+			"Folder":"Areas and Features",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45194444444445",
+			"Lng":"-76.47949484615532",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Beebe Dam Bridge",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16519/huge/7b69e03591f097530d0f5e12833f0ddc7501122c.jpg",
+			"Address":"",
+			"Lat":"42.45174444444445",
+			"Lng":"-76.47998194959622",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Beebe Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/43903/huge/09f23907d6ca967d5e40ba617bf5b4e937cd35e4.jpg",
+			"Address":"110 Plantations Rd, Ithaca, NY 14850",
+			"Lat":"42.448938",
+			"Lng":"-76.474251",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Beebe Lake",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241060/huge/aac5771c6c16d2ed3085659adb9b4edaef38a131.jpg",
+			"Address":"",
+			"Lat":"42.45144120784915",
+			"Lng":"-76.47722253197705",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Beebe Lake Green",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16520/huge/1ef54b896d49f40bdf2e38b3b284557fd4c216b7.jpg",
+			"Address":"",
+			"Lat":"42.45233825196799",
+			"Lng":"-76.4784185327896",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Belkin Squash Courts",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43500943203117",
+			"Lng":"-76.4655658495486",
+			"Notes":"230 Pine Tree Road",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Berman Soccer Field",
+			"Folder":"Athletics",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44615427455427",
+			"Lng":"-76.47368526096032",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Beta Theta Pi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"100 Ridgewood Road, Ithaca, NY 14850",
+			"Lat":"42.455921",
+			"Lng":"-76.489891",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Big Red Barn",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16521/huge/2f39e55e7dd5257568c424917546f0361a5f3355.jpg",
+			"Address":"135 Presidents Dr, Ithaca, NY 14850",
+			"Lat":"42.448499",
+			"Lng":"-76.480959",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/big-red-barn.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bill and Melinda Gates Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/209276/huge/ea29240ed04fb887ea04411052ce6fd8d35e2f05.jpg",
+			"Address":"107 Hoy Rd, Ithaca, NY 14853",
+			"Lat":"42.44495",
+			"Lng":"-76.480807",
+			"Notes":"",
+			"AKA": "Gates Hall"
+			}
+			,
+			{
+			"Name":"Biology Quad",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241078/huge/dcddbcd86d5aecc59b0279463f256534d68c9dd7.jpg",
+			"Address":"",
+			"Lat":"42.44685502604717",
+			"Lng":"-76.47891930427842",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Biotechnology Building",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/17178/huge/3fc1949687d0c905af528aaa748ee7b66946cb55.jpg",
+			"Address":"",
+			"Lat":"42.44642620951885",
+			"Lng":"-76.47836221728224",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Blair Farm Complex",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44299166666666",
+			"Lng":"-76.46880792163064",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Blauvelt Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"169 Helios Cir, Ithaca, NY 14850",
+			"Lat":"42.448652",
+			"Lng":"-76.469785",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Boldt Hall",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16523/huge/44ff05f87a117b97af045abaa0e54c5d5192df8b.jpg",
+			"Address":"727 University Ave, Ithaca, NY 14850",
+			"Lat":"42.449007",
+			"Lng":"-76.488725",
+			"Notes":"Housing; Language House",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Boldt Tower",
+			"Folder":"West Campus",
+			"ImageURL":"",
+			"Address":"727 University Ave, Ithaca, NY 14850",
+			"Lat":"42.448998",
+			"Lng":"-76.489066",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Botanic Gardens",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16690/huge/e823b930f2839e39f04c8c96db8877bc6f687229.jpg",
+			"Address":"",
+			"Lat":"42.44941495389194",
+			"Lng":"-76.47190280093616",
+			"Notes":"",
+			"AKA": "Plantations"
+			}
+			,
+			{
+			"Name":"Botanic Gardens Parking",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44926666666667",
+			"Lng":"-76.47184444444444",
+			"Notes":"Parking for Plantations Visitors",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Botanic Gardens Ramin Administrative Center",
+			"Folder":"Plantations",
+			"ImageURL":"",
+			"Address":"130 Forest Home Dr, Ithaca, NY 14850",
+			"Lat":"42.452956",
+			"Lng":"-76.471911",
+			"Notes":"Plantations; Ramin Center",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Boyce Thompson Institute",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"533 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447035",
+			"Lng":"-76.46764",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bradfield Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16524/huge/1e2fc73754a94df513a82cb7164e3852adb2bae0.jpg",
+			"Address":"306 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447931",
+			"Lng":"-76.475775",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Brooklane Apartments",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45660555555556",
+			"Lng":"-76.4817",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Bruckner Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"208 Mann Dr, Ithaca, NY 14850",
+			"Lat":"42.448324",
+			"Lng":"-76.474077",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Business and Technology Park",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241034/huge/1ffbf7b263b0918e68302bf5711710b5f97009fe.jpg",
+			"Address":"",
+			"Lat":"42.48543611111111",
+			"Lng":"-76.4612789046395",
+			"Notes":"Thornwood, Brown Rd., Brown Rd, Brown Road",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Buttermilk Falls State Park",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16525/huge/0e2224ebb80e2d47b0a725558235c0671450f8da.jpg",
+			"Address":"",
+			"Lat":"42.41700555555555",
+			"Lng":"-76.52156793990243",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Caldwell Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16527/huge/aecb05ed91284e1072303135788f8e94cdb1489c.jpg",
+			"Address":"121 Reservoir Ave, Ithaca, NY 14850",
+			"Lat":"42.449222",
+			"Lng":"-76.478261",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Carl Becker House",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16528/huge/4fd7d6ef5610f65869ff9b6933e84770d4465a65.jpg",
+			"Address":"647 Stewart Ave, Ithaca, NY 14850",
+			"Lat":"42.448208",
+			"Lng":"-76.489555",
+			"Notes":"Housing; Dining (www.campuslife.cornell.edu/campuslife/dining/carl-becker-house-dining.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Carpenter Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16529/huge/fe27253fd0f31f14d8c74cfb3aa3ccd189f9a264.jpg",
+			"Address":"313 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.444818",
+			"Lng":"-76.484173",
+			"Notes":"Engineering Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cascadilla Creek",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16530/huge/006e898f58577b9fe91e59a1fc94fe17d021594a.jpg",
+			"Address":"",
+			"Lat":"42.44314523091679",
+			"Lng":"-76.48697828665757",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cascadilla Hall",
+			"Folder":"Collegetown",
+			"ImageURL":"http://images-cf.localist.com/photos/16531/huge/617718d0cb3e614f196b7471e5427c7d816ee416.jpg",
+			"Address":"115 Cascadilla Pl, Ithaca, NY 14850",
+			"Lat":"42.442393",
+			"Lng":"-76.486809",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cayuga Inlet",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/241026/huge/8ffee025a6491d30b5d88287e574f99cd6b3d85e.jpg",
+			"Address":"",
+			"Lat":"42.45305539149857",
+			"Lng":"-76.51134960628511",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cayuga Medical Center",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.46915555555556",
+			"Lng":"-76.53753611111111",
+			"Notes":"Hospital",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cayuga Nature Center",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/17383/huge/a4a6f970eb70216789b97b8c1417774b5d1d5441.jpg",
+			"Address":"1420 Taughannock Blvd., Ithaca, NY 14850",
+			"Lat":"42.519042",
+			"Lng":"-76.554624",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Center for Jewish Living",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images-cf.localist.com/photos/241011/huge/c0029a88110cccfd24d4a8df1c590196b77ef6cb.jpg",
+			"Address":"",
+			"Lat":"42.4443886044577",
+			"Lng":"-76.48787851283069",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Central Heating Plant",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"651 Dryden Rd, Ithaca, NY 14850",
+			"Lat":"42.442929",
+			"Lng":"-76.474696",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Chesterton House",
+			"Folder":"Co-ops",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.4537",
+			"Lng":"-76.49009722222222",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Chi Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"107 Edgemoor Lane, Ithaca, NY 14850",
+			"Lat":"42.443691",
+			"Lng":"-76.48877",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Chi Psi",
+			"Folder":"Greek",
+			"ImageURL":"http://images-cf.localist.com/photos/16532/huge/0802b55fd77a434e11af895be4282e9a753df4dd.jpg",
+			"Address":"810 University Ave., Ithaca, NY 14850",
+			"Lat":"42.450859",
+			"Lng":"-76.488129",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Chilled Water Plant",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/533/huge/_geBN88NbhivAMuY.jpg?1298662533",
+			"Address":"",
+			"Lat":"42.45133333333334",
+			"Lng":"-76.47925570823594",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Clara Dickson Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16534/huge/a3a2a8f17ee2c13210eb4dc5760f7baff23e1a22.jpg",
+			"Address":"21 Sisson Pl, Ithaca, NY 14850",
+			"Lat":"42.454242",
+			"Lng":"-76.479112",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Clark Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16535/huge/d246089b1e857c80318892080c3b176993aa01ca.jpg",
+			"Address":"142 Sciences Dr, Ithaca, NY 14850",
+			"Lat":"42.449819",
+			"Lng":"-76.481122",
+			"Notes":"Physical Sciences Library; Edna McConnell Clark Library;",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"College Avenue Stone Arch Bridge",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241048/huge/f85783f1ea42a14fed2ac9f640d0ecbc8638aee7.jpg",
+			"Address":"",
+			"Lat":"42.44303240435108",
+			"Lng":"-76.48521342703204",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Collegetown (Ctown)",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44165578506068",
+			"Lng":"-76.4852334806199",
+			"Notes":"Metered Parking; Restaurants; Shops",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Collyer Boat House",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"685 Third St, Ithaca, NY 14850",
+			"Lat":"42.446922",
+			"Lng":"-76.511169",
+			"Notes":"Rowing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Companion Animal Hospital",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241083/huge/d99dd45328f795665aac65a9ae9d514f92e47c6f.jpg",
+			"Address":"",
+			"Lat":"42.44690277777777",
+			"Lng":"-76.46464444444445",
+			"Notes":"Dogs; Cats; Feline; Canine",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Computing and Communications Center",
+			"Folder":"Ag",
+			"ImageURL":"http://images.localist.com/photo/000/016/526/huge/Mqc56UNucrsbPsqi.jpg?1298662499",
+			"Address":"235 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.449285",
+			"Lng":"-76.479036",
+			"Notes":"CCC, HelpDesk; Net IDs, CIT, IT",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Comstock Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241023/huge/cc5e631c4c7f30471e2e2bc81d1a2adf4bdc83dc.jpg",
+			"Address":"",
+			"Lat":"42.44658086079809",
+			"Lng":"-76.47933943483466",
+			"Notes":"Comstock Memorial Library of Entomology",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Conference Lot C",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.455835",
+			"Lng":"-76.478951",
+			"Notes":"Parking for CAU",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Convenient Care at Ithaca",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.47979792770936",
+			"Lng":"-76.4644410997154",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cook House",
+			"Folder":"West Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/501/huge/zbRnOQYerQNZKb0c.jpg?1298662376",
+			"Address":"709 University Ave, Ithaca, NY 14853",
+			"Lat":"42.448831",
+			"Lng":"-76.489599",
+			"Notes":"Housing; Dining (www.campuslife.cornell.edu/campuslife/dining/alice-cook-house-dining.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cornell Botanic Gardens Brian C. Nevin Welcome Center",
+			"Folder":"Plantations",
+			"ImageURL":"http://images.localist.com/photo/000/016/690/huge/wCWo7205tLxrmYuO.jpg?1298885120",
+			"Address":"124 Comstock Knoll Dr, Ithaca, NY 14850",
+			"Lat":"42.449563",
+			"Lng":"-76.472291",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cornell Child Care Center",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/537/huge/7Fp99ggutpH_O8VL.jpg?1298662553",
+			"Address":"150 Pleasant Grove Rd, Ithaca, NY 14850",
+			"Lat":"42.459272",
+			"Lng":"-76.475892",
+			"Notes":"Daycare; Bright Horizons",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cornell Club of New York City",
+			"Folder":"NYC",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"40.75441425183247",
+			"Lng":"-73.97934035554516",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cornell Health",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/560/huge/hUcSA6w4ikOBc1bz.jpg?1298662667",
+			"Address":"110 Ho Plz, Ithaca, NY 14853",
+			"Lat":"42.445832",
+			"Lng":"-76.485558",
+			"Notes":"",
+			"AKA": "Gannett Health Services"
+			}
+			,
+			{
+			"Name":"Cornell Orchards",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241025/huge/646d328e65277585cb2c2cf28c9567e1b2ea6b49.jpg",
+			"Address":"",
+			"Lat":"42.44490928638045",
+			"Lng":"-76.46227959979427",
+			"Notes":"Cider; Apples",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Cornell in Washington D.C.",
+			"Folder":"World",
+			"ImageURL":"http://images-cf.localist.com/photos/16699/huge/f7a3590efa46d0ca1bfb9522e45ed1e23dcd32ab.jpg",
+			"Address":"",
+			"Lat":"38.90833611111111",
+			"Lng":"-77.04848899999998",
+			"Notes":"QuickWorld; http://ciw.cornell.edu/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Corson Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"",
+			"Address":"215 Tower Rd, Ithaca, NY 14853",
+			"Lat":"42.447254",
+			"Lng":"-76.478252",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Court Residence Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/541/huge/lNqFCGmZ80zA1pPJ.jpg?1298662574",
+			"Address":"148 Cradit Farm Dr, Ithaca, NY 14850",
+			"Lat":"42.454471",
+			"Lng":"-76.478029",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Creek Farm Cottage, Portsmouth, New Hampshire",
+			"Folder":"World",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"43.05819444444444",
+			"Lng":"-70.73943888888888",
+			"Notes":"Shoals Marine Lab",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dairy Bar",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241056/huge/0b4bd3673726d74ac5118fe9e7dcfddda476fcfe.jpg",
+			"Address":"",
+			"Lat":"42.44704904733062",
+			"Lng":"-76.47023804164313",
+			"Notes":"Cafe (www.dairystore.cornell.edu); Ice Cream",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dairy Bar Parking Lot",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44734396858172",
+			"Lng":"-76.47022945547511",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Day Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16543/huge/0b0c3857f518398fbbeab27990685ea27c2448ab.jpg",
+			"Address":"144 East Ave, Ithaca, NY 14850",
+			"Lat":"42.447017",
+			"Lng":"-76.483271",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"DeFrees Lab",
+			"Folder":"Engineering",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44465",
+			"Lng":"-76.48479957728475",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dean's Garden",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16544/huge/dd0f08a9d529725ff57c1f967a108b5cae919ac9.jpg",
+			"Address":"",
+			"Lat":"42.4496",
+			"Lng":"-76.47728611111111",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Chi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"102 The Knoll, Ithaca, NY 14850",
+			"Lat":"42.453777",
+			"Lng":"-76.488327",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Delta Delta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"118 Triphammer Road, Ithaca, NY 14850",
+			"Lat":"42.455399",
+			"Lng":"-76.481369",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Gamma",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"117 Triphammer Rd., Ithaca, NY 14850",
+			"Lat":"42.455479",
+			"Lng":"-76.48045399999999",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Kappa Epsilon",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"13 South Ave., Ithaca, NY 14850",
+			"Lat":"42.444561",
+			"Lng":"-76.487122",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"100 Cornell Ave., Ithaca, NY 14850",
+			"Lat":"42.44661",
+			"Lng":"-76.491997",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Tau Delta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"104 Mary Ann Wood Dr., Ithaca, NY 14850",
+			"Lat":"42.445358",
+			"Lng":"-76.488663",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Delta Upsilon",
+			"Folder":"Greek",
+			"ImageURL":"http://images-cf.localist.com/photos/16545/huge/140cc55812c54cf2ca05376f6738bbdde3a1dafe.jpg",
+			"Address":"6 South Ave., Ithaca, NY 14850",
+			"Lat":"42.445148",
+			"Lng":"-76.487167",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dilmun Hill Student Organic Farm",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44323075468782",
+			"Lng":"-76.46916095964916",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dimock Environmental Control Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"129 Helios Cir, Ithaca, NY 14853",
+			"Lat":"42.448489",
+			"Lng":"-76.46827",
+			"Notes":"Dimock Lab",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dolgen Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16547/huge/18d77effd0dcd3861ec9812b41e6fe5fb545c465.jpg",
+			"Address":"140 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.447294",
+			"Lng":"-76.480109",
+			"Notes":"ILR Extension Building",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Downtown Ithaca",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16692/huge/36bd82817172377cb636e987a034ccfb1788259d.jpg",
+			"Address":"",
+			"Lat":"42.44042741966716",
+			"Lng":"-76.49690704583793",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Duffield Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16548/huge/34d4e347944adeea4f09950ea7b0f1154efe8500.jpg",
+			"Address":"343 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.444667",
+			"Lng":"-76.482571",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/mattins-cafe.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Dyce Laboratory",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"201 Freese Rd, Ithaca, NY 14850",
+			"Lat":"42.465025",
+			"Lng":"-76.445158",
+			"Notes":"Dyce Lab for Honey Bee Research; Bees; Beekeeping; Apiary",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"East Campus Research Facility",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"626 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.446819",
+			"Lng":"-76.465866",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"East Campus Service Center",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"209 Solidago Rd, Ithaca, NY 14850",
+			"Lat":"42.445328",
+			"Lng":"-76.456151",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"East Hill Office Building",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/photo/000/016/549/huge/Sra9OEY1sD2bk5lQ.jpg?1298662616",
+			"Address":"395 Pine Tree Rd, Ithaca, NY 14850",
+			"Lat":"42.439152",
+			"Lng":"-76.463231",
+			"Notes":"EHOB; Pine Tree Road",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"East Hill Plaza",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"315-335 Pine Tree Rd, Ithaca, NY 14850",
+			"Lat":"42.437848",
+			"Lng":"-76.464159",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ecology and Toxicology Fish Hatchery",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"145 Ecology Dr, Ithaca, NY 14850",
+			"Lat":"42.441586",
+			"Lng":"-76.466471",
+			"Notes":"Ecotoxicology Lab",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Eddy Gate",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16550/huge/b1c9abef691ca127901f7ddc3d6781a6b163101b.jpg",
+			"Address":"",
+			"Lat":"42.44239734568337",
+			"Lng":"-76.48747576535891",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Emerson Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16850/huge/bdb6bd90750b8a85a881074d5836cd38e44772be.jpg",
+			"Address":"236 Mann Dr, Ithaca, NY 14850",
+			"Lat":"42.448384",
+			"Lng":"-76.47581",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Engineering Quad",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16695/huge/0a095c7764f714595ec24d4943b6dcf3a59215ad.jpg",
+			"Address":"",
+			"Lat":"42.4445244352726",
+			"Lng":"-76.48362705461125",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Environmental Health & Safety",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"201 Palm Rd, Ithaca, NY 14850",
+			"Lat":"42.446437",
+			"Lng":"-76.459806",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Equine Drug Sports Medicine Facility",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"913 Warren Dr, Ithaca, NY 14853",
+			"Lat":"42.500524",
+			"Lng":"-76.46651300000001",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Equine Metabolism Unit",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"833 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.444534",
+			"Lng":"-76.467482",
+			"Notes":"Horses",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Equine Park",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241046/huge/2235fccb2bedfa2799d3c3421b9436384fde063a.jpg",
+			"Address":"",
+			"Lat":"42.46151388888889",
+			"Lng":"-76.45801111111112",
+			"Notes":"Horses; Blue Grass Lane",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Equine and Farm Animal Hospitals",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44735587146558",
+			"Lng":"-76.46349310680466",
+			"Notes":"Equine Hospital,Farm Animal Hospital",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Facilities Services Recycling Center",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"251 Solidago Rd, Ithaca, NY 14850",
+			"Lat":"42.44335",
+			"Lng":"-76.456047",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Faculty Tennis Club",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44278145355228",
+			"Lng":"-76.47973073272239",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Fall Creek",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16691/huge/b27440d4edd7f7ccce8a61a9938057f19415c605.jpg",
+			"Address":"",
+			"Lat":"42.45368055555556",
+			"Lng":"-76.47257131475479",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Fall Creek Studios",
+			"Folder":"Community",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45343334578066",
+			"Lng":"-76.49757430849698",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Farm Service Shop",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"126 McGowan Woods Rd, Ithaca, NY 14850",
+			"Lat":"42.44638",
+			"Lng":"-76.458394",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Federal Nutrition Lab",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44774928379528",
+			"Lng":"-76.46723663983026",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Fernow Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/241051/huge/061bb853d6a8b8b64c8e343794012575d5b8f39f.jpg",
+			"Address":"226 Mann Dr, Ithaca, NY 14850",
+			"Lat":"42.448442",
+			"Lng":"-76.475128",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Flora Rose House",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16554/huge/a52396a940f2e9f2fecafcf2383b2f63a0afaca2.jpg",
+			"Address":"134 Gothics Way, Ithaca, NY 14850",
+			"Lat":"42.447773",
+			"Lng":"-76.48885",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Floriculture Buildings",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44878055555555",
+			"Lng":"-76.46930132249992",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Food Science Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"423 Tower Rd, Ithaca, NY 14853",
+			"Lat":"42.447107",
+			"Lng":"-76.47042500000001",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Founders Hall",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16555/huge/7650e0941c20cfcc68ad45257e56c9a097803bbd.jpg",
+			"Address":"352 West Ave, Ithaca, NY 14850",
+			"Lat":"42.448433",
+			"Lng":"-76.487976",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Foundry",
+			"Folder":"Arts",
+			"ImageURL":"http://images.localist.com/photo/000/016/556/huge/w4F6SuCweGnBvT3M.jpg?1298662651",
+			"Address":"936 University Ave, Ithaca, NY 14850",
+			"Lat":"42.451518",
+			"Lng":"-76.483532",
+			"Notes":"AAP",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Foundry Kiln Shed",
+			"Folder":"Arts",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42",
+			"Lng":"-76",
+			"Notes":"AAP",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Friedman Strength and Conditioning Center",
+			"Folder":"Athletics",
+			"ImageURL":"",
+			"Address":"554 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.4455",
+			"Lng":"-76.475761",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Friedman Wrestling Center",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16558/huge/6d0461763de18391d559f59f2acb0b70ef611812.jpg",
+			"Address":"610 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.445595",
+			"Lng":"-76.474537",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Friends Hall",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16492/huge/fb9dcbe5c08c0cceac346546c51887d4d568c0a8.jpg",
+			"Address":"",
+			"Lat":"42.44501176256377",
+			"Lng":"-76.47825661934418",
+			"Notes":"Hall of Fame",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Fuertes Observatory",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16559/huge/cc46b596605ef5181b02619069b12e4f877458f0.jpg",
+			"Address":"209 Cradit Farm Dr, Ithaca, NY 14850",
+			"Lat":"42.45277",
+			"Lng":"-76.474502",
+			"Notes":"Telescopes; telescope",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Goldwin Smith Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16561/huge/64fe5fd7736f58fe6dba1cca726b475e588474cf.jpg",
+			"Address":"232 East Ave, Ithaca, NY 14850",
+			"Lat":"42.449063",
+			"Lng":"-76.483473",
+			"Notes":"Lewis Auditorium, HEC Auditorium, Kaufman Auditorium, Hollis E. Cornell Auditorium",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Graphic Arts Services Building",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"490 Pine Tree Rd, Ithaca, NY 14850",
+			"Lat":"42.443435",
+			"Lng":"-76.471216",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Grossman Pond",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/241059/huge/c2a179fa7a5db3d58d0dc3c8ba24ba8e1e7de917.jpg",
+			"Address":"",
+			"Lat":"42.45211666666667",
+			"Lng":"-76.45438888888889",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Grounds Operations Facility",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"275 Palm Rd, Ithaca, NY 14850",
+			"Lat":"42.445949",
+			"Lng":"-76.457298",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Grumman Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/241036/huge/48b8b9426405cc3542f8ea288e47d0c1f914e2b1.jpg",
+			"Address":"134 Rhodes Dr, Ithaca, NY 14850",
+			"Lat":"42.443362",
+			"Lng":"-76.482089",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Grumman Squash Courts",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/241019/huge/35cbbb00e8bb3c1d1cec7446e4b57ddfffba306b.jpg",
+			"Address":"505 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.444971",
+			"Lng":"-76.479882",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Guterman Bioclimatic Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"105 Caldwell Rd, Ithaca, NY 14850",
+			"Lat":"42.447477",
+			"Lng":"-76.460512",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hanger Theatre",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45511319081163",
+			"Lng":"-76.51721254024353",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hans Bethe House",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241032/huge/8ec7a115b5867779a7fda376fa19691318bb7639.jpg",
+			"Address":"314 West Ave, Ithaca, NY 14850",
+			"Lat":"42.447056",
+			"Lng":"-76.488589",
+			"Notes":"Housing; Dining (www.campuslife.cornell.edu/campuslife/dining/jansens-dining.cfm); Cafe (www.campuslife.cornell.edu/campuslife/dining/west-side-express.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Harford Animal Science Teaching and Research Center",
+			"Folder":"State",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44147299475389",
+			"Lng":"-76.24818966468412",
+			"Notes":"Sheep; Beef; Cattle; Dairy; Cows",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hartung-Boothroyd Observatory",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241022/huge/5afbf4a02fb930828e4d945d0c99bb2ed576262f.jpg",
+			"Address":"",
+			"Lat":"42.45821994533021",
+			"Lng":"-76.38458013882671",
+			"Notes":"Telescopes; telescope; HBO; Mount Pleasant, Mt. Pleasant",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hasbrouck Apartments",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16562/huge/c939ec51471c7659dee8301e235f7fabd3adc3d3.jpg",
+			"Address":"121 Pleasant Grove Rd, Ithaca, NY 14850",
+			"Lat":"42.456329",
+			"Lng":"-76.471926",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hasbrouck Community Center",
+			"Folder":"North Campus",
+			"ImageURL":"",
+			"Address":"121 Pleasant Grove Rd, Ithaca, NY 14850",
+			"Lat":"42.456324",
+			"Lng":"-76.471925",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hedrick Hall",
+			"Folder":"State",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.87675714092701",
+			"Lng":"-77.00741734635007",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Helen Newman Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16563/huge/833e305d72a1a934115a4afd39f4c367bffbf87e.jpg",
+			"Address":"163 Cradit Farm Dr, Ithaca, NY 14850",
+			"Lat":"42.452959",
+			"Lng":"-76.477354",
+			"Notes":"Fitness",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"High Voltage Laboratory",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"909 Mitchell St, Ithaca, NY 14850",
+			"Lat":"42.437378",
+			"Lng":"-76.472392",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ho Plaza",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16564/huge/fddbb16d1fd21d5317bdcc8573dabaa3618febd4.jpg",
+			"Address":"",
+			"Lat":"42.44669683894491",
+			"Lng":"-76.48507194844021",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hoffman Challenge Course Pavilion",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"466 Mount Pleasant Rd, Ithaca, NY 14850",
+			"Lat":"42.461023",
+			"Lng":"-76.385988",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Holland International Living Center",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16565/huge/b5be225dcc481a3a5330e34dbe09df3d286204cd.jpg",
+			"Address":"",
+			"Lat":"42.45564415875947",
+			"Lng":"-76.47605786812652",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hollister Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16566/huge/ab19f2d599c48f54dbcf511ba5a3fd83f448d6ed.jpg",
+			"Address":"527 College Ave, Ithaca, NY 14850",
+			"Lat":"42.443989",
+			"Lng":"-76.484547",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Horton Lab",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.4487183691615",
+			"Lng":"-76.4687770613175",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hot Truck",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16567/huge/8bcd81a97055b1a2c209d03676a5ce3ac6e614ac.jpg",
+			"Address":"",
+			"Lat":"42.4483611111111",
+			"Lng":"-76.49021666666667",
+			"Notes":"Cafe (www.shortstopdeli.com/hot-truck); Truck",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Houston Pond",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16568/huge/55d38143fcf32809254b36427528117bc117d7ef.jpg",
+			"Address":"",
+			"Lat":"42.45105555555556",
+			"Lng":"-76.45460555555556",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hoy Field",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16569/huge/0d02639d46267e444a4da070cb33ec779c255eac.jpg",
+			"Address":"",
+			"Lat":"42.44417185951525",
+			"Lng":"-76.48060022508952",
+			"Notes":"Baseball",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hughes Hall",
+			"Folder":"Law",
+			"ImageURL":"http://images-cf.localist.com/photos/239797/huge/a9aa20d302cc9252f3815b10418c4943d9997731.jpg",
+			"Address":"241 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.443679",
+			"Lng":"-76.486349",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/hughes.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Human Ecology Building",
+			"Folder":"Central Campus",
+			"ImageURL":"",
+			"Address":"37 Forest Home Dr, Ithaca, NY 14850",
+			"Lat":"42.450482",
+			"Lng":"-76.478616",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Humphreys Service Building",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"639 Dryden Rd, Ithaca, NY 14850",
+			"Lat":"42.442704",
+			"Lng":"-76.475526",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Hurlburt House",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/018/818/huge/gTPuK5hMghv_6yMF.jpg?1308651619",
+			"Address":"111 Country Club Rd, Ithaca, NY 14850",
+			"Lat":"42.457931",
+			"Lng":"-76.483945",
+			"Notes":"Ecology House; Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"I Barn",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44781982385726",
+			"Lng":"-76.46417232707067",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"ILR Conference Center",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16570/huge/701dcb4599b3fb43effd8e7e8efe07b2e6a05a5d.jpg",
+			"Address":"",
+			"Lat":"42.44695516891749",
+			"Lng":"-76.48005966774562",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Imogene Powers Johnson Center for Birds and Biodiversity",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"159 Sapsucker Woods Rd, Ithaca, NY 14850",
+			"Lat":"42.479895",
+			"Lng":"-76.45107",
+			"Notes":"Lab of Ornithology; Sapsucker Woods; Bird Watching; Birdwatching; Adelson Library; Johnson Center for Birds and Biodiversity",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Industrial & Labor Relations Research",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/571/huge/RTkMfTZSZ_6pBoRa.jpg?1298662718",
+			"Address":"140 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.44659",
+			"Lng":"-76.480102",
+			"Notes":"ILR Research Building",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Insectary Complex",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44886111111111",
+			"Lng":"-76.46988316063275",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca Bus Terminal",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43949166666666",
+			"Lng":"-76.51103444132687",
+			"Notes":"710 W. State St.",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca Campus",
+			"Folder":"State",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44701169589159",
+			"Lng":"-76.47998026615886",
+			"Notes":"QuickState; http://www.cornell.edu/visiting/ithaca/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca College (IC)",
+			"Folder":"Community",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.42192222222222",
+			"Lng":"-76.49499089765351",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca Commons",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16572/huge/047a479f94f0c540adafe15eef811e7e7fba3686.jpg",
+			"Address":"",
+			"Lat":"42.43960833333333",
+			"Lng":"-76.49683611111111",
+			"Notes":"Sagan Planet Walk; Food; Shopping; Bars; Restaurants; Shops",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca Farmers' Market",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16573/huge/80dcfc3c947a9e4cb619ef445c84a04516512cf1.jpg",
+			"Address":"",
+			"Lat":"42.45101111111111",
+			"Lng":"-76.5093150559042",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca High School (IHS)",
+			"Folder":"Community",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45507391136056",
+			"Lng":"-76.49866238343768",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca Police Department",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43701936554292",
+			"Lng":"-76.49762174761412",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ithaca Sciencenter",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16574/huge/09c23575b03c04d16c612268e84dae2ce2eab096.jpg",
+			"Address":"",
+			"Lat":"42.44975833333333",
+			"Lng":"-76.50446057216041",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ives Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16575/huge/ce2600ab5b3fcd0bf14462073e484ec1edff6977.jpg",
+			"Address":"121 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447248",
+			"Lng":"-76.481015",
+			"Notes":"Martin P. Catherwood Library; Industrial and Labor Relations Library; ILR",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ives Hall East",
+			"Folder":"Central Campus",
+			"ImageURL":"",
+			"Address":"121 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.44694",
+			"Lng":"-76.480709",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ives Hall West",
+			"Folder":"Central Campus",
+			"ImageURL":"",
+			"Address":"121 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447005",
+			"Lng":"-76.481394",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"J Barn",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44795277777777",
+			"Lng":"-76.46430277777777",
+			"Notes":"Ambulatory and Production Medicine Hospital for Animals",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"JAM (Just About Music)",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/18814/huge/7de495a69575911624cc7a02931042c44142b3fa.jpg",
+			"Address":"",
+			"Lat":"42.45511082868874",
+			"Lng":"-76.47611913090689",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"James Law Auditorium",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"602 Tower Rd, Ithaca, NY 14853",
+			"Lat":"42.447853",
+			"Lng":"-76.466514",
+			"Notes":"Vet School",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Jameson Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"44 Sisson Pl, Ithaca, NY 14853",
+			"Lat":"42.455676",
+			"Lng":"-76.478212",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Japes Lodge",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/18813/huge/19b2607f3906d590d724c54fcf14b2cd59ba6623.jpg",
+			"Address":"",
+			"Lat":"42.45242796996109",
+			"Lng":"-76.4797914919881",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Jennings Crabapple Collection",
+			"Folder":"Plantations",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45301111111112",
+			"Lng":"-76.45384166666668",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Jessup Field",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45724166666667",
+			"Lng":"-76.48062777777778",
+			"Notes":"Intramural Sports",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Johnson Museum of Art",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/122291/huge/899141c999f4c2fac91013cbc804584d33473f97.jpg",
+			"Address":"",
+			"Lat":"42.45072826618113",
+			"Lng":"-76.48607233204829",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/two-naked-guys-cafe.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Jordan Hall",
+			"Folder":"State",
+			"ImageURL":"http://images-cf.localist.com/photos/241091/huge/6627ec822947a12876cfb75a5b6d847256d3b037.jpg",
+			"Address":"",
+			"Lat":"42.87744166666667",
+			"Lng":"-77.00721771520627",
+			"Notes":"Frank A. Lee Library; Geneva Experiment Station Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Judith Eisner Pavilion",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images.localist.com/photo/000/016/579/huge/Tj_83OZ4Nhsv7Unt.jpg?1298662753",
+			"Address":"430 College Ave, Ithaca, NY 14850",
+			"Lat":"42.442732",
+			"Lng":"-76.485426",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"K Barn",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44808229374934",
+			"Lng":"-76.46439746082663",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kahin Center",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images-cf.localist.com/photos/239796/huge/3184dfb3dab9b34f8ca28a0dcaf8b8e4df2aeefc.jpg",
+			"Address":"",
+			"Lat":"42.44799166666667",
+			"Lng":"-76.49131666666666",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kane Sports Complex",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16580/huge/878457869dffc1d68eea9f15a954abb50ff9c587.jpg",
+			"Address":"",
+			"Lat":"42.44672731004505",
+			"Lng":"-76.47266029506604",
+			"Notes":"Track and Field",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kappa Alpha Theta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"519 Stewart Ave., Ithaca, NY 14850",
+			"Lat":"42.444569",
+			"Lng":"-76.488953",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kappa Delta",
+			"Folder":"Greek",
+			"ImageURL":"http://images-cf.localist.com/photos/241018/huge/01b302905b62a373ed69d48b9ea2a9b30f325ff1.jpg",
+			"Address":"109 Triphammer Rd., Ithaca, NY 14850",
+			"Lat":"42.454868",
+			"Lng":"-76.480469",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kappa Delta Rho",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"312 Highland Road, Ithaca, NY 14850",
+			"Lat":"42.45789",
+			"Lng":"-76.486992",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kappa Kappa Gamma",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"508 Thurston Ave., Ithaca, NY 14850",
+			"Lat":"42.453918",
+			"Lng":"-76.48313899999999",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kappa Sigma",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"600 University Ave,. Ithaca, NY 14850",
+			"Lat":"42.44984",
+			"Lng":"-76.491417",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kay Hall",
+			"Folder":"North Campus",
+			"ImageURL":"",
+			"Address":"148 Cradit Farm Dr, Ithaca, NY 14850",
+			"Lat":"42.454128",
+			"Lng":"-76.477997",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kennedy Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16849/huge/2b1f1c316847325f71e5306582753cf679efba6f.jpg",
+			"Address":"215 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.448094",
+			"Lng":"-76.479259",
+			"Notes":"David L. Call Alumni Auditorium; Call Auditorium",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kenneth Post Greenhouses",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241039/huge/9676c40b66dec35b504e4c5bc85ddc4ca835237f.jpg",
+			"Address":"",
+			"Lat":"42.44789722222222",
+			"Lng":"-76.46935277777779",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kimball Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16582/huge/59ba7370a145b96f6aac9942ea2636516f09999a.jpg",
+			"Address":"134 Hollister Dr, Ithaca, NY 14850",
+			"Lat":"42.443943",
+			"Lng":"-76.483222",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"King-Shaw Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"",
+			"Address":"140 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.44694",
+			"Lng":"-76.480076",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kinzelberg Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"244 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.449965",
+			"Lng":"-76.479912",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Klarman Hall",
+			"Folder":"Arts",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.449095598081364",
+			"Lng":"-76.48302912712097",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Kroch Library",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16583/huge/804fa1a8f1a0bfda9cbf1a5ba1ea0cc98b750b7f.jpg",
+			"Address":"216 East Ave, Ithaca, NY 14853",
+			"Lat":"42.448031",
+			"Lng":"-76.483459",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"L Barn",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44822502541795",
+			"Lng":"-76.46445826860396",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Lambda Chi Alpha",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"125 Edgemoor Lane, Ithaca, NY 14850",
+			"Lat":"42.44376",
+			"Lng":"-76.48793000000001",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Langmuir Lab",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.485575",
+			"Lng":"-76.45862476838232",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Large Animal Research Teaching Unit",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"836 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.44629",
+			"Lng":"-76.467507",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Leland Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44947126094862",
+			"Lng":"-76.46257043427542",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Libe Slope",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16584/huge/f689d508a2a62b90e248208855edbee249792e11.jpg",
+			"Address":"",
+			"Lat":"42.44857433820509",
+			"Lng":"-76.48636809379705",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Liberty Hyde Bailey Conservatory",
+			"Folder":"Ag",
+			"ImageURL":"",
+			"Address":"236 Tower Rd., Ithaca, NY 13835",
+			"Lat":"42.44792042859025",
+			"Lng":"-76.47685415603638",
+			"Notes":"Wee Stinky,Titan arum,greenhouse",
+			"AKA": "LHB Conservatory"
+			}
+			,
+			{
+			"Name":"Library Annex-Storage Facility",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/585/huge/mgeEhBu3UaYRNbo6.jpg?1298662786",
+			"Address":"",
+			"Lat":"42.44249734879541",
+			"Lng":"-76.45803123736826",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Liddell Laboratory",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"118 Freese Rd, Ithaca, NY 14850",
+			"Lat":"42.460556",
+			"Lng":"-76.44426900000001",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Lincoln Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16586/huge/a20498efcfe6e91a8b8cc0c6990bd7408c4a8651.jpg",
+			"Address":"256 East Ave, Ithaca, NY 14850",
+			"Lat":"42.450147",
+			"Lng":"-76.483496",
+			"Notes":"Music Library; Sidney Cox Library of Music and Dance",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Little Moose Field Station",
+			"Folder":"State",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"43.681084",
+			"Lng":"-74.940742",
+			"Notes":"Natural Resources; QuickState",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Livestock Pavilion",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"48 Judd Falls Rd, Ithaca, NY 14850",
+			"Lat":"42.446585",
+			"Lng":"-76.470678",
+			"Notes":"Livestock Shows",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Louie's Lunch Truck",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16587/huge/35f2f1bbe1482ac7823071c85f4a4203622d8c0f.jpg",
+			"Address":"",
+			"Lat":"42.45336111111111",
+			"Lng":"-76.48125277777778",
+			"Notes":"Cafe (www.louieslunch.com); Truck",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Lynah Rink",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16589/huge/f1b5398f61f988fa71faceb2bf5cbc04a715b5b0.jpg",
+			"Address":"536 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.445708",
+			"Lng":"-76.477446",
+			"Notes":"Hockey",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Lyon Hall",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241029/huge/de1f944e657494a31033ecb852fb84e93a019b20.jpg",
+			"Address":"336 West Ave, Ithaca, NY 14850",
+			"Lat":"42.4478",
+			"Lng":"-76.488041",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"M Barn",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44839035563588",
+			"Lng":"-76.46454040917499",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Machine Shop",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44316615602954",
+			"Lng":"-76.47118311928311",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Malott Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16590/huge/d9a8f767c45b1a1029c4216be513f6b2d8762910.jpg",
+			"Address":"212 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.448225",
+			"Lng":"-76.480195",
+			"Notes":"Mathematics Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Mann Library",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16663/huge/73a1a2629ac10193a9868e4dea8ebaf01102adf7.jpg",
+			"Address":"237 Mann Dr, Ithaca, NY 14853",
+			"Lat":"42.448793",
+			"Lng":"-76.476343",
+			"Notes":"Manndible Cafe (manndiblecafe.com); Albert R. Mann Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Maplewood Park",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"201 Maple Ave, Ithaca, NY 14850",
+			"Lat":"42.439366",
+			"Lng":"-76.472694",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Maplewood Park Apartments Community Center",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"201 Maple Ave, Ithaca, NY 14850",
+			"Lat":"42.441053",
+			"Lng":"-76.474015",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Martha Van Rensselaer East Building",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"116 Reservoir Ave, Ithaca, NY 14850",
+			"Lat":"42.450093",
+			"Lng":"-76.477969",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Martha Van Rensselaer Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16593/huge/3b69ed71f404977ae1a0decba024285a155a3342.jpg",
+			"Address":"116 Reservoir Ave, Ithaca, NY 14850",
+			"Lat":"42.450011",
+			"Lng":"-76.478671",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/marthas.cfm); Cornell MRI Facility; Cornell Magnetic Resonance Imaging Facility; CMRIF",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Martha Van Rensselaer West Building",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"116 Reservoir Ave, Ithaca, NY 14850",
+			"Lat":"42.450243",
+			"Lng":"-76.479102",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Mary Donlon Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16594/huge/1ed0ef207e942ba88e0bbe9857be17c1c5065b72.jpg",
+			"Address":"57 Sisson Pl, Ithaca, NY 14850",
+			"Lat":"42.45496",
+			"Lng":"-76.477745",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"McFadden Hall",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/239791/huge/314295ac7a9428097eb2e2cb014393e999e54a92.jpg",
+			"Address":"",
+			"Lat":"42.44723859723326",
+			"Lng":"-76.48801326472957",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"McGraw Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16595/huge/a112633947a9cb2fd18645616d13f4830368e14d.jpg",
+			"Address":"",
+			"Lat":"42.44938933697732",
+			"Lng":"-76.48543029250196",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"McGraw Tower",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16596/huge/d75a2e8826587fca5edbc57cac1de8a673e1f293.jpg",
+			"Address":"",
+			"Lat":"42.44755833333333",
+			"Lng":"-76.48505277777778",
+			"Notes":"Chimes Concerts",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Mennen Hall",
+			"Folder":"West Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16597/huge/0d1ea39e9c957365a97f9f3ae9c8012a32681256.jpg",
+			"Address":"342 West Ave, Ithaca, NY 14850",
+			"Lat":"42.447999",
+			"Lng":"-76.488062",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Merrill Family Sailing Center",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.47016986412833",
+			"Lng":"-76.5031021934047",
+			"Notes":"Sailboats",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Mews Hall",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16598/huge/0dce214f13be8ae9717a9187b0366277a8af53c4.jpg",
+			"Address":"",
+			"Lat":"42.45438603750161",
+			"Lng":"-76.47689447045187",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Micro-Kelvin Laboratory",
+			"Folder":"Central Campus",
+			"ImageURL":"",
+			"Address":"142 Sciences Dr, Ithaca, NY 14850",
+			"Lat":"42.449156",
+			"Lng":"-76.481238",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Miller-Heller House",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43904444444444",
+			"Lng":"-76.48755277777778",
+			"Notes":"AAP; 122 Eddy St.",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Milstein Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/32305/huge/eb6a559da5e443a758da2c56aec05e7c3cceb98b.jpg",
+			"Address":"943 University Ave, Ithaca, NY 14850",
+			"Lat":"42.451219",
+			"Lng":"-76.483563",
+			"Notes":"Milstein Auditorium",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Minn's Garden",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16599/huge/cb3adadce14a4b2707d5a8c42df90c90d0c67e10.jpg",
+			"Address":"",
+			"Lat":"42.44778358988403",
+			"Lng":"-76.47757970515482",
+			"Notes":"Plantations; Minns Garden",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Moakley House Golf Course",
+			"Folder":"North Campus",
+			"ImageURL":"",
+			"Address":"215 Warren Rd, Ithaca, NY 14850",
+			"Lat":"42.458244",
+			"Lng":"-76.467325",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Moore Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"602 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.44804",
+			"Lng":"-76.465723",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Morrill Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16600/huge/5622e32468e939ece52ae6fa439db215268afa4b.jpg",
+			"Address":"159 Central Ave, Ithaca, NY 14850",
+			"Lat":"42.448637",
+			"Lng":"-76.485315",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Morrison Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16601/huge/efcf19dcd832166f3d7621ac2846559cb33505ed.jpg",
+			"Address":"507 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.446301",
+			"Lng":"-76.46926",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Muenscher Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"130 Tuber Dr, Ithaca, NY 14850",
+			"Lat":"42.44965",
+			"Lng":"-76.463213",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Museum of the Earth",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/17003/huge/6009636c6a7337cdcf22e361b5aa022350e079d0.jpg",
+			"Address":"",
+			"Lat":"42.46634225981987",
+			"Lng":"-76.53638357372144",
+			"Notes":"Paleontological Research Institution",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Myron Taylor Hall",
+			"Folder":"Law",
+			"ImageURL":"http://images-cf.localist.com/photos/16603/huge/bc4bd7e187593e1c4d7152e34653b5368eff8317.jpg",
+			"Address":"524 College Ave, Ithaca, NY 14850",
+			"Lat":"42.444024",
+			"Lng":"-76.485592",
+			"Notes":"Law School; Law Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Myron Taylor Jane Foster Library Addition",
+			"Folder":"Law",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"514 College Ave, Ithaca, NY 14850",
+			"Lat":"42.443742",
+			"Lng":"-76.485784",
+			"Notes":"MTJF Library Addition",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Nematode Lab",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44729800319504",
+			"Lng":"-76.46845999782299",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"New York City",
+			"Folder":"State",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"40.70585565280153",
+			"Lng":"-73.89585841478242",
+			"Notes":"QuickState; QuickWorld; http://www.cornell.edu/nyc/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"New York State Agricultural Experiment Station",
+			"Folder":"State",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.877110000326",
+			"Lng":"-77.00765099994464",
+			"Notes":"NYSAES; QuickState; http://cals.cornell.edu/nysaes/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"New York State Veterinary Diagnostic Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241052/huge/28d952172804b51dc1dc3e3f7479cdf9916965d7.jpg",
+			"Address":"240 Farrier Rd, Ithaca, NY 14850",
+			"Lat":"42.448806",
+			"Lng":"-76.46427",
+			"Notes":"Animal Health Diagnostic Center; AHDC; NYS Veterinary Diagnostic Laboratory",
+			"AKA": "Animal Health Diagnostic Center"
+			}
+			,
+			{
+			"Name":"Newman Accelerator Building",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45052986899349",
+			"Lng":"-76.4804966589451",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Newman Arboretum",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images.localist.com/photo/000/016/552/huge/pvOf_eLB5g6BQpCw.jpg?1298662631",
+			"Address":"",
+			"Lat":"42.45186111111111",
+			"Lng":"-76.45599444444444",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Newman Lab",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45024663982961",
+			"Lng":"-76.48044684980954",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/239793/huge/bc3df3e484d460ef9e21ad9bf0a498a1f73f7670.jpg",
+			"Address":"",
+			"Lat":"42.45525978830351",
+			"Lng":"-76.47831624576979",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus  Low Rise 9",
+			"Folder":"North Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42",
+			"Lng":"-76",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus High Rise 5",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/018/824/huge/CKQOqoJ_nclcP6Lh.jpg?1308652226",
+			"Address":"225 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.456161",
+			"Lng":"-76.476787",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Low Rise 6",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/588/huge/2PWfqmqkkSvcKzrv.jpg?1298662798",
+			"Address":"237 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.456324",
+			"Lng":"-76.476103",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Low Rise 7",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"116 Program House Dr, Ithaca, NY 14850",
+			"Lat":"42.456156",
+			"Lng":"-76.475361",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Low Rise 9",
+			"Folder":"North Campus",
+			"ImageURL":"",
+			"Address":"142 Program House Dr, Ithaca, NY 14850",
+			"Lat":"42.454899",
+			"Lng":"-76.476139",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Student Center",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"224 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457317",
+			"Lng":"-76.476896",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse A",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"210 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457024",
+			"Lng":"-76.47785",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse B",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"218 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457091",
+			"Lng":"-76.477308",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse C",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"228 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.456977",
+			"Lng":"-76.476651",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse D",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"234 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457243",
+			"Lng":"-76.476322",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse E",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"238 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.456984",
+			"Lng":"-76.476005",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse F",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"244 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457184",
+			"Lng":"-76.475656",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse G",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"250 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457022",
+			"Lng":"-76.4753",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"North Campus Townhouse H",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"258 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.457273",
+			"Lng":"-76.474917",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Noyes Community and Recreation Center",
+			"Folder":"West Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/606/huge/6E4fpmxTbR_F5La5.jpg?1298662879",
+			"Address":"306 West Ave, Ithaca, NY 14850",
+			"Lat":"42.446462",
+			"Lng":"-76.488018",
+			"Notes":"Fitness; Noyes Community Rec Center; Noyes Community Recreation Center",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Noyes Lodge",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16607/huge/b9345fe970c9275d1e1f331014058cc38e1904e6.jpg",
+			"Address":"",
+			"Lat":"42.45210573025183",
+			"Lng":"-76.48027858583075",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Oak Avenue",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.4427016140413",
+			"Lng":"-76.48416898180099",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Olin Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16609/huge/67dc515eea859add9cf778c1557455a25ce5eb6a.jpg",
+			"Address":"113 Ho Plz, Ithaca, NY 14850",
+			"Lat":"42.445429",
+			"Lng":"-76.484397",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Olin Library",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16610/huge/2220d8984bfebb2845bfc33f93ad07cfdd8bfb7d.jpg",
+			"Address":"161 Ho Plz, Ithaca, NY 14853",
+			"Lat":"42.44785",
+			"Lng":"-76.484241",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/libe-cafe.cfm); Carl A. Kroch Library; Asia Collections; Echols Collection on Southeast Asia; South Asia Collection; Wason Collection on East Asia; John M. Olin Library; Rare and Manuscript Collections",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Olive Tjaden Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/241041/huge/a7c9a304abfe20c54b2daf77eb4a1c503d15bc70.jpg",
+			"Address":"909 University Ave, Ithaca, NY 14850",
+			"Lat":"42.450889",
+			"Lng":"-76.485391",
+			"Notes":"AAP",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Orchards Parking",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44519893221601",
+			"Lng":"-76.46231350856533",
+			"Notes":"Parking for Cornell Orchards",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Oxley Equestrian Center",
+			"Folder":"East Hill",
+			"ImageURL":"http://images-cf.localist.com/photos/16821/huge/f52a79767864bc611682fd35aeb4aadd2413dfea.jpg",
+			"Address":"220 Pine Tree Rd, Ithaca, NY 14850",
+			"Lat":"42.433978",
+			"Lng":"-76.46458699999999",
+			"Notes":"Horses; Equine; Polo; Horseback Riding; 220 Pine Tree Road; Stables",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking Garage",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"167 Hoy Rd, Ithaca, NY 14853",
+			"Lat":"42.443951",
+			"Lng":"-76.479574",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at Alumni House",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45202462236333",
+			"Lng":"-76.48101211510237",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at Appel",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45352362931494",
+			"Lng":"-76.47542146951328",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at Art Museum",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45100573371759",
+			"Lng":"-76.48596671721697",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at Friedman",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44548888888889",
+			"Lng":"-76.47520833333334",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at Helen Newman",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.4529243212554",
+			"Lng":"-76.47847575930174",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at RPCC",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.45633610589406",
+			"Lng":"-76.47762515302635",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parking at The Straight",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44638094120206",
+			"Lng":"-76.48617381388807",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Parrot Hall",
+			"Folder":"State",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.87689944825755",
+			"Lng":"-77.00803030067536",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Pedestrian Suspension Bridge",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16612/huge/fe03b2cbee05885f36dec1b16ccfad17b5731bd3.jpg",
+			"Address":"",
+			"Lat":"42.45199634308092",
+			"Lng":"-76.48610279769602",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Peony Gardens",
+			"Folder":"Plantations",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44914444444444",
+			"Lng":"-76.47250555555556",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Peter Plaza",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16613/huge/761f6099c1da6fcb16851bbaa9e48771b7a3722a.jpg",
+			"Address":"",
+			"Lat":"42.44687932475086",
+			"Lng":"-76.48222236983815",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Peterson Lot",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44779166666666",
+			"Lng":"-76.47047222222223",
+			"Notes":"Metered Parking",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Peterson Oak Grove",
+			"Folder":"Plantations",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45151111111112",
+			"Lng":"-76.45201388888889",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phi Delta Theta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"2 Ridgewood Road, Ithaca, NY 14850",
+			"Lat":"42.454781",
+			"Lng":"-76.48954000000001",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phi Gamma Delta",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"118 McGraw Place, Ithaca, NY 14850",
+			"Lat":"42.451511",
+			"Lng":"-76.489159",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phi Kappa Psi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"120 Mary Ann Wood Drive, Ithaca, NY 14850",
+			"Lat":"42.445396",
+			"Lng":"-76.488686",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phi Kappa Tau",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"106 The Knoll, Ithaca, NY 14850",
+			"Lat":"42.453781",
+			"Lng":"-76.48835",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phi Sigma Kappa",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"702 University Ave., Ithaca, NY 14850",
+			"Lat":"42.44956663188611",
+			"Lng":"-76.49004578590393",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phi Sigma Sigma",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"14 South Ave., Ithaca, NY 14850",
+			"Lat":"42.445042",
+			"Lng":"-76.48783899999999",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Phillips Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16614/huge/8eb5bf94e4496453fe710fdada9e31040c1b218f.jpg",
+			"Address":"116 Hoy Rd, Ithaca, NY 14850",
+			"Lat":"42.444511",
+			"Lng":"-76.481992",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Physical Sciences Building",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/17615/huge/6e5a2dca93692e9d67243c00db0a0f38e92de791.jpg",
+			"Address":"245 East Ave, Ithaca, NY 14850",
+			"Lat":"42.449892",
+			"Lng":"-76.481767",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Pi Beta Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"330 Triphammer Rd., Ithaca, NY 14850",
+			"Lat":"42.45816",
+			"Lng":"-76.48255899999999",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Pi Delta Psi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"124 Triphammer Rd., Ithaca, NY 14850",
+			"Lat":"42.455688",
+			"Lng":"-76.481438",
+			"Notes":"Greek: MGLC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Pi Kappa Alpha",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"17 South Ave,. Ithaca, NY 14850",
+			"Lat":"42.444488",
+			"Lng":"-76.48841899999999",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Pi Kappa Phi",
+			"Folder":"Greek",
+			"ImageURL":"http://images-cf.localist.com/photos/241020/huge/8545d8a10bfc928a0c9a826efc169d09b042a8e5.jpg",
+			"Address":"55 Ridgewood Rd, Ithaca, NY 14850",
+			"Lat":"42.45549",
+			"Lng":"-76.48851000000001",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Plant Breeding Love Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"126 Medicago Dr, Ithaca, NY 14850",
+			"Lat":"42.44917",
+			"Lng":"-76.461978",
+			"Notes":"Love Lab",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Plant Pathology Greenhouse Complex",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44837823906735",
+			"Lng":"-76.46855275585531",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Plant Science Building",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16615/huge/a99bbeb8e70b99f6f88aeb87d63bef26b510a48e.jpg",
+			"Address":"236 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.448343",
+			"Lng":"-76.476992",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Plant Virology and Nematology Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"129 Helios Cir, Ithaca, NY 14850",
+			"Lat":"42.448041",
+			"Lng":"-76.468273",
+			"Notes":"Virology Nematology Lab",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Poultry Biology Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"239 Gallus Rd",
+			"Lat":"42.443122",
+			"Lng":"-76.452304",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Print Shop",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.4434021182748",
+			"Lng":"-76.47134162006432",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Prospect of Whitby",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45487222222223",
+			"Lng":"-76.48206111111111",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Prudence Risley Residential College",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/621/huge/RYGjOJOjQpEo_oG6.jpg?1298662957",
+			"Address":"535 Thurston Ave, Ithaca, NY 14850",
+			"Lat":"42.453122",
+			"Lng":"-76.481924",
+			"Notes":"Risley Hall; Housing; Dining (www.campuslife.cornell.edu/campuslife/dining/risley-dining.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Rand Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16616/huge/bf60c1332a4259a029230975ba801f816c0fc848.jpg",
+			"Address":"947 University Ave, Ithaca, NY 14850",
+			"Lat":"42.451229",
+			"Lng":"-76.482892",
+			"Notes":"Architecture; AAP",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Raptor Facility",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"216 Raptor Rd, Ithaca, NY 14850",
+			"Lat":"42.442485",
+			"Lng":"-76.450762",
+			"Notes":"Esther Schiff Bondareff '37 and Daniel N. Bondareff '35 ",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Rawlings Green",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16617/huge/7fa567fb2a8892e6031305d565b5849bea9b367c.jpg",
+			"Address":"",
+			"Lat":"42.45356689566225",
+			"Lng":"-76.47753064757525",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Real Estate Department",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"15 Thornwood Dr., Ithaca, NY, 14850",
+			"Lat":"42.48542",
+			"Lng":"-76.466279",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Reis Tennis Center",
+			"Folder":"East Hill",
+			"ImageURL":"http://images-cf.localist.com/photos/241014/huge/7a200d00850cc417f187303ec0e0f7b610b70bf9.jpg",
+			"Address":"230 Pine Tree Rd, Ithaca, NY 14850",
+			"Lat":"42.43504",
+			"Lng":"-76.465374",
+			"Notes":"230 Pine Tree Road",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Resource Ecology and Management Laboratory",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"139 Ecology Dr, Ithaca, NY 14850",
+			"Lat":"42.441734",
+			"Lng":"-76.466923",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Rhodes Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images.localist.com/photo/000/016/557/huge/RlVE_mf3o0mth63v.jpg?1298662656",
+			"Address":"136 Hoy Rd, Ithaca, NY 14853",
+			"Lat":"42.443425",
+			"Lng":"-76.48135600000001",
+			"Notes":"Theory Center",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Rice Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16618/huge/5279d686a55e8dffb24ec14fc9082fe75a6a5c79.jpg",
+			"Address":"340 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447862",
+			"Lng":"-76.474086",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Richard M Lewis Education Center",
+			"Folder":"Plantations",
+			"ImageURL":"http://images.localist.com/photo/000/016/619/huge/vf_6R4giwQQywLtM.jpg?1298662949",
+			"Address":"130 Comstock Knoll Dr, Ithaca, NY 14853",
+			"Lat":"42.449729",
+			"Lng":"-76.47183200000001",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Riley-Robb Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16620/huge/b0e7d45190e47c29eca7fb27863777b976c921a1.jpg",
+			"Address":"111 Wing Dr, Ithaca, NY 14850",
+			"Lat":"42.445831",
+			"Lng":"-76.471155",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robert J & Helen Appel Commons",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/505/huge/qQGu_f6PmMLEQmIj.jpg?1298662399",
+			"Address":"186 Cradit Farm Dr, Ithaca, NY 14850",
+			"Lat":"42.453569",
+			"Lng":"-76.476101",
+			"Notes":"Fitness; Dining (www.campuslife.cornell.edu/campuslife/dining/north-star.cfm); Cafe (www.campuslife.cornell.edu/campuslife/dining/ezras-emporium.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robert Purcell Community Center",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16848/huge/d3a937cb9cbaf441de5bceff711b64b4ef07e4e5.jpg",
+			"Address":"217 Jessup Rd, Ithaca, NY 14850",
+			"Lat":"42.455934",
+			"Lng":"-76.477497",
+			"Notes":"Dining (www.campuslife.cornell.edu/campuslife/dining/robert-purcell-marketplace-eatery.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robert Trent Jones Golf Course",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16622/huge/8ceaaee07d435bb9df1e83e8d0480c83a9388af9.jpg",
+			"Address":"",
+			"Lat":"42.46033474956923",
+			"Lng":"-76.47435491643975",
+			"Notes":"Moakley House; Golf Center",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robert W. Holley Center for Agriculture and Health",
+			"Folder":"Ag",
+			"ImageURL":"",
+			"Address":"538 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447856",
+			"Lng":"-76.467416",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Roberts Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16623/huge/57f263e3d8c17cbd8bf0ad9f978bb89af60646ee.jpg",
+			"Address":"215 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.448703",
+			"Lng":"-76.47944",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robison Alumni Fields",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16624/huge/6cc5dbdfcf3829fa07e5b32fd83c465b404fa200.jpg",
+			"Address":"",
+			"Lat":"42.44679725700298",
+			"Lng":"-76.47523518324763",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robison Herb Garden",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16625/huge/ffa363617038130f9d5e79bb72c9f5e930a5ba37.jpg",
+			"Address":"",
+			"Lat":"42.44973393629716",
+			"Lng":"-76.47144018476159",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robison Shellhouse",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"687 Third St, Ithaca, NY 14850",
+			"Lat":"42.446692",
+			"Lng":"-76.51132800000001",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Robison Softball Field",
+			"Folder":"East Hill",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.43560555555555",
+			"Lng":"-76.46621194606172",
+			"Notes":"220 Pine Tree Road",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Rockefeller Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16626/huge/e905677fb08fea340f06bbbccf3aac083746c4f0.jpg",
+			"Address":"231 East Ave, Ithaca, NY 14850",
+			"Lat":"42.448983",
+			"Lng":"-76.481771",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Rockwell Azalea Garden",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16627/huge/f39fef3bba7a49f401a66bf4878946e7183cd5f0.jpg",
+			"Address":"",
+			"Lat":"42.44788055555555",
+			"Lng":"-76.48043888888888",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ruminant Nutrition Laboratory",
+			"Folder":"East Campus",
+			"ImageURL":"",
+			"Address":"836 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.446144",
+			"Lng":"-76.467492",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"S Barn",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44824722222222",
+			"Lng":"-76.46375280725587",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"S. T. Olin",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16608/huge/9db5e4cc30ace366faa6100d38367557c890d0e6.jpg",
+			"Address":"",
+			"Lat":"42.45074127699409",
+			"Lng":"-76.48125595870647",
+			"Notes":"",
+			"AKA": "Olin Chem Lab"
+			}
+			,
+			{
+			"Name":"SPCA",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.4720490979038",
+			"Lng":"-76.43861175853604",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sackett Foot Bridge",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16628/huge/56262519a277981acc8febcfd65237d726fcf7e2.jpg",
+			"Address":"",
+			"Lat":"42.4517361175123",
+			"Lng":"-76.47311946553991",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sage Chapel",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16629/huge/15dbe59a29aac251b8b04bcb8b4915c7c89dd65d.jpg",
+			"Address":"147 Ho Plz, Ithaca, NY 14850",
+			"Lat":"42.447201",
+			"Lng":"-76.484459",
+			"Notes":"Religious Services; organ; organs",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sage Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16630/huge/f9d906a91258e9aa2a8ebd385cf7e69bb8deef7f.jpg",
+			"Address":"114 East Ave, Ithaca, NY 14850",
+			"Lat":"42.445916",
+			"Lng":"-76.483243",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/atrium-cafe.cfm); Management Library; Johnson Graduate School of Management Library; JGSM; Business School",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sage House",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"118 Sage Pl, Ithaca, NY 14850",
+			"Lat":"42.439727",
+			"Lng":"-76.491457",
+			"Notes":"Cornell University Press; CU Press; CUP",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Savage Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"244 Garden Ave, Ithaca, NY 14850",
+			"Lat":"42.449712",
+			"Lng":"-76.480106",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Schoellkopf Field",
+			"Folder":"Athletics",
+			"ImageURL":"http://images-cf.localist.com/photos/16631/huge/9a7f81b5afadc5cb465c2a44126753b797d355d7.jpg",
+			"Address":"",
+			"Lat":"42.44403207297739",
+			"Lng":"-76.47865684947895",
+			"Notes":"Football; Lacrosse; LAX",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Schoellkopf House",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44502993141838",
+			"Lng":"-76.47917392343093",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Schoellkopf Memorial",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/photo/000/016/632/huge/8cSHh8WcCBY2vdte.jpg?1298663008",
+			"Address":"521 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.444999",
+			"Lng":"-76.478555",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Schurman Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"602 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447992",
+			"Lng":"-76.466142",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Schwardt Laboratory",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"315 Turkey Hill Rd, Ithaca, NY 14850",
+			"Lat":"42.436683",
+			"Lng":"-76.428035",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Schwartz Center for Performing Arts",
+			"Folder":"Collegetown",
+			"ImageURL":"http://images-cf.localist.com/photos/16633/huge/0db53d3694fc9ec43bc7fca8a04856702f8df48a.jpg",
+			"Address":"430 College Ave, Ithaca, NY 14850",
+			"Lat":"42.442437",
+			"Lng":"-76.48593",
+			"Notes":"Theatre",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sculpture Garden",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/241058/huge/7682463541308fcf0d2fcc906d14f98e762fe1e0.jpg",
+			"Address":"",
+			"Lat":"42.45191944444445",
+			"Lng":"-76.45512222222223",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Seal and Serpent Society",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"305 Thurston Ave, Ithaca, NY 14850",
+			"Lat":"42.453464",
+			"Lng":"-76.485642",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Seeley G. Mudd Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/634/huge/3oMT1_6N5bchj8F9.jpg?1298663017",
+			"Address":"215 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447208",
+			"Lng":"-76.479026",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sheldon Court",
+			"Folder":"Collegetown",
+			"ImageURL":"http://images-cf.localist.com/photos/16635/huge/aab13a03989cf5726cc3371d0554dba0612636a0.jpg",
+			"Address":"420 College Ave, Ithaca, NY 14850",
+			"Lat":"42.442239",
+			"Lng":"-76.485593",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Shoals Marine Lab Dock, Portsmouth, New Hampshire",
+			"Folder":"World",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"43.08102222222222",
+			"Lng":"-70.76067222222223",
+			"Notes":"SML",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sibley Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16637/huge/a6a8ea8d1cdd916bd3988b67c2b39d0f2c970073.jpg",
+			"Address":"921 University Ave, Ithaca, NY 14850",
+			"Lat":"42.450913",
+			"Lng":"-76.4841",
+			"Notes":"Green Dragon Cafe (www.campuslife.cornell.edu/campuslife/dining/green-dragon.cfm); AAP; Fine Arts Library (B56 East);",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Alpha Mu",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"10 Sisson Place, Ithaca, NY 14850",
+			"Lat":"42.455276",
+			"Lng":"-76.480469",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Chi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"106 Cayuga Heights Rd., Ithaca, NY 14850",
+			"Lat":"42.456661",
+			"Lng":"-76.49115",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Delta Tau",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"115 Ridgewood Rd., Ithaca, NY 14850",
+			"Lat":"42.456058",
+			"Lng":"-76.488457",
+			"Notes":"Greek: Panhellenic",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Nu",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"230 Willard Way, Ithaca, NY 14850",
+			"Lat":"42.451683",
+			"Lng":"-76.491753",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Phi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"1 Forest Park Lane, Ithaca, NY 14850",
+			"Lat":"42.445999",
+			"Lng":"-76.488541",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Phi Epsilon",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"109 McGraw Place, Ithaca, NY 14850",
+			"Lat":"42.450069",
+			"Lng":"-76.48886899999999",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sigma Pi",
+			"Folder":"Greek",
+			"ImageURL":"http://images-cf.localist.com/photos/241044/huge/e3dc56c4878d185e89da1238b3a336a2576ebfca.jpg",
+			"Address":"730 University Avenue, Ithaca, NY 14850",
+			"Lat":"42.44965",
+			"Lng":"-76.488258",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Simon Track",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44716111111111",
+			"Lng":"-76.47367687589171",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Snee Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16638/huge/a9cd0fa9938d7ea642878f38cdff760d77da3d6c.jpg",
+			"Address":"112 Hollister Dr, Ithaca, NY 14850",
+			"Lat":"42.443665",
+			"Lng":"-76.48484",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Space Sciences Building",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16639/huge/848c54259592823399c2c081dc3a589ef91919fe.jpg",
+			"Address":"122 Sciences Dr, Ithaca, NY 14850",
+			"Lat":"42.448885",
+			"Lng":"-76.481083",
+			"Notes":"Spacecraft Planetary Imaging Facility; SPIF",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"State Theatre",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/241017/huge/ff4797051eb902669bb7266db2531c5154c00d27.jpg",
+			"Address":"",
+			"Lat":"42.43941388888889",
+			"Lng":"-76.49955555555556",
+			"Notes":"State Street Theatre; State St. Theatre",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Statler Auditorium",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44545558211482",
+			"Lng":"-76.48213663171964",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Statler Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16641/huge/56cdf534d159bcdf7fe89fee76c52cf221ebd8de.jpg",
+			"Address":"",
+			"Lat":"42.44577564390459",
+			"Lng":"-76.48215481743551",
+			"Notes":"Nestle Hotel Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Statler Hotel & J. Willard Marriott Executive Education Center",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/698/huge/UegHV_glcWseaS9q.jpg?1298891763",
+			"Address":"130 Statler Dr, Ithaca, NY 14853",
+			"Lat":"42.446374",
+			"Lng":"-76.48220000000001",
+			"Notes":"Dining (www.tavernabanfi.com); Banfi's Restuarant; Statler Hotel",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Statue of A. D. White",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241037/huge/e922199860b2c20f2032971ffd1902179937d237.jpg",
+			"Address":"",
+			"Lat":"42.44906387026753",
+			"Lng":"-76.48391970939053",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Statue of Ezra Cornell",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241043/huge/0af59f7cdd40cea1d90ac02c04e9eae154b7905f.jpg",
+			"Address":"",
+			"Lat":"42.44901573690047",
+			"Lng":"-76.48530191359337",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Statue of Hercules",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16642/huge/1e7c9cf843844e41e4f7ddb9752b497af48055a8.jpg",
+			"Address":"",
+			"Lat":"42.44683055555555",
+			"Lng":"-76.48234655354059",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Stewart Park",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16643/huge/15c9856014bae8c5cd7e496d846a10c9c0185f24.jpg",
+			"Address":"",
+			"Lat":"42.46207777777778",
+			"Lng":"-76.5017680378435",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Stimson Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16644/huge/749d5c632073281d7872332c564b4dd6ce593960.jpg",
+			"Address":"204 East Ave, Ithaca, NY 14850",
+			"Lat":"42.447773",
+			"Lng":"-76.483347",
+			"Notes":"Shoals Marine Lab (SML)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Stocking Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241057/huge/3e0061009590d7a09af5e9a645716ae48e65724f.jpg",
+			"Address":"411 Tower Rd, Ithaca, NY 14853",
+			"Lat":"42.447166",
+			"Lng":"-76.47118399999999",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sturtevant Hall",
+			"Folder":"State",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.87660435772936",
+			"Lng":"-77.00673040059793",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Sundial on Engineering Quad",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16684/huge/1762d0c1147bb7d1278a7eb5814368e0d8b4fda3.jpg",
+			"Address":"",
+			"Lat":"42.44488677911563",
+			"Lng":"-76.48363160273516",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Surge 3 Facility",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44599652035036",
+			"Lng":"-76.4701902322082",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Swanson Wildlife Health Center",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"131 Swanson Dr, Ithaca, NY 14850",
+			"Lat":"42.426769",
+			"Lng":"-76.45299",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"T Barn",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44793055555555",
+			"Lng":"-76.46362104956994",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Taughannock Falls State Park",
+			"Folder":"Community",
+			"ImageURL":"http://images-cf.localist.com/photos/16645/huge/c837a60b7276d548b1e74897e72268d4aa98356d.jpg",
+			"Address":"",
+			"Lat":"42.54650965527017",
+			"Lng":"-76.59849151554533",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Teagle Hall",
+			"Folder":"Athletics",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"512 Campus Rd, Ithaca, NY 14850",
+			"Lat":"42.445773",
+			"Lng":"-76.479075",
+			"Notes":"Fitness; Swimming; Diving",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Technion-Cornell Innovation Institute",
+			"Folder":"NYC",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"40.76216100025913",
+			"Lng":"-73.9499639997845",
+			"Notes":"http://www.cornell.edu/nyc/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Telluride House",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images-cf.localist.com/photos/239787/huge/138768639a7af102aa1edc393873297068ebb089.jpg",
+			"Address":"",
+			"Lat":"42.44579774805806",
+			"Lng":"-76.48709308304801",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"The Cornell Store",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/photo/000/016/539/huge/t_JOpoL36QG7QDbG.jpg?1298662563",
+			"Address":"135 Ho Plz, Ithaca, NY 14850",
+			"Lat":"42.446744",
+			"Lng":"-76.484202",
+			"Notes":"Books; Banking; Clothing; Shopping; Ho Plaza; Post Office; USPS; Campus Store",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Theta Delta Chi",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"800 University Avenue, Ithaca, NY 14850",
+			"Lat":"42.450069",
+			"Lng":"-76.487701",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Thurston Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16847/huge/c1a443d20532ab5aceaea60f4239f15b722754b2.jpg",
+			"Address":"130 Hollister Dr, Ithaca, NY 14850",
+			"Lat":"42.443913",
+			"Lng":"-76.48366",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Tobin Fieldhouse",
+			"Folder":"North Campus",
+			"ImageURL":"http://images.localist.com/photo/000/018/816/huge/2ONYuJeTCLBvKwBQ.jpg?1308651561",
+			"Address":"108 Jessup Rd, Ithaca, NY 14853",
+			"Lat":"42.456515",
+			"Lng":"-76.480988",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Toboggan Lodge",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"38 Forest Home Dr, Ithaca, NY 14850",
+			"Lat":"42.45122",
+			"Lng":"-76.478606",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Tompkins Co. Cooperative Extension",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45059877255562",
+			"Lng":"-76.50349812144292",
+			"Notes":"4-H; 615 Willow Ave., Ithaca",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Tompkins County Airport",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.48984166666667",
+			"Lng":"-76.46226989757149",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Tompkins County Public Library",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43838654901615",
+			"Lng":"-76.49836600648406",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Trillium Dining",
+			"Folder":"Ag",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.4478957097447",
+			"Lng":"-76.47914474372737",
+			"Notes":"Dining (www.campuslife.cornell.edu/campuslife/dining/trillium.cfm); Cafe (www.campuslife.cornell.edu/campuslife/dining/trillium-express.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Triphammer Road Cooperative",
+			"Folder":"Co-ops",
+			"ImageURL":"",
+			"Address":"150 Triphammer Rd, Ithaca, NY 14850",
+			"Lat":"42.455993",
+			"Lng":"-76.481532",
+			"Notes":"Housing; Triphammer Cooperative",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Trolley Foot Bridge",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16647/huge/6a3e494b965553ae211c8f88220a1c978c19de75.jpg",
+			"Address":"",
+			"Lat":"42.44300910743182",
+			"Lng":"-76.48430180887063",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Turfgrass Field Research Lab",
+			"Folder":"Near Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/241064/huge/5155c23ad00f7017f86d820bba4dc47a57ab2c3a.jpg",
+			"Address":"",
+			"Lat":"42.45963809897865",
+			"Lng":"-76.46083958270836",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ujamaa Residential College",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16648/huge/662d22982ade5481788496e4f27e104d11a872d5.jpg",
+			"Address":"",
+			"Lat":"42.45534043065749",
+			"Lng":"-76.47672298027284",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Undergraduate Admissions Office",
+			"Folder":"North Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/18821/huge/3926ee93cf0c0ff567a7680b5fdfd0e87dbfcac2.jpg",
+			"Address":"",
+			"Lat":"42.45391944444444",
+			"Lng":"-76.48433888888889",
+			"Notes":"410 Thurston Ave.",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Upson Hall",
+			"Folder":"Engineering",
+			"ImageURL":"http://images-cf.localist.com/photos/16649/huge/2c07f062fe3ba8edc654318fa634d06a27dc1038.jpg",
+			"Address":"124 Hoy Rd, Ithaca, NY 14850",
+			"Lat":"42.443972",
+			"Lng":"-76.482455",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Uris Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16650/huge/dedb17bb4425fa4e226731cfea9863c64acf6580.jpg",
+			"Address":"109 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.447205",
+			"Lng":"-76.482197",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/rustys.cfm); Cornell Cinema; movie; movies",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Uris Library",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16651/huge/157fc4526ea8b413f525531171251ddf5aaa3499.jpg",
+			"Address":"160 Ho Plz, Ithaca, NY 14850",
+			"Lat":"42.447751",
+			"Lng":"-76.485366",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Vet Education Center",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16652/huge/fc7fd04ddedb9f3de8d77df340d125c0bd2d9a1e.jpg",
+			"Address":"",
+			"Lat":"42.447425",
+			"Lng":"-76.46580833333334",
+			"Notes":"Veterinary Library; Flower-Sprecher Veterinary Library",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Vet Medical Center",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16653/huge/8b3c428bf3da0f78d545ecb150514255ea46dc10.jpg",
+			"Address":"",
+			"Lat":"42.44739161182001",
+			"Lng":"-76.46436471052175",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Vet Research Tower",
+			"Folder":"East Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16654/huge/ce679a1637cf17b5c2b31b4ee2b358180b71a986.jpg",
+			"Address":"618 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.44732",
+			"Lng":"-76.466213",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Von Cramm Hall",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images-cf.localist.com/photos/241012/huge/7e000e47a83cc68ede36ac8ae00b4d1b5582f4f4.jpg",
+			"Address":"623 University Ave, Ithaca, NY 14850",
+			"Lat":"42.448949",
+			"Lng":"-76.491339",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"War Memorial",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images.localist.com/photo/000/016/659/huge/e5_el9o86HwBwL_c.jpg?1298663152",
+			"Address":"336 West Ave, Ithaca, NY 14850",
+			"Lat":"42.447527",
+			"Lng":"-76.48793",
+			"Notes":"West Campus War Memorial[Null]",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Ward Center for Nuclear Studies",
+			"Folder":"Engineering",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"135 Hollister Dr, Ithaca, NY 14853",
+			"Lat":"42.443392",
+			"Lng":"-76.48299400000001",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Wari Cooperative",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images-cf.localist.com/photos/18819/huge/2daa1690fb2c9e18151845920efc31a8da4def31.jpg",
+			"Address":"",
+			"Lat":"42.45637222222223",
+			"Lng":"-76.48251666666667",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Warren Hall",
+			"Folder":"Ag",
+			"ImageURL":"http://images-cf.localist.com/photos/16656/huge/590db8bfc00858e1a621863283150dc37996186c.jpg",
+			"Address":"137 Reservoir Ave, Ithaca, NY 14850",
+			"Lat":"42.449213",
+			"Lng":"-76.477098",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Watermargin",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45013240209666",
+			"Lng":"-76.48816716353014",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Wee Stinky Glen",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/16657/huge/60eadc4a292213f14007e5588f0d84150dc53aa4.jpg",
+			"Address":"",
+			"Lat":"42.44654877226635",
+			"Lng":"-76.48329010021544",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Weill Cornell Medical College",
+			"Folder":"NYC",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"40.76405936206212",
+			"Lng":"-73.95542748306603",
+			"Notes":"Medical College Library; Samuel J. Wood Library; C. V. Starr Biomedical Information Center",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Weill Cornell Medical College in Doha, Qatar",
+			"Folder":"World",
+			"ImageURL":"http://images-cf.localist.com/photos/16688/huge/018f40b382d622dcbdf1bbeb297aa23e2f257bb3.jpg",
+			"Address":"",
+			"Lat":"25.31811388888888",
+			"Lng":"51.43931944444444",
+			"Notes":"QuickWorld; http://www.cornell.edu/visiting/qatar/",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Weill Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16658/huge/5038d46a266e49d2570e56dc0d3ffdf8de483cd4.jpg",
+			"Address":"237 Tower Rd, Ithaca, NY 14850",
+			"Lat":"42.446874",
+			"Lng":"-76.477454",
+			"Notes":"Cafe (www.campuslife.cornell.edu/campuslife/dining/synapsis-cafe.cfm)",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"West Campus",
+			"Folder":"Areas and Features",
+			"ImageURL":"http://images-cf.localist.com/photos/241055/huge/467b640bfc40bf74c251970f746d3f60c4cb24cf.jpg",
+			"Address":"",
+			"Lat":"42.44758368677813",
+			"Lng":"-76.48915914864365",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"White Hall",
+			"Folder":"Arts",
+			"ImageURL":"http://images-cf.localist.com/photos/16660/huge/dea19502ad652c730a0526a3e3b2558f33547f58.jpg",
+			"Address":"123 Central Ave, Ithaca, NY 14850",
+			"Lat":"42.450255",
+			"Lng":"-76.485405",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Willard Straight Hall",
+			"Folder":"Central Campus",
+			"ImageURL":"http://images-cf.localist.com/photos/16661/huge/b610280e7a6f6b5e595e7faadbe4961ca0dd561c.jpg",
+			"Address":"136 Ho Plz, Ithaca, NY 14850",
+			"Lat":"42.446558",
+			"Lng":"-76.485645",
+			"Notes":"Okenshields Dining (www.campuslife.cornell.edu/campuslife/dining/okenshields.cfm); Ivy Room Dining (www.campuslife.cornell.edu/campuslife/dining/ivy-room-dining.cfm); Cornell Cinema; Cafe (www.campuslife.cornell.edu/campuslife/dining/cascadeli.cfm); movie; movies",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"William T Keeton House",
+			"Folder":"West Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"4 Forest Park Ln, Ithaca, NY 14850",
+			"Lat":"42.446723",
+			"Lng":"-76.489547",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Wilson Synchrotron Lab & Ring",
+			"Folder":"Engineering",
+			"ImageURL":"http://images.localist.com/photo/000/017/084/huge/NRUpLjspwxZjnZtZ.jpg?1300101797",
+			"Address":"161 Synchrotron Dr, Ithaca, NY 14850",
+			"Lat":"42.445011",
+			"Lng":"-76.472976",
+			"Notes":"Wilson Laboratory",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Wilson Synchrotron Lab Parking",
+			"Folder":"Parking",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44471063976241",
+			"Lng":"-76.47119791736762",
+			"Notes":"Parking for Wilson Synchrotron Lab Visitors",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Wing Hall",
+			"Folder":"East Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"123 Wing Dr, Ithaca, NY 14850",
+			"Lat":"42.446633",
+			"Lng":"-76.471568",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Winter Garden",
+			"Folder":"Plantations",
+			"ImageURL":"http://images-cf.localist.com/photos/16662/huge/3a47645eedb553017c0e936df90cbd07066c6b00.jpg",
+			"Address":"",
+			"Lat":"42.44910555555555",
+			"Lng":"-76.47141388888889",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Zeta Beta Tau",
+			"Folder":"Greek",
+			"ImageURL":"",
+			"Address":"1 Edgecliff Lane, Ithaca, NY 14850",
+			"Lat":"42.45407875663022",
+			"Lng":"-76.49247947486879",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Zeta Psi",
+			"Folder":"Greek",
+			"ImageURL":"http://images-cf.localist.com/photos/239792/huge/f3d9ea9e8f0c1542fc4d055564d87297bb953815.jpg",
+			"Address":"534 Thurston Ave,. Ithaca, NY 14850",
+			"Lat":"42.454121",
+			"Lng":"-76.481827",
+			"Notes":"Greek: IFC",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"Zucker Shrub Collection and Harris Lilac Collection",
+			"Folder":"Plantations",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.45260833333334",
+			"Lng":"-76.45610555555555",
+			"Notes":"Plantations",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"104 West! (Kosher Dining Hall)",
+			"Folder":"Co-ops",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44431072842651",
+			"Lng":"-76.48787869831379",
+			"Notes":"Dining (www.campuslife.cornell.edu/campuslife/dining/104west.cfm); 104 West Ave.",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"112 Edgemoor",
+			"Folder":"Co-ops",
+			"ImageURL":"http://images-cf.localist.com/photos/239788/huge/c17501952b29c60c28f175240587b4b171efbaa0.jpg",
+			"Address":"",
+			"Lat":"42.44409097246667",
+			"Lng":"-76.48841178339316",
+			"Notes":"Housing",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"116 Maple Ave.",
+			"Folder":"Parking",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.441306",
+			"Lng":"-76.476433",
+			"Notes":"Transportation Services; Parking Permits",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"120 Maple Ave.",
+			"Folder":"Near Campus",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.441336",
+			"Lng":"-76.47553000000001",
+			"Notes":"CIT",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"301 College Ave.",
+			"Folder":"Collegetown",
+			"ImageURL":"http://images-cf.localist.com/photos/241016/huge/b39b8df739ca50c32204cf0e50ae188e56155a59.jpg",
+			"Address":"",
+			"Lat":"42.44033831466796",
+			"Lng":"-76.48499926544106",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"309 College Ave.",
+			"Folder":"Collegetown",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44081656915536",
+			"Lng":"-76.48497643192042",
+			"Notes":"The Nines",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"312 College Ave.",
+			"Folder":"Collegetown",
+			"ImageURL":"http://images-cf.localist.com/photos/241067/huge/fdffb9fb14f8f186c826aa5ab866f49be3b89168.jpg",
+			"Address":"",
+			"Lat":"42.44089595553945",
+			"Lng":"-76.48533033686954",
+			"Notes":"University Photography; Office of Web Communications (OWC); University Communications, FSAP",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"337 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43792222222222",
+			"Lng":"-76.46270763683221",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"341 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.4379379131725",
+			"Lng":"-76.46308945310345",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"353 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43813181335253",
+			"Lng":"-76.46215440174669",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"373 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43765918906487",
+			"Lng":"-76.46209221761249",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"377 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43763229771285",
+			"Lng":"-76.46314939786039",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"391 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43904444444444",
+			"Lng":"-76.46531944444445",
+			"Notes":"CISER",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"395 Pine Tree Road",
+			"Folder":"East Hill",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.43896307755732",
+			"Lng":"-76.46319460416808",
+			"Notes":"",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"4-H Acres",
+			"Folder":"Community",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.47316663284014",
+			"Lng":"-76.41905012036506",
+			"Notes":"418 Lower Creek Road, Ithaca",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"409 College Ave.",
+			"Folder":"Collegetown",
+			"ImageURL":"",
+			"Address":"",
+			"Lat":"42.44211388888888",
+			"Lng":"-76.48496599999045",
+			"Notes":"Student Agencies, Faculty and Staff Assistance Program",
+			"AKA": ""
+			}
+			,
+			{
+			"Name":"726 University Ave.",
+			"Folder":"West Campus",
+			"ImageURL":"http://images.localist.com/images/main/business_huge.png?1340747100",
+			"Address":"",
+			"Lat":"42.44956111111111",
+			"Lng":"-76.48878611111111",
+			"Notes":"",
+			"AKA": ""
+			}
+			
+	]
+	}
