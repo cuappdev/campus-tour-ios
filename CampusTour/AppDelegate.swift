@@ -13,7 +13,12 @@ import GoogleMaps
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static var shared : AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
+    }
+    
     var window: UIWindow?
+    let locationProvider = LocationProvider()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,11 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //set up gui
         window = UIWindow()
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = ViewController()
+        window?.rootViewController = UINavigationController(rootViewController: ViewController())
         window?.makeKeyAndVisible()
         
         return true
     }
-
 }
-
