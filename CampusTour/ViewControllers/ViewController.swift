@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import CoreLocation
 
+// This view controller is temporary and will get deleted
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
