@@ -5,11 +5,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            let data = try ParseData()
-            print(data.locations)
-        } catch {
-        }
+        let data = try! ParseData()
+        print(data.locations)
         
         buildUI()
     }
