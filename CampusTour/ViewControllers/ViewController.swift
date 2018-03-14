@@ -6,7 +6,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let data = try! ParseData()
-        print(data.locations)
         
         buildUI()
     }
