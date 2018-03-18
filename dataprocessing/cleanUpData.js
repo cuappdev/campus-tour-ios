@@ -50,8 +50,8 @@ const importantLocationNames = [
 const cleanLocations = rawLocations.locations
       .map(loc => ({
           name: loc.Name,
-          latitude: loc.Lat,
-          longitude: loc.Lng
+          latitude: parseFloat(loc.Lat),
+          longitude: parseFloat(loc.Lng)
       }))
       .filter(loc => importantLocationNames.includes(loc.name));
 

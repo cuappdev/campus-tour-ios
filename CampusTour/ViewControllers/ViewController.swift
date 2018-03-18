@@ -4,9 +4,11 @@ import CoreLocation
 
 // This view controller is temporary and will get deleted
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let data = try! ParseData()
+        
         buildUI()
     }
     
