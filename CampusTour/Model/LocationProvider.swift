@@ -39,9 +39,17 @@ class LocationProvider: NSObject {
         return currentLocation
     }
     
+    /// If a location is available, call the listener immediately
     /// To remove this listener, just deallocate your reference to it
     /// Listener will only be called as long as there exists a strong reference to it
     func addLocationListener(repeats: Bool, listener: @escaping LocationListener) {
+        if let location = _currentLocation {
+            listener(location)
+            if !repeats {
+                return
+            }
+        }
+        
         locationListeners.append(LocationListenerWrapper(
             listener: listener,
             repeats: repeats
