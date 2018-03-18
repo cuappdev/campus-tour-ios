@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C933604204E8579004668CE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* Data.swift */; };
+		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
+		0CBFF351205E394500F7AEDB /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* TopNavBar.swift */; };
+		0CBFF353205E439300F7AEDB /* TourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF352205E439300F7AEDB /* TourData.swift */; };
 		0CD80A692050CE8200F2FC91 /* locations-clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD80A682050CE8200F2FC91 /* locations-clean.json */; };
 		7CBAB8D784B840FA0C7B78AE /* Pods_CampusTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */; };
 		CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC10D019204C8DD2009B7808 /* POIMapViewController.swift */; };
@@ -21,7 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C933603204E8579004668CE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		0CBFF350205E394500F7AEDB /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
+		0CBFF352205E439300F7AEDB /* TourData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourData.swift; sourceTree = "<group>"; };
 		0CD80A682050CE8200F2FC91 /* locations-clean.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "locations-clean.json"; sourceTree = "<group>"; };
 		2A0551F91243964E6BA51916 /* Pods-CampusTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampusTour/Pods-CampusTour.debug.xcconfig"; sourceTree = "<group>"; };
 		3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +57,8 @@
 		0C933605204E858C004668CE /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				0C933603204E8579004668CE /* Data.swift */,
+				0C933603204E8579004668CE /* LocationData.swift */,
+				0CBFF352205E439300F7AEDB /* TourData.swift */,
 				0CD80A682050CE8200F2FC91 /* locations-clean.json */,
 			);
 			path = Data;
@@ -80,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCE123E20476BA900DCCC39 /* ViewController.swift */,
+				0CBFF350205E394500F7AEDB /* TopNavBar.swift */,
 				CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */,
 				CC10D019204C8DD2009B7808 /* POIMapViewController.swift */,
 			);
@@ -271,12 +277,13 @@
 			files = (
 				CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */,
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
-
-				0C933604204E8579004668CE /* Data.swift in Sources */,
+				0C933604204E8579004668CE /* LocationData.swift in Sources */,
 				CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */,
 				CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
+				0CBFF353205E439300F7AEDB /* TourData.swift in Sources */,
+				0CBFF351205E394500F7AEDB /* TopNavBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
