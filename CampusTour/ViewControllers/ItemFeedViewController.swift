@@ -43,7 +43,7 @@ class ItemFeedViewController: UITableViewController {
             let item = items[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseId) as! ItemOfInterestTableViewCell
             cell.setCellModel(model:
-                ItemOfInterestTableViewCell.Model(
+                ItemOfInterestTableViewCell.ModelInfo(
                     title: item.title,
                     date: item.date,
                     description: item.description))
