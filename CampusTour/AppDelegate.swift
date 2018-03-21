@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Google maps
         let keys = CampusTourKeys()
         GMSServices.provideAPIKey(keys.googleMapsAPI)
-        print(keys.googleMapsAPI)
         
         //set up gui
         window = UIWindow()
