@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum Filter {
-    //Change with filters
-    case Fun
-}
-
 enum EventType {
     //Type of events
     case Orientation
@@ -39,25 +34,25 @@ struct Location {
     }
 }
 
-class Events {
+struct Event {
     var name: String
     var description: String
-    var dateTime: String
     var location: Location
     var college: College
     var type: EventType
+    var time: Date
     
-    init(name:String, description: String, dateTime: String, location: Location, college: College, type: EventType) {
+    init(name:String, description: String, time: Double, location: Location, college: College, type: EventType) {
         self.name = name
         self.description = description
-        self.dateTime = dateTime
         self.location = location
         self.college = college
         self.type = type
+        self.time = Date.init(timeIntervalSince1970: time)
     }
 }
 
-class Building {
+struct Building {
     var college: College?
     var name: String
     var department: String?
@@ -73,14 +68,16 @@ class Building {
     }
 }
 
-class Tour {
+struct Tour {
     var name: String
     var location: Location
     var description: String
+    var time: Date
     
-    init(name: String, location: Location, description: String) {
+    init(name: String, location: Location, description: String, time: Double) {
         self.name = name
         self.location = location
         self.description = description
+        self.time = Date.init(timeIntervalSince1970: time)
     }
 }

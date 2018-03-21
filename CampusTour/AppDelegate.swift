@@ -25,11 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Google maps
         let keys = CampusTourKeys()
         GMSServices.provideAPIKey(keys.googleMapsAPI)
+        print(keys.googleMapsAPI)
         
         //set up gui
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window?.rootViewController = MainTabBarController()
+//        window?.rootViewController = UINavigationController(rootViewController: TopNavBarTempVC())
         window?.makeKeyAndVisible()
         
         return true
