@@ -19,40 +19,86 @@ struct Item {
 }
 
 class ItemFeedViewController: UITableViewController {
-    let mapSection = 0, itemSection = 1
+    let mapSection = 0, itemSection = 1, placesSection = 2
     
-    let items: [Item] = [
-        Item(title: "Test", date: Date(), description: loremIpsum),
-        Item(title: "Hello", date: Date(), description: loremIpsum),
-        Item(title: "Hi", date: Date(), description: loremIpsum)
-    ]
+    let events: [Event] = testEvents
+    let places: [Building] = testPlaces
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseId)
+        tableView.tableHeaderView?.backgroundColor = UIColor.white
+        tableView.estimatedRowHeight = 50
+        tableView.insetsContentViewsToSafeArea = true
+        tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
+        tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdPlace)
         tableView.register(MapTableViewCell.self, forCellReuseIdentifier: MapTableViewCell.reuseId)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0: // google maps
+        case mapSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: MapTableViewCell.reuseId) as! MapTableViewCell
             cell.cellWillAppear()
             return cell
-        case 1: // item of interest
-            let item = items[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseId) as! ItemOfInterestTableViewCell
-            cell.setCellModel(model:
-                ItemOfInterestTableViewCell.ModelInfo(
-                    title: item.title,
-                    date: item.date,
-                    description: item.description))
-            
+        case itemSection:
+            let item = events[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseIdEvent) as! ItemOfInterestTableViewCell
+            cell.setCellModel(
+                model: ItemOfInterestTableViewCell.ModelInfo(
+                    title: item.name,
+                    dateRange: (item.time, item.time.addingTimeInterval(600)),
+                    description: item.description,
+                    locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
+                                                                                   distanceString: "x mi away") ,
+                    tags: ["tag1", "tag2"], //TODO add tags to data
+                    imageUrl: URL(string: "https://picsum.photos/150/150/?random")!),
+                layout: .event
+            )
+            return cell
+        case placesSection:
+            let place = places[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseIdPlace) as! ItemOfInterestTableViewCell
+            cell.setCellModel(
+                model: ItemOfInterestTableViewCell.ModelInfo(
+                    title: place.name,
+                    dateRange: nil,
+                    description: place.department ?? "",
+                    locationSpec: nil,
+                    tags: ["tag1", "tag2"],
+                    imageUrl: URL(string: "https://picsum.photos/150/150/?random")!) ,
+                layout: .place)
             return cell
         default:
             return UITableViewCell()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == itemSection || section == placesSection else { return nil }
         
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.white
+        
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.addArrangedSubview(
+            UILabel.label(
+                text: section == itemSection ? "EVENTS" : "ATTRACTIONS",
+                color: Colors.tertiary,
+                font: UIFont.systemFont(ofSize: 14, weight: .medium)
+        ))
+        stack.addArrangedSubview(
+            UILabel.label(
+                text: section == placesSection ? "Discover" : "Explore",
+                color: Colors.primary,
+                font: UIFont.systemFont(ofSize: 28, weight: .semibold)
+        ))
+        
+        headerView.addSubview(stack)
+        stack.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(8)
+        }
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,19 +108,20 @@ class ItemFeedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case mapSection: return 140
-        case itemSection: return 60
+        case itemSection, placesSection: return UITableViewAutomaticDimension
         default: return 0
         }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case mapSection: return 1
-        case itemSection: return items.count
+        case itemSection: return events.count
+        case placesSection: return places.count
         default: return 0
         }
     }

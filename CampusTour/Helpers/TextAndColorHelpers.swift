@@ -8,8 +8,15 @@
 
 import UIKit
 
+private func rgbaInt(_ r: Int, _ g: Int, _ b: Int, _ a: CGFloat) -> UIColor {
+    return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: a)
+}
+
 enum Colors {
-    static let tertiary = UIColor.init(red: 144.0/255.0, green: 148.0/255.0, blue: 157.0/255.0, alpha: 1.0)
+    static let primary = rgbaInt(34, 34, 34, 1.0)
+    static let secondary = rgbaInt(34, 34, 34, 0.8)
+    static let tertiary = rgbaInt(144, 148, 157, 1.0)
+    static let brand = rgbaInt(206, 23, 69, 1.0)
 }
 
 extension UILabel {
