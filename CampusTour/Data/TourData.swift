@@ -41,15 +41,6 @@ struct Event {
     var college: College
     var type: EventType
     var time: Date
-    
-    init(name:String, description: String, time: Double, location: Location, college: College, type: EventType) {
-        self.name = name
-        self.description = description
-        self.location = location
-        self.college = college
-        self.type = type
-        self.time = Date.init(timeIntervalSince1970: time)
-    }
 }
 
 struct Building {
