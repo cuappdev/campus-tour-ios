@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var searchController: UISearchController!
     var searchResultsTableView: UITableView!
+    let itemFeedViewController = ItemFeedViewController()
     var filterBar: FilterBar!
     var arButton: UIBarButtonItem!
     var searchResult: [Any] = [] {
@@ -27,8 +28,13 @@ class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
+        self.tabBarItem = UITabBarItem.feedItem
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
         setTopNavBar()
+        setBottomView()
     }
     
     @objc func openARMode() {
@@ -43,20 +49,23 @@ class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         searchBar.resignFirstResponder()
         searchBar.placeholder = "Search"
         searchBar.endEditing(true)
-        searchBar.setShowsCancelButton(false, animated: true)
         navigationItem.setRightBarButton(arButton, animated: false)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if !searchBarIsEmpty() {
-            guard let searchText = searchController.searchBar.text else { return }
-            searchResultsTableView.isHidden = false
-            getSearchResults(searchText: searchText)
-        }
+        guard let searchText = searchController.searchBar.text else { return }
+        searchResultsTableView.isHidden = false
+        getSearchResults(searchText: searchText)
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        navigationItem.setRightBarButton(nil, animated: false)
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchResultsTableView.isHidden = false
+        return true
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        navigationItem.setRightBarButton(nil, animated: false)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -94,28 +103,42 @@ class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         })
     }
     
-    func setUI() {
-//        view.add
+    //Setup Feed portion of ViewController
+    func setBottomView() {
+        addChildViewController(itemFeedViewController)
+        
+        view.insertSubview(itemFeedViewController.view, belowSubview: searchResultsTableView)
+        itemFeedViewController.view.snp.makeConstraints { (make) in
+            make.top.equalTo(filterBar.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
     
+    //Setup filter & search portion of ViewController
     func setTopNavBar() {
         //Create search
-        
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search"
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
-//        navigationItem.searchController = searchController
+        //seems dumb--will have to check on this
+        for s in searchController.searchBar.subviews[0].subviews {
+            if s is UITextField {
+                s.layer.borderWidth = 1.0
+                s.layer.borderColor = Colors.shadow.cgColor
+                s.layer.cornerRadius = 10
+            }
+        }
+        
         navigationItem.titleView = searchController.searchBar
         definesPresentationContext = false
         
         
         arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
-//        let rightButton = UIBarButtonItem(title: "CU", style: .plain, target: self, action: #selector(rightButtonFunction))
         navigationItem.setRightBarButton(arButton, animated: false)
-        
-//        navigationItem.title = "Cornell App"
         
         filterBar = FilterBar()
         view.addSubview(filterBar)
@@ -127,13 +150,13 @@ class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         searchResultsTableView = UITableView()
-        searchResultsTableView.backgroundColor = .gray
+        searchResultsTableView.backgroundColor = .lightGray
         view.addSubview(searchResultsTableView)
         searchResultsTableView.snp.makeConstraints { (make) in
             make.top.equalTo(filterBar.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
         searchResultsTableView.delegate = self

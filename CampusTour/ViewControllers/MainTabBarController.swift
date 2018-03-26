@@ -4,7 +4,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         setViewControllers([
             UINavigationController(rootViewController: POIMapViewController()),
-            ItemFeedViewController()
+            UINavigationController(rootViewController: SearchViewController())
             ], animated: false)
     }
 }

@@ -34,15 +34,18 @@ class FilterBar: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         scrollView = UIScrollView()
-        scrollView.backgroundColor = .lightGray
+        scrollView.backgroundColor = Colors.offwhite
+        scrollView.alwaysBounceHorizontal = true
+        scrollView.showsHorizontalScrollIndicator = false
+    }
+    
+    override func layoutSubviews() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        scrollView.alwaysBounceHorizontal = true
-        scrollView.showsHorizontalScrollIndicator = false
+        
         addFilterButton()
     }
     
@@ -52,10 +55,10 @@ class FilterBar: UIView {
             button.setTitle(filter.rawValue, for: .normal)
             
             button.setTitleColor(.white, for: .normal)
-            button.setTitleColor(UIColor.tourMainColor, for: .selected)
+            button.setTitleColor(Colors.brand, for: .selected)
             
             //Change this so that it changes on selected
-            button.backgroundColor = UIColor.tourMainColor
+            button.backgroundColor = Colors.brand
             
             button.layer.cornerRadius = 4.0
             button.clipsToBounds = true

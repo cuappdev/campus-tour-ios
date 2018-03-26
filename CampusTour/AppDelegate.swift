@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //set up gui
         window = UIWindow()
         window?.backgroundColor = UIColor.white
-//        window?.rootViewController = MainTabBarController()
-        window?.rootViewController = UINavigationController(rootViewController: TopNavBarTempVC())
+        window?.rootViewController = MainTabBarController()
+//        window?.rootViewController = UINavigationController(rootViewController: TopNavBarTempVC())
         window?.makeKeyAndVisible()
         
         return true

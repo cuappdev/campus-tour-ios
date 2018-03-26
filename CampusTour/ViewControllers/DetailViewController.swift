@@ -89,11 +89,11 @@ class DetailViewController: UIViewController {
         let dateLocationLabel = UILabel()
         
         mainTitleLabel.text = "Happening tonight"
-        mainTitleLabel.textColor = UIColor.tourMainColor
+        mainTitleLabel.textColor = Colors.brand
         mainTitleLabel.font = UIFont(name: Fonts.SF.regular, size: 16)
         
         dateLocationLabel.text = "date + location"
-        dateLocationLabel.textColor = UIColor.tertiaryTextColor
+        dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = UIFont(name: Fonts.SF.regular, size: 14)
         
         scheduleStackView.addArrangedSubview(mainTitleLabel)
@@ -114,7 +114,7 @@ class DetailViewController: UIViewController {
         let titleLabel: UILabel = {
             let label = UILabel()
             label.text = "About the Event"
-            label.textColor = UIColor.primaryTextColor
+            label.textColor = Colors.brand
             label.font = UIFont(name: Fonts.SF.medium, size: 16)
             return label
         }()
@@ -122,7 +122,7 @@ class DetailViewController: UIViewController {
         let descriptionLabel: UILabel = {
             let label = UILabel()
             label.text = description
-            label.textColor = UIColor.secondaryTextColor
+            label.textColor = Colors.secondary
             label.font = UIFont(name: Fonts.SF.regular, size: 14)
             return label
         }()
