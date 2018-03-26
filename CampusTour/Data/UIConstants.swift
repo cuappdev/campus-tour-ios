@@ -9,5 +9,15 @@
 import UIKit
 
 extension UIColor {
-    static var tourMainColor = UIColor(red: 150/255, green: 10/255, blue: 20/255, alpha: 1)
+    static var tourMainColor = UIColor(red: 206/255, green: 23/255, blue: 69/255, alpha: 1)
+    static var primaryTextColor = UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1)
+    static var secondaryTextColor = UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 0.8)
+    static var tertiaryTextColor = UIColor(red: 147/255, green: 150/255, blue: 159/255, alpha: 1)
+}
+
+struct Fonts {
+    struct SF {
+        static let medium = "SFProText-Medium"
+        static let regular = "SFProText-Regular"
+    }
 }

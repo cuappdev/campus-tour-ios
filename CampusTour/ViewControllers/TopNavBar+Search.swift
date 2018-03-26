@@ -95,7 +95,6 @@ class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func setUI() {
-//        addChildViewController(<#T##childController: UIViewController##UIViewController#>)
 //        view.add
     }
     
@@ -157,14 +156,3 @@ class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return searchResult.count
     }
 }
-
-//class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
-//
-//    override func viewDidLoad() {
-//    }
-//
-//    //SearchResultsTableView protocols
-//
-//
-//}
-

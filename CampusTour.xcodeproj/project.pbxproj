@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */; };
+		0C0B0F542068C26600D8D6DC /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B0F532068C26500D8D6DC /* SF-Pro-Text-Medium.otf */; };
+		0C0B0F562068C26F00D8D6DC /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B0F552068C26F00D8D6DC /* SF-Pro-Text-Regular.otf */; };
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
 		0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5E7DC2063153C004FE8B6 /* Filter.swift */; };
 		0CBFF351205E394500F7AEDB /* TopNavBar+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* TopNavBar+Search.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0C0B0F532068C26500D8D6DC /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		0C0B0F552068C26F00D8D6DC /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		0CA5E7DC2063153C004FE8B6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* TopNavBar+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopNavBar+Search.swift"; sourceTree = "<group>"; };
@@ -60,6 +64,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0B0F522068C23500D8D6DC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0C0B0F532068C26500D8D6DC /* SF-Pro-Text-Medium.otf */,
+				0C0B0F552068C26F00D8D6DC /* SF-Pro-Text-Regular.otf */,
+			);
+			name = Fonts;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		0C933605204E858C004668CE /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +140,7 @@
 				CCE0A4ED2051B3990083BAE7 /* Helpers */,
 				CCE0A4E8204F3D250083BAE7 /* Model */,
 				CC10D018204B5DF8009B7808 /* ViewControllers */,
+				0C0B0F522068C23500D8D6DC /* Fonts */,
 				CCCE124320476BA900DCCC39 /* Assets.xcassets */,
 				CCCE124520476BA900DCCC39 /* LaunchScreen.storyboard */,
 				CCCE124820476BA900DCCC39 /* Info.plist */,
@@ -212,6 +227,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0B0F542068C26600D8D6DC /* SF-Pro-Text-Medium.otf in Resources */,
+				0C0B0F562068C26F00D8D6DC /* SF-Pro-Text-Regular.otf in Resources */,
 				CCCE124720476BA900DCCC39 /* LaunchScreen.storyboard in Resources */,
 				CCCE124420476BA900DCCC39 /* Assets.xcassets in Resources */,
 				0CD80A692050CE8200F2FC91 /* locations-clean.json in Resources */,
