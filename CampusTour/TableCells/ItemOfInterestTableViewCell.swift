@@ -22,39 +22,6 @@ private func formatDateRange(startDate start: Date, endDate end: Date) -> String
     return "\(start.string(custom: "MM-dd"))"
 }
 
-/// Used to make updating UI more efficient
-protocol UISpec {
-    func toView() -> UIView
-    func updateView(view: UIView) -> Bool
-}
-
-struct DateRangeUISpec: UISpec {
-    let start: Date
-    let end: Date
-    
-    @discardableResult
-    func updateView(view: UIView) -> Bool {
-        guard let label = view as? UILabel else {return false}
-        label.text = formatDateRange(startDate: start, endDate: end)
-        return true
-    }
-    
-    func toView() -> UIView {
-        let label = UILabel.label(text: "",
-                                  color: Colors.brand, font: UIFont.systemFont(ofSize: 12, weight: .medium))
-        updateView(view: label)
-        return label
-    }
-    
-    private func formatDateRange(startDate start: Date, endDate end: Date) -> String {
-        if start.isToday && end.isToday {
-            return "TODAY \(start.string(custom: "HH:mm")) - \(end.string(custom: "HH:mm"))"
-        }
-        
-        return "\(start.string(custom: "MM-dd"))"
-    }
-}
-
 private func tagLabel(text: String) -> UIView {
     let label = UILabel.label(text: text, color: Colors.tertiary, font: UIFont.systemFont(ofSize: 10, weight: .medium))
     let wrapper = UIView.insetWrapper(view: label, insets: UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
