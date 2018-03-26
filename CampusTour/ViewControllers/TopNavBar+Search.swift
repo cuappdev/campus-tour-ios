@@ -8,21 +8,21 @@
 
 import UIKit
 
-enum SearchResult {
-    case Building(Building)
-    case Event(Event)
-    case Tour(Tour)
-}
-
-class TopNavBarTempVC: UIViewController {
+class TopNavBarTempVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var searchController: UISearchController!
-    var tableView: UITableView!
-    var searchResult: [SearchResult] = [] {
+    var searchResultsTableView: UITableView!
+    var filterBar: FilterBar!
+    var arButton: UIBarButtonItem!
+    var searchResult: [Any] = [] {
         didSet {
-            tableView.reloadData()
+            searchResultsTableView.reloadData()
         }
     }
+    private let cellReuse = "reuse"
+    
+    //create class containing all of our static data for tours, events, buildings
+    let allData = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,25 +35,42 @@ class TopNavBarTempVC: UIViewController {
         //TODO: Open AR View
     }
     
-    @objc func rightButtonFunction() {
-        //TODO: Some functionality for the right button
-    }
-    
     //SearchBar Delegates
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        //TODO
-    }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //Remove search results
+        searchResult = [Any]()
+        searchResultsTableView.isHidden = true
+        searchBar.resignFirstResponder()
         searchBar.placeholder = "Search"
         searchBar.endEditing(true)
         searchBar.setShowsCancelButton(false, animated: true)
+        navigationItem.setRightBarButton(arButton, animated: false)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !searchBarIsEmpty() {
+            guard let searchText = searchController.searchBar.text else { return }
+            searchResultsTableView.isHidden = false
+            getSearchResults(searchText: searchText)
+        }
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        //TODO: Start search
+        navigationItem.setRightBarButton(nil, animated: false)
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //TODO: search
+        //Unsure if necessary
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchResult = [Any]()
+        searchResultsTableView.isHidden = true
+        searchBar.resignFirstResponder()
+        searchBar.placeholder = "Search"
+        searchBar.endEditing(true)
+        searchBar.setShowsCancelButton(false, animated: true)
+        navigationItem.setRightBarButton(arButton, animated: false)
     }
     
     //Search functionality
@@ -61,37 +78,93 @@ class TopNavBarTempVC: UIViewController {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    private func getSearchResults(searchText: String) -> [SearchResult] {
-        return []
+    private func getSearchResults(searchText: String) -> () {
+        let lowercase = searchText.lowercased()
+        self.searchResult = self.allData.filter({ (data) -> Bool in
+            switch data {
+            case let data as Building:
+                return data.name.lowercased().contains(lowercase)
+            case let data as Tour:
+                return data.name.lowercased().contains(searchText) || data.description.lowercased().contains(searchText)
+            case let data as Event:
+                return data.name.lowercased().contains(searchText) || data.description.lowercased().contains(searchText)
+            default:
+                return false
+            }
+        })
     }
     
     func setUI() {
-        tableView = UITableView()
-        //Use tableview from MainPage
+//        addChildViewController(<#T##childController: UIViewController##UIViewController#>)
+//        view.add
     }
     
     func setTopNavBar() {
         //Create search
+        
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.delegate = self
+//        navigationItem.searchController = searchController
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = false
         
-        let arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
-        let rightButton = UIBarButtonItem(title: "CU", style: .plain, target: self, action: #selector(rightButtonFunction))
-        navigationItem.setRightBarButton(rightButton, animated: false)
-        navigationItem.setLeftBarButton(arButton, animated: false)
         
-        navigationItem.title = "Cornell App"
+        arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
+//        let rightButton = UIBarButtonItem(title: "CU", style: .plain, target: self, action: #selector(rightButtonFunction))
+        navigationItem.setRightBarButton(arButton, animated: false)
+        
+//        navigationItem.title = "Cornell App"
+        
+        filterBar = FilterBar()
+        view.addSubview(filterBar)
+        filterBar.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
+        searchResultsTableView = UITableView()
+        searchResultsTableView.backgroundColor = .gray
+        view.addSubview(searchResultsTableView)
+        searchResultsTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(filterBar.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        searchResultsTableView.delegate = self
+        searchResultsTableView.dataSource = self
+        searchResultsTableView.isHidden = true
+        searchResultsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuse)
+        searchResultsTableView.bounces = true
     }
- 
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Implement Serge's custom tableviewcells
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print ("cell tapped at \(indexPath.row)")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResult.count
+    }
 }
 
-//Extension for UISearch
-extension TopNavBarTempVC: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        //Implement
-    }
-}
+//class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+//
+//    override func viewDidLoad() {
+//    }
+//
+//    //SearchResultsTableView protocols
+//
+//
+//}
+

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */; };
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
+		0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5E7DC2063153C004FE8B6 /* Filter.swift */; };
 		0CBFF351205E394500F7AEDB /* TopNavBar+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* TopNavBar+Search.swift */; };
 		0CBFF353205E439300F7AEDB /* TourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF352205E439300F7AEDB /* TourData.swift */; };
 		0CBFF355205F8B3600F7AEDB /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF354205F8B3600F7AEDB /* UIConstants.swift */; };
@@ -24,7 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		0CA5E7DC2063153C004FE8B6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* TopNavBar+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopNavBar+Search.swift"; sourceTree = "<group>"; };
 		0CBFF352205E439300F7AEDB /* TourData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourData.swift; sourceTree = "<group>"; };
 		0CBFF354205F8B3600F7AEDB /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCE123E20476BA900DCCC39 /* ViewController.swift */,
+				0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */,
 				0CBFF350205E394500F7AEDB /* TopNavBar+Search.swift */,
 				CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */,
 				CC10D019204C8DD2009B7808 /* POIMapViewController.swift */,
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
+				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -280,6 +286,8 @@
 			files = (
 				CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */,
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
+				0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */,
+				0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */,
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,
 				CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */,
 				CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */,
