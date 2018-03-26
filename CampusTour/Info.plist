@@ -7,6 +7,8 @@
 		<string>SF-Pro-Text-Medium.otf</string>
 		<string>SF-Pro-Text-Regular.otf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses your camera for AR</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses your location</string>
 	<key>CFBundleDevelopmentRegion</key>
