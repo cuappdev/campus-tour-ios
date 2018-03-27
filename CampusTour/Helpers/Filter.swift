@@ -10,19 +10,19 @@ import UIKit
 import SnapKit
 
 enum Filter: String {
-    case Sort = "Sort"
-    case College = "College"
-    case Food = "Food"
-    case Event = "Event"
-    case Tour = "Tour"
+    case sort = "Sort"
+    case college = "College"
+    case food = "Food"
+    case event = "Event"
+    case tour = "Tour"
 }
 
 fileprivate let filters: [Filter] = [
-    .Sort,
-    .College,
-    .Food,
-    .Event,
-    .Tour,
+    .sort,
+    .college,
+    .food,
+    .event,
+    .tour,
 ]
 
 class FilterBar: UIView {
@@ -38,9 +38,6 @@ class FilterBar: UIView {
         scrollView.backgroundColor = Colors.offwhite
         scrollView.alwaysBounceHorizontal = true
         scrollView.showsHorizontalScrollIndicator = false
-    }
-    
-    override func layoutSubviews() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -55,7 +52,7 @@ class FilterBar: UIView {
             button.setTitle(filter.rawValue, for: .normal)
             
             button.setTitleColor(.white, for: .normal)
-            button.setTitleColor(Colors.brand, for: .selected)
+            button.setTitleColor(Colors.brand, for: .highlighted)
             
             //Change this so that it changes on selected
             button.backgroundColor = Colors.brand
@@ -92,9 +89,9 @@ class FilterBar: UIView {
     @objc func filterSelected(sender: UIButton) {
         let selectedFilter = filters[sender.tag]
         switch selectedFilter {
-        case .Sort:
+        case .sort:
             openModalFilterView(type: selectedFilter.rawValue)
-        case .College:
+        case .college:
             openModalFilterView(type: selectedFilter.rawValue)
         default:
             if self.selectedFilters.contains(selectedFilter) {
@@ -103,6 +100,7 @@ class FilterBar: UIView {
                 self.selectedFilters.append(selectedFilter)
             }
         }
+        print("button")
     }
     
     func openModalFilterView(type: String) {

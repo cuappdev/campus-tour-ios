@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GoogleMaps
 
 class DetailViewController: UIViewController {
     
@@ -27,7 +27,18 @@ class DetailViewController: UIViewController {
         topView = UIView()
         scheduleStackView = UIStackView()
         aboutStackView = UIStackView()
-        mapView = UIView()
+        mapView = {
+            let view = UIView()
+            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 12.0))
+            AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] location in
+                mapView.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
+            }
+            view.addSubview(mapView)
+            mapView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            return view
+        }()
         
         view.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { (make) in
@@ -48,6 +59,11 @@ class DetailViewController: UIViewController {
         }
         createAboutStackView(data: unwrappedData)
         mainStackView.addArrangedSubview(aboutStackView)
+        mainStackView.addArrangedSubview(mapView)
+        
+        mainStackView.alignment = .top
+        mainStackView.axis = .vertical
+        mainStackView.distribution = .fillProportionally
     }
     
     private func createTopView(data: Any) {
@@ -67,7 +83,7 @@ class DetailViewController: UIViewController {
         titleLabel.textAlignment = .left
         
         //Fix this font later
-        titleLabel.font = UIFont(name: Fonts.SF.medium, size: 22)
+        titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         
         imageView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
@@ -90,17 +106,18 @@ class DetailViewController: UIViewController {
         
         mainTitleLabel.text = "Happening tonight"
         mainTitleLabel.textColor = Colors.brand
-        mainTitleLabel.font = UIFont(name: Fonts.SF.regular, size: 16)
+        mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
         dateLocationLabel.text = "date + location"
         dateLocationLabel.textColor = Colors.tertiary
-        dateLocationLabel.font = UIFont(name: Fonts.SF.regular, size: 14)
+        dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
         scheduleStackView.addArrangedSubview(mainTitleLabel)
         scheduleStackView.addArrangedSubview(dateLocationLabel)
         scheduleStackView.distribution = .equalSpacing
         scheduleStackView.spacing = 3.0
         scheduleStackView.alignment = .leading
+        scheduleStackView.axis = .vertical
         scheduleStackView.isLayoutMarginsRelativeArrangement = true
     }
     
@@ -115,7 +132,7 @@ class DetailViewController: UIViewController {
             let label = UILabel()
             label.text = "About the Event"
             label.textColor = Colors.brand
-            label.font = UIFont(name: Fonts.SF.medium, size: 16)
+            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
             return label
         }()
         
@@ -123,7 +140,7 @@ class DetailViewController: UIViewController {
             let label = UILabel()
             label.text = description
             label.textColor = Colors.secondary
-            label.font = UIFont(name: Fonts.SF.regular, size: 14)
+            label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
             return label
         }()
         
@@ -131,6 +148,7 @@ class DetailViewController: UIViewController {
         aboutStackView.addArrangedSubview(descriptionLabel)
         aboutStackView.spacing = 3.0
         aboutStackView.alignment = .leading
+        aboutStackView.axis = .vertical
         aboutStackView.distribution = .equalSpacing
     }
 }
