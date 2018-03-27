@@ -103,6 +103,20 @@ class ItemFeedViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case mapSection:
+            return
+        case itemSection, placesSection:
+            let item = events[indexPath.row]
+            let detailVC: DetailViewController = {
+                let vc = DetailViewController()
+                vc.data = item
+                return vc
+            }()
+            navigationController?.pushViewController(detailVC, animated: true)
+        default:
+            return
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

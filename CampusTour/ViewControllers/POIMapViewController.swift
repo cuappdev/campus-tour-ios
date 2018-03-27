@@ -45,6 +45,5 @@ class POIMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarItem = UITabBarItem.poiMapItem
     }
 }
