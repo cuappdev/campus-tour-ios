@@ -19,6 +19,7 @@
 		CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */; };
 		CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */; };
 		CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244B20729331004FEAD0 /* LinearAlgebra.swift */; };
+		CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244D2072A026004FEAD0 /* VirtualView.swift */; };
 		CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */; };
 		CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FA2063160700D14711 /* StackViewHelpers.swift */; };
 		CC6F88FD2063191B00D14711 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FC2063191B00D14711 /* TestData.swift */; };
@@ -49,6 +50,7 @@
 		CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemOfInterestTableViewCell.swift; sourceTree = "<group>"; };
 		CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		CC64244B20729331004FEAD0 /* LinearAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearAlgebra.swift; sourceTree = "<group>"; };
+		CC64244D2072A026004FEAD0 /* VirtualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualView.swift; sourceTree = "<group>"; };
 		CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndColorHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FA2063160700D14711 /* StackViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FC2063191B00D14711 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
@@ -167,7 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				CCD7389A206878FF00563DBF /* ARExplorerViewController.swift */,
+				CC64244D2072A026004FEAD0 /* VirtualView.swift */,
 				CCD7389C20687B2800563DBF /* ARGpsHelper.swift */,
+				CC64244B20729331004FEAD0 /* LinearAlgebra.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -184,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
-				CC64244B20729331004FEAD0 /* LinearAlgebra.swift */,
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
@@ -335,6 +338,7 @@
 			files = (
 				CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */,
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
+				CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */,
 				0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */,
 				0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */,
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,

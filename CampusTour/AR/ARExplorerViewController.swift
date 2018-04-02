@@ -12,59 +12,9 @@ import CoreLocation
 import ARKit
 import SnapKit
 
-struct ARItemOfInterest {
-    let name: String
-    let location: CLLocation
-}
-
-private func arViewForItemOfInterest(item: ARItemOfInterest) -> UIView {
-    let scaling = CGFloat(4.0)
-    let width = UIScreen.main.bounds.width * scaling
-    let height = width / 3
-    let view = UIView(
-        frame: CGRect(x: 0, y: 0, width: width, height: height))
-    view.clipsToBounds = true
-    view.backgroundColor = UIColor.clear
-    
-    let wrapperView = UIView()
-    wrapperView.backgroundColor = UIColor.white
-    wrapperView.layer.cornerRadius = 10 * scaling
-    wrapperView.clipsToBounds = true
-    
-    let vStack = UIStackView()
-    vStack.axis = .vertical
-    vStack.alignment = .leading
-    
-    //no idea why but these views appear in reverse order
-    vStack.addArrangedSubview(UILabel.label(text: "SUBTITLE",
-                                            color: Colors.secondary,
-                                            font: UIFont.systemFont(ofSize: 20 * scaling, weight: .medium)))
-    vStack.addArrangedSubview(UILabel.label(text: item.name,
-                                            color: Colors.primary,
-                                            font: UIFont.systemFont(ofSize: 24 * scaling, weight: .semibold)))
-    
-    wrapperView.addSubview(vStack)
-    vStack.snp.makeConstraints { make in
-        make.edges.equalToSuperview().inset(16 * scaling)
-    }
-    
-    view.addSubview(wrapperView)
-    wrapperView.snp.makeConstraints {
-        $0.center.equalToSuperview()
-        $0.width.lessThanOrEqualToSuperview()
-        $0.height.lessThanOrEqualToSuperview()
-    }
-    
-    view.setNeedsLayout()
-    view.layoutIfNeeded()
-    return view
-}
-
 class ARExplorerViewController: UIViewController {
     
-    var testView = UIView()
-    
-    var itemsOfInterestAndViews: [(item: ARItemOfInterest, view: UIView)] = []
+    var itemsOfInterestAndViews: [(item: ARItemOfInterest, view: ARItemOfInterestView)] = []
     
     func makeItemViewConstraint() -> SCNTransformConstraint {
         return SCNTransformConstraint(
@@ -102,7 +52,7 @@ class ARExplorerViewController: UIViewController {
     }
     
     func setItems(items: [ARItemOfInterest]) {
-        itemsOfInterestAndViews = items.map { (item: $0, view: arViewForItemOfInterest(item: $0)) }
+        itemsOfInterestAndViews = items.map { (item: $0, view: createVirtualView(item: $0)) }
     }
     
     var sceneView: ARSCNView {
@@ -129,8 +79,19 @@ class ARExplorerViewController: UIViewController {
     }
     
     func initializeAr() {
+        let repeatingLocationListener : (CLLocation) -> () = {[weak self] currentLocation in
+            self?.updateLocation(currentLocation: currentLocation)
+        }
+        
         AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] currentLocation in
             self?.initializeGpsDependentObjects(withCurrentLocation: currentLocation)
+            AppDelegate.shared!.locationProvider.addLocationListener(repeats: true, listener: repeatingLocationListener)
+        }
+    }
+    
+    func updateLocation(currentLocation: CLLocation) {
+        self.itemsOfInterestAndViews.forEach { item , itemView in
+            itemView.updateSubtitleWithDistance(meters: item.location.distance(from: currentLocation))
         }
     }
     
@@ -157,10 +118,6 @@ class ARExplorerViewController: UIViewController {
         let trackingConfig = ARWorldTrackingConfiguration()
         trackingConfig.worldAlignment = .gravityAndHeading
         sceneView.session.run(trackingConfig, options: [.resetTracking, .removeExistingAnchors])
-        testView.setNeedsLayout()
-        testView.layoutIfNeeded()
-        print("subviews")
-        testView.subviews.forEach{print($0)}
     }
     
     func stopAr() {
