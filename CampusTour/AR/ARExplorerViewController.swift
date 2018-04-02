@@ -18,10 +18,18 @@ struct ARItemOfInterest {
 }
 
 private func arViewForItemOfInterest(item: ARItemOfInterest) -> UIView {
-    let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+    let scaling = CGFloat(4.0)
+    let width = UIScreen.main.bounds.width * scaling
+    let height = width / 3
+    let view = UIView(
+        frame: CGRect(x: 0, y: 0, width: width, height: height))
     view.clipsToBounds = true
-    view.layer.cornerRadius = 10
-    view.backgroundColor = UIColor.white
+    view.backgroundColor = UIColor.clear
+    
+    let wrapperView = UIView()
+    wrapperView.backgroundColor = UIColor.white
+    wrapperView.layer.cornerRadius = 10 * scaling
+    wrapperView.clipsToBounds = true
     
     let vStack = UIStackView()
     vStack.axis = .vertical
@@ -30,14 +38,21 @@ private func arViewForItemOfInterest(item: ARItemOfInterest) -> UIView {
     //no idea why but these views appear in reverse order
     vStack.addArrangedSubview(UILabel.label(text: "SUBTITLE",
                                             color: Colors.secondary,
-                                            font: UIFont.systemFont(ofSize: 14, weight: .medium)))
+                                            font: UIFont.systemFont(ofSize: 20 * scaling, weight: .medium)))
     vStack.addArrangedSubview(UILabel.label(text: item.name,
                                             color: Colors.primary,
-                                            font: UIFont.systemFont(ofSize: 18, weight: .semibold)))
+                                            font: UIFont.systemFont(ofSize: 24 * scaling, weight: .semibold)))
     
-    view.addSubview(vStack)
+    wrapperView.addSubview(vStack)
     vStack.snp.makeConstraints { make in
-        make.edges.equalToSuperview().inset(8)
+        make.edges.equalToSuperview().inset(16 * scaling)
+    }
+    
+    view.addSubview(wrapperView)
+    wrapperView.snp.makeConstraints {
+        $0.center.equalToSuperview()
+        $0.width.lessThanOrEqualToSuperview()
+        $0.height.lessThanOrEqualToSuperview()
     }
     
     view.setNeedsLayout()
@@ -55,19 +70,28 @@ class ARExplorerViewController: UIViewController {
         return SCNTransformConstraint(
             inWorldSpace: true,
             with: { [weak self] (node: SCNNode, matrix: SCNMatrix4) in
-                var result = float4x4.identity()
-                
-                //make rotation
                 guard let camera = self?.camera else {
                     return matrix
                 }
-                let direction =
-                    (camera.transform.extractTranslation() - node.simdPosition)
-                    .normalize()
+                let cameraPosition = camera.transform.extractTranslation()
+                let nodePosition = node.simdWorldPosition
+                var result = float4x4.identity()
+                
+                //make rotation
+                let direction = (cameraPosition - nodePosition).normalize()
                 result = matrix4LookAtZ(direction: direction) * result
                 
                 //restore position
                 result.columns.3 = float4x4(matrix).columns.3
+                
+                //scaling
+                let minimumDistanceForExpansion : Float = 5.0
+                let imaginaryCameraOffset : Float = 10.0
+                let dist = (cameraPosition - nodePosition).norm()
+                if dist > minimumDistanceForExpansion {
+                    result = result * float4x4.scale(
+                        (imaginaryCameraOffset + dist) / (imaginaryCameraOffset + minimumDistanceForExpansion))
+                }
                 
                 return SCNMatrix4(result)
         })
@@ -112,21 +136,17 @@ class ARExplorerViewController: UIViewController {
     
     func initializeGpsDependentObjects(withCurrentLocation currentLocation: CLLocation) {
         self.itemsOfInterestAndViews.forEach { item, itemView in
-            let planeWidth = CGFloat(10)
+            let planeWidth = CGFloat(2) //maximum width for the scene view in meters
             let plane = SCNPlane(width: planeWidth,
                                  height: planeWidth * (itemView.frame.height / itemView.frame.width))
             plane.firstMaterial!.diffuse.contents = itemView.layer
+            //plane.firstMaterial?.transparent.contents
             plane.firstMaterial?.isDoubleSided = true
             let itemNode = SCNNode(geometry: plane)
             let displacement = ARGps.estimateDisplacement(from: currentLocation, to: item.location)
             
             itemNode.position = displacement
             itemNode.constraints = [
-//                {
-//                    let c = SCNBillboardConstraint()
-//                    c.freeAxes = [SCNBillboardAxis.X, SCNBillboardAxis.Y]
-//                    return c
-//                }(),
                 makeItemViewConstraint()
             ]
             self.sceneView.scene.rootNode.addChildNode(itemNode)

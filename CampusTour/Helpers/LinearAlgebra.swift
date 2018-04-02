@@ -27,6 +27,14 @@ extension float4x4 {
                 w: 1.0
         ))
     }
+    
+    static func scale(_ v: Float) -> float4x4 {
+        return scale(float4(x: v, y: v, z: v, w: 1.0))
+    }
+    
+    static func scale(_ v: float4) -> float4x4 {
+        return float4x4(diagonal: v)
+    }
 }
 
 extension float4 {
