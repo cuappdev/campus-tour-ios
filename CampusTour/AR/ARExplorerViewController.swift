@@ -51,6 +51,32 @@ class ARExplorerViewController: UIViewController {
     
     var itemsOfInterestAndViews: [(item: ARItemOfInterest, view: UIView)] = []
     
+    func makeItemViewConstraint() -> SCNTransformConstraint {
+        return SCNTransformConstraint(
+            inWorldSpace: true,
+            with: { [weak self] (node: SCNNode, matrix: SCNMatrix4) in
+                var result = float4x4.identity()
+                
+                //make rotation
+                guard let camera = self?.camera else {
+                    return matrix
+                }
+                let direction =
+                    (camera.transform.extractTranslation() - node.simdPosition)
+                    .normalize()
+                result = matrix4LookAtZ(direction: direction) * result
+                
+                //restore position
+                result.columns.3 = float4x4(matrix).columns.3
+                
+                return SCNMatrix4(result)
+        })
+    }
+    
+    private var camera: ARCamera? {
+        return self.sceneView.session.currentFrame?.camera
+    }
+    
     func setItems(items: [ARItemOfInterest]) {
         itemsOfInterestAndViews = items.map { (item: $0, view: arViewForItemOfInterest(item: $0)) }
     }
@@ -90,16 +116,18 @@ class ARExplorerViewController: UIViewController {
             let plane = SCNPlane(width: planeWidth,
                                  height: planeWidth * (itemView.frame.height / itemView.frame.width))
             plane.firstMaterial!.diffuse.contents = itemView.layer
+            plane.firstMaterial?.isDoubleSided = true
             let itemNode = SCNNode(geometry: plane)
             let displacement = ARGps.estimateDisplacement(from: currentLocation, to: item.location)
             
             itemNode.position = displacement
             itemNode.constraints = [
-                {
-                    let c = SCNBillboardConstraint()
-                    c.freeAxes = [SCNBillboardAxis.X, SCNBillboardAxis.Y]
-                    return c
-                }()
+//                {
+//                    let c = SCNBillboardConstraint()
+//                    c.freeAxes = [SCNBillboardAxis.X, SCNBillboardAxis.Y]
+//                    return c
+//                }(),
+                makeItemViewConstraint()
             ]
             self.sceneView.scene.rootNode.addChildNode(itemNode)
         }

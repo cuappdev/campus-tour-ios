@@ -18,6 +18,7 @@
 		CC32B009205E02A400D08D9F /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */; };
 		CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */; };
 		CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */; };
+		CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244B20729331004FEAD0 /* LinearAlgebra.swift */; };
 		CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */; };
 		CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FA2063160700D14711 /* StackViewHelpers.swift */; };
 		CC6F88FD2063191B00D14711 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FC2063191B00D14711 /* TestData.swift */; };
@@ -47,6 +48,7 @@
 		CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
 		CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemOfInterestTableViewCell.swift; sourceTree = "<group>"; };
 		CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
+		CC64244B20729331004FEAD0 /* LinearAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearAlgebra.swift; sourceTree = "<group>"; };
 		CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndColorHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FA2063160700D14711 /* StackViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FC2063191B00D14711 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
+				CC64244B20729331004FEAD0 /* LinearAlgebra.swift */,
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
@@ -346,6 +349,7 @@
 				CC6F88FF20631BD000D14711 /* MiscUIHelpers.swift in Sources */,
 				CCD7389D20687B2800563DBF /* ARGpsHelper.swift in Sources */,
 				CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */,
+				CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
 				0CBFF353205E439300F7AEDB /* TourData.swift in Sources */,
