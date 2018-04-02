@@ -7,13 +7,14 @@ class MainTabBarController: UITabBarController {
         
         do {
             let parsed = try ParseData()
-            arVc.itemsOfInterest = parsed.locations.map { ARItemOfInterest(
-                name: $0.name,
-                location: CLLocation(
-                    latitude: CLLocationDegrees($0.latitude),
-                    longitude: CLLocationDegrees($0.longitude)))
-            }
-            print("init arVc parsed items with count: \(arVc.itemsOfInterest.count)")
+            arVc.setItems(items:
+                parsed.locations.map { ARItemOfInterest(
+                    name: $0.name,
+                    location: CLLocation(
+                        latitude: CLLocationDegrees($0.latitude),
+                        longitude: CLLocationDegrees($0.longitude)))
+            })
+            print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
         } catch let e {
             print(e)
         }

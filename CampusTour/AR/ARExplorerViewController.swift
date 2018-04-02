@@ -17,11 +17,31 @@ struct ARItemOfInterest {
     let location: CLLocation
 }
 
-private func arViewForItemOfInterest() -> UIView {
-    let view = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+private func arViewForItemOfInterest(item: ARItemOfInterest) -> UIView {
+    let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+    view.clipsToBounds = true
+    view.layer.cornerRadius = 10
+    view.backgroundColor = UIColor.white
+    
     let vStack = UIStackView()
     vStack.axis = .vertical
-    //vStack.addArrangedSubview()
+    vStack.alignment = .leading
+    
+    //no idea why but these views appear in reverse order
+    vStack.addArrangedSubview(UILabel.label(text: "SUBTITLE",
+                                            color: Colors.secondary,
+                                            font: UIFont.systemFont(ofSize: 14, weight: .medium)))
+    vStack.addArrangedSubview(UILabel.label(text: item.name,
+                                            color: Colors.primary,
+                                            font: UIFont.systemFont(ofSize: 18, weight: .semibold)))
+    
+    view.addSubview(vStack)
+    vStack.snp.makeConstraints { make in
+        make.edges.equalToSuperview().inset(8)
+    }
+    
+    view.setNeedsLayout()
+    view.layoutIfNeeded()
     return view
 }
 
@@ -32,7 +52,7 @@ class ARExplorerViewController: UIViewController {
     var itemsOfInterestAndViews: [(item: ARItemOfInterest, view: UIView)] = []
     
     func setItems(items: [ARItemOfInterest]) {
-        
+        itemsOfInterestAndViews = items.map { (item: $0, view: arViewForItemOfInterest(item: $0)) }
     }
     
     var sceneView: ARSCNView {
@@ -59,42 +79,20 @@ class ARExplorerViewController: UIViewController {
     }
     
     func initializeAr() {
-        sceneView.scene.rootNode.addChildNode({
-            let node = SCNNode(
-                geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
-            return node
-        }())
-        
-        sceneView.scene.rootNode.addChildNode({
-            testView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            testView.backgroundColor = UIColor.white
-            
-            let testLabel = UILabel()
-            testLabel.text = "hello, world!"
-            testView.addSubview(testLabel)
-            testLabel.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            
-            let plane = SCNPlane(width: 0.2, height: 0.2)
-            let viewMat = SCNMaterial()
-            viewMat.diffuse.contents = self.testView.layer
-            plane.firstMaterial = viewMat
-            
-            let node = SCNNode(geometry: plane)
-            node.position = SCNVector3(0, 0, -0.2)
-            return node
-        }())
-        
         AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] currentLocation in
             self?.initializeGpsDependentObjects(withCurrentLocation: currentLocation)
         }
     }
     
     func initializeGpsDependentObjects(withCurrentLocation currentLocation: CLLocation) {
-        self.itemsOfInterest.forEach { item in
-            let itemNode = SCNNode(geometry: SCNPlane(width: 50, height: 50))
+        self.itemsOfInterestAndViews.forEach { item, itemView in
+            let planeWidth = CGFloat(10)
+            let plane = SCNPlane(width: planeWidth,
+                                 height: planeWidth * (itemView.frame.height / itemView.frame.width))
+            plane.firstMaterial!.diffuse.contents = itemView.layer
+            let itemNode = SCNNode(geometry: plane)
             let displacement = ARGps.estimateDisplacement(from: currentLocation, to: item.location)
+            
             itemNode.position = displacement
             itemNode.constraints = [
                 {

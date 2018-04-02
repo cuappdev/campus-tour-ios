@@ -15,13 +15,15 @@ enum ARGps {
     static func estimateDisplacement(from: CLLocation, to: CLLocation) -> SCNVector3 {
         //latitude is -z, longitude is +x
         let midCoord = CLLocation(latitude: from.coordinate.latitude, longitude: to.coordinate.longitude)
-        var distanceZ = midCoord.distance(from: from)
-        if to.coordinate.latitude > from.coordinate.latitude { //from -> to goes north, so -z
-            distanceZ = -distanceZ
+        
+        var distanceX = midCoord.distance(from: from)
+        if to.coordinate.longitude < from.coordinate.longitude { // to -> from goes west -> east
+            distanceX *= -1.0
         }
-        var distanceX = to.distance(from: midCoord)
-        if to.coordinate.longitude < from.coordinate.longitude { //from -> to goes west, so -x
-            distanceX = -distanceX
+        
+        var distanceZ = to.distance(from: midCoord)
+        if to.coordinate.latitude > from.coordinate.latitude { // to -> from goes north -> south
+            distanceZ *= -1.0
         }
         return SCNVector3(distanceX, 0.0, distanceZ)
     }
