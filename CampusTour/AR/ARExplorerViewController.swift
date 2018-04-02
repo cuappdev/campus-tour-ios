@@ -20,6 +20,26 @@ struct ItemViewInfo {
 
 class ARExplorerViewController: UIViewController {
     
+    static func withDefaultData() -> ARExplorerViewController {
+        let arVc = ARExplorerViewController()
+        
+        do {
+            let parsed = try ParseData()
+            arVc.setItems(items:
+                parsed.locations.map { ARItemOfInterest(
+                    name: $0.name,
+                    location: CLLocation(
+                        latitude: CLLocationDegrees($0.latitude),
+                        longitude: CLLocationDegrees($0.longitude)))
+            })
+            print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
+        } catch let e {
+            print(e)
+        }
+        
+        return arVc
+    }
+    
     var itemsOfInterestAndViews: [ItemViewInfo] = []
     
     func makeItemViewConstraint() -> SCNTransformConstraint {
@@ -65,12 +85,26 @@ class ARExplorerViewController: UIViewController {
         }
     }
     
-    var sceneView: ARSCNView {
-        return self.view as! ARSCNView
-    }
+    private var sceneView: ARSCNView! = nil
     
     override func loadView() {
-        self.view = ARSCNView()
+        self.view = UIView()
+        
+        sceneView = ARSCNView()
+        self.view.addSubview(sceneView)
+        sceneView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
+        let backButton = UIButton() //TODO make this look better
+        backButton.setTitle("X", for: .normal)
+        backButton.backgroundColor = UIColor.red
+        backButton.layer.cornerRadius = 10
+        backButton.clipsToBounds = true
+        backButton.addTarget(self, action: #selector(closeArAndReturn), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        backButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(24)
+            $0.bottom.equalToSuperview().inset(24)
+        }
     }
 
     override func viewDidLoad() {
@@ -131,6 +165,10 @@ class ARExplorerViewController: UIViewController {
     }
     
     func stopAr() {
+    }
+    
+    @IBAction func closeArAndReturn() {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

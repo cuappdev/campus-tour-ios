@@ -130,6 +130,14 @@
 			path = TableCells;
 			sourceTree = "<group>";
 		};
+		CC64244F2072C3D2004FEAD0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		CCCE123020476BA900DCCC39 = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +199,7 @@
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
-				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+				CC64244F2072C3D2004FEAD0 /* UI */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
