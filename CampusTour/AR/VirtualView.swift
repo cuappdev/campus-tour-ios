@@ -36,13 +36,13 @@ class ARItemOfInterestView : UIView {
         self.backgroundColor = UIColor.clear
         
         let wrapperView = UIView()
-        wrapperView.backgroundColor = UIColor.white
+        wrapperView.backgroundColor = UIColor(white: 0.8, alpha: 0.5)
         wrapperView.layer.cornerRadius = 10 * scaling
         wrapperView.clipsToBounds = true
         
         let vStack = UIStackView()
         vStack.axis = .vertical
-        vStack.alignment = .leading
+        vStack.alignment = .center
         
         //no idea why but these views appear in reverse order
         subtitleLabel = UILabel.label(text: "SUBTITLE",
@@ -68,8 +68,4 @@ class ARItemOfInterestView : UIView {
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
-}
-
-func createVirtualView(item: ARItemOfInterest) -> ARItemOfInterestView {
-    return ARItemOfInterestView(item: item)
 }

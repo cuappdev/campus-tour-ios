@@ -12,9 +12,15 @@ import CoreLocation
 import ARKit
 import SnapKit
 
+struct ItemViewInfo {
+    let item: ARItemOfInterest
+    let view: ARItemOfInterestView
+    var node: SCNNode?
+}
+
 class ARExplorerViewController: UIViewController {
     
-    var itemsOfInterestAndViews: [(item: ARItemOfInterest, view: ARItemOfInterestView)] = []
+    var itemsOfInterestAndViews: [ItemViewInfo] = []
     
     func makeItemViewConstraint() -> SCNTransformConstraint {
         return SCNTransformConstraint(
@@ -52,7 +58,11 @@ class ARExplorerViewController: UIViewController {
     }
     
     func setItems(items: [ARItemOfInterest]) {
-        itemsOfInterestAndViews = items.map { (item: $0, view: createVirtualView(item: $0)) }
+        itemsOfInterestAndViews = items.map {
+            ItemViewInfo(item: $0,
+                         view: ARItemOfInterestView(item: $0),
+                         node: nil)
+        }
     }
     
     var sceneView: ARSCNView {
@@ -79,38 +89,38 @@ class ARExplorerViewController: UIViewController {
     }
     
     func initializeAr() {
-        let repeatingLocationListener : (CLLocation) -> () = {[weak self] currentLocation in
-            self?.updateLocation(currentLocation: currentLocation)
-        }
-        
-        AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] currentLocation in
-            self?.initializeGpsDependentObjects(withCurrentLocation: currentLocation)
-            AppDelegate.shared!.locationProvider.addLocationListener(repeats: true, listener: repeatingLocationListener)
+        AppDelegate.shared!.locationProvider.addLocationListener(repeats: true) { [weak self] currentLocation in
+            DispatchQueue.main.async {
+                self?.updateLocation(currentLocation: currentLocation)
+            }
         }
     }
     
     func updateLocation(currentLocation: CLLocation) {
-        self.itemsOfInterestAndViews.forEach { item , itemView in
-            itemView.updateSubtitleWithDistance(meters: item.location.distance(from: currentLocation))
-        }
-    }
-    
-    func initializeGpsDependentObjects(withCurrentLocation currentLocation: CLLocation) {
-        self.itemsOfInterestAndViews.forEach { item, itemView in
-            let planeWidth = CGFloat(2) //maximum width for the scene view in meters
-            let plane = SCNPlane(width: planeWidth,
-                                 height: planeWidth * (itemView.frame.height / itemView.frame.width))
-            plane.firstMaterial!.diffuse.contents = itemView.layer
-            //plane.firstMaterial?.transparent.contents
-            plane.firstMaterial?.isDoubleSided = true
-            let itemNode = SCNNode(geometry: plane)
-            let displacement = ARGps.estimateDisplacement(from: currentLocation, to: item.location)
+        for (i, info) in self.itemsOfInterestAndViews.enumerated() {
+            if info.node == nil { //initialize node
+                let planeWidth = CGFloat(2) //maximum width for the scene view in meters
+                let plane = SCNPlane(width: planeWidth,
+                                     height: planeWidth * (info.view.frame.height / info.view.frame.width))
+                plane.firstMaterial!.diffuse.contents = info.view.layer
+                plane.firstMaterial?.isDoubleSided = true
+                let itemNode = SCNNode(geometry: plane)
+                let displacement = ARGps.estimateDisplacement(from: currentLocation, to: info.item.location)
+                
+                itemNode.position = displacement
+                itemNode.constraints = [
+                    makeItemViewConstraint()
+                ]
+                self.sceneView.scene.rootNode.addChildNode(itemNode)
+                self.itemsOfInterestAndViews[i].node = itemNode
+            }
             
-            itemNode.position = displacement
-            itemNode.constraints = [
-                makeItemViewConstraint()
-            ]
-            self.sceneView.scene.rootNode.addChildNode(itemNode)
+            if let camera = self.camera,
+                let node = info.node
+            {
+                let distance = (camera.transform.extractTranslation() - node.simdPosition).norm()
+                info.view.updateSubtitleWithDistance(meters: Double(distance))
+            }
         }
     }
     
