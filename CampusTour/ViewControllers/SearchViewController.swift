@@ -36,8 +36,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setBottomView()
     }
     
-    @objc func openARMode() {
-        //TODO: Open AR View
+    @IBAction func openARMode() {
+        let vc = ARExplorerViewController.withDefaultData()
+        self.present(vc, animated: true, completion: nil)
     }
     
     //SearchBar Delegates
@@ -113,6 +114,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        
+        itemFeedViewController.didMove(toParentViewController: self)
     }
     
     //Setup filter & search portion of ViewController

@@ -1,3 +1,4 @@
+import CoreLocation
 import UIKit
 
 class MainTabBarController: UITabBarController {
@@ -8,7 +9,7 @@ class MainTabBarController: UITabBarController {
         poiMapVC.tabBarItem = UITabBarItem.poiMapItem
         setViewControllers([
             UINavigationController(rootViewController: searchVC),
-            UINavigationController(rootViewController: poiMapVC)
+            UINavigationController(rootViewController: poiMapVC),
             ], animated: false)
     }
 }

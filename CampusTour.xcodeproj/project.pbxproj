@@ -18,6 +18,8 @@
 		CC32B009205E02A400D08D9F /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */; };
 		CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */; };
 		CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */; };
+		CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244B20729331004FEAD0 /* LinearAlgebra.swift */; };
+		CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244D2072A026004FEAD0 /* VirtualView.swift */; };
 		CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */; };
 		CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FA2063160700D14711 /* StackViewHelpers.swift */; };
 		CC6F88FD2063191B00D14711 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FC2063191B00D14711 /* TestData.swift */; };
@@ -26,6 +28,8 @@
 		CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE123E20476BA900DCCC39 /* ViewController.swift */; };
 		CCCE124420476BA900DCCC39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCCE124320476BA900DCCC39 /* Assets.xcassets */; };
 		CCCE124720476BA900DCCC39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCE124520476BA900DCCC39 /* LaunchScreen.storyboard */; };
+		CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7389A206878FF00563DBF /* ARExplorerViewController.swift */; };
+		CCD7389D20687B2800563DBF /* ARGpsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7389C20687B2800563DBF /* ARGpsHelper.swift */; };
 		CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */; };
 		CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */; };
 		CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */; };
@@ -45,6 +49,8 @@
 		CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
 		CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemOfInterestTableViewCell.swift; sourceTree = "<group>"; };
 		CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
+		CC64244B20729331004FEAD0 /* LinearAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearAlgebra.swift; sourceTree = "<group>"; };
+		CC64244D2072A026004FEAD0 /* VirtualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualView.swift; sourceTree = "<group>"; };
 		CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndColorHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FA2063160700D14711 /* StackViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FC2063191B00D14711 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
@@ -55,6 +61,8 @@
 		CCCE124320476BA900DCCC39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCCE124620476BA900DCCC39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCCE124820476BA900DCCC39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCD7389A206878FF00563DBF /* ARExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARExplorerViewController.swift; sourceTree = "<group>"; };
+		CCD7389C20687B2800563DBF /* ARGpsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGpsHelper.swift; sourceTree = "<group>"; };
 		CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelpers.swift; sourceTree = "<group>"; };
@@ -122,6 +130,14 @@
 			path = TableCells;
 			sourceTree = "<group>";
 		};
+		CC64244F2072C3D2004FEAD0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		CCCE123020476BA900DCCC39 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCE123C20476BA900DCCC39 /* AppDelegate.swift */,
+				CCD73899206878CB00563DBF /* AR */,
 				0C933605204E858C004668CE /* Data */,
 				CCE0A4ED2051B3990083BAE7 /* Helpers */,
 				CCE0A4E8204F3D250083BAE7 /* Model */,
@@ -154,6 +171,17 @@
 				CCCE124820476BA900DCCC39 /* Info.plist */,
 			);
 			path = CampusTour;
+			sourceTree = "<group>";
+		};
+		CCD73899206878CB00563DBF /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7389A206878FF00563DBF /* ARExplorerViewController.swift */,
+				CC64244D2072A026004FEAD0 /* VirtualView.swift */,
+				CCD7389C20687B2800563DBF /* ARGpsHelper.swift */,
+				CC64244B20729331004FEAD0 /* LinearAlgebra.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		CCE0A4E8204F3D250083BAE7 /* Model */ = {
@@ -171,7 +199,7 @@
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
-				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+				CC64244F2072C3D2004FEAD0 /* UI */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -318,6 +346,7 @@
 			files = (
 				CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */,
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
+				CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */,
 				0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */,
 				0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */,
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,
@@ -330,6 +359,9 @@
 				CC6F88FD2063191B00D14711 /* TestData.swift in Sources */,
 				CC32B009205E02A400D08D9F /* ItemFeedViewController.swift in Sources */,
 				CC6F88FF20631BD000D14711 /* MiscUIHelpers.swift in Sources */,
+				CCD7389D20687B2800563DBF /* ARGpsHelper.swift in Sources */,
+				CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */,
+				CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
 				0CBFF353205E439300F7AEDB /* TourData.swift in Sources */,
