@@ -20,6 +20,14 @@ struct ItemViewInfo {
 
 class ARExplorerViewController: UIViewController {
     
+    var itemsOfInterestAndViews: [ItemViewInfo] = []
+    
+    private var camera: ARCamera? {
+        return self.sceneView.session.currentFrame?.camera
+    }
+    
+    private var sceneView: ARSCNView! = nil
+    
     static func withDefaultData() -> ARExplorerViewController {
         let arVc = ARExplorerViewController()
         
@@ -39,53 +47,6 @@ class ARExplorerViewController: UIViewController {
         
         return arVc
     }
-    
-    var itemsOfInterestAndViews: [ItemViewInfo] = []
-    
-    func makeItemViewConstraint() -> SCNTransformConstraint {
-        return SCNTransformConstraint(
-            inWorldSpace: true,
-            with: { [weak self] (node: SCNNode, matrix: SCNMatrix4) in
-                guard let camera = self?.camera else {
-                    return matrix
-                }
-                let cameraPosition = camera.transform.extractTranslation()
-                let nodePosition = node.simdWorldPosition
-                var result = float4x4.identity()
-                
-                //make rotation
-                let direction = (cameraPosition - nodePosition).normalize()
-                result = matrix4LookAtZ(direction: direction) * result
-                
-                //restore position
-                result.columns.3 = float4x4(matrix).columns.3
-                
-                //scaling
-                let minimumDistanceForExpansion : Float = 5.0
-                let imaginaryCameraOffset : Float = 10.0
-                let dist = (cameraPosition - nodePosition).norm()
-                if dist > minimumDistanceForExpansion {
-                    result = result * float4x4.scale(
-                        (imaginaryCameraOffset + dist) / (imaginaryCameraOffset + minimumDistanceForExpansion))
-                }
-                
-                return SCNMatrix4(result)
-        })
-    }
-    
-    private var camera: ARCamera? {
-        return self.sceneView.session.currentFrame?.camera
-    }
-    
-    func setItems(items: [ARItemOfInterest]) {
-        itemsOfInterestAndViews = items.map {
-            ItemViewInfo(item: $0,
-                         view: ARItemOfInterestView(item: $0),
-                         node: nil)
-        }
-    }
-    
-    private var sceneView: ARSCNView! = nil
     
     override func loadView() {
         self.view = UIView()
@@ -130,6 +91,60 @@ class ARExplorerViewController: UIViewController {
         }
     }
     
+    func startAr() {
+        let trackingConfig = ARWorldTrackingConfiguration()
+        trackingConfig.worldAlignment = .gravityAndHeading
+        sceneView.session.run(trackingConfig, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
+    func stopAr() {
+    }
+    
+    func setItems(items: [ARItemOfInterest]) {
+        itemsOfInterestAndViews = items.map {
+            ItemViewInfo(item: $0,
+                         view: ARItemOfInterestView(item: $0),
+                         node: nil)
+        }
+    }
+    
+    @IBAction func closeArAndReturn() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func makeItemViewConstraint() -> SCNTransformConstraint {
+        return SCNTransformConstraint(
+            inWorldSpace: true,
+            with: { [weak self] (node: SCNNode, matrix: SCNMatrix4) in
+                guard let camera = self?.camera else {
+                    return matrix
+                }
+                let cameraPosition = camera.transform.extractTranslation()
+                let nodePosition = node.simdWorldPosition
+                var result = float4x4.identity()
+                
+                //make rotation
+                let direction = (cameraPosition - nodePosition).normalize()
+                result = matrix4LookAtZ(direction: direction) * result
+                
+                //restore position
+                result.columns.3 = float4x4(matrix).columns.3
+                
+                //scaling
+                let minimumDistanceForExpansion : Float = 5.0
+                let imaginaryCameraOffset : Float = 10.0
+                let dist = (cameraPosition - nodePosition).norm()
+                if dist > minimumDistanceForExpansion {
+                    result = result * float4x4.scale(
+                        (imaginaryCameraOffset + dist) / (imaginaryCameraOffset + minimumDistanceForExpansion))
+                }
+                
+                return SCNMatrix4(result)
+        })
+    }
+    
+    
     func updateLocation(currentLocation: CLLocation) {
         for (i, info) in self.itemsOfInterestAndViews.enumerated() {
             if info.node == nil { //initialize node
@@ -156,19 +171,6 @@ class ARExplorerViewController: UIViewController {
                 info.view.updateSubtitleWithDistance(meters: Double(distance))
             }
         }
-    }
-    
-    func startAr() {
-        let trackingConfig = ARWorldTrackingConfiguration()
-        trackingConfig.worldAlignment = .gravityAndHeading
-        sceneView.session.run(trackingConfig, options: [.resetTracking, .removeExistingAnchors])
-    }
-    
-    func stopAr() {
-    }
-    
-    @IBAction func closeArAndReturn() {
-        self.dismiss(animated: true, completion: nil)
     }
 
 }
