@@ -8,67 +8,46 @@
 
 import UIKit
 
-enum EventType {
+enum EventType: String {
     //Type of events
-    case Orientation
-    case Meals
+    case academic = "Academic"
+    case classes = "Class"
+    case general = "General"
+    case officehour = "Office Hour"
+    case social = "Social"
+    case tour = "Tour"
 }
 
-enum College {
-    case ArtsScience
-    case Engineering
-    case ILR
-    case CALS
-    case Hotel
-    case AAP
-    case HumanEcology
+enum College: String {
+    case artsandscience = "Arts and Science"
+    case engineering = "Engineering"
+    case ilr = "ILR"
+    case cals = "CALS"
+    case hotel = "Hotel Administration"
+    case aap = "Arts, Architecture, and Planning"
+    case humanecology = "Human Ecology"
 }
 
 struct Location {
     var longitude: Float
     var latitude: Float
-    
-    init(longitude: Float, latitude: Float) {
-        self.longitude = longitude
-        self.latitude = latitude
-    }
 }
 
 struct Event {
+    //Use enum.rawtype to create tags
+    var tags: [String]
     var name: String
     var description: String
     var location: Location
-    var college: College
-    var type: EventType
-    var time: Date
+    var locationName: String
+    var startTime: Date
+    var endTime: Date
 }
 
 struct Building {
-    var college: College?
+    var tags: [String]
     var name: String
     var department: String?
     var icon: UIImage
     var location: Location
-    
-    init(college: College?, name: String, department: String?, icon: UIImage, location: Location) {
-        self.college = college
-        self.name = name
-        self.department = department
-        self.icon = icon
-        self.location = location
-    }
-}
-
-struct Tour {
-    var name: String
-    var location: Location
-    var description: String
-    var time: Date
-    
-    init(name: String, location: Location, description: String, time: Double) {
-        self.name = name
-        self.location = location
-        self.description = description
-        self.time = Date.init(timeIntervalSince1970: time)
-    }
 }

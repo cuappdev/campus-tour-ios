@@ -11,16 +11,6 @@ import SwiftDate
 import Alamofire
 import AlamofireImage
 
-private func formatDateRange(startDate start: Date, endDate end: Date) -> String {
-    
-    if start.isToday && end.isToday {
-        return (start.isNight ? "TONIGHT" : "TODAY") + " " +
-            start.string(custom: "HH:mm") + " " +
-            end.string(custom: "HH:mm")
-    }
-    
-    return "\(start.string(custom: "MM-dd"))"
-}
 
 private func tagLabel(text: String) -> UIView {
     let label = UILabel.label(text: text, color: Colors.tertiary, font: UIFont.systemFont(ofSize: 10, weight: .medium))
@@ -173,7 +163,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         setUpViewsIfNecessary(layout: layout)
         
         if let dateRange = model.dateRange {
-            self.dateLabel?.text = formatDateRange(startDate: dateRange.0, endDate: dateRange.1)
+            self.dateLabel?.text = DateHelper.formatDateRange(startDate: dateRange.0, endDate: dateRange.1)
         } else {
             self.dateLabel?.text = ""
         }

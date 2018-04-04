@@ -8,147 +8,229 @@
 
 import UIKit
 import GoogleMaps
+import AlamofireImage
 
 class DetailViewController: UIViewController {
     
-    var mainStackView: UIStackView!
-    var topView: UIView!
-    var scheduleStackView: UIStackView!
-    var aboutStackView: UIStackView!
-    var mapView: UIView!
-    
-    var data: Any?
+    let scrollView = UIScrollView()
+    let topView = UIView()
+    let scheduleStackView = UIStackView()
+    let aboutStackView = UIStackView()
+    let mapView = UIView()
+    var event: Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Initialize Views
-        mainStackView = UIStackView()
-        topView = UIView()
-        scheduleStackView = UIStackView()
-        aboutStackView = UIStackView()
-        mapView = {
-            let view = UIView()
-            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 12.0))
-            AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] location in
-                mapView.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
-            }
-            view.addSubview(mapView)
-            mapView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            return view
-        }()
+        initializeViews()
+    }
+    
+    func initializeViews() {
+        view.backgroundColor = .white
         
-        view.addSubview(mainStackView)
-        mainStackView.snp.makeConstraints { (make) in
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints{ (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        setupStackViews()
-    }
-    
-    func setupStackViews() {
-        guard let unwrappedData = data else { return }
-        mainStackView.addArrangedSubview(topView)
-
-        if let event = unwrappedData as? Event {
-            createScheduleStackView(event: event)
-            mainStackView.addArrangedSubview(scheduleStackView)
-        }
-        createAboutStackView(data: unwrappedData)
-        mainStackView.addArrangedSubview(aboutStackView)
-        mainStackView.addArrangedSubview(mapView)
+        //Scrollview keeps disappearing under tabbar
+        let contentView = UIView.insetWrapper(view: UIView(), insets: UIEdgeInsetsMake(0, 0, self.additionalSafeAreaInsets.bottom, 0))
         
-        mainStackView.alignment = .top
-        mainStackView.axis = .vertical
-        mainStackView.distribution = .fillProportionally
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints{ (make) in
+            make.leading.equalTo(self.view.snp.leading)
+            make.trailing.equalTo(self.view.snp.trailing)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+       
+        contentView.addSubview(topView)
+        
+        let scheduleView = UIView.insetWrapper(view: scheduleStackView, insets: UIEdgeInsetsMake(0, 20, 0, 0))
+        contentView.addSubview(scheduleView)
+        let aboutView = UIView.insetWrapper(view: aboutStackView, insets: UIEdgeInsetsMake(0, 20, 0, 0))
+        let lineView: UIView = {
+            let line = UIView()
+            line.backgroundColor = Colors.shadow
+            return line
+        }()
+        contentView.addSubview(lineView)
+        contentView.addSubview(aboutView)
+        contentView.addSubview(mapView)
+        
+        topView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(view.snp.height).multipliedBy(0.38)
+        }
+        scheduleView.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(topView.snp.height).multipliedBy(0.35)
+        }
+        lineView.snp.makeConstraints { (make) in
+            make.top.equalTo(scheduleView.snp.bottom)
+            make.bottom.equalTo(aboutView.snp.top)
+            make.height.equalTo(1)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        aboutView.snp.makeConstraints { (make) in
+            make.top.equalTo(lineView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        mapView.snp.makeConstraints { (make) in
+            make.top.equalTo(aboutStackView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(topView.snp.height).multipliedBy(0.52)
+            make.bottom.equalToSuperview()
+        }
+        
+        createTopView()
+        createScheduleView()
+        createAboutStackView()
+        createMapView()
     }
     
-    private func createTopView(data: Any) {
+    private func createTopView() {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        //TODO: add image to imageView
-        imageView.backgroundColor = .lightGray
+        //TODO: replace with actual image URL from data
+        imageView.af_setImage(withURL: URL(string: "https://picsum.photos/150/150/?random")!)
         
-        var description = ""
         let titleLabel = UILabel()
-        if let event = data as? Event {
-            description = event.name
-        }
-        titleLabel.text = description
+        titleLabel.text = event.name
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
+        titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         
-        //Fix this font later
-        titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+        let tagsView = UIView()
+        var tagViewList = [UIView]()
         
+        for (index, tag) in event.tags.enumerated() {
+            let tagLabel = UILabel()
+            tagLabel.text = tag
+            tagLabel.textColor = .white
+            tagLabel.backgroundColor = UIColor.clear
+            tagLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
+            tagLabel.sizeToFit()
+            let insets = UIEdgeInsetsMake(7, 14, 7, 14)
+            let tagView = UIView.insetWrapper(view: tagLabel, insets: insets)
+            tagView.layer.borderColor = UIColor.white.cgColor
+            tagView.layer.borderWidth = 1.0
+            tagView.layer.cornerRadius = 4.0
+            tagViewList.append(tagView)
+            tagsView.addSubview(tagView)
+            if index == 0 {
+                tagView.snp.makeConstraints({ (make) in
+                    make.leading.equalToSuperview()
+                })
+            } else {
+                tagView.snp.makeConstraints({ (make) in
+                    make.leading.equalTo(tagViewList[index-1].snp.trailing).offset(5)
+                })
+            }
+            tagView.snp.makeConstraints({ (make) in
+                make.bottom.equalToSuperview()
+            })
+        }
+        
+        imageView.addSubview(tagsView)
         imageView.addSubview(titleLabel)
+        tagsView.snp.makeConstraints { (make) in
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-13)
+            make.height.equalTo(25)
+        }
         titleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-20)
+            make.bottom.equalTo(tagsView.snp.top).offset(-10)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview()
         }
+        
         topView.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.leading.equalToSuperview()
-        }
+        imageView.snp.makeConstraints{ $0.edges.equalToSuperview() }
     }
     
-    private func createScheduleStackView(event: Event) {
+    private func createScheduleView() {
         let mainTitleLabel = UILabel()
         let dateLocationLabel = UILabel()
         
-        mainTitleLabel.text = "Happening tonight"
+        mainTitleLabel.text = DateHelper.getFormattedDate(event.startTime)
         mainTitleLabel.textColor = Colors.brand
         mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
-        dateLocationLabel.text = "date + location"
+        let time = DateHelper.getFormattedTime(startTime: event.startTime, endTime: event.endTime)
+        let location = event.locationName
+        dateLocationLabel.text = time + "·" + location
         dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
         scheduleStackView.addArrangedSubview(mainTitleLabel)
         scheduleStackView.addArrangedSubview(dateLocationLabel)
-        scheduleStackView.distribution = .equalSpacing
+        scheduleStackView.distribution = .equalCentering
         scheduleStackView.spacing = 3.0
-        scheduleStackView.alignment = .leading
         scheduleStackView.axis = .vertical
         scheduleStackView.isLayoutMarginsRelativeArrangement = true
     }
     
-    private func createAboutStackView(data: Any) {
-        var description = ""
-        if let event = data as? Event {
-            description = event.description
-        }
-        //Not sure what to put for buildings for now
-        
+    private func createAboutStackView() {
+        let description = event?.description
         let titleLabel: UILabel = {
             let label = UILabel()
             label.text = "About the Event"
-            label.textColor = Colors.brand
+            label.textColor = Colors.primary
             label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
             return label
         }()
         
-        let descriptionLabel: UILabel = {
-            let label = UILabel()
-            label.text = description
-            label.textColor = Colors.secondary
-            label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-            return label
+        let descriptionView: UILabel = {
+            let desc = UILabel()
+            desc.text = description
+            desc.textColor = Colors.secondary
+            desc.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            desc.numberOfLines = 0
+            return desc
+        }()
+        
+        //TODO: fix button (maybe use external framework)
+        let showMoreButton: UIButton = {
+            let button = UIButton()
+            button.setTitle("Show More", for: .normal)
+            button.setTitleColor(Colors.brand, for: .normal)
+            button.addTarget(self, action: #selector(showMore), for: .touchUpInside)
+            button.tag = Int(descriptionView.intrinsicContentSize.height)
+            return button
         }()
         
         aboutStackView.addArrangedSubview(titleLabel)
-        aboutStackView.addArrangedSubview(descriptionLabel)
+        aboutStackView.addArrangedSubview(descriptionView)
         aboutStackView.spacing = 3.0
         aboutStackView.alignment = .leading
         aboutStackView.axis = .vertical
-        aboutStackView.distribution = .equalSpacing
+        aboutStackView.distribution = .equalCentering
+    }
+    
+    private func createMapView() {
+        let map = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 12.0))
+        AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] location in
+            map.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
+        }
+        mapView.addSubview(map)
+        map.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
+    
+    @objc private func showMore(_ sender: UIButton) {
+        aboutStackView.snp.remakeConstraints{ $0.height.equalTo(sender.tag) }
+        sender.removeFromSuperview()
     }
 }

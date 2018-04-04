@@ -46,7 +46,7 @@ class ItemFeedViewController: UITableViewController {
             cell.setCellModel(
                 model: ItemOfInterestTableViewCell.ModelInfo(
                     title: item.name,
-                    dateRange: (item.time, item.time.addingTimeInterval(600)),
+                    dateRange: (item.startTime, item.endTime),
                     description: item.description,
                     locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
                                                                                    distanceString: "x mi away") ,
@@ -104,13 +104,14 @@ class ItemFeedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
-        case mapSection:
+        case mapSection, placesSection:
             return
-        case itemSection, placesSection:
+        case itemSection:
             let item = events[indexPath.row]
             let detailVC: DetailViewController = {
                 let vc = DetailViewController()
-                vc.data = item
+                vc.event = item
+                vc.title = item.name
                 return vc
             }()
             navigationController?.pushViewController(detailVC, animated: true)

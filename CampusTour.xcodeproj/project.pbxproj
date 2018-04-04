@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */; };
+		0C3C643C20755B2700F38813 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C643B20755B2700F38813 /* DateHelpers.swift */; };
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
 		0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5E7DC2063153C004FE8B6 /* Filter.swift */; };
 		0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* SearchViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0C3C643B20755B2700F38813 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		0CA5E7DC2063153C004FE8B6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
+				0C3C643B20755B2700F38813 /* DateHelpers.swift */,
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
@@ -348,6 +351,7 @@
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
 				CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */,
 				0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */,
+				0C3C643C20755B2700F38813 /* DateHelpers.swift in Sources */,
 				0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */,
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,
 				CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */,
@@ -496,7 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
@@ -512,7 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
