@@ -61,6 +61,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     }
     
     var currentLayout: Layout?
+    var separatorView: UIView?
     var rootStackView: UIStackView?
     var itemImageView: UIImageView?
     var dateLabel: UILabel?
@@ -163,10 +164,16 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         
         self.contentView.addSubview(rootStackView!)
         rootStackView?.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
+            make.edges.equalToSuperview().inset(12)
         }
         
         self.currentLayout = layout
+        
+        if separatorView == nil {
+            separatorView = SeparatorView()
+            self.contentView.addSubview(separatorView!)
+            separatorView!.snp.makeConstraints { $0.edges.equalToSuperview() }
+        }
     }
     
     func setCellModel(model: ModelInfo, layout: Layout) {
