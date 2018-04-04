@@ -19,13 +19,14 @@ struct Item {
 }
 
 class ItemFeedViewController: UITableViewController {
-    let mapSection = 0, itemSection = 1, placesSection = 2
+    private let mapSection = 0, itemSection = 1, placesSection = 2
     
     let events: [Event] = testEvents
     let places: [Building] = testPlaces
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .none
         tableView.tableHeaderView?.backgroundColor = UIColor.white
         tableView.estimatedRowHeight = 50
         tableView.insetsContentViewsToSafeArea = true
@@ -73,8 +74,17 @@ class ItemFeedViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case itemSection, placesSection:
+            return UITableViewAutomaticDimension
+        default:
+            return 0
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section == itemSection || section == placesSection else { return nil }
+        guard section == itemSection || section == placesSection else {return nil}
         
         let headerView = UIView()
         headerView.backgroundColor = UIColor.white
@@ -96,8 +106,13 @@ class ItemFeedViewController: UITableViewController {
         
         headerView.addSubview(stack)
         stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
+            make.edges.equalToSuperview().inset(12)
         }
+        
+        let separatorView = SeparatorView()
+        headerView.addSubview(separatorView)
+        separatorView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
         return headerView
     }
     
