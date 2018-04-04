@@ -11,7 +11,7 @@ import GoogleMaps
 
 let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-class ItemFeedViewController: UITableViewController {
+class ItemFeedViewController: UIViewController {
     
     private var spec = ItemFeedSpec(sections: [
         .map,
@@ -27,6 +27,14 @@ class ItemFeedViewController: UITableViewController {
         ),
     ])
     
+    private var tableView: UITableView {
+        return self.view as! UITableView
+    }
+    
+    override func loadView() {
+        self.view = UITableView()
+    }
+    
     func updateItems(newSpec: ItemFeedSpec) {
         self.spec = newSpec
         tableView.reloadData()
@@ -34,6 +42,9 @@ class ItemFeedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.tableHeaderView?.backgroundColor = UIColor.white
         tableView.estimatedRowHeight = 50
@@ -43,8 +54,11 @@ class ItemFeedViewController: UITableViewController {
         tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdPlace)
         tableView.register(MapTableViewCell.self, forCellReuseIdentifier: MapTableViewCell.reuseId)
     }
+}
+
+extension ItemFeedViewController: UITableViewDataSource {
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch spec.sections[indexPath.section] {
         case .map:
             let cell = tableView.dequeueReusableCell(withIdentifier: MapTableViewCell.reuseId) as! MapTableViewCell
@@ -58,7 +72,24 @@ class ItemFeedViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return spec.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch spec.sections[section] {
+        case .map:
+            return 1
+        case .items(_, let items, _):
+            return items.count
+        }
+    }
+    
+}
+
+extension ItemFeedViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch spec.sections[section] {
         case .items(_):
             return UITableViewAutomaticDimension
@@ -67,7 +98,7 @@ class ItemFeedViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title: String
         let subtitle: String
         switch spec.sections[section] {
@@ -108,7 +139,7 @@ class ItemFeedViewController: UITableViewController {
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch spec.sections[indexPath.section] {
@@ -124,7 +155,7 @@ class ItemFeedViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch spec.sections[indexPath.section] {
         case .map:
             return 140
@@ -133,16 +164,4 @@ class ItemFeedViewController: UITableViewController {
         }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return spec.sections.count
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch spec.sections[section] {
-        case .map:
-            return 1
-        case .items(_, let items, _):
-            return items.count
-        }
-    }
 }
