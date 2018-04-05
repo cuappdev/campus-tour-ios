@@ -44,6 +44,13 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     
     enum Layout {
         case event, place
+        
+        func reuseId() -> String {
+            switch self {
+            case .event: return ItemOfInterestTableViewCell.reuseIdEvent
+            case .place: return ItemOfInterestTableViewCell.reuseIdPlace
+            }
+        }
     }
     
     struct ModelInfo {
