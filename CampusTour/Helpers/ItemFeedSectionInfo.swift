@@ -8,7 +8,7 @@ extension Event: ItemCellModelInfoConvertible {
     func toItemFeedModelInfo() -> ItemOfInterestTableViewCell.ModelInfo {
         return ItemOfInterestTableViewCell.ModelInfo(
             title: self.name,
-            dateRange: (self.time, self.time.addingTimeInterval(600)),
+            dateRange: (self.startTime, self.endTime),
             description: self.description,
             locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
                                                                            distanceString: "x mi away") ,
