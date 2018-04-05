@@ -37,6 +37,7 @@
 		CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */; };
 		CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */; };
 		CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */; };
+		D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelpers.swift; sourceTree = "<group>"; };
+		D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+				D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				CC6F88FF20631BD000D14711 /* MiscUIHelpers.swift in Sources */,
 				CCD7389D20687B2800563DBF /* ARGpsHelper.swift in Sources */,
 				CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */,
+				D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */,
 				CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
@@ -512,7 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
@@ -528,7 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
