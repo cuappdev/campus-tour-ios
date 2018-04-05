@@ -7,7 +7,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let data = try! ParseData()
         
         buildUI()
     }
