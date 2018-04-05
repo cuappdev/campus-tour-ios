@@ -12,6 +12,8 @@
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
 		0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5E7DC2063153C004FE8B6 /* Filter.swift */; };
 		0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* SearchViewController.swift */; };
+		0CBFF74E2076D31300FAF047 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF74D2076D31300FAF047 /* PopupViewController.swift */; };
+		0CBFF7502076D31900FAF047 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF74F2076D31900FAF047 /* PopupViewController.swift */; };
 		0CD80A692050CE8200F2FC91 /* locations-clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD80A682050CE8200F2FC91 /* locations-clean.json */; };
 		7CBAB8D784B840FA0C7B78AE /* Pods_CampusTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */; };
 		CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC10D019204C8DD2009B7808 /* POIMapViewController.swift */; };
@@ -45,6 +47,8 @@
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		0CA5E7DC2063153C004FE8B6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0CBFF74D2076D31300FAF047 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		0CBFF74F2076D31900FAF047 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		0CD80A682050CE8200F2FC91 /* locations-clean.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "locations-clean.json"; sourceTree = "<group>"; };
 		2A0551F91243964E6BA51916 /* Pods-CampusTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampusTour/Pods-CampusTour.debug.xcconfig"; sourceTree = "<group>"; };
 		3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +130,7 @@
 				CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */,
 				CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */,
 				CC10D019204C8DD2009B7808 /* POIMapViewController.swift */,
+				0CBFF74D2076D31300FAF047 /* PopupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */,
+				0CBFF74F2076D31900FAF047 /* PopupViewController.swift */,
 				CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */,
 			);
 			path = TableCells;
@@ -379,9 +385,11 @@
 				D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */,
 				CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
+				0CBFF74E2076D31300FAF047 /* PopupViewController.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
 				0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */,
 				0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */,
+				0CBFF7502076D31900FAF047 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
