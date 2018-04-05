@@ -82,12 +82,6 @@ struct CompositeEvents: Decodable {
     }
 }
 
-struct Location {
-    let name: String?
-    let lat: Float?
-    let lng: Float?
-}
-
 enum EventType {
     case Orientation
     case Meals
