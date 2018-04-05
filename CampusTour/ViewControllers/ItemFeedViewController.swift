@@ -21,7 +21,7 @@ struct Item {
 class ItemFeedViewController: UITableViewController {
     private let mapSection = 0, itemSection = 1, placesSection = 2
     
-    let events: [Event] = testEvents
+    var events: [Event] = testEvents
     let places: [Building] = testPlaces
     
     override func viewDidLoad() {
@@ -47,14 +47,13 @@ class ItemFeedViewController: UITableViewController {
             cell.setCellModel(
                 model: ItemOfInterestTableViewCell.ModelInfo(
                     title: item.name,
-                    dateRange: (item.time, item.time.addingTimeInterval(600)),
+                    dateRange: (item.startTime, item.endTime),
                     description: item.description,
                     locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
                                                                                    distanceString: "x mi away") ,
                     tags: ["tag1", "tag2"], //TODO add tags to data
                     imageUrl: URL(string: "https://picsum.photos/150/150/?random")!),
-                layout: .event
-            )
+                layout: .event)
             return cell
         case placesSection:
             let place = places[indexPath.row]

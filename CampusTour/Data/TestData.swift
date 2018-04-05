@@ -11,13 +11,17 @@ import UIKit
 
 let testEvents: [Event] = Array(
     repeating: Event(
+        id: "123",
+        compEventId: "234",
         name: "AppDev Workshop",
-        description: "Cool React workdshop!",
-        location: Location.init(longitude: 0, latitude: 0),
+        description: "Cool React workshop!",
+        startTime: Date(timeIntervalSinceNow: 1000),
+        endTime: Date(timeIntervalSinceNow: 2000),
+        location: Location(name: "Olin Hall 155", lat: 0, lng: 0),
         college: College.Engineering,
         type: EventType.Orientation,
-        time: Date(timeIntervalSinceNow: 1000)),
-    count: 3)
+        tags: []
+    ), count: 3)
 
 let testPlaces: [Building] = Array(
     repeating: Building(
@@ -25,5 +29,7 @@ let testPlaces: [Building] = Array(
         name: "Gates Hall",
         department: "CIS",
         icon: UIImage(), //TODO change to url
-        location: Location(longitude: 42.444953, latitude: -76.480973)),
-    count: 20)
+        location: Location(name: "Gates Hall", lat: -76.480973, lng: 42.444953)
+    ), count: 20)
+
+

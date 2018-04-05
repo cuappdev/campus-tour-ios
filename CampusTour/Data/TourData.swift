@@ -8,41 +8,6 @@
 
 import UIKit
 
-enum EventType {
-    //Type of events
-    case Orientation
-    case Meals
-}
-
-enum College {
-    case ArtsScience
-    case Engineering
-    case ILR
-    case CALS
-    case Hotel
-    case AAP
-    case HumanEcology
-}
-
-struct Location {
-    var longitude: Float
-    var latitude: Float
-    
-    init(longitude: Float, latitude: Float) {
-        self.longitude = longitude
-        self.latitude = latitude
-    }
-}
-
-struct Event {
-    var name: String
-    var description: String
-    var location: Location
-    var college: College
-    var type: EventType
-    var time: Date
-}
-
 struct Building {
     var college: College?
     var name: String
