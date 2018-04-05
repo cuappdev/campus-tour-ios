@@ -16,6 +16,7 @@ enum Colors {
     static let primary = rgbaInt(34, 34, 34, 1.0)
     static let secondary = rgbaInt(74, 74, 74, 0.8)
     static let tertiary = rgbaInt(144, 148, 157, 1.0)
+    
     static let brand = rgbaInt(206, 23, 69, 1.0)
     static let offwhite = rgbaInt(252, 252, 252, 1.0)
     static let shadow = rgbaInt(219, 219, 219, 0.5)

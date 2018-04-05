@@ -131,7 +131,7 @@ class DetailViewController: UIViewController {
         
         for (index, tag) in event.tags.enumerated() {
             let tagLabel = UILabel()
-            tagLabel.text = tag
+            tagLabel.text = tag.label
             tagLabel.textColor = .white
             tagLabel.backgroundColor = UIColor.clear
             tagLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
@@ -186,8 +186,9 @@ class DetailViewController: UIViewController {
         mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         let time = DateHelper.getFormattedTime(startTime: event.startTime, endTime: event.endTime)
-        let location = event.locationName
-        dateLocationLabel.text = time + " · " + location
+        var loc = ""
+        if let unwrappedlocation = event.location { loc = unwrappedlocation.name }
+        dateLocationLabel.text = time + " · " + loc
         dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         

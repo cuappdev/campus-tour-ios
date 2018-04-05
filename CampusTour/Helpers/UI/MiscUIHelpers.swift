@@ -22,3 +22,31 @@ extension UIView {
         return wrapper
     }
 }
+
+class SeparatorView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    private func initialize() {
+        self.isOpaque = false
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        let (width, height) = (rect.width, rect.height)
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: height))
+        path.addLine(to: CGPoint(x: width, y: height))
+        UIColor(white: 0.9, alpha: 1.0).setStroke()
+        path.stroke()
+    }
+}

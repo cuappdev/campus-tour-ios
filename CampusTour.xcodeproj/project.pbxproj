@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */; };
-		0C3C643C20755B2700F38813 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C643B20755B2700F38813 /* DateHelpers.swift */; };
+		0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C39642076C84500CA41DA /* DateHelpers.swift */; };
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
 		0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5E7DC2063153C004FE8B6 /* Filter.swift */; };
 		0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* SearchViewController.swift */; };
-		0CBFF353205E439300F7AEDB /* TourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF352205E439300F7AEDB /* TourData.swift */; };
 		0CD80A692050CE8200F2FC91 /* locations-clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD80A682050CE8200F2FC91 /* locations-clean.json */; };
 		7CBAB8D784B840FA0C7B78AE /* Pods_CampusTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */; };
 		CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC10D019204C8DD2009B7808 /* POIMapViewController.swift */; };
+		CC1B744220767C8300A4012A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1B744120767C8300A4012A /* DataManager.swift */; };
+		CC1B744420767C8A00A4012A /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1B744320767C8A00A4012A /* EventData.swift */; };
 		CC32B009205E02A400D08D9F /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */; };
 		CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */; };
 		CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */; };
 		CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244B20729331004FEAD0 /* LinearAlgebra.swift */; };
 		CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64244D2072A026004FEAD0 /* VirtualView.swift */; };
+		CC642457207554BC004FEAD0 /* ItemFeedSectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC642456207554BC004FEAD0 /* ItemFeedSectionInfo.swift */; };
 		CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */; };
 		CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FA2063160700D14711 /* StackViewHelpers.swift */; };
 		CC6F88FD2063191B00D14711 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F88FC2063191B00D14711 /* TestData.swift */; };
@@ -34,25 +36,28 @@
 		CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */; };
 		CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */; };
 		CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */; };
+		D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		0C3C643B20755B2700F38813 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
+		0C3C39642076C84500CA41DA /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		0CA5E7DC2063153C004FE8B6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		0CBFF352205E439300F7AEDB /* TourData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourData.swift; sourceTree = "<group>"; };
 		0CD80A682050CE8200F2FC91 /* locations-clean.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "locations-clean.json"; sourceTree = "<group>"; };
 		2A0551F91243964E6BA51916 /* Pods-CampusTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampusTour/Pods-CampusTour.debug.xcconfig"; sourceTree = "<group>"; };
 		3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3498896E55A6CFE6BAA1C9 /* Pods-CampusTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTour.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampusTour/Pods-CampusTour.release.xcconfig"; sourceTree = "<group>"; };
 		CC10D019204C8DD2009B7808 /* POIMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIMapViewController.swift; sourceTree = "<group>"; };
+		CC1B744120767C8300A4012A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CC1B744320767C8A00A4012A /* EventData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
 		CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemOfInterestTableViewCell.swift; sourceTree = "<group>"; };
 		CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		CC64244B20729331004FEAD0 /* LinearAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearAlgebra.swift; sourceTree = "<group>"; };
 		CC64244D2072A026004FEAD0 /* VirtualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualView.swift; sourceTree = "<group>"; };
+		CC642456207554BC004FEAD0 /* ItemFeedSectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedSectionInfo.swift; sourceTree = "<group>"; };
 		CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAndColorHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FA2063160700D14711 /* StackViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewHelpers.swift; sourceTree = "<group>"; };
 		CC6F88FC2063191B00D14711 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 		CCE0A4E9204F3D360083BAE7 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelpers.swift; sourceTree = "<group>"; };
+		D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +91,9 @@
 		0C933605204E858C004668CE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CC1B744120767C8300A4012A /* DataManager.swift */,
 				0C933603204E8579004668CE /* LocationData.swift */,
-				0CBFF352205E439300F7AEDB /* TourData.swift */,
+				CC1B744320767C8A00A4012A /* EventData.swift */,
 				CC6F88FC2063191B00D14711 /* TestData.swift */,
 				0CD80A682050CE8200F2FC91 /* locations-clean.json */,
 			);
@@ -136,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+				D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -198,7 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
-				0C3C643B20755B2700F38813 /* DateHelpers.swift */,
+				CC642456207554BC004FEAD0 /* ItemFeedSectionInfo.swift */,
+				0C3C39642076C84500CA41DA /* DateHelpers.swift */,
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
@@ -351,25 +360,28 @@
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
 				CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */,
 				0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */,
-				0C3C643C20755B2700F38813 /* DateHelpers.swift in Sources */,
 				0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */,
+				CC1B744220767C8300A4012A /* DataManager.swift in Sources */,
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,
 				CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */,
 				CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */,
 				CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */,
 				CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */,
 				CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */,
+				CC642457207554BC004FEAD0 /* ItemFeedSectionInfo.swift in Sources */,
 				CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */,
 				CC6F88FD2063191B00D14711 /* TestData.swift in Sources */,
+				CC1B744420767C8A00A4012A /* EventData.swift in Sources */,
 				CC32B009205E02A400D08D9F /* ItemFeedViewController.swift in Sources */,
 				CC6F88FF20631BD000D14711 /* MiscUIHelpers.swift in Sources */,
 				CCD7389D20687B2800563DBF /* ARGpsHelper.swift in Sources */,
 				CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */,
+				D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */,
 				CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
-				0CBFF353205E439300F7AEDB /* TourData.swift in Sources */,
 				0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */,
+				0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,3 @@
-//
-//  DateHelpers.swift
-//  CampusTour
-//
-//  Created by Ji Hwan Seung on 4/4/18.
-//  Copyright © 2018 cuappdev. All rights reserved.
-//
-
 import UIKit
 
 class DateHelper {
@@ -33,5 +25,23 @@ class DateHelper {
         let endFormatted = "\(endIsPM ? end.hour-12 : end.hour):\(end.minute) \(endIsPM ? "PM" : "AM")"
         
         return startFormatted + " - " + endFormatted
+    }
+}
+
+extension Date {
+    func toString(dateFormat: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        dateFormatter.timeZone = NSTimeZone(name: "EST") as TimeZone!
+        return dateFormatter.string(from: self)
+    }
+}
+
+extension String {
+    func toDate(dateFormat: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        dateFormatter.timeZone = NSTimeZone(name: "EST") as TimeZone!
+        return dateFormatter.date(from: self)!
     }
 }
