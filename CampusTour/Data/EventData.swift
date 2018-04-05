@@ -82,19 +82,26 @@ struct CompositeEvents: Decodable {
     }
 }
 
-enum EventType {
-    case Orientation
-    case Meals
+enum EventType: String {
+    //Type of events
+    case academic = "Academic"
+    case classes = "Class"
+    case general = "General"
+    case officehour = "Office Hour"
+    case social = "Social"
+    case tour = "Tour"
 }
 
-enum College {
-    case ArtsScience
-    case Engineering
-    case ILR
-    case CALS
-    case Hotel
-    case AAP
-    case HumanEcology
+enum College: String {
+    case artsandscience = "Arts and Science"
+    case engineering = "Engineering"
+    case ilr = "ILR"
+    case cals = "CALS"
+    case hotel = "Hotel Administration"
+    case aap = "Arts, Architecture, and Planning"
+    case humanecology = "Human Ecology"
+    case jcbdyson = "JCB Dyson School"
+    case jcbhotel = "JCB Hotel School"
 }
 
 public struct Event {
@@ -104,7 +111,7 @@ public struct Event {
     let description: String
     let startTime: Date
     let endTime: Date
-    let location: Location
+    let location: Location?
     let college: College?
     let type:  EventType?
     let tags: [EventTag]

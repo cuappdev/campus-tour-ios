@@ -63,3 +63,11 @@ public struct Location: Decodable {
         self.init(name: name, lat: lat, lng: lng)
     }
 }
+
+struct Building {
+    var tags: [String]
+    var name: String
+    var department: String?
+    var icon: UIImage
+    var location: Location
+}

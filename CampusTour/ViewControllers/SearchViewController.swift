@@ -93,8 +93,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             switch data {
             case let data as Building:
                 return data.name.lowercased().contains(lowercase)
-            case let data as Tour:
-                return data.name.lowercased().contains(searchText) || data.description.lowercased().contains(searchText)
             case let data as Event:
                 return data.name.lowercased().contains(searchText) || data.description.lowercased().contains(searchText)
             default:

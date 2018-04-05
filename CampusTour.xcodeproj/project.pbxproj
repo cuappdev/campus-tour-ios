@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */; };
+		0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C39642076C84500CA41DA /* DateHelpers.swift */; };
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
 		0CA5E7DD2063153C004FE8B6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5E7DC2063153C004FE8B6 /* Filter.swift */; };
 		0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* SearchViewController.swift */; };
-		0CBFF353205E439300F7AEDB /* TourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF352205E439300F7AEDB /* TourData.swift */; };
 		0CD80A692050CE8200F2FC91 /* locations-clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CD80A682050CE8200F2FC91 /* locations-clean.json */; };
 		7CBAB8D784B840FA0C7B78AE /* Pods_CampusTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */; };
 		CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC10D019204C8DD2009B7808 /* POIMapViewController.swift */; };
 		CC1B744220767C8300A4012A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1B744120767C8300A4012A /* DataManager.swift */; };
 		CC1B744420767C8A00A4012A /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1B744320767C8A00A4012A /* EventData.swift */; };
-		CC1B744620767D5C00A4012A /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1B744520767D5C00A4012A /* DateHelpers.swift */; };
 		CC32B009205E02A400D08D9F /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */; };
 		CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */; };
 		CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */; };
@@ -42,10 +41,10 @@
 
 /* Begin PBXFileReference section */
 		0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0C3C39642076C84500CA41DA /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		0CA5E7DC2063153C004FE8B6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		0CBFF352205E439300F7AEDB /* TourData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourData.swift; sourceTree = "<group>"; };
 		0CD80A682050CE8200F2FC91 /* locations-clean.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "locations-clean.json"; sourceTree = "<group>"; };
 		2A0551F91243964E6BA51916 /* Pods-CampusTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTour.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampusTour/Pods-CampusTour.debug.xcconfig"; sourceTree = "<group>"; };
 		3CE7904CDF93FCD48D27432B /* Pods_CampusTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +52,6 @@
 		CC10D019204C8DD2009B7808 /* POIMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIMapViewController.swift; sourceTree = "<group>"; };
 		CC1B744120767C8300A4012A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CC1B744320767C8A00A4012A /* EventData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
-		CC1B744520767D5C00A4012A /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		CC32B008205E02A400D08D9F /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
 		CC32B02A205EB59400D08D9F /* ItemOfInterestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemOfInterestTableViewCell.swift; sourceTree = "<group>"; };
 		CC32B02C205EBC1F00D08D9F /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				CC1B744120767C8300A4012A /* DataManager.swift */,
 				0C933603204E8579004668CE /* LocationData.swift */,
 				CC1B744320767C8A00A4012A /* EventData.swift */,
-				0CBFF352205E439300F7AEDB /* TourData.swift */,
 				CC6F88FC2063191B00D14711 /* TestData.swift */,
 				0CD80A682050CE8200F2FC91 /* locations-clean.json */,
 			);
@@ -208,9 +205,9 @@
 		CCE0A4ED2051B3990083BAE7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CC1B744520767D5C00A4012A /* DateHelpers.swift */,
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
 				CC642456207554BC004FEAD0 /* ItemFeedSectionInfo.swift */,
+				0C3C39642076C84500CA41DA /* DateHelpers.swift */,
 				0CA5E7DC2063153C004FE8B6 /* Filter.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
@@ -383,9 +380,8 @@
 				CC64244C20729331004FEAD0 /* LinearAlgebra.swift in Sources */,
 				CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
-				0CBFF353205E439300F7AEDB /* TourData.swift in Sources */,
-				CC1B744620767D5C00A4012A /* DateHelpers.swift in Sources */,
 				0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */,
+				0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
@@ -532,7 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZGMCXU7X3U;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;

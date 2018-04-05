@@ -141,13 +141,14 @@ extension ItemFeedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         switch spec.sections[indexPath.section] {
-        case .items(_, let items, _):
+        case .items(_, let items, let layout):
+            if layout == .place { return }
             let item = items[indexPath.row]
             let detailVC: DetailViewController = {
                 let vc = DetailViewController()
-                vc.data = item
+                vc.event = item as! Event
+                vc.title = item.toItemFeedModelInfo().title
                 return vc
             }()
             navigationController?.pushViewController(detailVC, animated: true)
