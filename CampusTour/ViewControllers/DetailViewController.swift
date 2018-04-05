@@ -181,14 +181,14 @@ class DetailViewController: UIViewController {
         //TODO Create bookmark
         let bookmarkButton = UIButton()
         
-        mainTitleLabel.text = "Happening " + DateHelper.getFormattedDate(event.startTime)
+        mainTitleLabel.text = "Happening \(DateHelper.getFormattedDate(event.startTime))"
         mainTitleLabel.textColor = Colors.brand
         mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         let time = DateHelper.getFormattedTime(startTime: event.startTime, endTime: event.endTime)
         var loc = ""
         if let unwrappedlocation = event.location { loc = unwrappedlocation.name }
-        dateLocationLabel.text = time + " · " + loc
+        dateLocationLabel.text = "\(time) · \(loc)"
         dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         

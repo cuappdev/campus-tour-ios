@@ -24,7 +24,7 @@ class DateHelper {
         let startFormatted = "\(startIsPM ? start.hour-12 : start.hour):\(start.minute) \(startIsPM ? "PM" : "AM")"
         let endFormatted = "\(endIsPM ? end.hour-12 : end.hour):\(end.minute) \(endIsPM ? "PM" : "AM")"
         
-        return startFormatted + " - " + endFormatted
+        return "\(startFormatted) - \(endFormatted)"
     }
 }
 
