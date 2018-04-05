@@ -104,13 +104,20 @@ class ARExplorerViewController: UIViewController {
     }
     
     func stopAr() {
+        sceneView.session.pause()
     }
     
     func setItems(items: [ARItemOfInterest]) {
-        itemsOfInterestAndViews = items.map {
-            ItemViewInfo(item: $0,
-                         view: ARItemOfInterestView(item: $0),
-                         node: nil)
+        DispatchQueue.main.async {
+            for info in self.itemsOfInterestAndViews {
+                info.node?.removeFromParentNode()
+            }
+            
+            self.itemsOfInterestAndViews = items.map {
+                ItemViewInfo(item: $0,
+                             view: ARItemOfInterestView(item: $0),
+                             node: nil)
+            }
         }
     }
     
