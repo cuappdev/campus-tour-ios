@@ -13,19 +13,7 @@ let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
 
 class ItemFeedViewController: UIViewController {
     
-    private var spec = ItemFeedSpec(sections: [
-        .map,
-        .items(
-            headerInfo: (title: "Explore", subtitle: "EVENTS"),
-            items: testEvents,
-            layout: .event
-        ),
-        .items(
-            headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-            items: testPlaces,
-            layout: .place
-        ),
-    ])
+    private var spec = ItemFeedSpec.testItemFeedSpec
     
     private var tableView: UITableView {
         return self.view as! UITableView
@@ -64,10 +52,10 @@ extension ItemFeedViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: MapTableViewCell.reuseId) as! MapTableViewCell
             cell.cellWillAppear()
             return cell
-        case .items(_, let items, let layout):
-            let item = items[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: layout.reuseId()) as! ItemOfInterestTableViewCell
-            cell.setCellModel(model: item.toItemFeedModelInfo(), layout: layout)
+        case .items(_, let items):
+            let itemModel = items[indexPath.row].toItemFeedModelInfo()
+            let cell = tableView.dequeueReusableCell(withIdentifier: itemModel.layout.reuseId()) as! ItemOfInterestTableViewCell
+            cell.setCellModel(model: itemModel)
             return cell
         }
     }
@@ -80,7 +68,7 @@ extension ItemFeedViewController: UITableViewDataSource {
         switch spec.sections[section] {
         case .map:
             return 1
-        case .items(_, let items, _):
+        case .items(_, let items):
             return items.count
         }
     }
@@ -91,7 +79,7 @@ extension ItemFeedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch spec.sections[section] {
-        case .items(_):
+        case .items(let headerInfo, _) where headerInfo != nil:
             return UITableViewAutomaticDimension
         default:
             return 0
@@ -142,15 +130,19 @@ extension ItemFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch spec.sections[indexPath.section] {
-        case .items(_, let items, let layout):
-            if layout == .place { return }
-            let item = items[indexPath.row]
+        case .items(_, let items):
+            
+            guard let item = items[indexPath.row] as? Event else {
+                return
+            }
+            
             let detailVC: DetailViewController = {
                 let vc = DetailViewController()
-                vc.event = item as! Event
+                vc.event = item
                 vc.title = item.toItemFeedModelInfo().title
                 return vc
             }()
+            
             navigationController?.pushViewController(detailVC, animated: true)
         default: return
         }

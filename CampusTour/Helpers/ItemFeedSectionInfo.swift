@@ -13,7 +13,8 @@ extension Event: ItemCellModelInfoConvertible {
             locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
                                                                            distanceString: "x mi away") ,
             tags: ["tag1", "tag2"], //TODO add tags to data
-            imageUrl: URL(string: "https://picsum.photos/150/150/?random")!
+            imageUrl: URL(string: "https://picsum.photos/150/150/?random")!,
+            layout: .event
         )
     }
 }
@@ -26,7 +27,8 @@ extension Building: ItemCellModelInfoConvertible {
             description: self.department ?? "",
             locationSpec: nil,
             tags: ["tag1", "tag2"],
-            imageUrl: URL(string: "https://picsum.photos/150/150/?random")!
+            imageUrl: URL(string: "https://picsum.photos/150/150/?random")!,
+            layout: .place
         )
     }
 }
@@ -41,12 +43,23 @@ struct ItemFeedItemSectionSpec {
 enum ItemFeedSectionSpec {
     case items(
         headerInfo: (title: String, subtitle: String)?,
-        items: [ItemCellModelInfoConvertible],
-        layout: ItemOfInterestTableViewCell.Layout
+        items: [ItemCellModelInfoConvertible]
     )
     case map
 }
 
 struct ItemFeedSpec {
     var sections: [ItemFeedSectionSpec]
+    
+    static let testItemFeedSpec = ItemFeedSpec(sections: [
+        .map,
+        .items(
+            headerInfo: (title: "Explore", subtitle: "EVENTS"),
+            items: testEvents
+        ),
+        .items(
+            headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
+            items: testPlaces
+        ),
+        ])
 }

@@ -50,6 +50,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         let locationSpec: LocationLineViewSpec?
         let tags: [String]
         let imageUrl: URL
+        let layout: Layout
     }
     
     struct LocationLineViewSpec {
@@ -173,7 +174,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         }
     }
     
-    func setCellModel(model: ModelInfo, layout: Layout) {
+    func setCellModel(model: ModelInfo) {
+        let layout = model.layout
         setUpViewsIfNecessary(layout: layout)
         
         if let dateRange = model.dateRange {
