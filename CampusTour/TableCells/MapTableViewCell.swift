@@ -37,7 +37,7 @@ class MapTableViewCell: UITableViewCell {
             
             let marker = GMSMarker(position: coords)
             marker.userData = location
-            marker.iconView = LocationMarker()
+            marker.iconView = EventMarker()
             marker.map = mapView
             markers.append(marker)
         }

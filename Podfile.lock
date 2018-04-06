@@ -1,6 +1,6 @@
 PODS:
-  - Alamofire (4.7.0)
-  - AlamofireImage (3.3.0):
+  - Alamofire (4.7.1)
+  - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
   - GoogleMaps (2.6.0):
     - GoogleMaps/Maps (= 2.6.0)
@@ -23,8 +23,8 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694

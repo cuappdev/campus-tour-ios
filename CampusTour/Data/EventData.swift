@@ -111,7 +111,7 @@ public struct Event {
     let description: String
     let startTime: Date
     let endTime: Date
-    let location: Location?
+    let location: Location
     let college: College?
     let type:  EventType?
     let tags: [EventTag]
