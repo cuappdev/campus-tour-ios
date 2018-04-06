@@ -65,15 +65,7 @@ class FilterBar: UIView {
 //            Change this so that it changes on selected
             button.backgroundColor = Colors.brand
             
-//            let arrow = UIImageView(image: #imageLiteral(resourceName: "Triangle copy 2-1"))
-//            arrow.contentMode = .scaleAspectFit
-//            button.addSubview(arrow)
-//            arrow.snp.makeConstraints({ (make) in
-//                make.top.equalToSuperview().offset(padding)
-//                make.height.equalTo(12)
-//                make.trailing.equalToSuperview().offset(-padding)
-//                make.width.equalTo(12)
-//            })
+            //TODO : Add white arrow :: harder than it seems
             
             button.layer.cornerRadius = 4.0
             button.clipsToBounds = true
@@ -82,22 +74,11 @@ class FilterBar: UIView {
             button.tag = index
             button.contentEdgeInsets = UIEdgeInsetsMake(0, padding, 0, padding)
             button.contentHorizontalAlignment = .left
-//            button.setImage(#imageLiteral(resourceName: "Triangle copy 2-1"), for: .normal)
-//            button.imageView?.contentMode = .scaleAspectFit
-//            button.imageEdgeInsets = UIEdgeInsetsMake(0, (button.titleLabel?.intrinsicContentSize.width)! + padding*2, 0, padding)
-//            button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, padding*2+15)
             button.sizeToFit()
             button.addTarget(self, action: #selector(filterSelected(sender:)), for: .touchUpInside)
             
-//            let bView = createButtonView(filter: filter)x4
-//            button.addSubview(bView)
-//            bView.snp.makeConstraints({ (make) in
-//                make.edges.equalToSuperview()
-//            })
-            
             scrollView.addSubview(button)
             buttons.append(button)
-//            bViews.append(bView)
             button.snp.makeConstraints({ (make) in
                 if index == 0 {
                     make.leading.equalToSuperview().offset(padding)
@@ -132,42 +113,6 @@ class FilterBar: UIView {
         
         delegate?.openPopupView(popupData)
     }
-    
-//    func createButtonView(filter: Filter) -> UIView {
-//        let bView = UIView()
-//        
-//        let textLabel = UILabel()
-//        textLabel.text = filter.rawValue
-//        textLabel.textColor = .white
-//        textLabel.backgroundColor = Colors.brand
-//        textLabel.font = UIFont.systemFont(ofSize: 16.0)
-//        textLabel.sizeToFit()
-//        
-//        bView.addSubview(textLabel)
-//        textLabel.snp.makeConstraints { (make) in
-//            make.leading.equalToSuperview().offset(padding)
-//            make.top.equalToSuperview()
-//            make.bottom.equalToSuperview()
-//        }
-//        
-//        let arrow = UIImageView(image: #imageLiteral(resourceName: "Triangle copy 2-1"))
-//        arrow.contentMode = .scaleAspectFit
-//        bView.addSubview(arrow)
-//        arrow.snp.makeConstraints({ (make) in
-//            make.top.equalToSuperview().offset(padding)
-//            make.height.equalTo(12)
-//            make.trailing.equalToSuperview().offset(-padding)
-//            make.width.equalTo(12)
-//            make.leading.equalTo(textLabel.snp.trailing)
-//        })
-//        arrow.backgroundColor = Colors.brand
-//        arrow.isUserInteractionEnabled = false
-//        
-//        bView.backgroundColor = Colors.brand
-//        bView.layer.cornerRadius = 4.0
-//        
-//        return bView
-//    }
 }
 
 protocol FilterFunctionsDelegate {
