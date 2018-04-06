@@ -131,7 +131,7 @@ class DetailViewController: UIViewController {
         
         for (index, tag) in event.tags.enumerated() {
             let tagLabel = UILabel()
-            tagLabel.text = tag.label
+            tagLabel.text = tag.generalTagMap(id: tag.id)
             tagLabel.textColor = .white
             tagLabel.backgroundColor = UIColor.clear
             tagLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)

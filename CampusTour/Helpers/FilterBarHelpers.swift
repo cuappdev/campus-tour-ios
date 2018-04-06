@@ -9,34 +9,34 @@
 import UIKit
 import SnapKit
 
+struct FilterBarCurrentStatus {
+    var generalSelected: String
+    var dateSelected: String
+}
+
 enum Filter: String {
-    case sort = "Sort"
-    case college = "College"
-    case food = "Food"
-    case event = "Event"
-    case tour = "Tour"
+    case general = "General"
+    case date = "Date"
 }
 
 fileprivate let filters: [Filter] = [
-    .sort,
-    .college,
-    .food,
-    .event,
-    .tour,
+    .general,
+    .date,
 ]
 
 class FilterBar: UIView {
     
     var scrollView: UIScrollView!
     var selectedFilters = [Filter]()
-    private var buttons = [UIButton]()
-    private let padding: CGFloat = 8.0
+    var buttons = [UIButton]()
+    private let padding = CGFloat(8)
+    var delegate: FilterFunctionsDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         scrollView = UIScrollView()
         scrollView.backgroundColor = Colors.offwhite
-        scrollView.alwaysBounceHorizontal = true
+        scrollView.alwaysBounceHorizontal = false
         scrollView.showsHorizontalScrollIndicator = false
         addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
@@ -88,24 +88,27 @@ class FilterBar: UIView {
     
     @objc func filterSelected(sender: UIButton) {
         let selectedFilter = filters[sender.tag]
+        var generalSelected: String?
+        var dateSelected: String?
+        var filterMode: Filter
         switch selectedFilter {
-        case .sort:
-            openModalFilterView(type: selectedFilter.rawValue)
-        case .college:
-            openModalFilterView(type: selectedFilter.rawValue)
-        default:
-            if self.selectedFilters.contains(selectedFilter) {
-                self.selectedFilters = self.selectedFilters.filter{$0 != selectedFilter}
-            } else {
-                self.selectedFilters.append(selectedFilter)
-            }
+        case .general:
+            generalSelected = selectedFilter.rawValue
+            filterMode = .general
+        case .date:
+            dateSelected = sender.title(for: .normal)
+            filterMode = .date
         }
-        print("button")
+        let filterBarCenterX = sender.center.x
+        
+        let popupData = PopupData(generalSelected: generalSelected, dateSelected: dateSelected, filterMode: filterMode, filterBarLocationCenterX: filterBarCenterX)
+        
+        delegate?.openPopupView(popupData)
     }
-    
-    func openModalFilterView(type: String) {
-        //Functionality for adding modal filter view
-    }
+}
+
+protocol FilterFunctionsDelegate {
+    func openPopupView(_ type: PopupData) -> ()
 }
 
 protocol UpdateFilterProtocol {

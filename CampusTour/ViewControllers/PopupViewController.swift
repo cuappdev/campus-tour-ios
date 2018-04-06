@@ -8,66 +8,95 @@
 
 import UIKit
 
-enum FilterMode {
-    case general, date
-}
-
-fileprivate let generalFilters: [(String, String)] = [
-    ("A&S","Arts and Sciences"),
-    ("AAP","Arts, Architecture, and Planning"),
-    ("CALS", "Agriculture and Life Science"),
-    ("ENG", "Engineering"),
-    ("HE", "Human Ecology"),
-    ("ILR", "Industrial and Labor Relations"),
-    ("JCB Dyson", "SC Johnson School of Business"),
-    ("JCB Hotel", "SC Johnson School of Business"),
-]
-
-fileprivate let dateFilters: [Dates] = [
-    Dates.a13,
-    Dates.a15,
-    Dates.a16,
-    Dates.a18,
-    Dates.a19,
-    Dates.a20,
-    Dates.a22,
-    Dates.a23,
-]
-
-class PopupViewController: UITableViewController {
+class PopupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var isClicked = ""
-    var filterMode: FilterMode!
+    var data: PopupData = PopupData(generalSelected: "General", dateSelected: nil, filterMode: Filter.general, filterBarLocationCenterX: 0)
     let reuseID = "reuseID"
+    let tableView = UITableView()
+    var triangleView: TriangleView!
+    private let triangleViewLength = CGFloat(10)
     
     override func viewDidLoad() {
+        view.backgroundColor = .clear
+        
+        triangleView = TriangleView(frame: CGRect(x: 0, y: 0, width: triangleViewLength, height: triangleViewLength))
+        triangleView.backgroundColor = .clear
+        
+        tableView.layer.cornerRadius = 5.0
+        tableView.clipsToBounds = true
+        
+        view.addSubview(tableView)
+        view.addSubview(triangleView)
+        
+        triangleView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(data.filterBarLocationCenterX)
+            make.top.equalToSuperview()
+            make.height.equalTo(triangleViewLength)
+            make.width.equalTo(triangleViewLength)
+        }
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(triangleView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         tableView.register(FilterTableViewCell.self, forCellReuseIdentifier: reuseID)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.bounces = false
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func updateViewConstraints() {
+        triangleView.snp.updateConstraints { (make) in
+            make.centerX.equalTo(data.filterBarLocationCenterX)
+            make.top.equalToSuperview().offset(10)
+            make.height.equalTo(triangleViewLength)
+            make.width.equalTo(triangleViewLength)
+        }
+        super.updateViewConstraints()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID) as! FilterTableViewCell
-        cell.filterMode = self.filterMode
-        
-        switch filterMode {
+        cell.filterMode = self.data.filterMode
+        switch data.filterMode {
         case .general:
-            if isClicked == generalFilters[indexPath.row].0 {
-                cell.setupCell(generalFilters[indexPath.row], true)
+            let info = FilterTableViewCell.Info(school: Tag.schoolFilters[indexPath.row], date: nil)
+            if data.generalSelected == Tag.schoolFilters[indexPath.row].0 {
+                cell.setupCell(info, true)
             } else {
-                cell.setupCell(generalFilters[indexPath.row])
+                cell.setupCell(info)
             }
         case .date:
-            if isClicked == generalFilters[indexPath.row].0 {
-                cell.setupCell(dateFilters[indexPath.row], true)
+            let info = FilterTableViewCell.Info(school: nil, date: dateFilters[indexPath.row])
+            if data.dateSelected == dateFilters[indexPath.row] {
+                cell.setupCell(info, true)
             } else {
-                cell.setupCell(generalFilters[indexPath.row])
+                cell.setupCell(info)
             }
-        default: return UITableViewCell()
         }
+        return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         return
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch data.filterMode {
+        case .general:
+            return Tag.schoolFilters.count
+        case .date:
+            return dateFilters.count
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch registered in popup")
     }
 }

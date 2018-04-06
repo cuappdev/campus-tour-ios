@@ -23,6 +23,9 @@ public class DataManager {
     // List of all locations
     private (set) public var locations: [Location] = []
     
+    // List of all unique start dates
+    private (set) public var times: [String] = []
+    
     // Get a list of composite events
     public func getCompositeEvents(completion: @escaping ((_ success: Bool) -> Void)) {
         let eventsUrlString = "https://schedule.cornelldays.cornell.edu/api/itin/cornelldays/events/"
@@ -45,6 +48,7 @@ public class DataManager {
     // Get a list of individual events
     public func getEvents(compEvents: [CompositeEvent]) {
         var singleEvents: [Event] = []
+        var uniqueTimes: Set<String> = []
         
         for event in compEvents {
             for time in event.times {
@@ -55,9 +59,11 @@ public class DataManager {
                 let endTime = time.endTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")
                 let singleEvent = Event(id: time.id, compEventId: event.id, name: name, description: event.description, startTime: startTime, endTime: endTime, location: location, college: nil, type: nil, tags: event.tags)
                 singleEvents.append(singleEvent)
+                uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
             }
         }
         
+        times = Array(uniqueTimes).sorted()
         events = singleEvents
     }
     
