@@ -1,6 +1,13 @@
 import CoreLocation
 import UIKit
 
+func campusTourNavigationViewController(root: UIViewController) -> UINavigationController {
+    let nvc = UINavigationController(rootViewController: root)
+    nvc.navigationBar.isTranslucent = false
+    nvc.navigationBar.barTintColor = Colors.opaqueShadow
+    return nvc
+}
+
 class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         let searchVC = FeaturedViewController()
@@ -8,8 +15,8 @@ class MainTabBarController: UITabBarController {
         searchVC.tabBarItem = UITabBarItem.feedItem
         poiMapVC.tabBarItem = UITabBarItem.poiMapItem
         setViewControllers([
-            UINavigationController(rootViewController: searchVC),
-            UINavigationController(rootViewController: poiMapVC),
+            campusTourNavigationViewController(root: searchVC),
+            campusTourNavigationViewController(root: poiMapVC),
             ], animated: false)
     }
 }

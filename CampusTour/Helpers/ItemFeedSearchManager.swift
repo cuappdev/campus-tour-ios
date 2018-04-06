@@ -42,6 +42,17 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         navigationItem.titleView = searchBar
     }
     
+    func detachFrom(navigationItem: UINavigationItem) {
+        if navigationItem.titleView == searchBar {
+            navigationItem.titleView = nil
+        }
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        delgate?.didStartSearchMode()
+        return true
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.placeholder = "Search"

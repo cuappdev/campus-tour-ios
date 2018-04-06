@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFilterProtocol {
     let itemFeedViewController = ItemFeedViewController()
@@ -58,10 +59,17 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         self.present(popupViewController, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        searchManager.attachTo(navigationItem: navigationItem)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        searchManager.detachFrom(navigationItem: navigationItem)
+    }
+    
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
         searchManager.delgate = self
-        searchManager.attachTo(navigationItem: navigationItem)
         searchManager.allData = testEvents as [Any] + testPlaces as [Any]
         
         arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
@@ -70,7 +78,7 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         filterBar = FilterBar()
         view.addSubview(filterBar)
         filterBar.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top) //TODO filter bar shouldn't show at start
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
@@ -84,10 +92,7 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         //view.insertSubview(itemFeedViewController.view, belowSubview: searchResultsTableView)
         view.addSubview(itemFeedViewController.view)
         itemFeedViewController.view.snp.makeConstraints { (make) in
-            make.top.equalTo(filterBar.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         itemFeedViewController.didMove(toParentViewController: self)
@@ -152,10 +157,29 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
         self.navigationItem.setRightBarButton(nil, animated: false)
         
-        //Preparing filter viewcontroller
+
+        //Prepare filter viewcontroller
         addChildViewController(popupViewController)
         view.addSubview(popupViewController.view)
         isModal = false
+        
+        //Show filter bar
+        filterBar.isHidden = false
+        filterBar.snp.remakeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        itemFeedViewController.view.snp.remakeConstraints { make in
+            make.top.equalTo(filterBar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     func didFindSearchResults(results: ItemFeedSpec) {
@@ -167,10 +191,26 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didEndSearchMode() {
         self.navigationItem.setRightBarButton(arButton, animated: false)
         self.itemFeedViewController.updateItems(newSpec: ItemFeedSpec.testItemFeedSpec)
-        
+
+        //remove filter viewcontroller
         popupViewController.removeFromParentViewController()
         isModal = false
         filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
         filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+
+        //remove filter bar
+        self.filterBar.snp.remakeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        itemFeedViewController.view.snp.remakeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        UIView.animate(
+            withDuration: 0.5,
+            animations: {self.view.layoutIfNeeded()},
+            completion: {_ in self.filterBar.isHidden = true})
     }
 }

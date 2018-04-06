@@ -19,8 +19,10 @@ enum Colors {
     
     static let brand = rgbaInt(206, 23, 69, 1.0)
     static let offwhite = rgbaInt(252, 252, 252, 1.0)
+    static let opaqueShadow = rgbaInt(219, 219, 219, 1.0)
     static let shadow = rgbaInt(219, 219, 219, 0.5)
     static let systemBlue = rgbaInt(0, 118, 255, 1)
+    static let rbgaInt = rgbaInt
 }
 
 extension UILabel {
