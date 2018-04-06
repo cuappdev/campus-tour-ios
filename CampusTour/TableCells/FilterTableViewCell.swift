@@ -13,7 +13,7 @@ class FilterTableViewCell: UITableViewCell {
     let rootView = UIView()
     let titleLabel = UILabel()
     let subtitleLabel = UILabel()
-    let checked = UIImageView()
+    let checkImageView = UIImageView()
     var isToday: Bool = false
     var filterMode: Filter?
     
@@ -26,7 +26,7 @@ class FilterTableViewCell: UITableViewCell {
         let date: String?
     }
     
-    func setupCell(_ info: Info, _ isChecked: Bool = false) {
+    func setupCell(_ info: Info, _ ischeckImageView: Bool = false) {
         backgroundColor = .white
         
         contentView.addSubview(rootView)
@@ -35,12 +35,12 @@ class FilterTableViewCell: UITableViewCell {
         
         rootView.addSubview(titleLabel)
         rootView.addSubview(subtitleLabel)
-        rootView.addSubview(checked)
+        rootView.addSubview(checkImageView)
         
         //set to checkmark icon
-        checked.backgroundColor = .blue
-        checked.contentMode = .scaleAspectFit
-        checked.clipsToBounds = true
+        checkImageView.backgroundColor = .blue
+        checkImageView.contentMode = .scaleAspectFit
+        checkImageView.clipsToBounds = true
         
         if isToday {
             titleLabel.textColor = Colors.brand
@@ -54,10 +54,10 @@ class FilterTableViewCell: UITableViewCell {
         subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
         //Set to checkmark
-        if isChecked {
-            checked.isHidden = false
+        if ischeckImageView {
+            checkImageView.isHidden = false
         } else {
-            checked.isHidden = true
+            checkImageView.isHidden = true
         }
         
         switch filterMode {
@@ -81,13 +81,13 @@ class FilterTableViewCell: UITableViewCell {
             make.leading.equalTo(titleLabel.snp.trailing).offset(textPadding)
             make.top.equalTo(titleLabel.snp.top)
             make.bottom.equalTo(titleLabel.snp.bottom)
-            make.trailing.equalTo(checked.snp.leading).offset(textInsetLarge)
+            make.trailing.equalTo(checkImageView.snp.leading).offset(textInsetLarge)
         }
-        checked.snp.updateConstraints { (make) in
+        checkImageView.snp.updateConstraints { (make) in
             make.width.equalTo(15)
             make.height.equalTo(15)
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(textInsetLarge)
+            make.trailing.equalToSuperview().offset(-textInsetLarge)
         }
     }
 }

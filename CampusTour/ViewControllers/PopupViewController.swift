@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol PopupFilterProtocol {
+    func updateFilterBar(_ status: FilterBarCurrentStatus) -> ()
+}
+
 class PopupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var data: PopupData = PopupData(generalSelected: "General", dateSelected: nil, filterMode: Filter.general, filterBarLocationCenterX: 0)
+    var data: PopupData = PopupData(filterBarStatus: FilterBarCurrentStatus(), filterMode: Filter.general, filterBarLocationCenterX: 0)
     let reuseID = "reuseID"
     let tableView = UITableView()
     var triangleView: TriangleView!
     private let triangleViewLength = CGFloat(10)
+    private var currentCheckedCellIndex: IndexPath?
+    var delegate: PopupFilterProtocol!
     
     override func viewDidLoad() {
         view.backgroundColor = .clear
@@ -50,7 +56,7 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func updateViewConstraints() {
         triangleView.snp.updateConstraints { (make) in
             make.centerX.equalTo(data.filterBarLocationCenterX)
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview()
             make.height.equalTo(triangleViewLength)
             make.width.equalTo(triangleViewLength)
         }
@@ -63,15 +69,17 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         switch data.filterMode {
         case .general:
             let info = FilterTableViewCell.Info(school: Tag.schoolFilters[indexPath.row], date: nil)
-            if data.generalSelected == Tag.schoolFilters[indexPath.row].0 {
+            if data.filterBarStatus.generalSelected == Tag.schoolFilters[indexPath.row].0 {
                 cell.setupCell(info, true)
+                currentCheckedCellIndex = indexPath
             } else {
                 cell.setupCell(info)
             }
         case .date:
             let info = FilterTableViewCell.Info(school: nil, date: dateFilters[indexPath.row])
-            if data.dateSelected == dateFilters[indexPath.row] {
+            if data.filterBarStatus.dateSelected == dateFilters[indexPath.row] {
                 cell.setupCell(info, true)
+                currentCheckedCellIndex = indexPath
             } else {
                 cell.setupCell(info)
             }
@@ -80,7 +88,16 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return
+        switch data.filterMode {
+        case .general:
+            data.filterBarStatus.generalSelected = Tag.schoolFilters[indexPath.row].0
+        case .date:
+            data.filterBarStatus.dateSelected = dateFilters[indexPath.row]
+        }
+        tableView.reloadRows(at: [indexPath, currentCheckedCellIndex!], with: UITableViewRowAnimation.none)
+        currentCheckedCellIndex = indexPath
+        
+        delegate.updateFilterBar(data.filterBarStatus)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,6 +111,21 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         case .date:
             return dateFilters.count
         }
+    }
+    
+    //Maintain highlighted index
+    func resetVariables(status: FilterBarCurrentStatus, filterMode: Filter) {
+        var indexPath: IndexPath!
+        switch filterMode {
+        case .general:
+            let i = Tag.schoolFilters.index(where: { (a,_) -> Bool in
+                a == status.generalSelected
+            })
+            indexPath = IndexPath(row: i!, section: 0)
+        case .date:
+            indexPath = IndexPath(row: dateFilters.index(of: status.dateSelected)!, section: 0)
+        }
+        currentCheckedCellIndex = indexPath
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

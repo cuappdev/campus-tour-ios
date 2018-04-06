@@ -9,8 +9,7 @@
 import UIKit
 
 struct PopupData {
-    var generalSelected: String?
-    var dateSelected: String?
+    var filterBarStatus: FilterBarCurrentStatus
     var filterMode: Filter
     var filterBarLocationCenterX: CGFloat
 }

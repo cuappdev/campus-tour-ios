@@ -8,46 +8,38 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FilterFunctionsDelegate {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FilterFunctionsDelegate, PopupFilterProtocol {
     
     var searchBar: UISearchBar!
     var searchResultsTableView: UITableView!
     let itemFeedViewController = ItemFeedViewController()
     var filterBar: FilterBar!
     var arButton: UIBarButtonItem!
-    var searchResult: [Any] = [] {
-        didSet {
-            searchResultsTableView.reloadData()
-        }
-    }
-    private let cellReuse = "reuse"
     
-//    private let blackView: UIView = {
-//        //To make screen go dark
-//        let v = UIView()
-//        v.backgroundColor = .black
-//        v.alpha = 0
-//        return v
-//    }()
+    //Replace with data from DataManager
+    let allData = [Any]()
+    var popupViewController: PopupViewController!
+    private let cellReuse = "reuse"
+    private var currentModalMode: Filter?
+    private var filterBarCurrentStatus = FilterBarCurrentStatus(Filter.general.rawValue, Filter.date.rawValue)
+    private var blackView: UIView!
     
     private var isModal = false {
         didSet {
             if !isModal {
                 popupViewController.view.isHidden = true
+                blackView.isHidden = true
             } else {
                 popupViewController.view.isHidden = false
+                blackView.isHidden = false
             }
         }
     }
-    
-    private var currentModalMode: Filter?
-    
-    let popupViewController = PopupViewController()
-    
-    //create class containing all of our static data for tours, events, buildings
-    let allData = [Any]()
-    
-    private var filterBarCurrentStatus = FilterBarCurrentStatus(generalSelected: Filter.general.rawValue, dateSelected: "today")
+    var searchResult: [Any] = [] {
+        didSet {
+            searchResultsTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,78 +47,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-//        let window = UIApplication.shared.keyWindow!
-//        window.addSubview(blackView)
+        popupViewController = PopupViewController()
+        popupViewController.delegate = self
         
         setTopNavBar()
         setBottomView()
+        
+        blackView = UIView(frame: view.bounds)
+        blackView.backgroundColor = .black
+        blackView.alpha = 0.3
+//        view.insertSubview(blackView, aboveSubview: searchResultsTableView)
+//        blackView.snp.makeConstraints{$0.edges.equalToSuperview()}
+        blackView.isHidden = true
+        view.bringSubview(toFront: filterBar)
     }
     
     @IBAction func openARMode() {
         let popupViewController = ARExplorerViewController.withDefaultData()
         self.present(popupViewController, animated: true, completion: nil)
-    }
-    
-    //SearchBar Delegates
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchResultsTableView.isHidden = true
-        filterBar.snp.remakeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(0)
-        }
-        searchBar.resignFirstResponder()
-        searchBar.placeholder = "Search"
-        searchBar.endEditing(true)
-        navigationItem.setRightBarButton(arButton, animated: false)
-        searchBar.setShowsCancelButton(false, animated: false)
-        popupViewController.removeFromParentViewController()
-        searchResult = [Any]()
-        isModal = false
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let searchText = searchBar.text else { return }
-        getSearchResults(searchText: searchText)
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        navigationItem.setRightBarButton(nil, animated: false)
-        searchBar.setShowsCancelButton(true, animated: false)
-        filterBar.snp.remakeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(44)
-        }
-        addChildViewController(popupViewController)
-        view.addSubview(popupViewController.view)
-        searchResultsTableView.isHidden = false
-        isModal = false
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    //Search functionality
-    private func searchBarIsEmpty() -> Bool {
-        return searchBar.text?.isEmpty ?? true
-    }
-    
-    private func getSearchResults(searchText: String) -> () {
-        let lowercase = searchText.lowercased()
-        self.searchResult = self.allData.filter({ (data) -> Bool in
-            switch data {
-            case let data as Building:
-                return data.name.lowercased().contains(lowercase)
-            case let data as Event:
-                return data.name.lowercased().contains(searchText) || data.description.lowercased().contains(searchText)
-            default:
-                return false
-            }
-        })
     }
     
     //Setup Feed portion of ViewController
@@ -211,18 +149,27 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.endEditing(true)
         if isModal {
             isModal = false
+            self.filterBar.buttons.first?.setTitle(self.filterBarCurrentStatus.generalSelected, for: .normal)
+            self.filterBar.buttons.last?.setTitle(self.filterBarCurrentStatus.dateSelected, for: .normal)
+            searchBar.becomeFirstResponder()
             return
         }
-        
+        popupViewController.resetVariables(status: filterBarCurrentStatus, filterMode: data.filterMode)
         popupViewController.data = data
+        popupViewController.tableView.reloadData()
+        
+        view.bringSubview(toFront: popupViewController.view)
+        
         var filterHeight = 0
         switch data.filterMode {
         case .general:
             filterHeight = min(320, 40*Tag.schoolFilters.count+20)
+            filterBar.buttons.first?.bringSubview(toFront: blackView)
         case .date:
             filterHeight = min(320, 40*dateFilters.count+20)
+            filterBar.buttons.first?.bringSubview(toFront: blackView)
         }
-        popupViewController.tableView.reloadData()
+        
         popupViewController.view.snp.updateConstraints { (make) in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -231,6 +178,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         popupViewController.updateViewConstraints()
         popupViewController.view.becomeFirstResponder()
+        searchBar.resignFirstResponder()
         isModal = true
     }
     
@@ -247,7 +195,74 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
-        filterBar.buttons.first?.setTitle(status.generalSelected, for: .normal)
-        filterBar.buttons.last?.setTitle(status.dateSelected, for: .normal)
+        filterBarCurrentStatus = status
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.placeholder = "Search"
+        searchBar.endEditing(true)
+        searchBar.setShowsCancelButton(false, animated: false)
+        navigationItem.setRightBarButton(arButton, animated: false)
+        searchResultsTableView.isHidden = true
+        filterBar.snp.remakeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(0)
+        }
+        popupViewController.removeFromParentViewController()
+        searchResult = [Any]()
+        isModal = false
+        filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
+        filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchText = searchBar.text else { return }
+        getSearchResults(searchText: searchText)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //UI elements
+        navigationItem.setRightBarButton(nil, animated: false)
+        searchBar.setShowsCancelButton(true, animated: false)
+        searchResultsTableView.isHidden = false
+        filterBar.snp.remakeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
+        //Preparing filter viewcontroller
+        addChildViewController(popupViewController)
+        view.addSubview(popupViewController.view)
+        isModal = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    //Search functionality
+    private func searchBarIsEmpty() -> Bool {
+        return searchBar.text?.isEmpty ?? true
+    }
+    
+    private func getSearchResults(searchText: String) -> () {
+        let lowercase = searchText.lowercased()
+        self.searchResult = self.allData.filter({ (data) -> Bool in
+            switch data {
+            case let data as Building:
+                return data.name.lowercased().contains(lowercase)
+            case let data as Event:
+                return data.name.lowercased().contains(searchText) || data.description.lowercased().contains(searchText)
+            default:
+                return false
+            }
+        })
     }
 }
