@@ -3,7 +3,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
-        let searchVC = SearchViewController()
+        let searchVC = FeaturedViewController()
         let poiMapVC = POIMapViewController()
         searchVC.tabBarItem = UITabBarItem.feedItem
         poiMapVC.tabBarItem = UITabBarItem.poiMapItem
