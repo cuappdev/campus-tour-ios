@@ -20,7 +20,7 @@ let testEvents: [Event] = Array(
          location: nil,
          college: nil,
          type: nil,
-         tags: [EventTag(id: "CUAPPDEV123", label: "General")]),
+         tags: [EventTag(id: "4432D6B5-9DAA-484F-1BA06B88A600DD13", label: "A&S"), EventTag(id: "4451C683-00C9-86AE-6FAAAC051F27BA11", label: "Tour")]),
     count: 3)
 
 let testPlaces: [Building] = Array(

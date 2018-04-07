@@ -98,7 +98,7 @@ enum College: String {
     case ilr = "ILR"
     case cals = "CALS"
     case hotel = "Hotel Administration"
-    case aap = "Arts, Architecture, and Planning"
+    case aap = "Architecture, Art, and Planning"
     case humanecology = "Human Ecology"
     case jcbdyson = "JCB Dyson School"
     case jcbhotel = "JCB Hotel School"

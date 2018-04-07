@@ -9,34 +9,41 @@
 import UIKit
 import SnapKit
 
+struct FilterBarCurrentStatus {
+    var generalSelected: String
+    var dateSelected: String
+    
+    init(_ gs: String = "General", _ ds: String = "Today") {
+        generalSelected = gs
+        dateSelected = ds
+    }
+}
+
 enum Filter: String {
-    case sort = "Sort"
-    case college = "College"
-    case food = "Food"
-    case event = "Event"
-    case tour = "Tour"
+    case general = "General"
+    case date = "Today"
 }
 
 fileprivate let filters: [Filter] = [
-    .sort,
-    .college,
-    .food,
-    .event,
-    .tour,
+    .general,
+    .date,
 ]
 
 class FilterBar: UIView {
     
     var scrollView: UIScrollView!
     var selectedFilters = [Filter]()
-    private var buttons = [UIButton]()
-    private let padding: CGFloat = 8.0
+    var buttons = [UIButton]()
+    var bViews = [UIView]()
+    private let padding = CGFloat(8)
+    var delegate: FilterFunctionsDelegate?
+    var filterBarCurrentStatus: FilterBarCurrentStatus = FilterBarCurrentStatus()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         scrollView = UIScrollView()
         scrollView.backgroundColor = Colors.offwhite
-        scrollView.alwaysBounceHorizontal = true
+        scrollView.alwaysBounceHorizontal = false
         scrollView.showsHorizontalScrollIndicator = false
         addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
@@ -49,22 +56,25 @@ class FilterBar: UIView {
     func addFilterButton() {
         for (index, filter) in filters.enumerated() {
             let button = UIButton()
-            button.setTitle(filter.rawValue, for: .normal)
             
+            button.setTitle(filter.rawValue, for: .normal)
+
             button.setTitleColor(.white, for: .normal)
             button.setTitleColor(Colors.brand, for: .highlighted)
-            
-            //Change this so that it changes on selected
+
+//            Change this so that it changes on selected
             button.backgroundColor = Colors.brand
+            
+            //TODO : Add white arrow :: harder than it seems
             
             button.layer.cornerRadius = 4.0
             button.clipsToBounds = true
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-            button.sizeToFit()
             button.translatesAutoresizingMaskIntoConstraints = false
             button.tag = index
-            button.contentEdgeInsets = UIEdgeInsetsMake(0, padding*2, 0, padding*2)
-            
+            button.contentEdgeInsets = UIEdgeInsetsMake(0, padding, 0, padding)
+            button.contentHorizontalAlignment = .left
+            button.sizeToFit()
             button.addTarget(self, action: #selector(filterSelected(sender:)), for: .touchUpInside)
             
             scrollView.addSubview(button)
@@ -88,24 +98,25 @@ class FilterBar: UIView {
     
     @objc func filterSelected(sender: UIButton) {
         let selectedFilter = filters[sender.tag]
+        var filterMode: Filter
+        filterBarCurrentStatus.generalSelected = (buttons.first?.title(for: .normal))!
+        filterBarCurrentStatus.dateSelected = (buttons.last?.title(for: .normal))!
         switch selectedFilter {
-        case .sort:
-            openModalFilterView(type: selectedFilter.rawValue)
-        case .college:
-            openModalFilterView(type: selectedFilter.rawValue)
-        default:
-            if self.selectedFilters.contains(selectedFilter) {
-                self.selectedFilters = self.selectedFilters.filter{$0 != selectedFilter}
-            } else {
-                self.selectedFilters.append(selectedFilter)
-            }
+        case .general:
+            filterMode = .general
+        case .date:
+            filterMode = .date
         }
-        print("button")
+        let filterBarCenterX = sender.center.x
+        
+        let popupData = PopupData(filterBarStatus: filterBarCurrentStatus, filterMode: filterMode, filterBarLocationCenterX: filterBarCenterX)
+        
+        delegate?.openPopupView(popupData)
     }
-    
-    func openModalFilterView(type: String) {
-        //Functionality for adding modal filter view
-    }
+}
+
+protocol FilterFunctionsDelegate {
+    func openPopupView(_ type: PopupData) -> ()
 }
 
 protocol UpdateFilterProtocol {

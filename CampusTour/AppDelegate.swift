@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window?.rootViewController = MainTabBarController()
-//        window?.rootViewController = UINavigationController(rootViewController: TopNavBarTempVC())
         window?.makeKeyAndVisible()
         
         return true
