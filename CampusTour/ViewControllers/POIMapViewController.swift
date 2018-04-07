@@ -16,19 +16,12 @@ class POIMapViewController: UIViewController {
     }
     
     var pois: [POI] = []
+    var events: [Event] = []
     
     convenience init(pois: [POI]) {
         self.init()
         self.pois = pois
     }
-    
-    private var spec = ItemFeedSpec(sections: [
-        .items(
-            headerInfo: nil,
-            items: testEvents,
-            layout: .event
-        )
-    ])
     
     var markers: [String:GMSMarker] = [:]
     var selectedEvent: Event?
@@ -41,6 +34,10 @@ class POIMapViewController: UIViewController {
     var popupView = UIView()
     var popupTableView: UITableView?
     var tabBarHeight: CGFloat = 49
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     override func loadView() {
         // TODO: Uncomment when testing on campus
@@ -62,7 +59,14 @@ class POIMapViewController: UIViewController {
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPos)
         mapView.delegate = self
         
-        testEvents.forEach { event in
+        showEventMarkers()
+    }
+    
+    func showEventMarkers() {
+        // TODO: show only events for today
+        events = Array(DataManager.sharedInstance.events.prefix(upTo: 5))
+        
+        events.forEach { event in
             let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(event.location.lat), longitude: CLLocationDegrees(event.location.lng))
             let marker = GMSMarker(position: location)
             marker.userData = event
@@ -70,10 +74,6 @@ class POIMapViewController: UIViewController {
             marker.map = mapView
             markers[event.id] = marker
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     // MARK: Popup View Functions
@@ -255,18 +255,15 @@ extension POIMapViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch spec.sections[indexPath.section] {
-        case .items(_, let items, _):
-            let item = items[indexPath.row]
-            let detailVC: DetailViewController = {
-                let vc = DetailViewController()
-                vc.event = item as! Event
-                vc.title = item.toItemFeedModelInfo().title
-                return vc
-            }()
-            navigationController?.pushViewController(detailVC, animated: true)
-        default: return
-        }
+        
+        let detailVC: DetailViewController = {
+            let vc = DetailViewController()
+            vc.event = selectedEvent
+            vc.title = selectedEvent!.name
+            return vc
+        }()
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }

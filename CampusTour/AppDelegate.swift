@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window?.tintColor = Colors.brand
-        window?.rootViewController = MainTabBarController()
+        window?.rootViewController = DataLoadingViewController()
         window?.makeKeyAndVisible()
         
         return true

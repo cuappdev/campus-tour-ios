@@ -43,6 +43,7 @@
 		D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */; };
 		D14A2C1F2078A3FD00B0CA96 /* RPCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C1E2078A3FD00B0CA96 /* RPCircularProgress.swift */; };
 		D14A2C212078A43900B0CA96 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C202078A43900B0CA96 /* LoadingIndicator.swift */; };
+		D14A2C252078C29300B0CA96 /* DataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C242078C29300B0CA96 /* DataLoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
 		D14A2C1E2078A3FD00B0CA96 /* RPCircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCircularProgress.swift; sourceTree = "<group>"; };
 		D14A2C202078A43900B0CA96 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		D14A2C242078C29300B0CA96 /* DataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */,
 				CC10D019204C8DD2009B7808 /* POIMapViewController.swift */,
 				0CBFF74D2076D31300FAF047 /* PopupViewController.swift */,
+				D14A2C242078C29300B0CA96 /* DataLoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				0CBFF74E2076D31300FAF047 /* PopupViewController.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
 				0CBFF351205E394500F7AEDB /* SearchViewController.swift in Sources */,
+				D14A2C252078C29300B0CA96 /* DataLoadingViewController.swift in Sources */,
 				0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

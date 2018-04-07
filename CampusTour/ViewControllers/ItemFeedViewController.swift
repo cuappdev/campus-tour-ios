@@ -18,7 +18,19 @@ class ItemFeedViewController: UIViewController {
     var currentlySearching: Bool = false
     var events: [Event] = []
     
-    private var spec = ItemFeedSpec(sections: [])
+    private var spec = ItemFeedSpec(sections: [
+        .map,
+        .items(
+            headerInfo: (title: "Explore", subtitle: "EVENTS"),
+            items: DataManager.sharedInstance.events,
+            layout: .event
+        ),
+        .items(
+            headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
+            items: testPlaces,
+            layout: .place
+        )
+    ])
     
     private var tableView: UITableView {
         return self.view as! UITableView
@@ -48,55 +60,8 @@ class ItemFeedViewController: UIViewController {
         tableView.register(MapTableViewCell.self, forCellReuseIdentifier: MapTableViewCell.reuseId)
         
         setupEmptyDataSet()
-        loadData { (success) in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.currentlySearching = false
-                }
-            }
-        }
     }
     
-    func loadData(completion: @escaping ((_ success: Bool) -> Void)) {
-        currentlySearching = true
-        
-        DataManager.sharedInstance.getEvents { (success) in
-            if success {
-                self.events = DataManager.sharedInstance.events
-                print("Loaded \(self.events.count) events")
-                
-                self.spec.sections.append(.map)
-                self.spec.sections.append(.items(
-                    headerInfo: (title: "Explore", subtitle: "EVENTS"),
-                    items: self.events,
-                    layout: .event
-                ))
-                self.spec.sections.append(.items(
-                    headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-                    items: testPlaces,
-                    layout: .place
-                ))
-                
-                let date = self.events[0].startTime
-                let calendar = Calendar.current
-                
-                let hour = calendar.component(.hour, from: date)
-                let minutes = calendar.component(.minute, from: date)
-                let seconds = calendar.component(.second, from: date)
-                print("hours = \(hour):\(minutes):\(seconds)")
-                
-  
-                completion(true)
-            } else {
-                let alertController = UIAlertController(title: "Uh oh!", message: "We're unable to fetch events & places at this time.", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-                
-                completion(false)
-            }
-        }
-    }
 }
 
 extension ItemFeedViewController: UITableViewDataSource {
