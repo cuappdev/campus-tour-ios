@@ -108,7 +108,9 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
             isModal = false
             self.filterBar.buttons.first?.setTitle(self.filterBarCurrentStatus.generalSelected, for: .normal)
             self.filterBar.buttons.last?.setTitle(self.filterBarCurrentStatus.dateSelected, for: .normal)
+            self.filterBar.updateButtons()
             searchManager.searchBar.becomeFirstResponder() //TODO encapsulate in searchManager
+            searchBar.becomeFirstResponder()
             return
         }
         popupViewController.resetVariables(status: filterBarCurrentStatus, filterMode: data.filterMode)
@@ -184,6 +186,11 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
+        popupViewController.removeFromParentViewController()
+        isModal = false
+        filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
+        filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+        filterBar.updateButtons()
     }
     
     func didFindSearchResults(results: ItemFeedSpec) {

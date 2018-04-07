@@ -60,12 +60,9 @@ class FilterBar: UIView {
 
             button.setTitleColor(.white, for: .normal)
             button.setTitleColor(Colors.brand, for: .highlighted)
-
-//            Change this so that it changes on selected
-            button.backgroundColor = Colors.brand
             
+//            button.backgroundColor = Colors.brand
             //TODO : Add white arrow :: harder than it seems
-            
             button.layer.cornerRadius = 4.0
             button.clipsToBounds = true
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
@@ -73,12 +70,18 @@ class FilterBar: UIView {
             button.tag = index
             button.contentEdgeInsets = UIEdgeInsetsMake(0, padding, 0, padding)
             button.contentHorizontalAlignment = .left
-            button.sizeToFit()
             button.addTarget(self, action: #selector(filterSelected(sender:)), for: .touchUpInside)
+            button.sizeToFit()
             
             scrollView.addSubview(button)
             buttons.append(button)
-            button.snp.makeConstraints({ (make) in
+        }
+        updateButtons()
+    }
+    
+    func updateButtons() {
+        for (index, button) in self.buttons.enumerated() {
+            button.snp.updateConstraints({ (make) in
                 if index == 0 {
                     make.leading.equalToSuperview().offset(padding)
                 } else {
@@ -88,6 +91,11 @@ class FilterBar: UIView {
                 make.bottom.equalToSuperview().offset(padding)
                 make.height.equalTo(28)
             })
+            button.imageView?.contentMode = .scaleToFill
+            button.setBackgroundImage(nil, for: .normal)
+            button.setBackgroundImage(nil, for: .highlighted)
+            button.setBackgroundImage(UIImage().getImageWithColor(color: Colors.brand, size: button.frame.size), for: .normal)
+            button.setBackgroundImage(UIImage().getImageWithColor(color: Colors.tertiary, size: button.frame.size), for: .highlighted)
         }
     }
     
@@ -118,6 +126,14 @@ protocol FilterFunctionsDelegate {
     func openPopupView(_ type: PopupData) -> ()
 }
 
-protocol UpdateFilterProtocol {
-    func updateFilter()
+extension UIImage {
+    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 10, height: 10)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
 }
