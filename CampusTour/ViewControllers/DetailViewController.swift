@@ -186,8 +186,7 @@ class DetailViewController: UIViewController {
         mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         let time = DateHelper.getFormattedTime(startTime: event.startTime, endTime: event.endTime)
-        var loc = ""
-        if let unwrappedlocation = event.location { loc = unwrappedlocation.name }
+        let loc = event.location.name
         dateLocationLabel.text = "\(time) · \(loc)"
         dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)

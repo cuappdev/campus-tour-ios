@@ -8,65 +8,169 @@
 
 import UIKit
 
+enum LocationMarkerType {
+    case event
+    case place
+}
+
 class LocationMarker: UIView {
     
-    var eventLabel: UILabel!
-    var circleView: UIView!
-    var circleViewDiameter: CGFloat!
-    var triangleLength: CGFloat!
-    var fontSize: CGFloat!
+    let circleViewDiameter: CGFloat = 35
     
-    init(circleViewDiameter: CGFloat = 35, triangleLength: CGFloat = 0.2, fontSize: CGFloat = 11) {
+    var circleView: UIView!
+    var isSelected: Bool = false
+    var markerType: LocationMarkerType!
+    var markerFrame: CGRect!
+    
+    init(markerType: LocationMarkerType) {
         super.init(frame: CGRect(x: 0, y: 0, width: circleViewDiameter, height: 1.5 * circleViewDiameter))
         
-        self.circleViewDiameter = circleViewDiameter
-        self.triangleLength = triangleLength
-        self.fontSize = fontSize
-        
-        let markerFrame = CGRect(x: 0, y: 0, width: circleViewDiameter, height: circleViewDiameter)
+        self.markerType = markerType
+
+        markerFrame = CGRect(x: 0, y: 0, width: circleViewDiameter, height: circleViewDiameter)
         backgroundColor = .clear
-        
-        // Marker Circle
-        circleView = UIView(frame: markerFrame)
-        circleView.backgroundColor = Colors.brand
-        circleView.layer.cornerRadius = circleView.frame.height / 2.0
-        circleView.layer.masksToBounds = true
-        addSubview(circleView)
-        
-        // Event number label
-        eventLabel = UILabel(frame: markerFrame)
-        eventLabel.font = UIFont(name: "SFUIDisplay-Semibold", size: fontSize)
-        eventLabel.textAlignment = .center
-        eventLabel.textColor = .white
-        eventLabel.numberOfLines = 0
-        circleView.addSubview(eventLabel)
-        
-        // Marker triangle
-        let triangle = drawTriangle()
-        layer.addSublayer(triangle)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    internal func drawTriangle() -> CAShapeLayer {
-        let desiredLineWidth: CGFloat = 5
+    override func draw(_ rect: CGRect) {
+        drawRedMarker()
+    }
+    
+    internal func drawRedMarker() {
+        // Marker Circle
+        circleView = UIView(frame: markerFrame)
+        circleView.backgroundColor = Colors.brand
+        circleView.layer.cornerRadius = circleView.frame.height / 2.0
+        circleView.layer.masksToBounds = true
+        circleView.layer.zPosition = 1
+        addSubview(circleView)
+
+        // Marker triangle
+        let triangle = drawTriangle(inner: false)
+        triangle.zPosition = 0
+        layer.addSublayer(triangle)
+    }
+    
+    internal func drawTriangle(inner: Bool) -> CAShapeLayer {
+        let desiredLineWidth: CGFloat = inner ? 3 : 5
+        let triangleLength: CGFloat = inner ? 0.15 : 0.2
+        let color = inner ? UIColor.white.cgColor : Colors.brand.cgColor
+        let offset: CGFloat = inner ? 1.5 : 0
         
         let trianglePath = UIBezierPath()
-        let triangleBottom = circleView.frame.midY + circleViewDiameter / 4
+        let triangleBottom = circleView.frame.midY + (circleViewDiameter / 4)
         trianglePath.move(to: CGPoint(x: frame.midX - (triangleLength * circleViewDiameter), y: triangleBottom))
         trianglePath.addLine(to: CGPoint(x: frame.midX + (triangleLength * circleViewDiameter), y: triangleBottom))
-        trianglePath.addLine(to: CGPoint(x: frame.midX , y: circleView.frame.midY + (0.55 * circleViewDiameter)))
+        trianglePath.addLine(to: CGPoint(x: frame.midX , y: circleView.frame.midY + (0.55 * circleViewDiameter) - offset))
         trianglePath.close()
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = trianglePath.cgPath
-        shapeLayer.fillColor = Colors.brand.cgColor
-        shapeLayer.strokeColor = Colors.brand.cgColor
+        shapeLayer.fillColor = color
+        shapeLayer.strokeColor = color
         shapeLayer.lineWidth = desiredLineWidth
         
         return shapeLayer
+    }
+    
+    internal func drawCircle(diameter: CGFloat, color: CGColor) -> CAShapeLayer {
+        let circlePath = UIBezierPath(
+            arcCenter: CGPoint(x: circleView.frame.midX, y: circleView.frame.midY),
+            radius: CGFloat(diameter / 2.0),
+            startAngle: CGFloat(0),
+            endAngle: CGFloat(Double.pi * 2),
+            clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.cgPath
+        shapeLayer.fillColor = color
+        shapeLayer.strokeColor = color
+        shapeLayer.lineWidth = 1
+        
+        return shapeLayer
+    }
+    
+}
+
+class EventMarker: LocationMarker {
+    
+    var innerWhiteCircle = CAShapeLayer()
+    var innerTriangle = CAShapeLayer()
+    var eventLabel = UILabel()
+    
+    init() {
+        super.init(markerType: .event)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        innerWhiteCircle = drawCircle(diameter: 30, color: UIColor.white.cgColor)
+        innerTriangle = drawTriangle(inner: true)
+        
+        innerWhiteCircle.zPosition = 2
+        innerTriangle.zPosition = 3
+        
+        circleView.layer.addSublayer(innerWhiteCircle)
+        layer.addSublayer(innerTriangle)
+        drawEventLabel(selected: isSelected)
+        
+        setSelected(selected: false)
+    }
+    
+    internal func drawEventLabel(selected: Bool) {
+        // Event number label
+        eventLabel = UILabel(frame: markerFrame)
+        eventLabel.font = UIFont(name: "SFUIDisplay-Heavy", size: 11)
+        eventLabel.textAlignment = .center
+        eventLabel.textColor = selected ? Colors.brand : .white
+        eventLabel.numberOfLines = 0
+        eventLabel.layer.zPosition = 4
+        eventLabel.text = "1"
+        circleView.addSubview(eventLabel)
+    }
+    
+    internal func setSelected(selected: Bool) {
+        self.isSelected = selected
+        
+        innerWhiteCircle.isHidden = !selected
+        innerTriangle.isHidden = !selected
+        eventLabel.textColor = selected ? Colors.brand : .white
+    }
+    
+}
+
+class PlaceMarker: LocationMarker {
+    
+    init() {
+        super.init(markerType: .place)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        let innerWhiteCircle = drawCircle(diameter: 30, color: UIColor.white.cgColor)
+        let innerRedCircle = drawCircle(diameter: 12, color: Colors.brand.cgColor)
+        let innerTriangle = drawTriangle(inner: true)
+        
+        innerWhiteCircle.zPosition = 2
+        innerRedCircle.zPosition = 3
+        innerTriangle.zPosition = 4
+        
+        circleView.layer.addSublayer(innerWhiteCircle)
+        circleView.layer.addSublayer(innerRedCircle)
+        layer.addSublayer(innerTriangle)
     }
     
 }
