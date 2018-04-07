@@ -1,9 +1,29 @@
 //
 //  LoadingIndicator.swift
-//  CampusTour
+//  LoadingIndicator
 //
-//  Created by Annie Cheng on 4/7/18.
-//  Copyright © 2018 cuappdev. All rights reserved.
+//  Created by Rob Phillips on 11/8/17.
+//  Copyright © 201 cuappdev. All rights reserved.
+//
+//  See LICENSE for full license agreement.
 //
 
-import Foundation
+import UIKit
+
+class LoadingIndicator: RPCircularProgress {
+    
+    required init() {
+        super.init()
+        
+        enableIndeterminate()
+        trackTintColor = Colors.tertiary
+        progressTintColor = Colors.brand
+        thicknessRatio = 0.25
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+}
+

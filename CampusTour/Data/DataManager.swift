@@ -27,7 +27,7 @@ public class DataManager {
     private (set) public var times: [String] = []
     
     // Get a list of composite events
-    public func getCompositeEvents(completion: @escaping ((_ success: Bool) -> Void)) {
+    public func getEvents(completion: @escaping ((_ success: Bool) -> Void)) {
         let eventsUrlString = "https://schedule.cornelldays.cornell.edu/api/itin/cornelldays/events/"
         guard let url = URL(string: eventsUrlString) else { return }
         
@@ -37,6 +37,7 @@ public class DataManager {
             do {
                 let compEvents = try JSONDecoder().decode(CompositeEvents.self, from: data)
                 self.compositeEvents = compEvents.events
+                self.setEvents(compEvents: self.compositeEvents)
                 completion(true)
             } catch let error {
                 print("JSON Serialization Error: ", error)
@@ -46,7 +47,7 @@ public class DataManager {
     }
     
     // Get a list of individual events
-    public func getEvents(compEvents: [CompositeEvent]) {
+    public func setEvents(compEvents: [CompositeEvent]) {
         var singleEvents: [Event] = []
         var uniqueTimes: Set<String> = []
         
