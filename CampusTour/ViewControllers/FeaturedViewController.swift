@@ -37,6 +37,8 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        extendedLayoutIncludesOpaqueBars = true
+        
         self.definesPresentationContext = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -155,8 +157,8 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
+        print("START search")
         self.navigationItem.setRightBarButton(nil, animated: false)
-        
 
         //Prepare filter viewcontroller
         addChildViewController(popupViewController)
@@ -189,14 +191,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     }
     
     func didEndSearchMode() {
-        self.navigationItem.setRightBarButton(arButton, animated: false)
-        self.itemFeedViewController.updateItems(newSpec: ItemFeedSpec.testItemFeedSpec)
-
-        //remove filter viewcontroller
-        popupViewController.removeFromParentViewController()
-        isModal = false
-        filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
-        filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+        print("END search")
 
         //remove filter bar
         self.filterBar.snp.remakeConstraints { make in
@@ -212,5 +207,14 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             withDuration: 0.5,
             animations: {self.view.layoutIfNeeded()},
             completion: {_ in self.filterBar.isHidden = true})
+        
+        //remove popup viewcontroller
+        popupViewController.removeFromParentViewController()
+        isModal = false
+        filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
+        filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+        
+        self.navigationItem.setRightBarButton(arButton, animated: false)
+        self.itemFeedViewController.updateItems(newSpec: ItemFeedSpec.testItemFeedSpec)
     }
 }

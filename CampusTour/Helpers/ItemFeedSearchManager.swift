@@ -48,17 +48,14 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         }
     }
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        delgate?.didStartSearchMode()
-        return true
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.placeholder = "Search"
         searchBar.endEditing(true)
         searchBar.setShowsCancelButton(false, animated: false)
+        searchBar.text = ""
         
+        self.searchIsActive = false
         self.delgate?.didEndSearchMode()
     }
     
@@ -95,15 +92,6 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("didEndEditing")
-        searchBar.resignFirstResponder()
-        searchBar.placeholder = "Search"
-        searchBar.endEditing(true)
-        self.searchIsActive = false
-        delgate?.didEndSearchMode()
     }
 }
 
