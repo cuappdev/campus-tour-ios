@@ -106,20 +106,10 @@ public class DataManager {
         }.resume()
     }
     
-    /// fullLocationName may contain not just the building but also the room
     func getClosestLocation(withFullName fullLocationName: String) -> Location? {
-        
-        if let location = (locations.first { loc in fullLocationName.contains(loc.name)}?.with(name: fullLocationName) ) {
-            return location
-        }
-        
-        //TODO make this more robust
-        var result: Location? = nil
-        if fullLocationName.contains("Statler Hotel") {
-            result = locations.first {loc in loc.name.contains("Statler Hotel")}
-        } else if fullLocationName.contains("Schwartz Center for the Performing Arts") {
-            result = locations.first {loc in loc.name.contains("Schwartz Center")}
-        } else if fullLocationName.contains("Baker Lab") {
+        //look for locations that don't perfectly match
+        var result: Location?
+        if fullLocationName.contains("Baker Lab") {
             result = locations.first {loc in loc.name.contains("Baker Lab")}
         } else if fullLocationName.contains("Tatkon Center") {
             // tatkon center doesn't seem to be in cornell days' list of locations
@@ -129,18 +119,44 @@ public class DataManager {
                 lng: -76.479394)
         } else if fullLocationName.contains("Marketplace Eatery") {
             result = locations.first {loc in loc.name.contains("Robert Purcell Community Center")}
-        } else if fullLocationName.contains("Sibley Dome") {
-            result = locations.first {loc in loc.name.contains("Sibley")}
-        } else if fullLocationName.contains("Tjaden Hall") {
-            result = locations.first {loc in loc.name.contains("Tjaden Hall")}
-        } else if fullLocationName.contains("Plant Sciences Building") {
-            result = locations.first {loc in loc.name.contains("Plant Science Building")}
-        } else if fullLocationName.contains("Appel Commons") {
-            result = locations.first {loc in loc.name.contains("Appel Commons")}
+        }
+        if result != nil {
+            return result?.with(name: fullLocationName)
         }
         
-        return result?.with(name:fullLocationName)
+        var similarityInfo = locations.map {
+            (similarWords: similarWords(a: $0.name, b: fullLocationName),
+             location: $0.with(name: $0.name + " " + fullLocationName))
+        }
+        
+        similarityInfo.sort { a, b in
+            a.similarWords < b.similarWords
+        }
+        
+        return similarityInfo.last?.location
     }
+
+}
+
+private func similarWords(a: String, b: String) -> Int {
+    func tokenize(str: String) -> [String] {
+        return str
+            .components(separatedBy: [" ", ","])
+            .filter {!$0.isEmpty}
+    }
+    
+    let aWords = tokenize(str: a)
+    let bWords = tokenize(str: b)
+    
+    var commonWords = 0
+    for word in aWords {
+        if bWords.contains(word) {
+            commonWords += 1
+            continue
+        }
+    }
+    
+    return commonWords
 }
 
 //maybe bring in AwaitKit instead of this
