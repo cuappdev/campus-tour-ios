@@ -71,13 +71,14 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
-        searchManager.delgate = self
+        searchManager.delegate = self
         searchManager.allData = testEvents as [Any] + testPlaces as [Any]
         
         arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
         navigationItem.setRightBarButton(arButton, animated: false)
         
         filterBar = FilterBar()
+        filterBar.delegate = self
         filterBar.backgroundColor = navigationController?.navigationBar.barTintColor
         view.addSubview(filterBar)
         filterBar.snp.makeConstraints { (make) in

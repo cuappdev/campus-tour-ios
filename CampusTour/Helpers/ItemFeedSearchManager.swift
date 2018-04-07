@@ -15,7 +15,7 @@ protocol ItemFeedSearchManagerDelegate: class {
 }
 
 class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
-    weak var delgate: ItemFeedSearchManagerDelegate?
+    weak var delegate: ItemFeedSearchManagerDelegate?
     
     var allData = [Any]()
     var searchBar: UISearchBar
@@ -56,7 +56,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         searchBar.text = ""
         
         self.searchIsActive = false
-        self.delgate?.didEndSearchMode()
+        self.delegate?.didEndSearchMode()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -64,7 +64,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         searchBar.setShowsCancelButton(true, animated: false)
         
         self.searchIsActive = true
-        delgate?.didStartSearchMode()
+        delegate?.didStartSearchMode()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -87,7 +87,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
                 headerInfo: nil,
                 items: filteredItems)
             ])
-        self.delgate?.didFindSearchResults(results: itemFeedSpec)
+        self.delegate?.didFindSearchResults(results: itemFeedSpec)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
