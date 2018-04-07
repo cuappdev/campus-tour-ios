@@ -10,9 +10,9 @@ extension Event: ItemCellModelInfoConvertible {
             title: self.name,
             dateRange: (self.startTime, self.endTime),
             description: self.description,
-            locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
+            locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: self.location.name,
                                                                            distanceString: "x mi away") ,
-            tags: ["tag1", "tag2"], //TODO add tags to data
+            tags: self.tags.map { $0.label },
             imageUrl: URL(string: "https://picsum.photos/150/150/?random")!,
             layout: .event
         )

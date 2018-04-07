@@ -8,12 +8,27 @@
 
 import UIKit
 import GoogleMaps
+import DZNEmptyDataSet
 
 let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
 class ItemFeedViewController: UIViewController {
     
-    private var spec = ItemFeedSpec.testItemFeedSpec
+    var loadingIndicator: UIView!
+    var currentlySearching: Bool = false
+    var events: [Event] = []
+    
+    private var spec = ItemFeedSpec(sections: [
+        .map,
+        .items(
+            headerInfo: (title: "Explore", subtitle: "EVENTS"),
+            items: DataManager.sharedInstance.events
+        ),
+        .items(
+            headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
+            items: testPlaces
+        )
+    ])
     
     private var tableView: UITableView {
         return self.view as! UITableView
@@ -41,7 +56,10 @@ class ItemFeedViewController: UIViewController {
         tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
         tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdPlace)
         tableView.register(MapTableViewCell.self, forCellReuseIdentifier: MapTableViewCell.reuseId)
+        
+        setupEmptyDataSet()
     }
+    
 }
 
 extension ItemFeedViewController: UITableViewDataSource {
@@ -155,6 +173,54 @@ extension ItemFeedViewController: UITableViewDelegate {
         case .items(_):
             return UITableViewAutomaticDimension
         }
+    }
+    
+}
+
+extension ItemFeedViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    private func setupEmptyDataSet() {
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        tableView.contentOffset = .zero
+    }
+    
+    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
+        
+        let customView = UIView()
+        var symbolView = UIView()
+        
+        if currentlySearching {
+            symbolView = LoadingIndicator()
+        }  else {
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "road"))
+            imageView.contentMode = .scaleAspectFit
+            symbolView = imageView
+        }
+        
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont.systemFont(ofSize: 14.0)
+        titleLabel.textColor = Colors.tertiary
+        titleLabel.text = currentlySearching ? "Loading events and places..." : "Oops, there are no events or places that match your search!"
+        titleLabel.sizeToFit()
+        
+        customView.addSubview(symbolView)
+        customView.addSubview(titleLabel)
+        
+        symbolView.snp.makeConstraints{ (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(currentlySearching ? -20 : -22.5)
+            make.width.equalTo(currentlySearching ? 40 : 45)
+            make.height.equalTo(currentlySearching ? 40 : 45)
+        }
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(symbolView.snp.bottom).offset(10)
+            make.centerX.equalTo(symbolView.snp.centerX)
+        }
+        
+        return customView
     }
     
 }

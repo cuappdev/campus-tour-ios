@@ -42,6 +42,9 @@
 		CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */; };
 		CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */; };
 		D14A2C1D2076A22F00B0CA96 /* LocationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */; };
+		D14A2C1F2078A3FD00B0CA96 /* RPCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C1E2078A3FD00B0CA96 /* RPCircularProgress.swift */; };
+		D14A2C212078A43900B0CA96 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C202078A43900B0CA96 /* LoadingIndicator.swift */; };
+		D14A2C252078C29300B0CA96 /* DataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14A2C242078C29300B0CA96 /* DataLoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,9 @@
 		CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelpers.swift; sourceTree = "<group>"; };
 		D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMarker.swift; sourceTree = "<group>"; };
+		D14A2C1E2078A3FD00B0CA96 /* RPCircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCircularProgress.swift; sourceTree = "<group>"; };
+		D14A2C202078A43900B0CA96 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		D14A2C242078C29300B0CA96 /* DataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 				CCE0A4EB2051AD860083BAE7 /* MainTabBarController.swift */,
 				CC10D019204C8DD2009B7808 /* POIMapViewController.swift */,
 				0CBFF74D2076D31300FAF047 /* PopupViewController.swift */,
+				D14A2C242078C29300B0CA96 /* DataLoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +234,8 @@
 				0C6398432077AB990080E71B /* PopupViewHelpers.swift */,
 				CC6F88F820630FCD00D14711 /* TextAndColorHelpers.swift */,
 				CC64244F2072C3D2004FEAD0 /* UI */,
+				D14A2C1E2078A3FD00B0CA96 /* RPCircularProgress.swift */,
+				D14A2C202078A43900B0CA96 /* LoadingIndicator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CampusTour/Pods-CampusTour-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -355,6 +365,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -371,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14A2C1F2078A3FD00B0CA96 /* RPCircularProgress.swift in Sources */,
 				CCE0A4EA204F3D360083BAE7 /* LocationProvider.swift in Sources */,
 				CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */,
 				CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */,
@@ -382,6 +394,7 @@
 				CCC583D5207867AC009538A1 /* FilterBarHelpers.swift in Sources */,
 				0CBFF7542076D8BB00FAF047 /* ParseTag.swift in Sources */,
 				CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */,
+				D14A2C212078A43900B0CA96 /* LoadingIndicator.swift in Sources */,
 				CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */,
 				CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */,
 				CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */,
@@ -401,6 +414,7 @@
 				0CBFF74E2076D31300FAF047 /* PopupViewController.swift in Sources */,
 				CCE0A4EF2051B3B10083BAE7 /* TabBarHelpers.swift in Sources */,
 				0CBFF351205E394500F7AEDB /* FeaturedViewController.swift in Sources */,
+				D14A2C252078C29300B0CA96 /* DataLoadingViewController.swift in Sources */,
 				0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
