@@ -4,7 +4,7 @@ import UIKit
 func campusTourNavigationViewController(root: UIViewController) -> UINavigationController {
     let nvc = UINavigationController(rootViewController: root)
     nvc.navigationBar.isTranslucent = false
-    nvc.navigationBar.barTintColor = Colors.opaqueShadow
+    nvc.navigationBar.barTintColor = Colors.paleGrey
     return nvc
 }
 

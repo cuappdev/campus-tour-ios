@@ -78,6 +78,7 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         navigationItem.setRightBarButton(arButton, animated: false)
         
         filterBar = FilterBar()
+        filterBar.backgroundColor = navigationController?.navigationBar.barTintColor
         view.addSubview(filterBar)
         filterBar.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
