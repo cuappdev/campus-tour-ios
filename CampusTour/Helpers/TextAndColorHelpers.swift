@@ -28,6 +28,7 @@ enum Colors {
 
 extension UILabel {
     static func label(text: String, color: UIColor = UIColor.black, font: UIFont = UIFont.systemFont(ofSize: 18)) -> UILabel {
+        Date().toString(dateFormat: "MMMM")
         let label = UILabel()
         label.text = text
         label.textColor = color

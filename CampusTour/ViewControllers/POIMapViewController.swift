@@ -25,8 +25,7 @@ class POIMapViewController: UIViewController {
     private var spec = ItemFeedSpec(sections: [
         .items(
             headerInfo: nil,
-            items: testEvents,
-            layout: .event
+            items: testEvents
         )
     ])
     
@@ -188,7 +187,7 @@ extension POIMapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseIdEvent) as! ItemOfInterestTableViewCell
-        cell.setCellModel(model: selectedEvent!.toItemFeedModelInfo(), layout: ItemOfInterestTableViewCell.Layout.event)
+        cell.setCellModel(model: selectedEvent!.toItemFeedModelInfo())
     
         return cell
     }
@@ -256,7 +255,7 @@ extension POIMapViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch spec.sections[indexPath.section] {
-        case .items(_, let items, _):
+        case .items(_, let items):
             let item = items[indexPath.row]
             let detailVC: DetailViewController = {
                 let vc = DetailViewController()
