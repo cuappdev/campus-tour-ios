@@ -43,6 +43,20 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        //init search manager
+        searchManager.delegate = self
+        searchManager.allData = ItemFeedSpec.getSharedDataSpec().sections
+            .reduce([]) { result, section in
+                switch section {
+                case .items(_, let items):
+                    return result + (items as [Any])
+                case .map:
+                    return result
+                }
+        }
+        
+        setItemFeedDefaultSpec()
+        
         popupViewController = PopupViewController()
         popupViewController.delegate = self
         
@@ -71,8 +85,6 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
-        searchManager.delegate = self
-        searchManager.allData = testEvents as [Any] + testPlaces as [Any]
         
         arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
         navigationItem.setRightBarButton(arButton, animated: false)
@@ -154,6 +166,10 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
         filterBarCurrentStatus = status
     }
+    
+    func setItemFeedDefaultSpec() {
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getSharedDataSpec())
+    }
 
 }
 
@@ -217,6 +233,6 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
         
         self.navigationItem.setRightBarButton(arButton, animated: false)
-        self.itemFeedViewController.updateItems(newSpec: ItemFeedSpec.testItemFeedSpec)
+        setItemFeedDefaultSpec()
     }
 }

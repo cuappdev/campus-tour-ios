@@ -18,17 +18,7 @@ class ItemFeedViewController: UIViewController {
     var currentlySearching: Bool = false
     var events: [Event] = []
     
-    private var spec = ItemFeedSpec(sections: [
-        .map,
-        .items(
-            headerInfo: (title: "Explore", subtitle: "EVENTS"),
-            items: DataManager.sharedInstance.events
-        ),
-        .items(
-            headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-            items: testPlaces
-        )
-    ])
+    private var spec = ItemFeedSpec(sections: [])
     
     private var tableView: UITableView {
         return self.view as! UITableView
@@ -194,7 +184,7 @@ extension ItemFeedViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         if currentlySearching {
             symbolView = LoadingIndicator()
         }  else {
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "road"))
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "Triangle copy 2-1")) //TODO temporary "road" asset replacement - remove this
             imageView.contentMode = .scaleAspectFit
             symbolView = imageView
         }

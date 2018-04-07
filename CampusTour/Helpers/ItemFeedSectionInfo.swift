@@ -62,4 +62,18 @@ struct ItemFeedSpec {
             items: testPlaces
         ),
         ])
+    
+    static func getSharedDataSpec() -> ItemFeedSpec {
+        return ItemFeedSpec(sections: [
+            .map,
+            .items(
+                headerInfo: (title: "Explore", subtitle: "EVENTS"),
+                items: DataManager.sharedInstance.events
+            ),
+            .items(
+                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
+                items: testPlaces
+            )
+        ])
+    }
 }
