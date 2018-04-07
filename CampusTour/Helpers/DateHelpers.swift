@@ -1,30 +1,35 @@
 import UIKit
 
 class DateHelper {
-    static func formatDateRange(startDate start: Date, endDate end: Date) -> String {
-        if start.isToday && end.isToday {
-            return (start.isNight ? "TONIGHT" : "TODAY") + " " +
-                start.string(custom: "HH:mm") + " " +
-                end.string(custom: "HH:mm")
-        }
-        return "\(start.string(custom: "MM-dd"))"
+    static func getDate(date: Date) -> String {
+        return "\(date.dayOfWeekStr), \(date.monthStr) \(date.dayStr)"
+    }
+    
+    static func getTime(date: Date) -> String {
+        return "\(date.hourStr):\(date.minuteStr)\(date.amPMStr)"
+    }
+    
+    // Assuming here that events don't span over multiple days
+    static func getLongDate(startDate start: Date, endDate end: Date) -> String {
+        let date = getFormattedDate(start)
+        let startTime = getTime(date: start)
+        let endTime = getTime(date: end)
+        
+        return "\(date) • \(startTime) – \(endTime)".uppercased()
     }
     
     static func getFormattedDate(_ date: Date) -> String {
-        if date.isToday && date.isToday {
+        if date.isToday {
             return (date.isNight ? "Tonight" : "Today")
         }
-        return "\(date.string(custom: "MM-dd"))"
+        return getDate(date: date)
     }
-    
-    static func getFormattedTime(startTime start: Date, endTime end: Date) -> String {
-        let startIsPM = start.hour > 12
-        let endIsPM = end.hour > 12
+
+    static func getStartEndTime(startTime start: Date, endTime end: Date) -> String {
+        let startTime = getTime(date: start)
+        let endTime = getTime(date: end)
         
-        let startFormatted = "\(startIsPM ? start.hour-12 : start.hour):\(start.minute) \(startIsPM ? "PM" : "AM")"
-        let endFormatted = "\(endIsPM ? end.hour-12 : end.hour):\(end.minute) \(endIsPM ? "PM" : "AM")"
-        
-        return "\(startFormatted) - \(endFormatted)"
+        return "\(startTime) - \(endTime)"
     }
     
     static func getFormattedMonthAndDay(_ date: Date) -> String {
@@ -32,11 +37,50 @@ class DateHelper {
     }
 }
 
+extension Formatter {
+    static let month: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM"
+        return formatter
+    }()
+    static let day: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d"
+        return formatter
+    }()
+    static let dayOfWeek: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E"
+        return formatter
+    }()
+    static let hour: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h"
+        return formatter
+    }()
+    static let minute: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "mm"
+        return formatter
+    }()
+    static let amPM: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a"
+        return formatter
+    }()
+}
+
 extension Date {
+    var monthStr: String       { return Formatter.month.string(from: self) }
+    var dayStr: String         { return Formatter.day.string(from: self) }
+    var dayOfWeekStr: String   { return Formatter.dayOfWeek.string(from: self) }
+    var hourStr:  String       { return Formatter.hour.string(from: self) }
+    var minuteStr: String      { return Formatter.minute.string(from: self) }
+    var amPMStr: String        { return Formatter.amPM.string(from: self) }
+    
     func toString(dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
-        dateFormatter.timeZone = NSTimeZone(name: "EST") as TimeZone!
         return dateFormatter.string(from: self)
     }
 }
@@ -45,7 +89,6 @@ extension String {
     func toDate(dateFormat: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
-        dateFormatter.timeZone = NSTimeZone(name: "EST") as TimeZone!
         return dateFormatter.date(from: self)!
     }
 }

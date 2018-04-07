@@ -177,7 +177,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         setUpViewsIfNecessary(layout: layout)
         
         if let dateRange = model.dateRange {
-            self.dateLabel?.text = DateHelper.formatDateRange(startDate: dateRange.0, endDate: dateRange.1)
+            self.dateLabel?.text = DateHelper.getLongDate(startDate: dateRange.0, endDate: dateRange.1)
         } else {
             self.dateLabel?.text = ""
         }
