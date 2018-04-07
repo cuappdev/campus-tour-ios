@@ -30,7 +30,7 @@ class POIMapViewController: UIViewController {
         )
     ])
     
-    var markers: [GMSMarker] = []
+    var markers: [String:GMSMarker] = [:]
     var selectedEvent: Event?
     
     // Popup
@@ -41,7 +41,6 @@ class POIMapViewController: UIViewController {
     var popupView = UIView()
     var popupTableView: UITableView?
     var tabBarHeight: CGFloat = 49
-    
     
     override func loadView() {
         // TODO: Uncomment when testing on campus
@@ -69,7 +68,7 @@ class POIMapViewController: UIViewController {
             marker.userData = event
             marker.iconView = EventMarker()
             marker.map = mapView
-            markers.append(marker)
+            markers[event.id] = marker
         }
     }
 
@@ -104,18 +103,35 @@ class POIMapViewController: UIViewController {
         view.addSubview(popupView)
     }
     
+    func animateMarker(marker: GMSMarker, select: Bool) {
+        let iconView = marker.iconView as! EventMarker
+        UIButton.animate(withDuration: 0.1, animations: {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            
+            iconView.setSelected(selected: select)
+            
+            CATransaction.commit()
+        })
+    }
+    
     func displayPopupView(event: Event) {
+        let marker: GMSMarker = markers[event.id]!
         selectedEvent = event
         createPopupView()
         
         UIView.animate(withDuration: 0.2, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             self.popupView.frame.origin.y = self.view.frame.height - self.tabBarHeight - self.popupHeight
+            self.animateMarker(marker: marker, select: true)
         }, completion: { _ in })
     }
     
     func dismissPopupView(newEvent: Event, fullyDismissed: Bool, completionHandler: @escaping (Bool) -> ()) {
+        let selectedMarker: GMSMarker = markers[selectedEvent!.id]!
+        
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
             self.popupView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.popupHeight)
+            self.animateMarker(marker: selectedMarker, select: false)
         }, completion: { finished in
             self.popupView.subviews.forEach({$0.removeFromSuperview()})
             self.popupView.removeFromSuperview()
