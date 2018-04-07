@@ -42,7 +42,6 @@ class FilterBar: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         scrollView = UIScrollView()
-        scrollView.backgroundColor = Colors.offwhite
         scrollView.alwaysBounceHorizontal = false
         scrollView.showsHorizontalScrollIndicator = false
         addSubview(scrollView)
