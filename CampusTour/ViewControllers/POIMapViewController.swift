@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 import GoogleMaps
 
 struct POI {
@@ -21,7 +22,26 @@ class POIMapViewController: UIViewController {
         self.pois = pois
     }
     
+    private var spec = ItemFeedSpec(sections: [
+        .items(
+            headerInfo: nil,
+            items: testEvents,
+            layout: .event
+        )
+    ])
+    
     var markers: [GMSMarker] = []
+    var selectedEvent: Event?
+    
+    // Popup
+    let popupHeight: CGFloat = 160
+    let headerHeight: CGFloat = 40
+    let edgePadding: CGFloat = 12
+    let buttonWidth: CGFloat = 15
+    var popupView = UIView()
+    var popupTableView: UITableView?
+    var tabBarHeight: CGFloat = 49
+    
     
     override func loadView() {
         // TODO: Uncomment when testing on campus
@@ -41,6 +61,7 @@ class POIMapViewController: UIViewController {
         // For testing: Cornell Store location
         let cameraPos = GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 12.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPos)
+        mapView.delegate = self
         
         testEvents.forEach { event in
             let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(event.location.lat), longitude: CLLocationDegrees(event.location.lng))
@@ -55,4 +76,199 @@ class POIMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // MARK: Popup View Functions
+    
+    func didSelectMarker(marker: GMSMarker) {
+        let newEvent = marker.userData as! Event
+        
+        if let event = selectedEvent {
+            dismissPopupView(newEvent: newEvent, fullyDismissed: event.id == newEvent.id, completionHandler: { _ in })
+        } else {
+            displayPopupView(event: newEvent)
+        }
+    }
+    
+    func createPopupView() {
+        popupView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: popupHeight)
+        popupView.backgroundColor = .white
+        
+        popupTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: popupHeight))
+        popupTableView!.delegate = self
+        popupTableView!.dataSource = self
+        popupTableView!.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
+        popupTableView!.isScrollEnabled = false
+        popupTableView!.separatorStyle = .none
+        
+        popupView.addSubview(popupTableView!)
+        view.addSubview(popupView)
+    }
+    
+    func displayPopupView(event: Event) {
+        selectedEvent = event
+        createPopupView()
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.popupView.frame.origin.y = self.view.frame.height - self.tabBarHeight - self.popupHeight
+        }, completion: { _ in })
+    }
+    
+    func dismissPopupView(newEvent: Event, fullyDismissed: Bool, completionHandler: @escaping (Bool) -> ()) {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.popupView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.popupHeight)
+        }, completion: { finished in
+            self.popupView.subviews.forEach({$0.removeFromSuperview()})
+            self.popupView.removeFromSuperview()
+
+            if fullyDismissed {
+                self.selectedEvent = nil
+            } else {
+                self.displayPopupView(event: newEvent)
+            }
+
+            completionHandler(finished)
+        })
+    }
+    
+    func openAppleMapsDirections() {
+        let event = selectedEvent!
+        let coords = CLLocationCoordinate2DMake(CLLocationDegrees(event.location.lat), CLLocationDegrees(event.location.lng))
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coords, addressDictionary: nil))
+        mapItem.name = event.name
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
+    }
+    
+    @objc func directionsButtonPressed(_ sender: UIButton) {
+        let lat = selectedEvent!.location.lat
+        let lng = selectedEvent!.location.lng
+        
+        if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "Open in Apple Maps", style: .default) { Void in
+                self.openAppleMapsDirections()
+            })
+            alertController.addAction(UIAlertAction(title: "Open in Google Maps", style: .default) { Void in
+                UIApplication.shared.open(URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lng)&directionsmode=walking")!, options: [:], completionHandler: nil)
+            })
+            if let presenter = alertController.popoverPresentationController {
+                presenter.sourceView = sender
+                presenter.sourceRect = sender.bounds
+            } else {
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            }
+            present(alertController, animated: true, completion: nil)
+        } else {
+            openAppleMapsDirections()
+        }
+    }
+    
+    @objc func dismissButtonPressed(_ sender: UIButton) {
+        dismissPopupView(newEvent: selectedEvent!, fullyDismissed: true, completionHandler: { _ in })
+    }
+
+}
+
+extension POIMapViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseIdEvent) as! ItemOfInterestTableViewCell
+        cell.setCellModel(model: selectedEvent!.toItemFeedModelInfo(), layout: ItemOfInterestTableViewCell.Layout.event)
+    
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+}
+
+extension POIMapViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: headerHeight))
+        
+        let directionsButton = UIButton()
+        directionsButton.setTitle("Directions", for: .normal)
+        directionsButton.setTitleColor(Colors.systemBlue, for: .normal)
+        directionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        directionsButton.contentHorizontalAlignment = .trailing
+        directionsButton.addTarget(self, action: #selector(self.directionsButtonPressed(_:)), for: .touchUpInside)
+        directionsButton.sizeToFit()
+        
+        let dismissButton = UIButton()
+        dismissButton.setImage(#imageLiteral(resourceName: "ExitIcon"), for: .normal)
+        dismissButton.addTarget(self, action: #selector(self.dismissButtonPressed(_:)), for: .touchUpInside)
+        
+        let lineView = UIView()
+        lineView.backgroundColor = Colors.shadow
+        
+        headerView.addSubview(directionsButton)
+        headerView.addSubview(dismissButton)
+        headerView.addSubview(lineView)
+
+        directionsButton.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(edgePadding)
+            make.centerY.equalTo(headerView.snp.centerY)
+        }
+        
+        dismissButton.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().offset(-edgePadding)
+            make.centerY.equalTo(headerView.snp.centerY)
+            make.width.equalTo(buttonWidth)
+            make.height.equalTo(buttonWidth)
+        }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(1)
+            make.bottom.equalToSuperview()
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch spec.sections[indexPath.section] {
+        case .items(_, let items, _):
+            let item = items[indexPath.row]
+            let detailVC: DetailViewController = {
+                let vc = DetailViewController()
+                vc.event = item as! Event
+                vc.title = item.toItemFeedModelInfo().title
+                return vc
+            }()
+            navigationController?.pushViewController(detailVC, animated: true)
+        default: return
+        }
+    }
+    
+}
+
+extension POIMapViewController: GMSMapViewDelegate {
+    
+    // Display and hide the popup view based on tapping the marker pin
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        didSelectMarker(marker: marker)
+        
+        return true
+    }
+    
+    // Dismiss popup view if user clicks a point on the map that isn't a marker
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        if let event = selectedEvent {
+            dismissPopupView(newEvent: event, fullyDismissed: true, completionHandler: { _ in })
+        }
+    }
+    
 }

@@ -11,7 +11,7 @@ import UIKit
 
 let testEvents: [Event] = [
     Event(
-        id: "ABC23",
+        id: "A",
         compEventId: nil,
         name: "AppDev Workshop",
         description: loremIpsum,
@@ -23,7 +23,7 @@ let testEvents: [Event] = [
         tags: [EventTag(id: "CUAPPDEV123", label: "General")]
     ),
     Event(
-        id: "ABC23",
+        id: "B",
         compEventId: nil,
         name: "AppDev Workshop",
         description: loremIpsum,
@@ -35,7 +35,7 @@ let testEvents: [Event] = [
         tags: [EventTag(id: "CUAPPDEV123", label: "General")]
     ),
     Event(
-        id: "ABC23",
+        id: "C",
         compEventId: nil,
         name: "AppDev Workshop",
         description: loremIpsum,
