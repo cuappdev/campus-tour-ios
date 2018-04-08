@@ -9,7 +9,7 @@
 import Foundation
 
 // Data Manager for handling the Cornell Days Data
-public class DataManager {
+public class DataManager: Codable {
     
     private let dataQueue = DispatchQueue(label: "DataManager.dataQueue")
     
@@ -17,7 +17,7 @@ public class DataManager {
     var onDataFetchingComplete : (() -> ())? = nil
     
     // Gives a shared instance of `DataManager`
-    public static let sharedInstance = DataManager()
+    public static let sharedInstance = try! DataManager.precomputed()
     
     // List of all composite events
     private (set) public var compositeEvents: [CompositeEvent] = []
@@ -32,6 +32,32 @@ public class DataManager {
     private (set) public var times: [String] = []
     
     private var eventsAndLocationsFetchedFuture: DataMultiTaskFuture? = nil
+    
+    enum CodingKeys: CodingKey {
+        case compositeEvents, events, locations, times
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DataManager.CodingKeys.self)
+        self.compositeEvents = try container.decode([CompositeEvent].self, forKey: .compositeEvents)
+        self.events = try container.decode([Event].self, forKey: .events)
+        self.locations = try container.decode([Location].self, forKey: .locations)
+        self.times = try container.decode([String].self, forKey: .times)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: DataManager.CodingKeys.self)
+        try container.encode(compositeEvents, forKey: CodingKeys.compositeEvents)
+        try container.encode(events, forKey: .events)
+        try container.encode(locations, forKey: .locations)
+        try container.encode(times, forKey: .times)
+    }
+    
+    static func precomputed() throws -> DataManager {
+        let path = Bundle.main.path(forResource: "precomputed_data", ofType: "json")!
+        let data = try Data(contentsOf: URL(fileURLWithPath: path))
+        return try JSONDecoder().decode(self, from: data)
+    }
     
     init() {
         eventsAndLocationsFetchedFuture = DataMultiTaskFuture() {
