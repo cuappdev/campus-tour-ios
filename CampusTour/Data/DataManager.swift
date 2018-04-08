@@ -11,6 +11,11 @@ import Foundation
 // Data Manager for handling the Cornell Days Data
 public class DataManager {
     
+    private let dataQueue = DispatchQueue(label: "DataManager.dataQueue")
+    
+    /// called when data is fetched and locations are parsed
+    var onDataFetchingComplete : (() -> ())? = nil
+    
     // Gives a shared instance of `DataManager`
     public static let sharedInstance = DataManager()
     
@@ -40,14 +45,17 @@ public class DataManager {
     
     init() {
         eventsAndLocationsFetchedFuture = DataMultiTaskFuture() {
-            for i in 0..<self.events.count {
-                let event = self.events[i]
-                if let location = self.getClosestLocation(withFullName: event.location.name) {
-                    self.events[i].location = location
-                } else {
-                    print("location not found :( \(event.location.name)")
+            self.dataQueue.sync {
+                for i in 0..<self.events.count {
+                    let event = self.events[i]
+                    if let location = self.getClosestLocation(withFullName: event.location.name) {
+                        self.events[i].location = location
+                    } else {
+                        print("location not found :( \(event.location.name)")
+                    }
                 }
             }
+            self.onDataFetchingComplete?()
         }
     }
     
@@ -61,8 +69,10 @@ public class DataManager {
             
             do {
                 let compEvents = try JSONDecoder().decode(CompositeEvents.self, from: data)
-                self.compositeEvents = compEvents.events
-                self.setEvents(compEvents: self.compositeEvents)
+                self.dataQueue.sync {
+                    self.compositeEvents = compEvents.events
+                    self.setEvents(compEvents: self.compositeEvents)
+                }
                 completion(true)
             } catch let error {
                 print("JSON Serialization Error: ", error)
@@ -91,7 +101,6 @@ public class DataManager {
                 uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
             }
         }
-        
         times = Array(uniqueTimes).sorted()
         events = singleEvents
     }
@@ -106,7 +115,10 @@ public class DataManager {
             
             do {
                 let locations = try JSONDecoder().decode(Locations.self, from: data)
-                self.locations = locations.locations
+                
+                self.dataQueue.sync {
+                    self.locations = locations.locations
+                }
                 
                 completion(true)
             } catch let jsonError {
