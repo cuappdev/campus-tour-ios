@@ -28,7 +28,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         initializeViews()
-        print(event)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,9 +117,13 @@ class DetailViewController: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        //TODO: replace with actual image URL from data
+        
         let imageUrl = (event.location.imageUrl != "") ? event.location.imageUrl : defaultLocationImageUrl
         imageView.af_setImage(withURL: URL(string: imageUrl)!)
+        
+        let imageOverlay = UIView()
+        imageOverlay.backgroundColor = .black
+        imageOverlay.alpha = 0.2
         
         let titleLabel = UILabel()
         titleLabel.text = event.name
@@ -159,8 +162,10 @@ class DetailViewController: UIViewController {
             })
         }
         
+        imageView.addSubview(imageOverlay)
         imageView.addSubview(tagsView)
         imageView.addSubview(titleLabel)
+        
         tagsView.snp.makeConstraints { (make) in
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalToSuperview()
@@ -174,7 +179,9 @@ class DetailViewController: UIViewController {
         }
         
         topView.addSubview(imageView)
+        
         imageView.snp.makeConstraints{ $0.edges.equalToSuperview() }
+        imageOverlay.snp.makeConstraints{ $0.edges.equalToSuperview() }
     }
     
     private func createScheduleView() {
