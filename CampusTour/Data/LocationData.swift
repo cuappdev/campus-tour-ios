@@ -8,6 +8,8 @@
 
 import UIKit
 
+let defaultLocationImageUrl = "https://statlerhotel.cornell.edu/resourcefiles/homeimages/cornell-campus-the-statler-hotel-top.jpg"
+
 enum DataError: Error {
     case InvalidData
 }

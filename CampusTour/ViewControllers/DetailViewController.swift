@@ -119,7 +119,8 @@ class DetailViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         //TODO: replace with actual image URL from data
-        imageView.af_setImage(withURL: URL(string: "https://picsum.photos/150/150/?random")!)
+        let imageUrl = (event.location.imageUrl != "") ? event.location.imageUrl : defaultLocationImageUrl
+        imageView.af_setImage(withURL: URL(string: imageUrl)!)
         
         let titleLabel = UILabel()
         titleLabel.text = event.name
