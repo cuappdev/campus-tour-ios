@@ -86,7 +86,7 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
         
-        arButton = UIBarButtonItem(title: "AR", style: .plain, target: self, action: #selector(openARMode))
+        arButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ARIcon"), style: .plain, target: self, action: #selector(openARMode))
         navigationItem.setRightBarButton(arButton, animated: false)
         
         filterBar = FilterBar()
