@@ -256,17 +256,16 @@ class DetailViewController: UIViewController {
     }
     
     private func createMapView() {
-        let map = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: 12.0))
-        AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] location in
-            map.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
-        }
+        let map = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: CLLocationDegrees(event.location.lat), longitude: CLLocationDegrees(event.location.lng), zoom: 12.0))
+//        AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] location in
+//            map.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
+//        }
         mapView.addSubview(map)
         map.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     private func createDirectionView() {
-        //TODO: Fix location to be address using DataManager
-        let address = "243 Upson Hall, Ithaca NY 14853"
+        let address = event.location.address
         let lineView = UIView()
         lineView.backgroundColor = Colors.shadow
         let lineView2 = UIView()
@@ -282,6 +281,7 @@ class DetailViewController: UIViewController {
         directionsButton.setTitleColor(Colors.systemBlue, for: .normal)
         directionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         directionsButton.contentHorizontalAlignment = .trailing
+        directionsButton.addTarget(self, action: #selector(self.directionsButtonPressed(_:)), for: .touchUpInside)
         directionsButton.sizeToFit()
         
         directionsView.addSubview(lineView)
@@ -311,6 +311,10 @@ class DetailViewController: UIViewController {
             make.top.equalTo(directionsView.snp.bottom).offset(-1)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    @objc func directionsButtonPressed(_ sender: UIButton) {
+        showDirectionsPopupView(event: event)
     }
     
     @objc private func showMore(_ sender: UIButton) {

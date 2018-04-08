@@ -72,7 +72,8 @@ public struct Location: Decodable {
             imageUrl: self.imageUrl,
             address: self.address,
             notes: self.notes,
-            nickname: self.nickname)
+            nickname: self.nickname
+        )
     }
 }
 
