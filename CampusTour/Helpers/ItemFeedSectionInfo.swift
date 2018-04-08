@@ -13,7 +13,7 @@ extension Event: ItemCellModelInfoConvertible {
             locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: self.location.name,
                                                                            distanceString: "x mi away") ,
             tags: self.tags.map { $0.label },
-            imageUrl: URL(string: "https://picsum.photos/150/150/?random")!,
+            imageUrl: URL(string: (self.location.imageUrl != "") ? self.location.imageUrl : defaultLocationImageUrl)!,
             layout: .event
         )
     }

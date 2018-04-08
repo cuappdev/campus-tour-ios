@@ -8,6 +8,8 @@
 
 import UIKit
 
+let defaultLocationImageUrl = "https://statlerhotel.cornell.edu/resourcefiles/homeimages/cornell-campus-the-statler-hotel-top.jpg"
+
 enum DataError: Error {
     case InvalidData
 }
@@ -52,27 +54,33 @@ public struct Location: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let name = try container.decode(String.self, forKey: .name)
-
         let latString = try container.decode(String.self, forKey: .lat)
         let lat = Float(latString)!
         
         let lngString = try container.decode(String.self, forKey: .lng)
         let lng = Float(lngString)!
         
-        self.init(name: name, lat: lat, lng: lng)
+        let name = try container.decode(String.self, forKey: .name)
+        let category = try container.decode(String.self, forKey: .category)
+        let imageUrl = try container.decode(String.self, forKey: .imageUrl)
+        let address = try container.decode(String.self, forKey: .address)
+        let notes = try container.decode(String.self, forKey: .notes)
+        let nickname = try container.decode(String.self, forKey: .nickname)
+        
+        self.init(name: name, lat: lat, lng: lng, category: category, imageUrl: imageUrl, address: address, notes: notes, nickname: nickname)
     }
     
-    func with(name: String) -> Location {
+    func with(name: String, address: String) -> Location {
         return Location(
             name: name,
             lat: self.lat,
             lng: self.lng,
             category: self.category,
             imageUrl: self.imageUrl,
-            address: self.address,
+            address: address,
             notes: self.notes,
-            nickname: self.nickname)
+            nickname: self.nickname
+        )
     }
 }
 
