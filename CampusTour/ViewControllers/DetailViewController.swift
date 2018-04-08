@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         initializeViews()
+        print(event)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -256,10 +257,14 @@ class DetailViewController: UIViewController {
     }
     
     private func createMapView() {
-        let map = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: CLLocationDegrees(event.location.lat), longitude: CLLocationDegrees(event.location.lng), zoom: 12.0))
-//        AppDelegate.shared!.locationProvider.addLocationListener(repeats: false) { [weak self] location in
-//            map.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
-//        }
+        let coords = CLLocationCoordinate2DMake(CLLocationDegrees(event.location.lat), CLLocationDegrees(event.location.lng))
+        let map = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withTarget: coords, zoom: 15))
+        
+        let marker = GMSMarker(position: coords)
+        marker.userData = event
+        marker.iconView = PlaceMarker()
+        marker.map = map
+        
         mapView.addSubview(map)
         map.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
