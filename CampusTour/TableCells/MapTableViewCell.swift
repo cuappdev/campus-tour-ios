@@ -12,6 +12,7 @@ import GoogleMaps
 class MapTableViewCell: UITableViewCell {
     static let reuseId = "MapTableViewCell"
     
+    let edgePadding: CGFloat = 12
     var mapView: GMSMapView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,11 +22,23 @@ class MapTableViewCell: UITableViewCell {
     func cellWillAppear () {
         guard mapView == nil else { return }
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 12.0)) // Randomly map to Cornell Store location
+        mapView.isUserInteractionEnabled = false
+        mapView.layer.cornerRadius = 4
         
         contentView.addSubview(mapView!)
+        
         mapView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(edgePadding)
+            make.right.equalToSuperview().offset(-edgePadding)
+            make.bottom.equalToSuperview().offset(-edgePadding)
+            make.left.equalToSuperview().offset(edgePadding)
         }
+        
+        let separatorView = SeparatorView()
+        contentView.addSubview(separatorView)
+        separatorView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
+        selectionStyle = .none
     }
     
     func showLocationMarker(locations: [Location]) {
