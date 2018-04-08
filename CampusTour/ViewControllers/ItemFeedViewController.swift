@@ -138,6 +138,9 @@ extension ItemFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch spec.sections[indexPath.section] {
+        case .map:
+            let parentVC = parent as! FeaturedViewController
+            parentVC.toggleViewType()
         case .items(_, let items):
             
             guard let item = items[indexPath.row] as? Event else {
