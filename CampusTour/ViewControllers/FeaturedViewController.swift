@@ -105,9 +105,8 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
-        
-//        arButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ARIcon"), style: .plain, target: self, action: #selector(openARMode))
-//        navigationItem.setRightBarButton(arButton, animated: false)
+        arButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ARIcon"), style: .plain, target: self, action: #selector(openARMode))
+        navigationItem.setLeftBarButton(arButton, animated: false)
         
         viewTypeButton = UIBarButtonItem(image: #imageLiteral(resourceName: "MapIcon"), style: .plain, target: self, action: #selector(toggleViewType))
         navigationItem.setRightBarButton(viewTypeButton, animated: false)
@@ -221,7 +220,6 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
         print("START search")
-        self.navigationItem.setRightBarButton(nil, animated: false)
 
         //Prepare filter viewcontroller
         addChildViewController(popupViewController)
@@ -236,7 +234,9 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
-        itemFeedViewController.view.snp.remakeConstraints { make in
+        
+        let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
+        currVC.view.snp.remakeConstraints { make in
             make.top.equalTo(filterBar.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
@@ -263,7 +263,9 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
-        itemFeedViewController.view.snp.remakeConstraints { make in
+        
+        let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
+        currVC.view.snp.remakeConstraints { make in
             make.edges.equalToSuperview()
         }
         UIView.animate(
@@ -277,7 +279,6 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
         filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
         
-        self.navigationItem.setRightBarButton(arButton, animated: false)
         setItemFeedDefaultSpec()
     }
 }
