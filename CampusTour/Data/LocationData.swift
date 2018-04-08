@@ -62,6 +62,18 @@ public struct Location: Decodable {
         
         self.init(name: name, lat: lat, lng: lng)
     }
+    
+    func with(name: String) -> Location {
+        return Location(
+            name: name,
+            lat: self.lat,
+            lng: self.lng,
+            category: self.category,
+            imageUrl: self.imageUrl,
+            address: self.address,
+            notes: self.notes,
+            nickname: self.nickname)
+    }
 }
 
 struct Building {

@@ -55,7 +55,9 @@ class DataLoadingViewController: UIViewController {
     }
     
     func loadEventsData(completion: @escaping ((_ success: Bool) -> Void)) {
-        DataManager.sharedInstance.getEvents { (success) in
+        
+        var success = true
+        let future = DataMultiTaskFuture {
             if success {
                 let events = DataManager.sharedInstance.events
                 print("Loaded \(events.count) events")
@@ -68,6 +70,15 @@ class DataLoadingViewController: UIViewController {
                 
                 completion(false)
             }
+        }
+        
+        DataManager.sharedInstance.getEvents {
+            success = success && $0
+            future.notifyCompletion(task: .fetchEvents)
+        }
+        DataManager.sharedInstance.getLocations {
+            success = success && $0
+            future.notifyCompletion(task: .fetchLocations)
         }
     }
 
