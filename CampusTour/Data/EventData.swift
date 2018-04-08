@@ -115,4 +115,18 @@ public struct Event {
     let college: College?
     let type:  EventType?
     let tags: [EventTag]
+    
+    func with(location: Location) -> Event {
+        return Event(
+            id: self.id,
+            compEventId: self.compEventId,
+            name: self.name,
+            description: self.description,
+            startTime: self.startTime,
+            endTime: self.endTime,
+            location: location,
+            college: self.college,
+            type: self.type,
+            tags: self.tags)
+    }
 }
