@@ -100,9 +100,12 @@ class EventMarker: LocationMarker {
     var innerWhiteCircle = CAShapeLayer()
     var innerTriangle = CAShapeLayer()
     var eventLabel = UILabel()
+    var markerText: String = ""
     
-    init() {
+    init(markerText: String = "") {
         super.init(markerType: .event)
+        
+        self.markerText = markerText
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -133,7 +136,7 @@ class EventMarker: LocationMarker {
         eventLabel.textColor = selected ? Colors.brand : .white
         eventLabel.numberOfLines = 0
         eventLabel.layer.zPosition = 4
-        eventLabel.text = "1"
+        eventLabel.text = markerText
         circleView.addSubview(eventLabel)
     }
     

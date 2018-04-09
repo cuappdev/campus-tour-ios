@@ -44,6 +44,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     }
     
     struct ModelInfo {
+        let index: Int?
         let title: String
         let dateRange: (Date, Date)?
         let description: String
@@ -184,7 +185,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
             self.dateLabel?.text = ""
         }
         
-        self.titleLabel?.text = model.title
+        let prefix = (model.index != nil) ? "\(model.index!). " : ""
+        self.titleLabel?.text = "\(prefix)\(model.title)"
         self.locationLabel?.text = model.locationSpec?.locationName ?? ""
         
         self.tagsStackView?.arrangedSubviews.forEach {$0.removeFromSuperview()}

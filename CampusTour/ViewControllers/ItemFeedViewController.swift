@@ -58,7 +58,7 @@ extension ItemFeedViewController: UITableViewDataSource {
             cell.cellWillAppear()
             return cell
         case .items(_, let items):
-            let itemModel = items[indexPath.row].toItemFeedModelInfo()
+            let itemModel = items[indexPath.row].toItemFeedModelInfo(index: indexPath.row + 1)
             let cell = tableView.dequeueReusableCell(withIdentifier: itemModel.layout.reuseId()) as! ItemOfInterestTableViewCell
             cell.setCellModel(model: itemModel)
             return cell
