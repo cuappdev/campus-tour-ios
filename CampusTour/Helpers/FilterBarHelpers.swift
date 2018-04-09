@@ -13,7 +13,7 @@ struct FilterBarCurrentStatus {
     var generalSelected: String
     var dateSelected: String
     
-    init(_ gs: String = "General", _ ds: String = "Today") {
+    init(_ gs: String = "General", _ ds: String = "All Dates") {
         generalSelected = gs
         dateSelected = ds
     }
@@ -21,7 +21,7 @@ struct FilterBarCurrentStatus {
 
 enum Filter: String {
     case general = "General"
-    case date = "Today"
+    case date = "All Dates"
 }
 
 fileprivate let filters: [Filter] = [

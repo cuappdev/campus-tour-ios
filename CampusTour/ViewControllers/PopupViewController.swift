@@ -12,6 +12,13 @@ protocol PopupFilterProtocol {
     func updateFilterBar(_ status: FilterBarCurrentStatus) -> ()
 }
 
+let allDates: [String] = {
+    var d = DataManager.sharedInstance.times
+    d.insert("All Dates", at: 0)
+    d.insert("Today", at: 1)
+    return d
+}()
+
 class PopupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var data: PopupData = PopupData(filterBarStatus: FilterBarCurrentStatus(), filterMode: Filter.general, filterBarLocationCenterX: 0)
@@ -69,8 +76,8 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.setupCell(info)
             }
         case .date:
-            let info = FilterTableViewCell.Info(school: nil, date: dateFilters[indexPath.row])
-            if data.filterBarStatus.dateSelected == dateFilters[indexPath.row] {
+            let info = FilterTableViewCell.Info(school: nil, date: allDates[indexPath.row])
+            if data.filterBarStatus.dateSelected == allDates[indexPath.row] {
                 cell.setupCell(info, true)
                 currentCheckedCellIndex = indexPath
             } else {
@@ -85,7 +92,7 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         case .general:
             data.filterBarStatus.generalSelected = Tag.schoolFilters[indexPath.row].0
         case .date:
-            data.filterBarStatus.dateSelected = dateFilters[indexPath.row]
+            data.filterBarStatus.dateSelected = allDates[indexPath.row]
         }
         tableView.reloadRows(at: [indexPath, currentCheckedCellIndex!], with: UITableViewRowAnimation.none)
         currentCheckedCellIndex = indexPath
@@ -102,7 +109,7 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         case .general:
             return Tag.schoolFilters.count
         case .date:
-            return dateFilters.count
+            return allDates.count
         }
     }
     
@@ -116,12 +123,8 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
             })
             indexPath = IndexPath(row: i!, section: 0)
         case .date:
-            indexPath = IndexPath(row: dateFilters.index(of: status.dateSelected)!, section: 0)
+            indexPath = IndexPath(row: allDates.index(of: status.dateSelected)!, section: 0)
         }
         currentCheckedCellIndex = indexPath
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch registered in popup")
     }
 }

@@ -127,9 +127,10 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     func setTopNavBar() {
         let cancelButton = UIButton()
         cancelButton.setImage(#imageLiteral(resourceName: "ExitIconBrand"), for: .normal)
+        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 8)
         cancelButton.addTarget(self, action: #selector(didEndSearchMode), for: .touchUpInside)
         cancelButton.snp.makeConstraints { (make) in
-            make.width.equalTo(18)
+            make.width.equalTo(26)
             make.height.equalTo(18)
         }
         searchCancelButton = UIBarButtonItem(customView: cancelButton)
@@ -192,20 +193,12 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     
     func togglePopupView(_ data: PopupData) {
         view.endEditing(true)
-        if isModal {
-            isModal = false
-            buttons.first?.setTitle(filterBarCurrentStatus.generalSelected, for: .normal)
-            buttons.last?.setTitle(filterBarCurrentStatus.dateSelected, for: .normal)
-            updateButtons()
-            filterBarView.setNeedsLayout()
-            searchManager.searchBar.becomeFirstResponder() //TODO encapsulate in searchManager
-            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.generalSelected, events: DataManager.sharedInstance.events)))
-            return
-        }
+        
         popupViewController.resetVariables(status: filterBarCurrentStatus, filterMode: data.filterMode)
         popupViewController.data = data
         popupViewController.tableView.reloadData()
         
+        view.bringSubview(toFront: blackView)
         view.bringSubview(toFront: popupViewController.view)
         
         var filterHeight = 0
@@ -214,7 +207,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
             filterHeight = min(320, 40*Tag.schoolFilters.count+20)
             buttons.first?.bringSubview(toFront: blackView)
         case .date:
-            filterHeight = min(320, 40*dateFilters.count+20)
+            filterHeight = min(320, 40*allDates.count+20)
             buttons.first?.bringSubview(toFront: blackView)
         }
         self.popupViewController.view.snp.remakeConstraints { (make) in
@@ -227,7 +220,6 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         UIView.animate(withDuration: 0.3, animations: {
             self.popupViewController.view.layoutIfNeeded()
         }, completion: nil)
-        popupViewController.view.becomeFirstResponder()
         searchManager.searchBar.resignFirstResponder()
         isModal = true
     }
@@ -237,12 +229,27 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         self.buttons.first?.setTitle(filterBarCurrentStatus.generalSelected, for: .normal)
         self.buttons.last?.setTitle(filterBarCurrentStatus.dateSelected, for: .normal)
         self.updateButtons()
-        filterBarView.setNeedsLayout()
-        searchManager.searchBar.becomeFirstResponder()
+        filterBarView.layoutIfNeeded()
+        
+        let generalTaggedEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.generalSelected, events: DataManager.sharedInstance.events)
+        var selectedDate: Date!
+        switch filterBarCurrentStatus.dateSelected {
+        case "All Dates":
+            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: generalTaggedEvents))
+            return
+        case "Today":
+            selectedDate = Date()
+        case _:
+            selectedDate = DateHelper.toDateWithCurrentYear(date: filterBarCurrentStatus.dateSelected, dateFormat: "yyyy MMMM dd")
+        }
+        let taggedEventsOnDate = SearchHelper.getEventsOnDate(date: selectedDate, events: generalTaggedEvents)
+        
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: taggedEventsOnDate))
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
         filterBarCurrentStatus = status
+        closePopupView()
     }
     
     func setItemFeedDefaultSpec() {
@@ -276,11 +283,6 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         
         //update nav bar
         navigationItem.setLeftBarButton(searchCancelButton, animated: false)
-        //remove cancel button -- doesn't work in ItemFeedSearchManager
-        if let sb = navigationItem.titleView as? UISearchBar {
-            sb.showsCancelButton = false
-            sb.updateConstraints()
-        }
         print("START search")
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
@@ -292,6 +294,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+            self.searchManager.searchBar.becomeFirstResponder()
         }
         popupViewController.removeFromParentViewController()
         isModal = false

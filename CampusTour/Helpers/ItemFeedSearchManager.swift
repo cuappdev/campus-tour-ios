@@ -62,9 +62,10 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //UI elements
-        searchBar.setShowsCancelButton(true, animated: false)
-        
+        searchBar.setShowsCancelButton(false, animated: false)
+        print("Text begin editing")
         self.searchIsActive = true
+        searchBar.layoutIfNeeded()
         delegate?.didStartSearchMode()
     }
     

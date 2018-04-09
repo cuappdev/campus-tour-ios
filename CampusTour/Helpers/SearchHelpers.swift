@@ -25,4 +25,16 @@ class SearchHelper {
         }
         return taggedEvents
     }
+    
+    static func getEventsOnDate(date: Date, events: [Event]) -> [Event] {
+        var onDate = [Event]()
+        
+        events.forEach { (event) in
+            if event.startTime.isInSameDayOf(date: date) {
+                onDate.append(event)
+            }
+        }
+        
+        return onDate
+    }
 }

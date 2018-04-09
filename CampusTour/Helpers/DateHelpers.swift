@@ -35,6 +35,13 @@ class DateHelper {
     static func getFormattedMonthAndDay(_ date: Date) -> String {
         return "\(date.monthName) \(date.day)"
     }
+    
+    static func toDateWithCurrentYear(date: String, dateFormat: String) -> Date {
+        let addYear = "2018 \(date)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        return dateFormatter.date(from: addYear)!
+    }
 }
 
 extension Formatter {

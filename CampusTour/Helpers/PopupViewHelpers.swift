@@ -14,15 +14,6 @@ struct PopupData {
     var filterBarLocationCenterX: CGFloat
 }
 
-//Change to dates from DataManager
-let dateFilters: [String] = [
-    "Today",
-    "April 13",
-    "April 15",
-    "April 16",
-    "April 17",
-]
-
 class TriangleView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
