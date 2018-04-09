@@ -11,23 +11,6 @@ import SwiftDate
 import Alamofire
 import AlamofireImage
 
-
-private func tagLabel(text: String) -> UIView {
-    let label = UILabel.label(text: text, color: Colors.tertiary, font: UIFont.systemFont(ofSize: 10, weight: .medium))
-    let wrapper = UIView.insetWrapper(view: label, insets: UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
-    wrapper.layer.cornerRadius = 4
-    wrapper.layer.borderColor = Colors.tertiary.cgColor
-    wrapper.layer.borderWidth = 1
-    return wrapper
-}
-
-private func tagsHStackView(tags: [String]) -> UIStackView {
-    let hStack = UIStackView.fromList(views: tags.map(tagLabel))
-    hStack.spacing = 4
-    hStack.axis = .horizontal
-    return hStack
-}
-
 class ItemOfInterestTableViewCell: UITableViewCell {
     static let reuseIdEvent = "ItemOfInterestTableViewCell.event"
     static let reuseIdPlace = "ItemOfInterestTableViewCell.place"
@@ -66,7 +49,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     var dateLabel: UILabel?
     var titleLabel: UILabel?
     var locationLabel: UILabel?
-    var tagsStackView: UIStackView?
+    var tagView: TagView?
     var wantedImageUrl: URL?
     
     func titleHeaderView(model: ModelInfo) -> UIView {
@@ -123,8 +106,11 @@ class ItemOfInterestTableViewCell: UITableViewCell {
             leftStackView.addArrangedSubview(locationLabel!)
         }
         
-        tagsStackView = tagsHStackView(tags: [])
-        leftStackView.addArrangedSubview(tagsStackView!)
+        tagView = TagView(tags: [])
+        leftStackView.addArrangedSubview(tagView!)
+        tagView?.snp.makeConstraints {
+            $0.width.equalToSuperview()
+        }
         
         return leftStackView
     }
@@ -189,8 +175,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         self.titleLabel?.text = "\(prefix)\(model.title)"
         self.locationLabel?.text = model.locationSpec?.locationName ?? ""
         
-        self.tagsStackView?.arrangedSubviews.forEach {$0.removeFromSuperview()}
-        model.tags.forEach {self.tagsStackView?.addArrangedSubview(tagLabel(text: $0))}
+        self.tagView?.set(tags: model.tags)
         
         //get image
         self.imageView?.image = nil
