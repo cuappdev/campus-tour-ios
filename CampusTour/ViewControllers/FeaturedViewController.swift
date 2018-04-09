@@ -220,7 +220,6 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         UIView.animate(withDuration: 0.3, animations: {
             self.popupViewController.view.layoutIfNeeded()
         }, completion: nil)
-//        popupViewController.view.becomeFirstResponder()
         searchManager.searchBar.resignFirstResponder()
         isModal = true
     }
