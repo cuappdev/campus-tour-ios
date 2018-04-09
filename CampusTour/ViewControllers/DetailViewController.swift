@@ -118,6 +118,7 @@ class DetailViewController: UIViewController {
     
     private func createTopView() {
         let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
@@ -133,50 +134,26 @@ class DetailViewController: UIViewController {
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-        
-        let tagsView = UIView()
-        var tagViewList = [UIView]()
-        
-        for (index, tag) in event.tags.enumerated() {
-            let tagLabel = UILabel()
-            tagLabel.text = tag.generalTagMap(id: tag.id)
-            tagLabel.textColor = .white
-            tagLabel.backgroundColor = UIColor.clear
-            tagLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
-            tagLabel.sizeToFit()
-            let insets = UIEdgeInsetsMake(7, 14, 7, 14)
-            let tagView = UIView.insetWrapper(view: tagLabel, insets: insets)
-            tagView.layer.borderColor = UIColor.white.cgColor
-            tagView.layer.borderWidth = 1.0
-            tagView.layer.cornerRadius = 4.0
-            tagViewList.append(tagView)
-            tagsView.addSubview(tagView)
-            if index == 0 {
-                tagView.snp.makeConstraints({ (make) in
-                    make.leading.equalToSuperview()
-                })
-            } else {
-                tagView.snp.makeConstraints({ (make) in
-                    make.leading.equalTo(tagViewList[index-1].snp.trailing).offset(5)
-                })
-            }
-            tagView.snp.makeConstraints({ (make) in
-                make.bottom.equalToSuperview()
-            })
-        }
+
+        let tagView = TagView(
+            tags: event.tags.compactMap {$0.generalTagMap(id: $0.id)},
+            style: TagView.Style(
+                tagInsets: UIEdgeInsetsMake(7, 14, 7, 14),
+                color: UIColor.white))
         
         imageView.addSubview(imageOverlay)
-        imageView.addSubview(tagsView)
+        imageView.addSubview(tagView)
         imageView.addSubview(titleLabel)
         
-        tagsView.snp.makeConstraints { (make) in
+        tagView.snp.makeConstraints { (make) in
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(25)
         }
+        
         titleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(tagsView.snp.top).offset(-10)
+            make.bottom.equalTo(tagView.snp.top).offset(-10)
             make.leading.equalToSuperview().offset(textInset)
             make.trailing.equalToSuperview()
         }
