@@ -118,6 +118,7 @@ class DetailViewController: UIViewController {
     
     private func createTopView() {
         let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
