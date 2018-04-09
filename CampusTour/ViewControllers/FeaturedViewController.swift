@@ -166,7 +166,6 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
             self.filterBar.buttons.last?.setTitle(self.filterBarCurrentStatus.dateSelected, for: .normal)
             self.filterBar.updateButtons()
             searchManager.searchBar.becomeFirstResponder() //TODO encapsulate in searchManager
-            searchBar.becomeFirstResponder()
             return
         }
         popupViewController.resetVariables(status: filterBarCurrentStatus, filterMode: data.filterMode)

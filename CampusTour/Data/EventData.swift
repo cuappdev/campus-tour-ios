@@ -129,4 +129,13 @@ public struct Event: Codable {
             type: self.type,
             tags: self.tags)
     }
+    
+    func parseTag() -> [String] {
+        var strTags = [String]()
+        for tag in self.tags {
+            guard let abbv = tag.generalTagMap(id: tag.id) else { continue }
+            strTags.append(abbv)
+        }
+        return strTags
+    }
 }
