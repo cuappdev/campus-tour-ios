@@ -9,10 +9,15 @@
 import Foundation
 
 // Data Manager for handling the Cornell Days Data
-public class DataManager {
+public class DataManager: Codable {
+    
+    private let dataQueue = DispatchQueue(label: "DataManager.dataQueue")
+    
+    /// called when data is fetched and locations are parsed
+    var onDataFetchingComplete : (() -> ())? = nil
     
     // Gives a shared instance of `DataManager`
-    public static let sharedInstance = DataManager()
+    public static let sharedInstance = try! DataManager.precomputed()
     
     // List of all composite events
     private (set) public var compositeEvents: [CompositeEvent] = []
@@ -26,28 +31,44 @@ public class DataManager {
     // List of all unique start dates
     private (set) public var times: [String] = []
     
-    // Addresses for locations that have no given addresses
-    private (set) public var locationAddresses: [String:String] = [
-        "Beebe Lake": "101 Forest Home Dr, Ithaca, NY 14850",
-        "Biotechnology Building": "526 Campus Rd Ithaca, NY 14850",
-        "Johnson Museum of Art": "114 Central Ave, Ithaca, NY 14853",
-        "Klarman Hall": "232 East Ave, Ithaca, NY 14850",
-        "McGraw Hall": "215 Tower Rd, Ithaca, NY 14853",
-        "Statler Hall": "7 East Ave, Ithaca, NY 14853"
-    ]
-    
     private var eventsAndLocationsFetchedFuture: DataMultiTaskFuture? = nil
+    
+    enum CodingKeys: CodingKey {
+        case compositeEvents, events, locations, times
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DataManager.CodingKeys.self)
+        self.compositeEvents = try container.decode([CompositeEvent].self, forKey: .compositeEvents)
+        self.events = try container.decode([Event].self, forKey: .events)
+        self.locations = try container.decode([Location].self, forKey: .locations)
+        self.times = try container.decode([String].self, forKey: .times)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: DataManager.CodingKeys.self)
+        try container.encode(compositeEvents, forKey: CodingKeys.compositeEvents)
+        try container.encode(events, forKey: .events)
+        try container.encode(locations, forKey: .locations)
+        try container.encode(times, forKey: .times)
+    }
+    
+    static func precomputed() throws -> DataManager {
+        let path = Bundle.main.path(forResource: "precomputed_data", ofType: "json")!
+        let data = try Data(contentsOf: URL(fileURLWithPath: path))
+        return try JSONDecoder().decode(self, from: data)
+    }
     
     init() {
         eventsAndLocationsFetchedFuture = DataMultiTaskFuture() {
-            for i in 0..<self.events.count {
-                let event = self.events[i]
-                if let location = self.getClosestLocation(withFullName: event.location.name) {
-                    self.events[i].location = location
-                } else {
-                    print("location not found :( \(event.location.name)")
-                }
+            let newEvents =
+                LocationAssigner.assignLocationsToEvents(
+                    events: self.events,
+                    locations: self.locations)
+            self.dataQueue.sync {
+                self.events = newEvents
             }
+            self.onDataFetchingComplete?()
         }
     }
     
@@ -61,8 +82,10 @@ public class DataManager {
             
             do {
                 let compEvents = try JSONDecoder().decode(CompositeEvents.self, from: data)
-                self.compositeEvents = compEvents.events
-                self.setEvents(compEvents: self.compositeEvents)
+                self.dataQueue.sync {
+                    self.compositeEvents = compEvents.events
+                    self.setEvents(compEvents: self.compositeEvents)
+                }
                 completion(true)
             } catch let error {
                 print("JSON Serialization Error: ", error)
@@ -91,7 +114,6 @@ public class DataManager {
                 uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
             }
         }
-        
         times = Array(uniqueTimes).sorted()
         events = singleEvents
     }
@@ -106,7 +128,10 @@ public class DataManager {
             
             do {
                 let locations = try JSONDecoder().decode(Locations.self, from: data)
-                self.locations = locations.locations
+                
+                self.dataQueue.sync {
+                    self.locations = locations.locations
+                }
                 
                 completion(true)
             } catch let jsonError {
@@ -116,63 +141,7 @@ public class DataManager {
             self.eventsAndLocationsFetchedFuture?.notifyCompletion(task: .fetchLocations)
         }.resume()
     }
-    
-    func getClosestLocation(withFullName fullLocationName: String) -> Location? {
-        //look for locations that don't perfectly match
-        var result: Location?
-        if fullLocationName.contains("Baker Lab") {
-            result = locations.first {loc in loc.name.contains("Baker Lab")}
-        } else if fullLocationName.contains("Tatkon Center") {
-            // tatkon center doesn't seem to be in cornell days' list of locations
-            result = Location(
-                name: "Carol Tatkon Center",
-                lat: 42.453216,
-                lng: -76.479394,
-                address: "Cradit Farm Dr, Ithaca, NY 14850"
-            )
-        } else if fullLocationName.contains("Marketplace Eatery") {
-            result = locations.first {loc in loc.name.contains("Robert Purcell Community Center")}
-        }
-        if let res = result {
-            return res.with(name: fullLocationName, address: res.address)
-        }
-        
-        var similarityInfo = locations.map {
-            (similarWords: similarWords(a: $0.name, b: fullLocationName),
-             location: $0.with(name: fullLocationName, address: getAddress(location: $0)))
-        }
-        
-        similarityInfo.sort { a, b in
-            a.similarWords < b.similarWords
-        }
 
-        return similarityInfo.last?.location
-    }
-    
-    private func getAddress(location: Location) -> String {
-        return locationAddresses[location.name] ?? location.address
-    }
-
-}
-
-private func similarWords(a: String, b: String) -> Int {
-    func tokenize(str: String) -> [String] {
-        return str
-            .components(separatedBy: [" ", ","])
-            .filter {!$0.isEmpty}
-    }
-    
-    let aWords = tokenize(str: a)
-    let bWords = tokenize(str: b)
-    
-    var commonWords = 0
-    for word in aWords {
-        if bWords.contains(word) {
-            commonWords += 1
-        }
-    }
-    
-    return commonWords
 }
 
 //maybe bring in AwaitKit instead of this

@@ -18,7 +18,7 @@ struct Locations: Decodable {
     let locations: [Location]
 }
 
-public struct Location: Decodable {
+public struct Location: Codable {
     let name: String
     let lat: Float
     let lng: Float
@@ -68,6 +68,20 @@ public struct Location: Decodable {
         let nickname = try container.decode(String.self, forKey: .nickname)
         
         self.init(name: name, lat: lat, lng: lng, category: category, imageUrl: imageUrl, address: address, notes: notes, nickname: nickname)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(String(lat), forKey: .lat)
+        try container.encode(String(lng), forKey: .lng)
+        
+        try container.encode(name, forKey: .name)
+        try container.encode(category, forKey: .category)
+        try container.encode(imageUrl, forKey: .imageUrl)
+        try container.encode(address, forKey: .address)
+        try container.encode(notes, forKey: .notes)
+        try container.encode(nickname, forKey: .nickname)
     }
     
     func with(name: String, address: String) -> Location {

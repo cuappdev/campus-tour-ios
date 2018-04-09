@@ -20,7 +20,8 @@ class DataLoadingViewController: UIViewController {
         loadEventsData { (success) in
             if success {
                 self.hideLoadingIndicator()
-                self.present(MainTabBarController(), animated: false, completion: nil)
+                AppDelegate.shared?.window?.rootViewController = MainTabBarController()
+                //self.present(MainTabBarController(), animated: false, completion: nil)
             }
         }
     }
@@ -56,30 +57,35 @@ class DataLoadingViewController: UIViewController {
     
     func loadEventsData(completion: @escaping ((_ success: Bool) -> Void)) {
         
-        var success = true
-        let future = DataMultiTaskFuture {
-            if success {
-                let events = DataManager.sharedInstance.events
-                print("Loaded \(events.count) events")
-                
-                completion(true)
-            } else {
-                let alertController = UIAlertController(title: "Uh oh!", message: "We're unable to fetch events at this time.", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-                
-                completion(false)
-            }
-        }
+        let success = true
         
-        DataManager.sharedInstance.getEvents {
-            success = success && $0
-            future.notifyCompletion(task: .fetchEvents)
-        }
-        DataManager.sharedInstance.getLocations {
-            success = success && $0
-            future.notifyCompletion(task: .fetchLocations)
-        }
+        let events = DataManager.sharedInstance.events
+        print("Loaded \(events.count) events")
+        completion(true)
+        
+//        DataManager.sharedInstance.onDataFetchingComplete = {
+//
+//            let data = try! JSONEncoder().encode(DataManager.sharedInstance)
+//            print("BEGIN PRECOMPUTED")
+//            print(String(data: data, encoding: .utf8)!)
+//            print("END PRECOMPUTED")
+//
+//            if success {
+//                let events = DataManager.sharedInstance.events
+//                print("Loaded \(events.count) events")
+//
+//                completion(true)
+//            } else {
+//                let alertController = UIAlertController(title: "Uh oh!", message: "We're unable to fetch events at this time.", preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.present(alertController, animated: true, completion: nil)
+//
+//                completion(false)
+//            }
+//        }
+//
+//        DataManager.sharedInstance.getEvents() {_ in }
+//        DataManager.sharedInstance.getLocations() {_ in}
     }
 
 }
