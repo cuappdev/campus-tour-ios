@@ -62,30 +62,6 @@ class DataLoadingViewController: UIViewController {
         let events = DataManager.sharedInstance.events
         print("Loaded \(events.count) events")
         completion(true)
-        
-//        DataManager.sharedInstance.onDataFetchingComplete = {
-//
-//            let data = try! JSONEncoder().encode(DataManager.sharedInstance)
-//            print("BEGIN PRECOMPUTED")
-//            print(String(data: data, encoding: .utf8)!)
-//            print("END PRECOMPUTED")
-//
-//            if success {
-//                let events = DataManager.sharedInstance.events
-//                print("Loaded \(events.count) events")
-//
-//                completion(true)
-//            } else {
-//                let alertController = UIAlertController(title: "Uh oh!", message: "We're unable to fetch events at this time.", preferredStyle: .alert)
-//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                self.present(alertController, animated: true, completion: nil)
-//
-//                completion(false)
-//            }
-//        }
-//
-//        DataManager.sharedInstance.getEvents() {_ in }
-//        DataManager.sharedInstance.getLocations() {_ in}
     }
 
 }
