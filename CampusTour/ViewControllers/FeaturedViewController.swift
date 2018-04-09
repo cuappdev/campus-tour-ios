@@ -206,6 +206,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         popupViewController.data = data
         popupViewController.tableView.reloadData()
         
+        view.bringSubview(toFront: blackView)
         view.bringSubview(toFront: popupViewController.view)
         
         var filterHeight = 0
