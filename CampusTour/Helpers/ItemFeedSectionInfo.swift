@@ -1,12 +1,14 @@
 import Foundation
 
 protocol ItemCellModelInfoConvertible {
-    func toItemFeedModelInfo() -> ItemOfInterestTableViewCell.ModelInfo
+    func toItemFeedModelInfo(index: Int?) -> ItemOfInterestTableViewCell.ModelInfo
 }
 
 extension Event: ItemCellModelInfoConvertible {
-    func toItemFeedModelInfo() -> ItemOfInterestTableViewCell.ModelInfo {
+    func toItemFeedModelInfo(index: Int? = nil) -> ItemOfInterestTableViewCell.ModelInfo {
+        
         return ItemOfInterestTableViewCell.ModelInfo(
+            index: index,
             title: self.name,
             dateRange: (self.startTime, self.endTime),
             description: self.description,
@@ -20,8 +22,9 @@ extension Event: ItemCellModelInfoConvertible {
 }
 
 extension Building: ItemCellModelInfoConvertible {
-    func toItemFeedModelInfo() -> ItemOfInterestTableViewCell.ModelInfo {
+    func toItemFeedModelInfo(index: Int? = nil) -> ItemOfInterestTableViewCell.ModelInfo {
         return ItemOfInterestTableViewCell.ModelInfo(
+            index: index,
             title: self.name,
             dateRange: nil,
             description: self.department ?? "",

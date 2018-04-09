@@ -23,7 +23,7 @@ class POIMapViewController: UIViewController {
         self.pois = pois
     }
     
-    var markers: [String:GMSMarker] = [:]
+    var markers: [String:(Int,GMSMarker)] = [:]
     var selectedEvent: Event?
     
     // Popup
@@ -66,13 +66,13 @@ class POIMapViewController: UIViewController {
         // TODO: show only events for today
         events = Array(DataManager.sharedInstance.events.prefix(upTo: 5))
         
-        events.forEach { event in
+        for (idx, event) in events.enumerated() {
             let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(event.location.lat), longitude: CLLocationDegrees(event.location.lng))
             let marker = GMSMarker(position: location)
             marker.userData = event
-            marker.iconView = EventMarker()
+            marker.iconView = EventMarker(markerText: String(idx+1))
             marker.map = mapView
-            markers[event.id] = marker
+            markers[event.id] = (idx, marker)
         }
     }
     
@@ -116,7 +116,7 @@ class POIMapViewController: UIViewController {
     }
     
     func displayPopupView(event: Event) {
-        let marker: GMSMarker = markers[event.id]!
+        let marker: GMSMarker = markers[event.id]!.1
         selectedEvent = event
         createPopupView()
         
@@ -127,7 +127,7 @@ class POIMapViewController: UIViewController {
     }
     
     func dismissPopupView(newEvent: Event, fullyDismissed: Bool, completionHandler: @escaping (Bool) -> ()) {
-        let selectedMarker: GMSMarker = markers[selectedEvent!.id]!
+        let selectedMarker: GMSMarker = markers[selectedEvent!.id]!.1
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
             self.popupView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.popupHeight)
@@ -160,7 +160,9 @@ extension POIMapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseIdEvent) as! ItemOfInterestTableViewCell
-        cell.setCellModel(model: selectedEvent!.toItemFeedModelInfo())
+        let idx: Int = markers[selectedEvent!.id]!.0 + 1
+        
+        cell.setCellModel(model: selectedEvent!.toItemFeedModelInfo(index: idx))
     
         return cell
     }
