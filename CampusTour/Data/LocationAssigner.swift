@@ -58,11 +58,6 @@ private func getClosestLocation(
         )
     }
     
-//    var similarityInfo = locations.map {
-//        (similarWords: similarWords(a: $0.name, b: fullLocationName),
-//         location: $0.with(name: fullLocationName, address: getAddress(location: $0)))
-//    }
-    
     similarityInfo.sort { a, b in
         a.similarWords < b.similarWords
     }
