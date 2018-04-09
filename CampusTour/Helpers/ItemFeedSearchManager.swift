@@ -77,7 +77,22 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         } else { data = allData
             print ("This shouldn't happen")
         }
-        let filteredItems: [ItemCellModelInfoConvertible] = data.flatMap { dataElement -> ItemCellModelInfoConvertible? in
+        var filteredItems: [ItemCellModelInfoConvertible]!
+        
+        //Search returns nothing without this if
+        if lowercaseText == "" {
+            filteredItems = data.flatMap { dataElement -> ItemCellModelInfoConvertible? in
+            switch dataElement {
+            case let data as Building:
+                return data
+            case let data as Event:
+                return data
+            default:
+                return nil
+                }
+            }
+        } else {
+            filteredItems = data.flatMap { dataElement -> ItemCellModelInfoConvertible? in
             switch dataElement {
             case let data as Building where data.name.lowercased().contains(lowercaseText):
                 return data
@@ -87,6 +102,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
             default:
                 return nil
             }
+        }
         }
         
         let itemFeedSpec = ItemFeedSpec(sections: [
