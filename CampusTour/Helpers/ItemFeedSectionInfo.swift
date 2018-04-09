@@ -66,17 +66,22 @@ struct ItemFeedSpec {
         ),
         ])
     
-    static func getSharedDataSpec() -> ItemFeedSpec {
+    static func getMapEventsDataSpec() -> ItemFeedSpec {
         return ItemFeedSpec(sections: [
             .map,
             .items(
                 headerInfo: (title: "Explore", subtitle: "EVENTS"),
                 items: DataManager.sharedInstance.events
             ),
+        ])
+    }
+    
+    static func getEventsDataSpec() -> ItemFeedSpec {
+        return ItemFeedSpec(sections: [
             .items(
-                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-                items: testPlaces
-            )
+                headerInfo: (title: "Explore", subtitle: "EVENTS"),
+                items: DataManager.sharedInstance.events
+            ),
         ])
     }
     
@@ -87,10 +92,6 @@ struct ItemFeedSpec {
                 headerInfo: (title: "Explore", subtitle: "EVENTS"),
                 items: events
             ),
-            .items(
-                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-                items: testPlaces
-            )
         ])
     }
 }

@@ -70,7 +70,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         
         //init search manager
         searchManager.delegate = self
-        searchManager.allData = ItemFeedSpec.getSharedDataSpec().sections
+        searchManager.allData = ItemFeedSpec.getMapEventsDataSpec().sections
             .reduce([]) { result, section in
                 switch section {
                 case .items(_, let items):
@@ -253,7 +253,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     }
     
     func setItemFeedDefaultSpec() {
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getSharedDataSpec())
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
     }
 }
 
