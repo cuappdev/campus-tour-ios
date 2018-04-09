@@ -18,6 +18,9 @@ class DetailViewController: UIViewController {
     let aboutView = UIView()
     let mapView = UIView()
     let directionsView = UIView()
+    
+    var descriptionView: UILabel!
+    var titleLabel: UILabel!
     var event: Event!
     
     private let textInset = CGFloat(20)
@@ -220,7 +223,7 @@ class DetailViewController: UIViewController {
     
     private func createAboutView() {
         let description = event?.description
-        let titleLabel: UILabel = {
+        titleLabel = {
             let label = UILabel()
             label.text = "About the Event"
             label.textColor = Colors.primary
@@ -228,7 +231,7 @@ class DetailViewController: UIViewController {
             return label
         }()
         
-        let descriptionView: UILabel = {
+        descriptionView = {
             let desc = UILabel()
             desc.text = description
             desc.textColor = Colors.secondary
@@ -237,13 +240,17 @@ class DetailViewController: UIViewController {
             return desc
         }()
         
+        let descHeight = description!.height(withConstrainedWidth: view.frame.width, font: UIFont.systemFont(ofSize: 14))
+        let minDescHeight = min(descHeight, 55)
+        
         //TODO: fix button (maybe use external framework)
         let showMoreButton: UIButton = {
             let button = UIButton()
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
             button.setTitle("Show More", for: .normal)
             button.setTitleColor(Colors.brand, for: .normal)
             button.addTarget(self, action: #selector(showMore), for: .touchUpInside)
-            button.tag = Int(descriptionView.intrinsicContentSize.height)
+            button.tag = Int(description!.height(withConstrainedWidth: view.frame.width, font: UIFont.systemFont(ofSize: 14)))
             return button
         }()
         
@@ -260,7 +267,18 @@ class DetailViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(textSubPadding)
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalTo(titleLabel.snp.trailing)
-            make.bottom.equalToSuperview().offset(-textInset)
+            make.height.equalTo(minDescHeight)
+        }
+        
+        if minDescHeight != descHeight {
+            aboutView.addSubview(showMoreButton)
+            showMoreButton.snp.makeConstraints { (make) in
+                make.trailing.equalToSuperview().offset(-textInset)
+                make.top.equalTo(descriptionView.snp.bottom).offset(textSubPadding)
+                make.bottom.equalToSuperview().offset(-textInset)
+                make.width.equalTo(100)
+                make.height.equalTo(16)
+            }
         }
     }
     
@@ -331,7 +349,16 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func showMore(_ sender: UIButton) {
-        aboutView.snp.remakeConstraints{ $0.height.equalTo(sender.tag) }
         sender.removeFromSuperview()
+        descriptionView.snp.remakeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(textSubPadding)
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.trailing.equalTo(titleLabel.snp.trailing)
+            make.bottom.equalToSuperview().offset(-textInset)
+        }
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
+

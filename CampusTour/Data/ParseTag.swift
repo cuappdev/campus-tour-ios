@@ -64,7 +64,7 @@ fileprivate let schoolTagMapping: [String: (String, String)] = [
 ]
 
 //Maps tag to all tag names
-fileprivate let generalTagMapping: [String: String] = [
+let generalTagMapping: [String: String] = [
     "444D3247-A274-FB94-C20AF80D4699C14A": Tag.typeFilters[0],
     "445370B2-EC54-AE8E-51505078028C8455": Tag.typeFilters[1],
     "4457BB5B-BFB1-BDFE-D621894EC1D64A2B": Tag.typeFilters[2],
@@ -76,12 +76,12 @@ fileprivate let generalTagMapping: [String: String] = [
     "445EDDD6-C90F-397D-AE46AAD918EC1E4C": Tag.specialInterestFilters[2],
     "44602C2E-B537-567A-EEBE5D7130A03637": Tag.specialInterestFilters[3],
     "7802B10A-D09B-184D-9B3C4B69B1B48D66": Tag.specialInterestFilters[4],
-    "4432D6B5-9DAA-484F-1BA06B88A600DD13": Tag.schoolFilters[0].0,
-    "443184C3-0AB0-9353-C820A27EBF82212C": Tag.schoolFilters[1].0,
-    "442F8473-E020-E96D-13B0C037DFF375A2": Tag.schoolFilters[2].0,
-    "44347B7B-9AEA-A36C-7E8B4C4923E4D41C": Tag.schoolFilters[3].0,
-    "443655DC-FDF8-ECD0-7BFDFEE35BBB2FA9": Tag.schoolFilters[4].0,
-    "4437CEE3-B6CE-2AE8-4054AA4C92529A9C": Tag.schoolFilters[5].0,
-    "44418B16-C2DD-39B7-DEA0F7D6DA21C2F1": Tag.schoolFilters[6].0,
-    "444370A4-024F-03AF-E60870B47DDE635A": Tag.schoolFilters[7].0,
+    "4432D6B5-9DAA-484F-1BA06B88A600DD13": Tag.schoolFilters[1].0,
+    "443184C3-0AB0-9353-C820A27EBF82212C": Tag.schoolFilters[2].0,
+    "442F8473-E020-E96D-13B0C037DFF375A2": Tag.schoolFilters[3].0,
+    "44347B7B-9AEA-A36C-7E8B4C4923E4D41C": Tag.schoolFilters[4].0,
+    "443655DC-FDF8-ECD0-7BFDFEE35BBB2FA9": Tag.schoolFilters[5].0,
+    "4437CEE3-B6CE-2AE8-4054AA4C92529A9C": Tag.schoolFilters[6].0,
+    "44418B16-C2DD-39B7-DEA0F7D6DA21C2F1": Tag.schoolFilters[7].0,
+    "444370A4-024F-03AF-E60870B47DDE635A": Tag.schoolFilters[8].0,
 ]

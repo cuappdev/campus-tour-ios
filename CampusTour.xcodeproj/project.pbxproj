@@ -12,6 +12,7 @@
 		0C6398442077AB990080E71B /* PopupViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6398432077AB990080E71B /* PopupViewHelpers.swift */; };
 		0C6398462077DD600080E71B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6398452077DD600080E71B /* Assets.xcassets */; };
 		0C933604204E8579004668CE /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C933603204E8579004668CE /* LocationData.swift */; };
+		0CB5C0B0207B434400659E6A /* SearchHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5C0AF207B434400659E6A /* SearchHelpers.swift */; };
 		0CBFF351205E394500F7AEDB /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF350205E394500F7AEDB /* FeaturedViewController.swift */; };
 		0CBFF74E2076D31300FAF047 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF74D2076D31300FAF047 /* PopupViewController.swift */; };
 		0CBFF7522076D4A600FAF047 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBFF7512076D4A600FAF047 /* FilterTableViewCell.swift */; };
@@ -56,6 +57,7 @@
 		0C6398432077AB990080E71B /* PopupViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewHelpers.swift; sourceTree = "<group>"; };
 		0C6398452077DD600080E71B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C933603204E8579004668CE /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		0CB5C0AF207B434400659E6A /* SearchHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelpers.swift; sourceTree = "<group>"; };
 		0CBFF350205E394500F7AEDB /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		0CBFF74D2076D31300FAF047 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		0CBFF7512076D4A600FAF047 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				CC1B74492077ECF900A4012A /* ItemFeedSearchManager.swift */,
 				CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */,
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
+				0CB5C0AF207B434400659E6A /* SearchHelpers.swift */,
 				CCC583D4207867AC009538A1 /* FilterBarHelpers.swift */,
 				CC642456207554BC004FEAD0 /* ItemFeedSectionInfo.swift */,
 				0C3C39642076C84500CA41DA /* DateHelpers.swift */,
@@ -409,6 +412,7 @@
 				CC6F88F920630FCD00D14711 /* TextAndColorHelpers.swift in Sources */,
 				CCBF7FEE207A80E1000CEC56 /* LocationAssigner.swift in Sources */,
 				CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */,
+				0CB5C0B0207B434400659E6A /* SearchHelpers.swift in Sources */,
 				CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */,
 				CC642457207554BC004FEAD0 /* ItemFeedSectionInfo.swift in Sources */,
 				0C6398442077AB990080E71B /* PopupViewHelpers.swift in Sources */,
@@ -558,7 +562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
@@ -574,7 +578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
