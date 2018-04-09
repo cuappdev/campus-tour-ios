@@ -23,13 +23,6 @@ class POIMapViewController: UIViewController {
         self.pois = pois
     }
     
-    private var spec = ItemFeedSpec(sections: [
-        .items(
-            headerInfo: nil,
-            items: testEvents
-        )
-    ])
-    
     var markers: [String:GMSMarker] = [:]
     var selectedEvent: Event?
     
@@ -234,29 +227,15 @@ extension POIMapViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch spec.sections[indexPath.section] {
-        case .items(_, let items):
-            let item = items[indexPath.row]
-            let detailVC: DetailViewController = {
-                let vc = DetailViewController()
-                vc.event = item as! Event
-                vc.title = item.toItemFeedModelInfo().title
-                return vc
-            }()
-            navigationController?.pushViewController(detailVC, animated: true)
-        default: return
-        }
-//=======
-//
-//        let detailVC: DetailViewController = {
-//            let vc = DetailViewController()
-//            vc.event = selectedEvent
-//            vc.title = selectedEvent!.name
-//            return vc
-//        }()
-//
-//        navigationController?.pushViewController(detailVC, animated: true)
-//>>>>>>> annie/miscellaneous-work
+
+        let detailVC: DetailViewController = {
+            let vc = DetailViewController()
+            vc.event = selectedEvent
+            vc.title = selectedEvent!.name
+            return vc
+        }()
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }
