@@ -14,20 +14,25 @@ enum ViewType {
     case Map
 }
 
-class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFilterProtocol {
+class FeaturedViewController: UIViewController, PopupFilterProtocol {
     let itemFeedViewController = ItemFeedViewController()
     let poiMapViewController = POIMapViewController()
-    var filterBar: FilterBar!
     var arButton: UIBarButtonItem!
     var viewTypeButton: UIBarButtonItem!
+    var searchCancelButton: UIBarButtonItem!
     var viewType: ViewType!
     let searchManager = ItemFeedSearchManager()
+    private var blackView: UIView!
     
     //Replace with data from DataManager
     var popupViewController: PopupViewController!
     private var currentModalMode: Filter?
-    private var filterBarCurrentStatus = FilterBarCurrentStatus(Filter.general.rawValue, Filter.date.rawValue)
-    private var blackView: UIView!
+    
+    //Filterbar variables
+    var filterBarView: UIScrollView!
+    var selectedFilters = [Filter]()
+    var buttons = [UIButton]()
+    var filterBarCurrentStatus: FilterBarCurrentStatus = FilterBarCurrentStatus()
     
     //for popupViewController
     private var isModal = false {
@@ -41,6 +46,9 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
             }
         }
     }
+    
+    //UIconstants
+    let padding = CGFloat(8)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +83,7 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         blackView.backgroundColor = .black
         blackView.alpha = 0.3
         blackView.isHidden = true
-        view.bringSubview(toFront: filterBar)
+        view.bringSubview(toFront: filterBarView)
     }
     
     @IBAction func openARMode() {
@@ -105,22 +113,28 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
     
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
+        searchCancelButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ExitIconBrand"), style: .plain, target: self, action: #selector(didEndSearchMode))
+        navigationItem.setLeftBarButton(searchCancelButton, animated: false)
+
         arButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ARIcon"), style: .plain, target: self, action: #selector(openARMode))
         navigationItem.setLeftBarButton(arButton, animated: false)
         
         viewTypeButton = UIBarButtonItem(image: #imageLiteral(resourceName: "MapIcon"), style: .plain, target: self, action: #selector(toggleViewType))
         navigationItem.setRightBarButton(viewTypeButton, animated: false)
-        
-        filterBar = FilterBar()
-        filterBar.delegate = self
-        filterBar.backgroundColor = navigationController?.navigationBar.barTintColor
-        view.addSubview(filterBar)
-        filterBar.snp.makeConstraints { (make) in
+
+        filterBarView = UIScrollView()
+        filterBarView.alwaysBounceHorizontal = false
+        filterBarView.showsHorizontalScrollIndicator = false
+        filterBarView.backgroundColor = navigationController?.navigationBar.barTintColor
+        view.addSubview(filterBarView)
+        filterBarView.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
+        
+        addFilterButton()
     }
     
     //Setup Feed portion of ViewController
@@ -158,13 +172,14 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         })
     }
     
-    func openPopupView(_ data: PopupData) {
+    func togglePopupView(_ data: PopupData) {
         view.endEditing(true)
         if isModal {
             isModal = false
-            self.filterBar.buttons.first?.setTitle(self.filterBarCurrentStatus.generalSelected, for: .normal)
-            self.filterBar.buttons.last?.setTitle(self.filterBarCurrentStatus.dateSelected, for: .normal)
-            self.filterBar.updateButtons()
+            self.buttons.first?.setTitle(data.filterBarStatus.generalSelected, for: .normal)
+            self.buttons.last?.setTitle(data.filterBarStatus.dateSelected, for: .normal)
+            self.updateButtons()
+            filterBarView.setNeedsLayout()
             searchManager.searchBar.becomeFirstResponder() //TODO encapsulate in searchManager
             return
         }
@@ -178,34 +193,22 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
         switch data.filterMode {
         case .general:
             filterHeight = min(320, 40*Tag.schoolFilters.count+20)
-            filterBar.buttons.first?.bringSubview(toFront: blackView)
+            buttons.first?.bringSubview(toFront: blackView)
         case .date:
             filterHeight = min(320, 40*dateFilters.count+20)
-            filterBar.buttons.first?.bringSubview(toFront: blackView)
+            buttons.first?.bringSubview(toFront: blackView)
         }
         
         popupViewController.view.snp.updateConstraints { (make) in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.top.equalTo(filterBar.snp.bottom).offset(10)
+            make.top.equalTo(filterBarView.snp.bottom).offset(10)
             make.height.equalTo(filterHeight)
         }
         popupViewController.updateViewConstraints()
         popupViewController.view.becomeFirstResponder()
         searchManager.searchBar.resignFirstResponder()
         isModal = true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch called")
-        guard let touch = touches.first else { return }
-        print("iscalled")
-        if isModal {
-            let loc = touch.location(in: self.view)
-            if !popupViewController.view.frame.contains(loc) {
-                isModal = false
-            }
-        }
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
@@ -220,6 +223,8 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
+        //remove cancel button -- doesn't work in ItemFeedSearchManager
+        if let sb = navigationItem.titleView as? UISearchBar { sb.showsCancelButton = false }
         print("START search")
 
         //Prepare filter viewcontroller
@@ -228,17 +233,20 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         isModal = false
         
         //Show filter bar
-        filterBar.isHidden = false
-        filterBar.snp.remakeConstraints { (make) in
+        filterBarView.isHidden = false
+        filterBarView.snp.remakeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
         
+        //update nav bar
+        navigationItem.setLeftBarButton(searchCancelButton, animated: false)
+        
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
         currVC.view.snp.remakeConstraints { make in
-            make.top.equalTo(filterBar.snp.bottom)
+            make.top.equalTo(filterBarView.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -248,9 +256,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         popupViewController.removeFromParentViewController()
         isModal = false
-        filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
-        filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
-        filterBar.updateButtons()
+        updateButtons()
     }
     
     func didFindSearchResults(results: ItemFeedSpec) {
@@ -259,11 +265,11 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
     }
     
-    func didEndSearchMode() {
+    @objc func didEndSearchMode() {
         print("END search")
 
         //remove filter bar
-        self.filterBar.snp.remakeConstraints { make in
+        self.filterBarView.snp.remakeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -277,13 +283,20 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         UIView.animate(
             withDuration: 0.5,
             animations: {self.view.layoutIfNeeded()},
-            completion: {_ in self.filterBar.isHidden = true})
+            completion: {_ in
+                self.filterBarView.isHidden = true
+                self.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
+                self.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+        })
+        
+        //update nav bar
+        navigationItem.setLeftBarButton(arButton, animated: false)
         
         //remove popup viewcontroller
         popupViewController.removeFromParentViewController()
         isModal = false
-        filterBar.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
-        filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+        
+        searchManager.searchBar.resignFirstResponder()
         
         setItemFeedDefaultSpec()
     }
