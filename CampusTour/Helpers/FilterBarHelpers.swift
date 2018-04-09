@@ -70,9 +70,6 @@ extension FeaturedViewController {
                 make.bottom.equalToSuperview().offset(padding)
                 make.height.equalTo(28)
             })
-//            button.imageView?.contentMode = .scaleToFill
-////            button.setBackgroundImage(UIImage().getImageWithColor(color: Colors.brand, size: button.frame.size), for: .normal)
-////            button.setBackgroundImage(UIImage().getImageWithColor(color: Colors.tertiary, size: button.frame.size), for: .highlighted)
         }
     }
     

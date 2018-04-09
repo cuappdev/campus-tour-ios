@@ -125,8 +125,14 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     
     //Setup filter & search portion of ViewController
     func setTopNavBar() {
-        searchCancelButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ExitIconBrand"), style: .plain, target: self, action: #selector(didEndSearchMode))
-        navigationItem.setLeftBarButton(searchCancelButton, animated: false)
+        let cancelButton = UIButton()
+        cancelButton.setImage(#imageLiteral(resourceName: "ExitIconBrand"), for: .normal)
+        cancelButton.addTarget(self, action: #selector(didEndSearchMode), for: .touchUpInside)
+        cancelButton.snp.makeConstraints { (make) in
+            make.width.equalTo(18)
+            make.height.equalTo(18)
+        }
+        searchCancelButton = UIBarButtonItem(customView: cancelButton)
 
         arButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ARIcon"), style: .plain, target: self, action: #selector(openARMode))
         navigationItem.setLeftBarButton(arButton, animated: false)
@@ -245,10 +251,6 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
-        //remove cancel button -- doesn't work in ItemFeedSearchManager
-        if let sb = navigationItem.titleView as? UISearchBar { sb.showsCancelButton = false }
-        print("START search")
-
         //Prepare filter viewcontroller
         addChildViewController(popupViewController)
         view.addSubview(popupViewController.view)
@@ -273,6 +275,12 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         
         //update nav bar
         navigationItem.setLeftBarButton(searchCancelButton, animated: false)
+        //remove cancel button -- doesn't work in ItemFeedSearchManager
+        if let sb = navigationItem.titleView as? UISearchBar {
+            sb.showsCancelButton = false
+            sb.updateConstraints()
+        }
+        print("START search")
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
         currVC.view.snp.remakeConstraints { make in
