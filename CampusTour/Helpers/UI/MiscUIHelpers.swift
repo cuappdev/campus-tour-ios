@@ -70,6 +70,7 @@ class SeparatorView: UIView {
     
     private func initialize() {
         self.isOpaque = false
+        self.isUserInteractionEnabled = false
     }
     
     override func draw(_ rect: CGRect) {

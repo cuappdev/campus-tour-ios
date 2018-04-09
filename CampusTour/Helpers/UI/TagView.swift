@@ -24,6 +24,7 @@ private func tagsHStackView(tags: [String]) -> UIStackView {
     return hStack
 }
 
+///Class showing tags. Must initialize with init(tags: _)
 class TagView: UIView {
     private var hStackView: UIStackView? = nil
     
@@ -34,6 +35,8 @@ class TagView: UIView {
         hStack.translatesAutoresizingMaskIntoConstraints = false
         
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.addSubview(hStack)
         hStack.snp.makeConstraints {
             $0.height.equalToSuperview()
