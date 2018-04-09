@@ -136,7 +136,7 @@ class DetailViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
 
         let tagView = TagView(
-            tags: event.tags.map {$0.label},
+            tags: event.tags.compactMap {$0.generalTagMap(id: $0.id)},
             style: TagView.Style(
                 tagInsets: UIEdgeInsetsMake(7, 14, 7, 14),
                 color: UIColor.white))
