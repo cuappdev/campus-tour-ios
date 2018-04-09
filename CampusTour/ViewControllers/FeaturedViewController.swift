@@ -328,6 +328,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         
         searchManager.searchBar.resignFirstResponder()
         
+        filterBarCurrentStatus = FilterBarCurrentStatus()
         setItemFeedDefaultSpec()
     }
 }
