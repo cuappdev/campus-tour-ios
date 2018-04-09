@@ -29,28 +29,7 @@ fileprivate let filters: [Filter] = [
     .date,
 ]
 
-class FilterBar: UIView {
-    
-    var scrollView: UIScrollView!
-    var selectedFilters = [Filter]()
-    var buttons = [UIButton]()
-    var bViews = [UIView]()
-    private let padding = CGFloat(8)
-    var delegate: FilterFunctionsDelegate?
-    var filterBarCurrentStatus: FilterBarCurrentStatus = FilterBarCurrentStatus()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        scrollView = UIScrollView()
-        scrollView.alwaysBounceHorizontal = false
-        scrollView.showsHorizontalScrollIndicator = false
-        addSubview(scrollView)
-        scrollView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        addFilterButton()
-    }
+extension FeaturedViewController {
     
     func addFilterButton() {
         for (index, filter) in filters.enumerated() {
@@ -60,12 +39,9 @@ class FilterBar: UIView {
 
             button.setTitleColor(.white, for: .normal)
             button.setTitleColor(Colors.brand, for: .highlighted)
-
-//            Change this so that it changes on selected
+            
             button.backgroundColor = Colors.brand
-            
             //TODO : Add white arrow :: harder than it seems
-            
             button.layer.cornerRadius = 4.0
             button.clipsToBounds = true
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
@@ -73,12 +49,18 @@ class FilterBar: UIView {
             button.tag = index
             button.contentEdgeInsets = UIEdgeInsetsMake(0, padding, 0, padding)
             button.contentHorizontalAlignment = .left
-            button.sizeToFit()
             button.addTarget(self, action: #selector(filterSelected(sender:)), for: .touchUpInside)
+            button.sizeToFit()
             
-            scrollView.addSubview(button)
+            filterBarView.addSubview(button)
             buttons.append(button)
-            button.snp.makeConstraints({ (make) in
+        }
+        updateButtons()
+    }
+    
+    func updateButtons() {
+        for (index, button) in self.buttons.enumerated() {
+            button.snp.updateConstraints({ (make) in
                 if index == 0 {
                     make.leading.equalToSuperview().offset(padding)
                 } else {
@@ -91,15 +73,9 @@ class FilterBar: UIView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     @objc func filterSelected(sender: UIButton) {
         let selectedFilter = filters[sender.tag]
         var filterMode: Filter
-        filterBarCurrentStatus.generalSelected = (buttons.first?.title(for: .normal))!
-        filterBarCurrentStatus.dateSelected = (buttons.last?.title(for: .normal))!
         switch selectedFilter {
         case .general:
             filterMode = .general
@@ -110,14 +86,18 @@ class FilterBar: UIView {
         
         let popupData = PopupData(filterBarStatus: filterBarCurrentStatus, filterMode: filterMode, filterBarLocationCenterX: filterBarCenterX)
         
-        delegate?.openPopupView(popupData)
+        togglePopupView(popupData)
     }
 }
 
-protocol FilterFunctionsDelegate {
-    func openPopupView(_ type: PopupData) -> ()
-}
-
-protocol UpdateFilterProtocol {
-    func updateFilter()
+extension UIImage {
+    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

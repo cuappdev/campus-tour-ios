@@ -38,7 +38,7 @@ class FilterTableViewCell: UITableViewCell {
         rootView.addSubview(checkImageView)
         
         //set to checkmark icon
-        checkImageView.backgroundColor = .blue
+        checkImageView.image = #imageLiteral(resourceName: "CheckMark")
         checkImageView.contentMode = .scaleAspectFit
         checkImageView.clipsToBounds = true
         

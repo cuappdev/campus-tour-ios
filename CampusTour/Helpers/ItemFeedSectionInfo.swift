@@ -14,7 +14,7 @@ extension Event: ItemCellModelInfoConvertible {
             description: self.description,
             locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: self.location.name,
                                                                            distanceString: "x mi away") ,
-            tags: self.tags.map { $0.label },
+            tags: self.parseTag(),
             imageUrl: URL(string: (self.location.imageUrl != "") ? self.location.imageUrl : defaultLocationImageUrl)!,
             layout: .event
         )

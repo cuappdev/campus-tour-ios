@@ -34,12 +34,6 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addSubview(tableView)
         view.addSubview(triangleView)
         
-        triangleView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(data.filterBarLocationCenterX)
-            make.top.equalToSuperview()
-            make.height.equalTo(triangleViewLength)
-            make.width.equalTo(triangleViewLength)
-        }
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(triangleView.snp.bottom)
             make.leading.equalToSuperview()
@@ -53,14 +47,13 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.bounces = false
     }
     
-    override func updateViewConstraints() {
-        triangleView.snp.updateConstraints { (make) in
+    func remakeConstraints() {
+        triangleView.snp.remakeConstraints { (make) in
             make.centerX.equalTo(data.filterBarLocationCenterX)
             make.top.equalToSuperview()
             make.height.equalTo(triangleViewLength)
             make.width.equalTo(triangleViewLength)
         }
-        super.updateViewConstraints()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
