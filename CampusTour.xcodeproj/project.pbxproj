@@ -36,6 +36,7 @@
 		CCBF7FEE207A80E1000CEC56 /* LocationAssigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF7FED207A80E1000CEC56 /* LocationAssigner.swift */; };
 		CCBF7FF0207A87AE000CEC56 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */; };
 		CCBF803A207AA10E000CEC56 /* precomputed_data.json in Resources */ = {isa = PBXBuildFile; fileRef = CCBF8039207AA10E000CEC56 /* precomputed_data.json */; };
+		CCBF803C207BABA1000CEC56 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF803B207BABA1000CEC56 /* TagView.swift */; };
 		CCC583D5207867AC009538A1 /* FilterBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC583D4207867AC009538A1 /* FilterBarHelpers.swift */; };
 		CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE123C20476BA900DCCC39 /* AppDelegate.swift */; };
 		CCCE123F20476BA900DCCC39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE123E20476BA900DCCC39 /* ViewController.swift */; };
@@ -83,6 +84,7 @@
 		CCBF7FED207A80E1000CEC56 /* LocationAssigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAssigner.swift; sourceTree = "<group>"; };
 		CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		CCBF8039207AA10E000CEC56 /* precomputed_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = precomputed_data.json; sourceTree = "<group>"; };
+		CCBF803B207BABA1000CEC56 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		CCC583D4207867AC009538A1 /* FilterBarHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterBarHelpers.swift; sourceTree = "<group>"; };
 		CCCE123920476BA900DCCC39 /* CampusTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCE123C20476BA900DCCC39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
 				D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */,
+				CCBF803B207BABA1000CEC56 /* TagView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				0CB5C0B0207B434400659E6A /* SearchHelpers.swift in Sources */,
 				CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */,
 				CC642457207554BC004FEAD0 /* ItemFeedSectionInfo.swift in Sources */,
+				CCBF803C207BABA1000CEC56 /* TagView.swift in Sources */,
 				0C6398442077AB990080E71B /* PopupViewHelpers.swift in Sources */,
 				CC1B744A2077ECF900A4012A /* ItemFeedSearchManager.swift in Sources */,
 				CC10D01A204C8DD2009B7808 /* POIMapViewController.swift in Sources */,

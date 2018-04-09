@@ -66,7 +66,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     var dateLabel: UILabel?
     var titleLabel: UILabel?
     var locationLabel: UILabel?
-    var tagsStackView: UIStackView?
+//    var tagsStackView: UIStackView?
+    var tagView: TagView?
     var wantedImageUrl: URL?
     
     func titleHeaderView(model: ModelInfo) -> UIView {
@@ -123,8 +124,13 @@ class ItemOfInterestTableViewCell: UITableViewCell {
             leftStackView.addArrangedSubview(locationLabel!)
         }
         
-        tagsStackView = tagsHStackView(tags: [])
-        leftStackView.addArrangedSubview(tagsStackView!)
+        tagView = TagView(tags: [])
+        leftStackView.addArrangedSubview(tagView!)
+        tagView?.snp.makeConstraints {
+            $0.width.equalToSuperview()
+        }
+//        tagsStackView = tagsHStackView(tags: [])
+//        leftStackView.addArrangedSubview(tagsStackView!)
         
         return leftStackView
     }
@@ -189,8 +195,9 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         self.titleLabel?.text = "\(prefix)\(model.title)"
         self.locationLabel?.text = model.locationSpec?.locationName ?? ""
         
-        self.tagsStackView?.arrangedSubviews.forEach {$0.removeFromSuperview()}
-        model.tags.forEach {self.tagsStackView?.addArrangedSubview(tagLabel(text: $0))}
+        self.tagView?.set(tags: model.tags)
+//        self.tagsStackView?.arrangedSubviews.forEach {$0.removeFromSuperview()}
+//        model.tags.forEach {self.tagsStackView?.addArrangedSubview(tagLabel(text: $0))}
         
         //get image
         self.imageView?.image = nil
