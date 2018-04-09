@@ -246,7 +246,6 @@ class DetailViewController: UIViewController {
         //TODO: fix button (maybe use external framework)
         let showMoreButton: UIButton = {
             let button = UIButton()
-            button.titleEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
             button.setTitle("Show More", for: .normal)
             button.setTitleColor(Colors.brand, for: .normal)
@@ -275,7 +274,7 @@ class DetailViewController: UIViewController {
             aboutView.addSubview(showMoreButton)
             showMoreButton.snp.makeConstraints { (make) in
                 make.trailing.equalToSuperview().offset(-textInset)
-                make.top.equalTo(descriptionView.snp.bottom)
+                make.top.equalTo(descriptionView.snp.bottom).offset(textSubPadding)
                 make.bottom.equalToSuperview().offset(-textInset)
                 make.width.equalTo(100)
                 make.height.equalTo(16)
@@ -350,13 +349,13 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func showMore(_ sender: UIButton) {
+        sender.removeFromSuperview()
         descriptionView.snp.remakeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(textSubPadding)
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalTo(titleLabel.snp.trailing)
             make.bottom.equalToSuperview().offset(-textInset)
         }
-        sender.removeFromSuperview()
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
         }
