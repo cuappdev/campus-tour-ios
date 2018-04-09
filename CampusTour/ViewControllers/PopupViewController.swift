@@ -14,7 +14,8 @@ protocol PopupFilterProtocol {
 
 let allDates: [String] = {
     var d = DataManager.sharedInstance.times
-    d.insert("Today", at: 0)
+    d.insert("All Dates", at: 0)
+    d.insert("Today", at: 1)
     return d
 }()
 

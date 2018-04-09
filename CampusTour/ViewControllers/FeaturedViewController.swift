@@ -220,7 +220,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         UIView.animate(withDuration: 0.3, animations: {
             self.popupViewController.view.layoutIfNeeded()
         }, completion: nil)
-        popupViewController.view.becomeFirstResponder()
+//        popupViewController.view.becomeFirstResponder()
         searchManager.searchBar.resignFirstResponder()
         isModal = true
     }
@@ -232,7 +232,20 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         self.updateButtons()
         filterBarView.layoutIfNeeded()
         
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.generalSelected, events: DataManager.sharedInstance.events)))
+        let generalTaggedEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.generalSelected, events: DataManager.sharedInstance.events)
+        var selectedDate: Date!
+        switch filterBarCurrentStatus.dateSelected {
+        case "All Dates":
+            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: generalTaggedEvents))
+            return
+        case "Today":
+            selectedDate = Date()
+        case _:
+            selectedDate = DateHelper.toDateWithCurrentYear(date: filterBarCurrentStatus.dateSelected, dateFormat: "yyyy MMMM dd")
+        }
+        let taggedEventsOnDate = SearchHelper.getEventsOnDate(date: selectedDate, events: generalTaggedEvents)
+        
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: taggedEventsOnDate))
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
@@ -271,8 +284,6 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         
         //update nav bar
         navigationItem.setLeftBarButton(searchCancelButton, animated: false)
-        //remove cancel button -- doesn't work in ItemFeedSearchManager
-        if let sb = navigationItem.titleView as? UISearchBar { sb.showsCancelButton = false }
         print("START search")
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
@@ -284,8 +295,8 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+            self.searchManager.searchBar.becomeFirstResponder()
         }
-        searchManager.searchBar.becomeFirstResponder()
         popupViewController.removeFromParentViewController()
         isModal = false
         updateButtons()
