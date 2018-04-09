@@ -12,6 +12,7 @@ protocol ItemFeedSearchManagerDelegate: class {
     func didStartSearchMode()
     func didFindSearchResults(results: ItemFeedSpec)
     func didEndSearchMode()
+    func returnTagInformation() -> String
 }
 
 class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
@@ -70,7 +71,13 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //update search results
         let lowercaseText = searchBar.text?.lowercased() ?? ""
-        let filteredItems: [ItemCellModelInfoConvertible] = self.allData.flatMap { dataElement -> ItemCellModelInfoConvertible? in
+        var data: [Any]
+        if let tag = delegate?.returnTagInformation() {
+            data = tag == "General" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag)
+        } else { data = allData
+            print ("This shouldn't happen")
+        }
+        let filteredItems: [ItemCellModelInfoConvertible] = data.flatMap { dataElement -> ItemCellModelInfoConvertible? in
             switch dataElement {
             case let data as Building where data.name.lowercased().contains(lowercaseText):
                 return data

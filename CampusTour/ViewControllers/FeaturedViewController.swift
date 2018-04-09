@@ -165,6 +165,7 @@ class FeaturedViewController: UIViewController, FilterFunctionsDelegate, PopupFi
             self.filterBar.buttons.first?.setTitle(self.filterBarCurrentStatus.generalSelected, for: .normal)
             self.filterBar.buttons.last?.setTitle(self.filterBarCurrentStatus.dateSelected, for: .normal)
             searchManager.searchBar.becomeFirstResponder() //TODO encapsulate in searchManager
+            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.generalSelected)))
             return
         }
         popupViewController.resetVariables(status: filterBarCurrentStatus, filterMode: data.filterMode)
@@ -280,5 +281,9 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         filterBar.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
         
         setItemFeedDefaultSpec()
+    }
+    
+    func returnTagInformation() -> String {
+        return filterBarCurrentStatus.generalSelected
     }
 }

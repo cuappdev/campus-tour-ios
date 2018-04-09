@@ -79,4 +79,18 @@ struct ItemFeedSpec {
             )
         ])
     }
+    
+    static func getTaggedDataSpec(events: [Event]) -> ItemFeedSpec {
+        return ItemFeedSpec(sections: [
+            .map,
+            .items(
+                headerInfo: (title: "Explore", subtitle: "EVENTS"),
+                items: events
+            ),
+            .items(
+                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
+                items: testPlaces
+            )
+        ])
+    }
 }
