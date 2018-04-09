@@ -11,23 +11,18 @@ import UIKit
 class SearchHelper {
     
     //Takes in tag as input (it is the abbreviated form of the tags)
-    static func getEventsFromTag(tag: String) -> [Event] {
+    static func getEventsFromTag(tag: String, events: [Event]) -> [Event] {
         var tagid: String = ""
         
         generalTagMapping.forEach { tagid = $0.value == tag ? $0.key : tagid }
         
         var taggedEvents = [Event]()
         
-        for e in DataManager.sharedInstance.events {
+        for e in events {
             e.tags.forEach({ (etag) in
                 if etag.id == tagid { taggedEvents.append(e) }
             })
         }
         return taggedEvents
     }
-    
-    //Takes in date as 
-//    static func getEventsOnDate(date: String) -> [Event] {
-//        
-//    }
 }

@@ -73,7 +73,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         let lowercaseText = searchBar.text?.lowercased() ?? ""
         var data: [Any]
         if let tag = delegate?.returnTagInformation() {
-            data = tag == "General" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag)
+            data = tag == "General" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag, events: DataManager.sharedInstance.events)
         } else { data = allData
             print ("This shouldn't happen")
         }
@@ -101,8 +101,8 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
                 return data
             default:
                 return nil
+                }
             }
-        }
         }
         
         let itemFeedSpec = ItemFeedSpec(sections: [
