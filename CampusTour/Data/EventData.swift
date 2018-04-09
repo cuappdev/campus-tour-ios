@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EventTag: Decodable {
+struct EventTag: Codable {
     let id: String
     let label: String
     
@@ -18,7 +18,7 @@ struct EventTag: Decodable {
     }
 }
 
-struct EventTime: Decodable {
+struct EventTime: Codable {
     let id: String
     let startTime: String
     let endTime: String
@@ -34,7 +34,7 @@ struct EventTime: Decodable {
     }
 }
 
-public struct CompositeEvent: Decodable {
+public struct CompositeEvent: Codable {
     let tags: [EventTag]
     let externalRegistrationUrl: String
     let times: [EventTime]
@@ -82,7 +82,7 @@ struct CompositeEvents: Decodable {
     }
 }
 
-enum EventType: String {
+enum EventType: String, Codable {
     //Type of events
     case academic = "Academic"
     case classes = "Class"
@@ -92,7 +92,7 @@ enum EventType: String {
     case tour = "Tour"
 }
 
-enum College: String {
+enum College: String, Codable {
     case artsandscience = "Arts and Science"
     case engineering = "Engineering"
     case ilr = "ILR"
@@ -104,15 +104,29 @@ enum College: String {
     case jcbhotel = "JCB Hotel School"
 }
 
-public struct Event {
+public struct Event: Codable {
     let id: String
     let compEventId: String?
     let name: String
     let description: String
     let startTime: Date
     let endTime: Date
-    let location: Location
+    var location: Location
     let college: College?
     let type:  EventType?
     let tags: [EventTag]
+    
+    func with(location: Location) -> Event {
+        return Event(
+            id: self.id,
+            compEventId: self.compEventId,
+            name: self.name,
+            description: self.description,
+            startTime: self.startTime,
+            endTime: self.endTime,
+            location: location,
+            college: self.college,
+            type: self.type,
+            tags: self.tags)
+    }
 }

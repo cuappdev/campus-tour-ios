@@ -10,10 +10,10 @@ extension Event: ItemCellModelInfoConvertible {
             title: self.name,
             dateRange: (self.startTime, self.endTime),
             description: self.description,
-            locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: "todo, add location name",
+            locationSpec: ItemOfInterestTableViewCell.LocationLineViewSpec(locationName: self.location.name,
                                                                            distanceString: "x mi away") ,
-            tags: ["tag1", "tag2"], //TODO add tags to data
-            imageUrl: URL(string: "https://picsum.photos/150/150/?random")!,
+            tags: self.tags.map { $0.label },
+            imageUrl: URL(string: (self.location.imageUrl != "") ? self.location.imageUrl : defaultLocationImageUrl)!,
             layout: .event
         )
     }
@@ -62,4 +62,18 @@ struct ItemFeedSpec {
             items: testPlaces
         ),
         ])
+    
+    static func getSharedDataSpec() -> ItemFeedSpec {
+        return ItemFeedSpec(sections: [
+            .map,
+            .items(
+                headerInfo: (title: "Explore", subtitle: "EVENTS"),
+                items: DataManager.sharedInstance.events
+            ),
+            .items(
+                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
+                items: testPlaces
+            )
+        ])
+    }
 }

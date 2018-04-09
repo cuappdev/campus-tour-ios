@@ -7,6 +7,7 @@ target 'CampusTour' do
   pod 'GoogleMaps', '~> 2.6.0'
   pod 'SwiftDate', '~> 4.5.1'
   pod 'AlamofireImage', '~> 3.3'
+  pod 'DZNEmptyDataSet'
 end
 
 plugin 'cocoapods-keys', {
