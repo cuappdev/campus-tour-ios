@@ -25,7 +25,7 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         view.backgroundColor = .clear
         
-        triangleView = TriangleView(frame: CGRect(x: 0, y: 0, width: triangleViewLength, height: triangleViewLength/5))
+        triangleView = TriangleView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         triangleView.backgroundColor = .clear
         
         tableView.layer.cornerRadius = 5.0
@@ -51,7 +51,7 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         triangleView.snp.remakeConstraints { (make) in
             make.centerX.equalTo(data.filterBarLocationCenterX)
             make.top.equalToSuperview()
-            make.height.equalTo(triangleViewLength)
+            make.height.equalTo(triangleViewLength/2)
             make.width.equalTo(triangleViewLength)
         }
     }

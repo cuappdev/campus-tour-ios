@@ -50,13 +50,15 @@ class FilterTableViewCell: UITableViewCell {
        
         subtitleLabel.isHidden = true
         subtitleLabel.textColor = Colors.tertiary
+        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        titleLabel.textColor = Colors.primary
         
         //Set to checkmark
         if ischeckImageView {
             checkImageView.isHidden = false
+            titleLabel.textColor = Colors.brand
         } else {
             checkImageView.isHidden = true
         }

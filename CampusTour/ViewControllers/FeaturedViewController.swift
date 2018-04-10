@@ -127,10 +127,11 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     func setTopNavBar() {
         let cancelButton = UIButton()
         cancelButton.setImage(#imageLiteral(resourceName: "ExitIconBrand"), for: .normal)
-        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 8)
+        //Kinda hacky way to max the X button work. Seems odd
+        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 14)
         cancelButton.addTarget(self, action: #selector(didEndSearchMode), for: .touchUpInside)
         cancelButton.snp.makeConstraints { (make) in
-            make.width.equalTo(26)
+            make.width.equalTo(38)
             make.height.equalTo(18)
         }
         searchCancelButton = UIBarButtonItem(customView: cancelButton)
@@ -224,7 +225,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
             make.height.equalTo(filterHeight)
         }
         self.popupViewController.remakeConstraints()
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             self.popupViewController.view.layoutIfNeeded()
         }, completion: nil)
         searchManager.searchBar.resignFirstResponder()
@@ -233,11 +234,15 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     
     @objc func closePopupView() {
         isModal = false
-        self.buttons.first?.setTitle(filterBarCurrentStatus.schoolSelected, for: .normal)
-        self.buttons.last?.setTitle(filterBarCurrentStatus.dateSelected, for: .normal)
-        self.updateButtons()
+        updateButtons()
         filterBarView.layoutIfNeeded()
         filterEventsUsingFilters()
+        self.popupViewController.view.snp.remakeConstraints { (make) in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.height.equalTo(10)
+        }
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
@@ -285,7 +290,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         //Prepare filter viewcontroller
         addChildViewController(popupViewController)
         view.addSubview(popupViewController.view)
-        popupViewController.view.snp.updateConstraints { (make) in
+        popupViewController.view.snp.remakeConstraints { (make) in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.top.equalTo(filterBarView.snp.bottom).offset(10)
@@ -305,7 +310,9 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         
         //update nav bar
-        navigationItem.setLeftBarButton(searchCancelButton, animated: false)
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = 8
+        navigationItem.leftBarButtonItems = [searchCancelButton]
         print("START search")
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
@@ -317,9 +324,10 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
-            self.searchManager.searchBar.becomeFirstResponder()
         }
         popupViewController.removeFromParentViewController()
+        navigationController?.navigationBar.layoutIfNeeded()
+        searchManager.searchBar.layoutIfNeeded()
         isModal = false
         updateButtons()
     }
