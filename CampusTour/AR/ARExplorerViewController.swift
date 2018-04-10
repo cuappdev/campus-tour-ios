@@ -20,6 +20,8 @@ struct ItemViewInfo {
 
 class ARExplorerViewController: UIViewController {
     
+    private let arQueue = DispatchQueue.init(label: "ARExplorerViewController.arQueue")
+    
     var itemsOfInterestAndViews: [ItemViewInfo] = []
     
     private var camera: ARCamera? {
@@ -83,7 +85,7 @@ class ARExplorerViewController: UIViewController {
     
     func initializeAr() {
         AppDelegate.shared!.locationProvider.addLocationListener(repeats: true) { [weak self] currentLocation in
-            DispatchQueue.main.async {
+            self?.arQueue.async {
                 self?.updateLocation(currentLocation: currentLocation)
             }
         }
@@ -154,9 +156,12 @@ class ARExplorerViewController: UIViewController {
         for (i, info) in self.itemsOfInterestAndViews.enumerated() {
             if info.node == nil { //initialize node
                 let planeWidth = CGFloat(2) //maximum width for the scene view in meters
-                let plane = SCNPlane(width: planeWidth,
+                var plane : SCNPlane!
+                DispatchQueue.main.sync {
+                    plane = SCNPlane(width: planeWidth,
                                      height: planeWidth * (info.view.frame.height / info.view.frame.width))
-                plane.firstMaterial!.diffuse.contents = info.view.layer
+                    plane.firstMaterial!.diffuse.contents = info.view.layer
+                }
                 plane.firstMaterial?.isDoubleSided = true
                 let itemNode = SCNNode(geometry: plane)
                 let displacement = ARGps.estimateDisplacement(from: currentLocation, to: info.item.location)
@@ -173,7 +178,9 @@ class ARExplorerViewController: UIViewController {
                 let node = info.node
             {
                 let distance = (camera.transform.extractTranslation() - node.simdPosition).norm()
-                info.view.updateSubtitleWithDistance(meters: Double(distance))
+                DispatchQueue.main.sync {
+                    info.view.updateSubtitleWithDistance(meters: Double(distance))
+                }
             }
         }
     }
