@@ -12,6 +12,11 @@ import CoreLocation
 import ARKit
 import SnapKit
 
+private func makeArLoadingIndicator() -> UIView {
+    let indicator = LoadingIndicator()
+    return indicator
+}
+
 struct ItemViewInfo {
     let item: ARItemOfInterest
     let view: ARItemOfInterestView
@@ -30,18 +35,21 @@ class ARExplorerViewController: UIViewController {
     
     private var sceneView: ARSCNView! = nil
     
+    private var loadingIndicatorView: UIView? = nil
+    
+    private var previousRecordedLocation: CLLocation? = nil
+    
     static func withDefaultData() -> ARExplorerViewController {
-        let arVc = ARExplorerViewController()
-        
         let locations = DataManager.sharedInstance.locations
+        let items = locations.map { ARItemOfInterest(
+            name: $0.name,
+            location: CLLocation(
+                latitude: CLLocationDegrees($0.lat),
+                longitude: CLLocationDegrees($0.lng)))
+        }
         
-        arVc.setItems(items:
-            locations.map { ARItemOfInterest(
-                name: $0.name,
-                location: CLLocation(
-                    latitude: CLLocationDegrees($0.lat),
-                    longitude: CLLocationDegrees($0.lng)))
-        })
+        let arVc = ARExplorerViewController()
+        arVc.setItems(items:items)
         
         print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
         
@@ -66,6 +74,14 @@ class ARExplorerViewController: UIViewController {
             $0.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(24)
         }
+        
+        self.loadingIndicatorView = makeArLoadingIndicator()
+        self.view.addSubview(self.loadingIndicatorView!)
+        self.loadingIndicatorView!.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
     }
 
     override func viewDidLoad() {
@@ -85,7 +101,12 @@ class ARExplorerViewController: UIViewController {
     
     func initializeAr() {
         AppDelegate.shared!.locationProvider.addLocationListener(repeats: true) { [weak self] currentLocation in
+            DispatchQueue.main.async {
+                self?.loadingIndicatorView?.removeFromSuperview()
+                self?.loadingIndicatorView = nil
+            }
             self?.arQueue.async {
+                self?.previousRecordedLocation = currentLocation
                 self?.updateLocation(currentLocation: currentLocation)
             }
         }
@@ -102,15 +123,21 @@ class ARExplorerViewController: UIViewController {
     }
     
     func setItems(items: [ARItemOfInterest]) {
-        DispatchQueue.main.async {
-            for info in self.itemsOfInterestAndViews {
-                info.node?.removeFromParentNode()
+        self.arQueue.sync {
+            DispatchQueue.main.async {
+                for info in self.itemsOfInterestAndViews {
+                    info.node?.removeFromParentNode()
+                }
+                
+                self.itemsOfInterestAndViews = items.map {
+                    ItemViewInfo(item: $0,
+                                 view: ARItemOfInterestView(item: $0),
+                                 node: nil)
+                }
             }
             
-            self.itemsOfInterestAndViews = items.map {
-                ItemViewInfo(item: $0,
-                             view: ARItemOfInterestView(item: $0),
-                             node: nil)
+            if let location = self.previousRecordedLocation {
+                self.updateLocation(currentLocation: location)
             }
         }
     }
@@ -153,18 +180,21 @@ class ARExplorerViewController: UIViewController {
     
     
     func updateLocation(currentLocation: CLLocation) {
-        for (i, info) in self.itemsOfInterestAndViews.enumerated() {
-            if info.node == nil { //initialize node
+        for (i, infoBefore) in self.itemsOfInterestAndViews.enumerated() {
+            
+            //initialize the marker's node if it doesn't exist
+            if infoBefore.node == nil {
                 let planeWidth = CGFloat(2) //maximum width for the scene view in meters
                 var plane : SCNPlane!
                 DispatchQueue.main.sync {
                     plane = SCNPlane(width: planeWidth,
-                                     height: planeWidth * (info.view.frame.height / info.view.frame.width))
-                    plane.firstMaterial!.diffuse.contents = info.view.layer
+                                     height: planeWidth * (infoBefore.view.frame.height / infoBefore.view.frame.width))
+                    plane.firstMaterial!.diffuse.contents = infoBefore.view.layer
                 }
                 plane.firstMaterial?.isDoubleSided = true
                 let itemNode = SCNNode(geometry: plane)
-                let displacement = ARGps.estimateDisplacement(from: currentLocation, to: info.item.location)
+                //TODO this calculates position in camera space but the position is needed in world space.
+                let displacement = ARGps.estimateDisplacement(from: currentLocation, to: infoBefore.item.location)
                 
                 itemNode.position = displacement
                 itemNode.constraints = [
@@ -174,12 +204,14 @@ class ARExplorerViewController: UIViewController {
                 self.itemsOfInterestAndViews[i].node = itemNode
             }
             
+            //TODO update existing nodes
+            
             if let camera = self.camera,
-                let node = info.node
+                let node = self.itemsOfInterestAndViews[i].node
             {
                 let distance = (camera.transform.extractTranslation() - node.simdPosition).norm()
                 DispatchQueue.main.sync {
-                    info.view.updateSubtitleWithDistance(meters: Double(distance))
+                    self.itemsOfInterestAndViews[i].view.updateSubtitleWithDistance(meters: Double(distance))
                 }
             }
         }
