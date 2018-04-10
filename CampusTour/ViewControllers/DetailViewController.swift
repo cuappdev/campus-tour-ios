@@ -134,6 +134,7 @@ class DetailViewController: UIViewController {
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        titleLabel.numberOfLines = 0
 
         let tagView = TagView(
             tags: event.tags.flatMap {$0.generalTagMap(id: $0.id)},
