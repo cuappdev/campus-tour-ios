@@ -31,25 +31,17 @@ class ARExplorerViewController: UIViewController {
     static func withDefaultData() -> ARExplorerViewController {
         let arVc = ARExplorerViewController()
         
-        do {
-            DataManager.sharedInstance.getLocations { (success) in
-                if success {
-                    let locations = DataManager.sharedInstance.locations
-                    
-                    arVc.setItems(items:
-                        locations.map { ARItemOfInterest(
-                            name: $0.name,
-                            location: CLLocation(
-                                latitude: CLLocationDegrees($0.lat),
-                                longitude: CLLocationDegrees($0.lng)))
-                    })
-
-                    print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
-                }
-            }
-        } catch let e {
-            print(e)
-        }
+        let locations = DataManager.sharedInstance.locations
+        
+        arVc.setItems(items:
+            locations.map { ARItemOfInterest(
+                name: $0.name,
+                location: CLLocation(
+                    latitude: CLLocationDegrees($0.lat),
+                    longitude: CLLocationDegrees($0.lng)))
+        })
+        
+        print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
         
         return arVc
     }
