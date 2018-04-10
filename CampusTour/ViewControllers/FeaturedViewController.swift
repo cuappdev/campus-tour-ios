@@ -161,7 +161,6 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     func setBottomView() {
         addChildViewController(itemFeedViewController)
         
-        //view.insertSubview(itemFeedViewController.view, belowSubview: searchResultsTableView)
         view.addSubview(itemFeedViewController.view)
         itemFeedViewController.view.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -175,10 +174,13 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         oldVC.willMove(toParentViewController: nil)
         addChildViewController(newVC)
         view.addSubview(newVC.view)
-        newVC.view.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
         
+        newVC.view.snp.remakeConstraints { make in
+            make.top.equalTo(filterBarView.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         newVC.view.alpha = 0
         newVC.view.layoutIfNeeded()
         
@@ -190,6 +192,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
             oldVC.removeFromParentViewController()
             newVC.didMove(toParentViewController: self)
         })
+        searchManager.searchBar.resignFirstResponder()
     }
     
     func togglePopupView(_ data: PopupData) {
