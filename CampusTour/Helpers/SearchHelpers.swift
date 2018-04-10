@@ -34,7 +34,36 @@ class SearchHelper {
                 onDate.append(event)
             }
         }
-        
         return onDate
+    }
+    
+    static func getFilteredEvents(_ filterBarCurrentStatus: FilterBarCurrentStatus) -> [Event] {
+        var filteredEvents: [Event]
+        //Date filter
+        switch filterBarCurrentStatus.dateSelected {
+        case "All Dates":
+            filteredEvents = DataManager.sharedInstance.events
+        case "Today":
+            filteredEvents = SearchHelper.getEventsOnDate(date: Date(), events: DataManager.sharedInstance.events)
+        case _:
+            filteredEvents = SearchHelper.getEventsOnDate(date: DateHelper.toDateWithCurrentYear(date: filterBarCurrentStatus.dateSelected, dateFormat: "yyyy MMMM dd"), events: DataManager.sharedInstance.events)
+        }
+        
+        //apply school filter
+        if filterBarCurrentStatus.schoolSelected != "All Schools" {
+            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.schoolSelected, events: filteredEvents)
+        }
+        
+        //apply type filter
+        if filterBarCurrentStatus.typeSelected != "Type" {
+            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.typeSelected, events: filteredEvents)
+        }
+        
+        //apply special interest filter
+        if filterBarCurrentStatus.specialInterestSelected != "Special Interest" {
+            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.specialInterestSelected, events: filteredEvents)
+        }
+        
+        return filteredEvents
     }
 }

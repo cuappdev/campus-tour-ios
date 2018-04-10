@@ -12,7 +12,7 @@ protocol ItemFeedSearchManagerDelegate: class {
     func didStartSearchMode()
     func didFindSearchResults(results: ItemFeedSpec)
     func didEndSearchMode()
-    func returnTagInformation() -> String
+    func returnFilterBarStatus() -> FilterBarCurrentStatus
 }
 
 class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
@@ -73,10 +73,11 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         //update search results
         let lowercaseText = searchBar.text?.lowercased() ?? ""
         var data: [Any]
-        if let tag = delegate?.returnTagInformation() {
-            data = tag == "General" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag, events: DataManager.sharedInstance.events)
-        } else { data = allData
-            print ("This shouldn't happen")
+        if let filterBarStatus = delegate?.returnFilterBarStatus() {
+            data = SearchHelper.getFilteredEvents(filterBarStatus)
+        } else {
+            print("Shouldn't happen")
+            return
         }
         var filteredItems: [ItemCellModelInfoConvertible]!
         var itemFeedSpec = ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: [])

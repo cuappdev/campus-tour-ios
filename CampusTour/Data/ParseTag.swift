@@ -22,7 +22,7 @@ extension EventTag {
 
 class Tag {
     static let schoolFilters: [(String, String)] = [
-        ("General", ""),
+        ("All Schools", ""),
         ("A&S","Arts and Sciences"),
         ("AAP","Arts, Architecture, and Planning"),
         ("CALS", "Agriculture and Life Science"),
@@ -33,6 +33,7 @@ class Tag {
         ("JCB Hotel", "SC Johnson School of Business"),
     ]
     static let typeFilters: [String] = [
+        "Type",
         "Academic Core",
         "Class",
         "General",
@@ -41,12 +42,20 @@ class Tag {
         "Tour",
     ]
     static let specialInterestFilters: [String] = [
+        "Special Interest",
         "Biological Science",
         "Financial Aid",
         "Pre-Med",
         "Pre-Vet",
         "Study Abroad",
     ]
+    
+    static let allDates: [String] = {
+        var d = DataManager.sharedInstance.times
+        d.insert("All Dates", at: 0)
+        d.insert("Today", at: 1)
+        return d
+    }()
 }
 
 //A lot of hard-coding, but necessary to format names correctly

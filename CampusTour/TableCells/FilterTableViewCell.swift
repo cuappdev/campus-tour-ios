@@ -14,19 +14,26 @@ class FilterTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     let subtitleLabel = UILabel()
     let checkImageView = UIImageView()
-    var isToday: Bool = false
     var filterMode: Filter?
+
+    struct FilterTableViewInfo {
+        let maintitle: String
+        let subtitle: String?
+        
+        static func generalTagToFilterTableView(tag: String) -> FilterTableViewInfo {
+            return FilterTableViewInfo(maintitle: tag, subtitle: nil)
+        }
+        
+        static func schoolTagToFilterTableView(tag: String, name: String) -> FilterTableViewInfo {
+            return FilterTableViewInfo(maintitle: tag, subtitle: name)
+        }
+    }
     
     private let textInsetLarge = 16.5
     private let textInsetSmall = 12
     private let textPadding = 8.5
     
-    struct Info {
-        let school: (String, String)?
-        let date: String?
-    }
-    
-    func setupCell(_ info: Info, _ ischeckImageView: Bool = false) {
+    func setupCell(_ info: FilterTableViewInfo, _ ischeckImageView: Bool = false) {
         backgroundColor = .white
         
         contentView.addSubview(rootView)
@@ -37,38 +44,30 @@ class FilterTableViewCell: UITableViewCell {
         rootView.addSubview(subtitleLabel)
         rootView.addSubview(checkImageView)
         
-        //set to checkmark icon
         checkImageView.image = #imageLiteral(resourceName: "CheckMark")
         checkImageView.contentMode = .scaleAspectFit
         checkImageView.clipsToBounds = true
-        
-        if isToday {
-            titleLabel.textColor = Colors.brand
-            subtitleLabel.isHidden = true
-        } else {
-            titleLabel.textColor = Colors.primary
-        }
+       
+        subtitleLabel.isHidden = true
         subtitleLabel.textColor = Colors.tertiary
+        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        titleLabel.textColor = Colors.primary
         
         //Set to checkmark
         if ischeckImageView {
             checkImageView.isHidden = false
+            titleLabel.textColor = Colors.brand
         } else {
             checkImageView.isHidden = true
         }
         
-        switch filterMode {
-        case .date?:
-            subtitleLabel.isHidden = true
-            titleLabel.text = info.date!
-        case .general?:
+        titleLabel.text = info.maintitle
+        
+        if let subtitleText = info.subtitle {
             subtitleLabel.isHidden = false
-            titleLabel.text = info.school!.0
-            subtitleLabel.text = info.school!.1
-        default: return
+            subtitleLabel.text = subtitleText
         }
         
         titleLabel.snp.updateConstraints { (make) in
