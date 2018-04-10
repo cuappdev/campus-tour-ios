@@ -235,7 +235,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         var selectedDate: Date!
         switch filterBarCurrentStatus.dateSelected {
         case "All Dates":
-            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: generalTaggedEvents))
+            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: generalTaggedEvents))
             return
         case "Today":
             selectedDate = Date()
@@ -244,7 +244,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         }
         let taggedEventsOnDate = SearchHelper.getEventsOnDate(date: selectedDate, events: generalTaggedEvents)
         
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: taggedEventsOnDate))
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: taggedEventsOnDate))
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
@@ -255,10 +255,16 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     func setItemFeedDefaultSpec() {
         itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
     }
+    
+    func setItemFeedSearchSpec() {
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: []))
+    }
 }
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
+        setItemFeedSearchSpec()
+        
         //Prepare filter viewcontroller
         addChildViewController(popupViewController)
         view.addSubview(popupViewController.view)
