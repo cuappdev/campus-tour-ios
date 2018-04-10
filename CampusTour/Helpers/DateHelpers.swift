@@ -1,4 +1,5 @@
 import UIKit
+import SwiftDate
 
 class DateHelper {
     static func getDate(date: Date) -> String {
@@ -6,7 +7,11 @@ class DateHelper {
     }
     
     static func getTime(date: Date) -> String {
-        return "\(date.hourStr):\(date.minuteStr)\(date.amPMStr)"
+        let ithacaDate = date.inRegion(
+            region: Region(
+                tz: TimeZone(identifier: "America/New_York")!,
+                loc: Locale.current))
+        return ithacaDate.string(custom: "hh:mm a")
     }
     
     // Assuming here that events don't span over multiple days
@@ -95,6 +100,7 @@ extension Date {
 extension String {
     func toDate(dateFormat: String) -> Date {
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "America/New_York")!
         dateFormatter.dateFormat = dateFormat
         return dateFormatter.date(from: self)!
     }
