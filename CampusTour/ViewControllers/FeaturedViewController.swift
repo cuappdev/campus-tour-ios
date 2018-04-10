@@ -70,7 +70,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         
         //init search manager
         searchManager.delegate = self
-        searchManager.allData = ItemFeedSpec.getSharedDataSpec().sections
+        searchManager.allData = ItemFeedSpec.getMapEventsDataSpec().sections
             .reduce([]) { result, section in
                 switch section {
                 case .items(_, let items):
@@ -239,7 +239,8 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         isModal = false
         updateButtons()
         filterBarView.layoutIfNeeded()
-        filterEventsUsingFilters()
+        let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus)
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: filteredEvents))
         self.popupViewController.view.snp.remakeConstraints { (make) in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -254,42 +255,18 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     }
     
     func setItemFeedDefaultSpec() {
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getSharedDataSpec())
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
     }
     
-    func filterEventsUsingFilters() {
-        var filteredEvents: [Event]
-        //Date filter
-        switch filterBarCurrentStatus.dateSelected {
-        case "All Dates":
-            filteredEvents = DataManager.sharedInstance.events
-        case "Today":
-            filteredEvents = SearchHelper.getEventsOnDate(date: Date(), events: DataManager.sharedInstance.events)
-        case _:
-            filteredEvents = SearchHelper.getEventsOnDate(date: DateHelper.toDateWithCurrentYear(date: filterBarCurrentStatus.dateSelected, dateFormat: "yyyy MMMM dd"), events: DataManager.sharedInstance.events)
-        }
-        
-        //apply school filter
-        if filterBarCurrentStatus.schoolSelected != "All Schools" {
-            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.schoolSelected, events: filteredEvents)
-        }
-        
-        //apply type filter
-        if filterBarCurrentStatus.typeSelected != "Type" {
-            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.typeSelected, events: filteredEvents)
-        }
-        
-        //apply special interest filter
-        if filterBarCurrentStatus.specialInterestSelected != "Special Interest" {
-            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.specialInterestSelected, events: filteredEvents)
-        }
-        
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: filteredEvents))
+    func setItemFeedSearchSpec() {
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: []))
     }
 }
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
+        setItemFeedSearchSpec()
+        
         //Prepare filter viewcontroller
         addChildViewController(popupViewController)
         view.addSubview(popupViewController.view)
@@ -377,7 +354,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         setItemFeedDefaultSpec()
     }
     
-    func returnTagInformation() -> String {
-        return filterBarCurrentStatus.schoolSelected
+    func returnFilterBarStatus() -> FilterBarCurrentStatus {
+        return filterBarCurrentStatus
     }
 }

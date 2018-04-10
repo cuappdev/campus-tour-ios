@@ -12,7 +12,7 @@ protocol ItemFeedSearchManagerDelegate: class {
     func didStartSearchMode()
     func didFindSearchResults(results: ItemFeedSpec)
     func didEndSearchMode()
-    func returnTagInformation() -> String
+    func returnFilterBarStatus() -> FilterBarCurrentStatus
 }
 
 class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
@@ -73,44 +73,32 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         //update search results
         let lowercaseText = searchBar.text?.lowercased() ?? ""
         var data: [Any]
-        if let tag = delegate?.returnTagInformation() {
-            data = tag == "All Schools" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag, events: DataManager.sharedInstance.events)
-        } else { data = allData
-            print ("This shouldn't happen")
+        if let filterBarStatus = delegate?.returnFilterBarStatus() {
+            data = SearchHelper.getFilteredEvents(filterBarStatus)
+        } else {
+            print("Shouldn't happen")
+            return
         }
         var filteredItems: [ItemCellModelInfoConvertible]!
+        var itemFeedSpec = ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: [])
         
         //Search returns nothing without this if
-        if lowercaseText == "" {
+        if lowercaseText != "" {
             filteredItems = data.flatMap { dataElement -> ItemCellModelInfoConvertible? in
-            switch dataElement {
-            case let data as Building:
-                return data
-            case let data as Event:
-                return data
-            default:
-                return nil
+                switch dataElement {
+                case let data as Event where
+                    (data.name + data.description).lowercased().contains(lowercaseText):
+                    return data
+                default:
+                    return nil
                 }
             }
-        } else {
-            filteredItems = data.flatMap { dataElement -> ItemCellModelInfoConvertible? in
-            switch dataElement {
-            case let data as Building where data.name.lowercased().contains(lowercaseText):
-                return data
-            case let data as Event where
-                (data.name + data.description).lowercased().contains(lowercaseText):
-                return data
-            default:
-                return nil
-                }
+            
+            if let items = filteredItems, items.count > 0 {
+                itemFeedSpec = ItemFeedSpec.getMapEventsDataSpec(headerInfo: nil, events: items)
             }
         }
         
-        let itemFeedSpec = ItemFeedSpec(sections: [
-            .items(
-                headerInfo: nil,
-                items: filteredItems)
-            ])
         self.delegate?.didFindSearchResults(results: itemFeedSpec)
     }
     

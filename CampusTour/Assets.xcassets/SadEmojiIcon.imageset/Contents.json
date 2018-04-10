@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Triangle copy 2.png",
+      "filename" : "SadEmojiIcon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "SadEmojiIcon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "SadEmojiIcon@3x.png",
       "scale" : "3x"
     }
   ],

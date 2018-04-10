@@ -21,7 +21,6 @@ class DataLoadingViewController: UIViewController {
             if success {
                 self.hideLoadingIndicator()
                 AppDelegate.shared?.window?.rootViewController = MainTabBarController()
-                //self.present(MainTabBarController(), animated: false, completion: nil)
             }
         }
     }
@@ -32,7 +31,7 @@ class DataLoadingViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 14.0)
         titleLabel.textColor = Colors.tertiary
-        titleLabel.text = "Loading events and places..."
+        titleLabel.text = "Loading events..."
         titleLabel.sizeToFit()
         
         view.addSubview(loadingIndicator!)
@@ -56,9 +55,6 @@ class DataLoadingViewController: UIViewController {
     }
     
     func loadEventsData(completion: @escaping ((_ success: Bool) -> Void)) {
-        
-        let success = true
-        
         let events = DataManager.sharedInstance.events
         print("Loaded \(events.count) events")
         completion(true)
