@@ -63,7 +63,7 @@ class ARExplorerViewController: UIViewController {
         
         let backButton = UIButton() //TODO make this look better
         backButton.setTitle("X", for: .normal)
-        backButton.backgroundColor = UIColor.red
+        backButton.backgroundColor = .red
         backButton.layer.cornerRadius = 10
         backButton.clipsToBounds = true
         backButton.addTarget(self, action: #selector(closeArAndReturn), for: .touchUpInside)

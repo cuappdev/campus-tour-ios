@@ -131,7 +131,7 @@ class EventMarker: LocationMarker {
     internal func drawEventLabel(selected: Bool) {
         // Event number label
         eventLabel = UILabel(frame: markerFrame)
-        eventLabel.font = UIFont(name: "SFUIDisplay-Heavy", size: 11)
+        eventLabel.font = Fonts.markerFont
         eventLabel.textAlignment = .center
         eventLabel.textColor = selected ? Colors.brand : .white
         eventLabel.numberOfLines = 0

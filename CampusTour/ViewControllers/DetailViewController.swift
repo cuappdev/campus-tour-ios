@@ -33,10 +33,6 @@ class DetailViewController: UIViewController {
         initializeViews()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("vc disappearing")
-    }
-    
     func initializeViews() {
         view.backgroundColor = .white
         
@@ -48,8 +44,7 @@ class DetailViewController: UIViewController {
             make.trailing.equalToSuperview()
         }
         scrollView.alwaysBounceVertical = true
-        //Scrollview keeps disappearing under tabbar
-    
+        
         let contentView = UIView.insetWrapper(view: UIView(), insets: UIEdgeInsetsMake(0, 0, self.additionalSafeAreaInsets.bottom, 0))
         
         scrollView.addSubview(contentView)
@@ -127,36 +122,36 @@ class DetailViewController: UIViewController {
         
         let imageOverlay = UIView()
         imageOverlay.backgroundColor = .black
-        imageOverlay.alpha = 0.2
+        imageOverlay.alpha = 0.3
         
         let titleLabel = UILabel()
         titleLabel.text = event.name
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        titleLabel.font = Fonts.headerFont
         titleLabel.numberOfLines = 0
 
         let tagView = TagView(
             tags: event.tags.flatMap {$0.generalTagMap(id: $0.id)},
             style: TagView.Style(
                 tagInsets: UIEdgeInsetsMake(7, 14, 7, 14),
-                color: UIColor.white))
+                color: .white))
         
         imageView.addSubview(imageOverlay)
-        imageView.addSubview(tagView)
         imageView.addSubview(titleLabel)
+        imageView.addSubview(tagView)
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(tagView.snp.top).offset(-10)
+            make.leading.equalToSuperview().offset(textInset)
+            make.trailing.equalToSuperview()
+        }
         
         tagView.snp.makeConstraints { (make) in
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(25)
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(tagView.snp.top).offset(-10)
-            make.leading.equalToSuperview().offset(textInset)
-            make.trailing.equalToSuperview()
         }
         
         topView.addSubview(imageView)
@@ -173,13 +168,13 @@ class DetailViewController: UIViewController {
         
         mainTitleLabel.text = "Happening \(DateHelper.getFormattedDate(event.startTime))"
         mainTitleLabel.textColor = Colors.brand
-        mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        mainTitleLabel.font = Fonts.titleFont
         
         let time = DateHelper.getStartEndTime(startTime: event.startTime, endTime: event.endTime)
         let loc = event.location.name
         dateLocationLabel.text = "\(time) · \(loc)"
         dateLocationLabel.textColor = Colors.tertiary
-        dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        dateLocationLabel.font = Fonts.bodyFont
         
         scheduleView.addSubview(mainTitleLabel)
         scheduleView.addSubview(dateLocationLabel)
@@ -205,7 +200,7 @@ class DetailViewController: UIViewController {
             let label = UILabel()
             label.text = "About the Event"
             label.textColor = Colors.primary
-            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            label.font = Fonts.titleFont
             return label
         }()
         
@@ -213,22 +208,22 @@ class DetailViewController: UIViewController {
             let desc = UILabel()
             desc.text = description
             desc.textColor = Colors.secondary
-            desc.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            desc.font = Fonts.bodyFont
             desc.numberOfLines = 0
             return desc
         }()
         
-        let descHeight = description!.height(withConstrainedWidth: view.frame.width, font: UIFont.systemFont(ofSize: 14))
+        let descHeight = description!.height(withConstrainedWidth: view.frame.width, font: Fonts.bodyFont)
         let minDescHeight = min(descHeight, 55)
         
         //TODO: fix button (maybe use external framework)
         let showMoreButton: UIButton = {
             let button = UIButton()
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            button.titleLabel?.font = Fonts.actionFont
             button.setTitle("Show More", for: .normal)
             button.setTitleColor(Colors.brand, for: .normal)
             button.addTarget(self, action: #selector(showMore), for: .touchUpInside)
-            button.tag = Int(description!.height(withConstrainedWidth: view.frame.width, font: UIFont.systemFont(ofSize: 14)))
+            button.tag = Int(description!.height(withConstrainedWidth: view.frame.width, font: Fonts.bodyFont))
             return button
         }()
         
@@ -282,13 +277,13 @@ class DetailViewController: UIViewController {
         
         let addressLabel = UILabel()
         addressLabel.text = address
-        addressLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        addressLabel.font = Fonts.bodyFont
         addressLabel.textColor = Colors.secondary
         
         let directionsButton = UIButton()
         directionsButton.setTitle("Directions", for: .normal)
         directionsButton.setTitleColor(Colors.systemBlue, for: .normal)
-        directionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        directionsButton.titleLabel?.font = Fonts.bodyFont
         directionsButton.contentHorizontalAlignment = .trailing
         directionsButton.addTarget(self, action: #selector(self.directionsButtonPressed(_:)), for: .touchUpInside)
         directionsButton.sizeToFit()
