@@ -51,46 +51,35 @@ enum ItemFeedSectionSpec {
     case map
 }
 
+let discoverHeader = (title: "Discover", subtitle: "EVENTS")
+
 struct ItemFeedSpec {
     var sections: [ItemFeedSectionSpec]
     
     static let testItemFeedSpec = ItemFeedSpec(sections: [
         .map,
         .items(
-            headerInfo: (title: "Explore", subtitle: "EVENTS"),
+            headerInfo: discoverHeader,
             items: testEvents
         ),
-        .items(
-            headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-            items: testPlaces
-        ),
-        ])
+    ])
     
-    static func getSharedDataSpec() -> ItemFeedSpec {
+    static func getEventsDataSpec(headerInfo: (title: String, subtitle: String)? = discoverHeader, events: [ItemCellModelInfoConvertible] = DataManager.sharedInstance.events) -> ItemFeedSpec {
         return ItemFeedSpec(sections: [
-            .map,
             .items(
-                headerInfo: (title: "Explore", subtitle: "EVENTS"),
-                items: DataManager.sharedInstance.events
+                headerInfo: headerInfo,
+                items: events
             ),
-            .items(
-                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-                items: testPlaces
-            )
         ])
     }
     
-    static func getTaggedDataSpec(events: [Event]) -> ItemFeedSpec {
+    static func getMapEventsDataSpec(headerInfo: (title: String, subtitle: String)? = discoverHeader, events: [ItemCellModelInfoConvertible] = DataManager.sharedInstance.events) -> ItemFeedSpec {
         return ItemFeedSpec(sections: [
             .map,
             .items(
-                headerInfo: (title: "Explore", subtitle: "EVENTS"),
+                headerInfo: headerInfo,
                 items: events
             ),
-            .items(
-                headerInfo: (title: "Discover", subtitle: "ATTRACTIONS"),
-                items: testPlaces
-            )
         ])
     }
 }

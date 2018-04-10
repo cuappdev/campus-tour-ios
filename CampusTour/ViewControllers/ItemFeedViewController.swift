@@ -209,17 +209,18 @@ extension ItemFeedViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         
         if currentlySearching {
             symbolView = LoadingIndicator()
-        }  else {
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "Triangle copy 2-1")) //TODO temporary "road" asset replacement - remove this
+        } else {
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "SadEmojiIcon"))
             imageView.contentMode = .scaleAspectFit
             symbolView = imageView
         }
         
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 14.0)
+        titleLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .medium)
         titleLabel.textColor = Colors.tertiary
-        titleLabel.text = currentlySearching ? "Loading events and places..." : "Oops, there are no events or places that match your search!"
-        titleLabel.sizeToFit()
+        titleLabel.text = currentlySearching ? "Loading events..." : "Oops, there are no events that match your search!"
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
         
         customView.addSubview(symbolView)
         customView.addSubview(titleLabel)
@@ -234,6 +235,7 @@ extension ItemFeedViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(symbolView.snp.bottom).offset(10)
             make.centerX.equalTo(symbolView.snp.centerX)
+            make.width.lessThanOrEqualTo(250)
         }
         
         return customView
