@@ -12,6 +12,8 @@ import CoreLocation
 import ARKit
 import SnapKit
 
+let maximumDistanceOfARMarkersMeters: Double = 200.0
+
 private func makeArLoadingIndicator() -> UIView {
     let indicator = LoadingIndicator()
     return indicator
@@ -178,7 +180,7 @@ class ARExplorerViewController: UIViewController {
         })
     }
     
-    
+    /// Updates scene based on new location. Must be called on the arQueue thread
     func updateLocation(currentLocation: CLLocation) {
         for (i, infoBefore) in self.itemsOfInterestAndViews.enumerated() {
             
@@ -204,12 +206,17 @@ class ARExplorerViewController: UIViewController {
                 self.itemsOfInterestAndViews[i].node = itemNode
             }
             
-            //TODO update existing nodes
-            
+            //TODO update existing nodes and filter based on distance
             if let camera = self.camera,
                 let node = self.itemsOfInterestAndViews[i].node
             {
                 let distance = (camera.transform.extractTranslation() - node.simdPosition).norm()
+                if Double(distance) > maximumDistanceOfARMarkersMeters {
+                    node.isHidden = true
+                } else {
+                    node.isHidden = false
+                }
+                
                 DispatchQueue.main.sync {
                     self.itemsOfInterestAndViews[i].view.updateSubtitleWithDistance(meters: Double(distance))
                 }

@@ -20,7 +20,12 @@ class ARItemOfInterestView : UIView {
     var subtitleLabel: UILabel?
     
     func updateSubtitleWithDistance(meters: Double) {
-        subtitleLabel?.text = String.init(format: "%.1f m", meters)
+        if Locale.current.usesMetricSystem {
+            subtitleLabel?.text = String.init(format: "%.1f m", meters)
+        } else {
+            subtitleLabel?.text = String.init(format: "%.1f ft", metersToFeet(meters: meters))
+        }
+        
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }

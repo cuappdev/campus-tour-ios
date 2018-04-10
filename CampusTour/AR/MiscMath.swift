@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+func metersToFeet(meters: Double) -> Double {
+    return meters * 3.28084
+}
