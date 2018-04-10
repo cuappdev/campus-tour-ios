@@ -180,14 +180,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         //get image
         self.imageView?.image = nil
         self.wantedImageUrl = model.imageUrl
-        Alamofire.request(model.imageUrl).responseImage { [weak self] response in
-            if let image = response.result.value,
-                model.imageUrl == self?.wantedImageUrl {
-                DispatchQueue.main.async { [weak self] in
-                    self?.itemImageView?.image = image
-                }
-            }
-        }
+        self.itemImageView?.af_setImage(withURL: model.imageUrl)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
