@@ -142,7 +142,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         navigationItem.setRightBarButton(viewTypeButton, animated: false)
 
         filterBarView = UIScrollView()
-        filterBarView.alwaysBounceHorizontal = false
+        filterBarView.alwaysBounceHorizontal = true
         filterBarView.showsHorizontalScrollIndicator = false
         filterBarView.backgroundColor = navigationController?.navigationBar.barTintColor
         view.addSubview(filterBarView)
@@ -202,12 +202,19 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         view.bringSubview(toFront: popupViewController.view)
         
         var filterHeight = 0
+        let maxScreenHeight = Int(UIScreen.main.bounds.height * 0.66)
         switch data.filterMode {
         case .general:
-            filterHeight = min(320, 40*Tag.schoolFilters.count+20)
+            filterHeight = min(maxScreenHeight, 40*Tag.schoolFilters.count+20)
             buttons.first?.bringSubview(toFront: blackView)
         case .date:
-            filterHeight = min(320, 40*allDates.count+20)
+            filterHeight = min(maxScreenHeight, 40*Tag.allDates.count+20)
+            buttons.first?.bringSubview(toFront: blackView)
+        case .type:
+            filterHeight = min(maxScreenHeight, 40*Tag.typeFilters.count+20)
+            buttons.first?.bringSubview(toFront: blackView)
+        case .specialInterest:
+            filterHeight = min(maxScreenHeight, 40*Tag.specialInterestFilters.count + 20)
             buttons.first?.bringSubview(toFront: blackView)
         }
         self.popupViewController.view.snp.remakeConstraints { (make) in
@@ -226,25 +233,11 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     
     @objc func closePopupView() {
         isModal = false
-        self.buttons.first?.setTitle(filterBarCurrentStatus.generalSelected, for: .normal)
+        self.buttons.first?.setTitle(filterBarCurrentStatus.schoolSelected, for: .normal)
         self.buttons.last?.setTitle(filterBarCurrentStatus.dateSelected, for: .normal)
         self.updateButtons()
         filterBarView.layoutIfNeeded()
-        
-        let generalTaggedEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.generalSelected, events: DataManager.sharedInstance.events)
-        var selectedDate: Date!
-        switch filterBarCurrentStatus.dateSelected {
-        case "All Dates":
-            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: generalTaggedEvents))
-            return
-        case "Today":
-            selectedDate = Date()
-        case _:
-            selectedDate = DateHelper.toDateWithCurrentYear(date: filterBarCurrentStatus.dateSelected, dateFormat: "yyyy MMMM dd")
-        }
-        let taggedEventsOnDate = SearchHelper.getEventsOnDate(date: selectedDate, events: generalTaggedEvents)
-        
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: taggedEventsOnDate))
+        filterEventsUsingFilters()
     }
     
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
@@ -254,6 +247,36 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     
     func setItemFeedDefaultSpec() {
         itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getSharedDataSpec())
+    }
+    
+    func filterEventsUsingFilters() {
+        var filteredEvents: [Event]
+        //Date filter
+        switch filterBarCurrentStatus.dateSelected {
+        case "All Dates":
+            filteredEvents = DataManager.sharedInstance.events
+        case "Today":
+            filteredEvents = SearchHelper.getEventsOnDate(date: Date(), events: DataManager.sharedInstance.events)
+        case _:
+            filteredEvents = SearchHelper.getEventsOnDate(date: DateHelper.toDateWithCurrentYear(date: filterBarCurrentStatus.dateSelected, dateFormat: "yyyy MMMM dd"), events: DataManager.sharedInstance.events)
+        }
+        
+        //apply school filter
+        if filterBarCurrentStatus.schoolSelected != "All Schools" {
+            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.schoolSelected, events: filteredEvents)
+        }
+        
+        //apply type filter
+        if filterBarCurrentStatus.typeSelected != "Type" {
+            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.typeSelected, events: filteredEvents)
+        }
+        
+        //apply special interest filter
+        if filterBarCurrentStatus.specialInterestSelected != "Special Interest" {
+            filteredEvents = SearchHelper.getEventsFromTag(tag: filterBarCurrentStatus.specialInterestSelected, events: filteredEvents)
+        }
+        
+        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getTaggedDataSpec(events: filteredEvents))
     }
 }
 
@@ -327,8 +350,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             animations: {self.view.layoutIfNeeded()},
             completion: {_ in
                 self.filterBarView.isHidden = true
-                self.buttons.first?.setTitle(Filter.general.rawValue, for: .normal)
-                self.buttons.last?.setTitle(Filter.date.rawValue, for: .normal)
+                self.updateButtons()
         })
         
         //update nav bar
@@ -345,6 +367,6 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     }
     
     func returnTagInformation() -> String {
-        return filterBarCurrentStatus.generalSelected
+        return filterBarCurrentStatus.schoolSelected
     }
 }

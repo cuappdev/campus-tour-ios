@@ -74,7 +74,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         let lowercaseText = searchBar.text?.lowercased() ?? ""
         var data: [Any]
         if let tag = delegate?.returnTagInformation() {
-            data = tag == "General" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag, events: DataManager.sharedInstance.events)
+            data = tag == "All Schools" ? DataManager.sharedInstance.events : SearchHelper.getEventsFromTag(tag: tag, events: DataManager.sharedInstance.events)
         } else { data = allData
             print ("This shouldn't happen")
         }

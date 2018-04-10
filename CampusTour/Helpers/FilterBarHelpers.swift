@@ -10,23 +10,31 @@ import UIKit
 import SnapKit
 
 struct FilterBarCurrentStatus {
-    var generalSelected: String
+    var schoolSelected: String
     var dateSelected: String
+    var typeSelected: String
+    var specialInterestSelected: String
     
-    init(_ gs: String = "General", _ ds: String = "All Dates") {
-        generalSelected = gs
+    init(_ gs: String = "All Schools", _ ds: String = "All Dates", _ ts: String = "Type", _ sis: String = "Special Interest") {
+        schoolSelected = gs
         dateSelected = ds
+        typeSelected = ts
+        specialInterestSelected = sis
     }
 }
 
 enum Filter: String {
-    case general = "General"
+    case general = "All Schools"
     case date = "All Dates"
+    case type = "Type"
+    case specialInterest = "Special Interest"
 }
 
 fileprivate let filters: [Filter] = [
     .general,
     .date,
+    .type,
+    .specialInterest
 ]
 
 extension FeaturedViewController {
@@ -70,6 +78,35 @@ extension FeaturedViewController {
                 make.bottom.equalToSuperview().offset(padding)
                 make.height.equalTo(28)
             })
+            switch index {
+            case 0:
+                button.setTitle(filterBarCurrentStatus.schoolSelected, for: .normal)
+            case 1:
+                button.setTitle(filterBarCurrentStatus.dateSelected, for: .normal)
+            case 2:
+                button.setTitle(filterBarCurrentStatus.typeSelected, for: .normal)
+            case 3:
+                button.setTitle(filterBarCurrentStatus.specialInterestSelected, for: .normal)
+            default:
+                continue
+            }
+        }
+    }
+    
+    func resetButtons() {
+        for (index, button) in self.buttons.enumerated() {
+            switch index {
+            case 0:
+                button.setTitle("All Schools", for: .normal)
+            case 1:
+                button.setTitle("All Dates", for: .normal)
+            case 2:
+                button.setTitle("Type", for: .normal)
+            case 3:
+                button.setTitle("Special Interest", for: .normal)
+            default:
+                continue
+            }
         }
     }
     
@@ -81,6 +118,10 @@ extension FeaturedViewController {
             filterMode = .general
         case .date:
             filterMode = .date
+        case .type:
+            filterMode = .type
+        case .specialInterest:
+            filterMode = .specialInterest
         }
         let filterBarCenterX = sender.center.x
         

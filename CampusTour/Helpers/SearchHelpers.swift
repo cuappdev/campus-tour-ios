@@ -34,7 +34,6 @@ class SearchHelper {
                 onDate.append(event)
             }
         }
-        
         return onDate
     }
 }
