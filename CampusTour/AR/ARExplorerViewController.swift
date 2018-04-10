@@ -182,7 +182,21 @@ class ARExplorerViewController: UIViewController {
     
     /// Updates scene based on new location. Must be called on the arQueue thread
     func updateLocation(currentLocation: CLLocation) {
+        guard let camera = self.camera else {
+            print("Error: could not get camera in AR")
+            return
+        }
+        
         for (i, infoBefore) in self.itemsOfInterestAndViews.enumerated() {
+            
+            /// unrotatedCameraSpaceDisplacement is the worldspace displacement transformed by
+            /// the translation component of the camera matrix
+            func worldSpaceDisplacement(camera: ARCamera, unrotatedCameraSpaceDisplacement: SCNVector3) -> SCNVector3 {
+                let cameraTranslateTransform = float4x4.translation(camera.transform.extractTranslation())
+                let worldspaceDisplacement =
+                    cameraTranslateTransform.inverse * float3(unrotatedCameraSpaceDisplacement).upgrade(homogeneous: 1.0)
+                return SCNVector3(worldspaceDisplacement.downgrade())
+            }
             
             //initialize the marker's node if it doesn't exist
             if infoBefore.node == nil {
@@ -195,8 +209,10 @@ class ARExplorerViewController: UIViewController {
                 }
                 plane.firstMaterial?.isDoubleSided = true
                 let itemNode = SCNNode(geometry: plane)
-                //TODO this calculates position in camera space but the position is needed in world space.
-                let displacement = ARGps.estimateDisplacement(from: currentLocation, to: infoBefore.item.location)
+                
+                let displacement = worldSpaceDisplacement(
+                    camera: camera,
+                    unrotatedCameraSpaceDisplacement: ARGps.estimateDisplacement(from: currentLocation, to: infoBefore.item.location))
                 
                 itemNode.position = displacement
                 itemNode.constraints = [
@@ -207,9 +223,13 @@ class ARExplorerViewController: UIViewController {
             }
             
             //TODO update existing nodes and filter based on distance
-            if let camera = self.camera,
-                let node = self.itemsOfInterestAndViews[i].node
-            {
+            if let node = self.itemsOfInterestAndViews[i].node {
+                
+                let newDisplacement = worldSpaceDisplacement(
+                    camera: camera,
+                    unrotatedCameraSpaceDisplacement: ARGps.estimateDisplacement(from: currentLocation, to: infoBefore.item.location))
+                node.position = newDisplacement
+                
                 let distance = (camera.transform.extractTranslation() - node.simdPosition).norm()
                 if Double(distance) > maximumDistanceOfARMarkersMeters {
                     node.isHidden = true
