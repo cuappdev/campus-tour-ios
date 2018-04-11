@@ -58,9 +58,7 @@ extension UIView {
 
 extension UITableViewCell {
     
-    func animateUponLoad() {
-        var delayCount: Double = 0.0
-        
+    func animateUponLoad(delayCount: Double) {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 10, height: 10)
         self.transform = CGAffineTransform(translationX: 0, y: self.frame.height)
@@ -75,7 +73,6 @@ extension UITableViewCell {
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         UIView.commitAnimations()
-        delayCount += 1
     }
     
 }

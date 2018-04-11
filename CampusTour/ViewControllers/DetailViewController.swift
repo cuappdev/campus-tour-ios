@@ -162,10 +162,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func toggleBookmark() {
-        event.isBookmarked = !event.isBookmarked
+        BookmarkHelper.updateBookmark(id: event.id)
         
-        bookmarkButton.setImage(event.isBookmarked ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
-        print("event bookmarked: ", event.isBookmarked)
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        print("event bookmarked: ", BookmarkHelper.isEventBookmarked(event.id))
     }
     
     private func createScheduleView() {
@@ -183,7 +183,7 @@ class DetailViewController: UIViewController {
         dateLocationLabel.font = Fonts.bodyFont
         
         bookmarkButton = UIButton()
-        bookmarkButton.setImage(#imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
         bookmarkButton.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
         
         scheduleView.addSubview(mainTitleLabel)

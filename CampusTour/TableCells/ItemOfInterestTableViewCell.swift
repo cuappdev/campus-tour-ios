@@ -11,6 +11,10 @@ import SwiftDate
 import Alamofire
 import AlamofireImage
 
+protocol ItemOfInterestCellDelegate {
+    func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo)
+}
+
 class ItemOfInterestTableViewCell: UITableViewCell {
     static let reuseIdEvent = "ItemOfInterestTableViewCell.event"
     static let reuseIdPlace = "ItemOfInterestTableViewCell.place"
@@ -35,6 +39,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         let tags: [String]
         let imageUrl: URL
         let layout: Layout
+        let id: String?
     }
     
     struct LocationLineViewSpec {
@@ -49,8 +54,11 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     var dateLabel: UILabel?
     var titleLabel: UILabel?
     var locationLabel: UILabel?
+    var bookmarkButton: UIButton!
     var tagView: TagView?
     var wantedImageUrl: URL?
+    var delegate: ItemOfInterestCellDelegate!
+    private var privateInfo: ModelInfo!
     
     func titleHeaderView(model: ModelInfo) -> UIView {
         let header = UIStackView()
@@ -96,6 +104,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
             text: "",
             color: Colors.primary,
             font: Fonts.titleFont)
+        titleLabel?.numberOfLines = 0
         leftStackView.addArrangedSubview(titleLabel!)
         
         //add location line
@@ -129,7 +138,17 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         }
         rightView.addArrangedSubview(itemImageView!)
         
-        rightView.addArrangedSubview(UIView())
+        let bookmarkView = UIView()
+        bookmarkButton = UIButton()
+        bookmarkView.addSubview(bookmarkButton)
+        bookmarkButton?.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
+        bookmarkButton.snp.makeConstraints { (make) in
+            make.width.equalTo(12)
+            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(28.9 / 17.4)
+            make.trailing.equalToSuperview().offset(-14)
+            make.bottom.equalToSuperview().offset(-12)
+        }
+        rightView.addArrangedSubview(bookmarkView)
         
         return rightView
     }
@@ -162,6 +181,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     }
     
     func setCellModel(model: ModelInfo) {
+        privateInfo = model
+        
         let layout = model.layout
         setUpViewsIfNecessary(layout: layout)
         
@@ -181,6 +202,11 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         self.imageView?.image = nil
         self.wantedImageUrl = model.imageUrl
         self.itemImageView?.af_setImage(withURL: model.imageUrl)
+        self.bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(model.id!) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+    }
+    
+    @objc func toggleBookmark() {
+        delegate.updateBookmark(modelInfo: privateInfo)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -10,19 +10,24 @@ import UIKit
 
 class BookmarksViewController: UIViewController {
     
-    private var tableView: UITableView {
-        return self.view as! UITableView
-    }
+    private var tableView: UITableView!
     
     private var firstLoad = true
     
     private var spec = ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: [])
     
     var events: [Event] = []
+    private var delayCount = 0.0
     
     func loadBookmarkedEvents() {
-        // TODO
-        tableView.reloadData()
+        let bookmarks = UserDefaults.standard.stringArray(forKey: "bookmarks") ?? []
+        var tempEvents = [Event]()
+        
+        bookmarks.forEach { (id) in
+            tempEvents.append(SearchHelper.getEventById(id, events: DataManager.sharedInstance.events)!)
+        }
+        
+        events = tempEvents
     }
     
     func updateItems(newSpec: ItemFeedSpec) {
@@ -35,6 +40,7 @@ class BookmarksViewController: UIViewController {
         tableView.tableHeaderView?.backgroundColor = .white
         tableView.estimatedRowHeight = 50
         tableView.insetsContentViewsToSafeArea = true
+        tableView.alwaysBounceVertical = true
         
         tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
     }
@@ -43,8 +49,24 @@ class BookmarksViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.title = "Bookmarked Events"
+        tableView = UITableView(frame: view.bounds)
+        view.addSubview(tableView)
+        
+        loadBookmarkedEvents()
+        spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
+        updateItems(newSpec: spec)
     }
 
+}
+
+extension BookmarksViewController: ItemOfInterestCellDelegate {
+    func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
+        BookmarkHelper.updateBookmark(id: modelInfo.id!)
+        
+        tableView.deleteRows(at: [IndexPath(row: modelInfo.index!, section: 0)], with: UITableViewRowAnimation.bottom)
+        loadBookmarkedEvents()
+        spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
+    }
 }
 
 extension BookmarksViewController: UITableViewDataSource {
@@ -81,16 +103,16 @@ extension BookmarksViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row > 4 {
+        if indexPath.row > 6 {
             firstLoad = false
             return
         }
         switch spec.sections[indexPath.section] {
         case _:
             if firstLoad {
-                cell.animateUponLoad()
+                cell.animateUponLoad(delayCount: self.delayCount)
+                delayCount += 1
             }
         }
     }
-    
 }

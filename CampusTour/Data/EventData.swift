@@ -116,33 +116,6 @@ public struct Event: Codable {
     let type:  EventType?
     let tags: [EventTag]
     
-    var isBookmarked: Bool {
-        get {
-            let bookmarks = UserDefaults.standard.stringArray(forKey: "bookmarks") ?? []
-            return bookmarks.contains {
-                $0 == self.id
-            }
-        }
-        
-        set {
-            var bookmarks = UserDefaults.standard.stringArray(forKey: "bookmarks") ?? []
-            let contains = self.isBookmarked
-            if (newValue && !contains) {
-                bookmarks.append(self.id)
-            } else if (!newValue && contains) {
-                let idx = bookmarks.index {
-                    $0 == self.id
-                }
-                
-                if let idx = idx {
-                    bookmarks.remove(at: idx)
-                }
-            }
-            
-            UserDefaults.standard.set(bookmarks, forKey: "bookmarks");
-        }
-    }
-    
     func with(location: Location) -> Event {
         return Event(
             id: self.id,

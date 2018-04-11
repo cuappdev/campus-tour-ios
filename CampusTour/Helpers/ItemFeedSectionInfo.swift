@@ -16,7 +16,8 @@ extension Event: ItemCellModelInfoConvertible {
                                                                            distanceString: "x mi away") ,
             tags: self.parseTag(),
             imageUrl: URL(string: (self.location.imageUrl != "") ? self.location.imageUrl : defaultLocationImageUrl)!,
-            layout: .event
+            layout: .event,
+            id: self.id
         )
     }
 }
@@ -31,7 +32,8 @@ extension Building: ItemCellModelInfoConvertible {
             locationSpec: nil,
             tags: ["tag1", "tag2"],
             imageUrl: URL(string: "https://picsum.photos/150/150/?random")!,
-            layout: .place
+            layout: .place,
+            id: nil
         )
     }
 }

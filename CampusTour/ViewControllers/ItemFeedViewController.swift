@@ -18,6 +18,7 @@ class ItemFeedViewController: UIViewController {
     private var spec = ItemFeedSpec(sections: [])
     
     private var firstLoad = true
+    private var delayCount = 0.0
     
     private var tableView: UITableView {
         return self.view as! UITableView
@@ -51,6 +52,14 @@ class ItemFeedViewController: UIViewController {
     
 }
 
+extension ItemFeedViewController: ItemOfInterestCellDelegate {
+    func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
+        BookmarkHelper.updateBookmark(id: modelInfo.id!)
+        
+        tableView.reloadRows(at: [IndexPath(row: modelInfo.index!-1, section: spec.sections.count-1)], with: .none)
+    }
+}
+
 extension ItemFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,6 +72,7 @@ extension ItemFeedViewController: UITableViewDataSource {
             let itemModel = items[indexPath.row].toItemFeedModelInfo(index: indexPath.row + 1)
             let cell = tableView.dequeueReusableCell(withIdentifier: itemModel.layout.reuseId()) as! ItemOfInterestTableViewCell
             cell.setCellModel(model: itemModel)
+            cell.delegate = self
             return cell
         }
     }
@@ -174,7 +184,8 @@ extension ItemFeedViewController: UITableViewDelegate {
         case .map: return
         case _:
             if firstLoad {
-                cell.animateUponLoad()
+                cell.animateUponLoad(delayCount: self.delayCount)
+                delayCount += 1
             }
         }
     }
