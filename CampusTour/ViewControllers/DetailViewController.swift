@@ -44,6 +44,10 @@ class DetailViewController: UIViewController {
     func initializeViews() {
         view.backgroundColor = .white
         
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        titleView.text = event.name
+        navigationItem.titleView = titleView
+        
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -174,12 +178,14 @@ class DetailViewController: UIViewController {
         
         mainTitleLabel.text = "Happening \(DateHelper.getFormattedDate(event.startTime))"
         mainTitleLabel.textColor = Colors.brand
+        mainTitleLabel.numberOfLines = 0
         mainTitleLabel.font = Fonts.titleFont
         
         let time = DateHelper.getStartEndTime(startTime: event.startTime, endTime: event.endTime)
         let loc = event.location.name
         dateLocationLabel.text = "\(time) · \(loc)"
         dateLocationLabel.textColor = Colors.tertiary
+        dateLocationLabel.numberOfLines = 0
         dateLocationLabel.font = Fonts.bodyFont
         
         bookmarkButton = UIButton()
@@ -192,15 +198,13 @@ class DetailViewController: UIViewController {
         
         mainTitleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(textInset)
-            make.trailing.equalToSuperview().offset(-textInset)
+            make.trailing.equalTo(bookmarkButton).offset(-textInset)
             make.leading.equalToSuperview().offset(textInset)
-            make.height.equalTo(19)
         }
         dateLocationLabel.snp.makeConstraints { (make) in
             make.top.equalTo(mainTitleLabel.snp.bottom).offset(textSubPadding)
             make.trailing.equalTo(mainTitleLabel)
             make.leading.equalTo(mainTitleLabel)
-            make.height.equalTo(18)
             make.bottom.equalToSuperview().offset(-textInset)
         }
         
@@ -232,8 +236,8 @@ class DetailViewController: UIViewController {
             return desc
         }()
         
-        let descHeight = description!.height(withConstrainedWidth: view.frame.width, font: Fonts.bodyFont)
-        let minDescHeight = min(descHeight, 55)
+        let descHeight = description!.height(withConstrainedWidth: view.frame.width - textInset*2, font: Fonts.bodyFont)
+        let minDescHeight = min(descHeight, 80)
         
         //TODO: fix button (maybe use external framework)
         let showMoreButton: UIButton = {
@@ -260,10 +264,17 @@ class DetailViewController: UIViewController {
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalTo(titleLabel.snp.trailing)
             make.height.equalTo(minDescHeight)
+            make.bottom.equalToSuperview().offset(-textInset)
         }
         
         if minDescHeight != descHeight {
             aboutView.addSubview(showMoreButton)
+            descriptionView.snp.remakeConstraints { (make) in
+                make.top.equalTo(titleLabel.snp.bottom).offset(textSubPadding)
+                make.leading.equalTo(titleLabel.snp.leading)
+                make.trailing.equalTo(titleLabel.snp.trailing)
+                make.height.equalTo(minDescHeight)
+            }
             showMoreButton.snp.makeConstraints { (make) in
                 make.trailing.equalToSuperview().offset(-textInset)
                 make.top.equalTo(descriptionView.snp.bottom).offset(textSubPadding)

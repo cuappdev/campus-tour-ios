@@ -10,7 +10,7 @@ import UIKit
 
 protocol ItemFeedSearchManagerDelegate: class {
     func didStartSearchMode()
-    func didFindSearchResults(results: ItemFeedSpec)
+    func didFindSearchResults(results: ItemFeedSpec, events: [Event])
     func didEndSearchMode()
     func returnFilterBarStatus() -> FilterBarCurrentStatus
 }
@@ -81,8 +81,10 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
             print("Shouldn't happen")
             return
         }
-        var filteredItems: [ItemCellModelInfoConvertible]!
+        var filteredItems = [ItemCellModelInfoConvertible]()
         var itemFeedSpec = ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: [])
+        
+        var filteredEvents = [Event]()
         
         //Search returns nothing without this if
         if lowercaseText != "" {
@@ -96,12 +98,20 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
                 }
             }
             
-            if let items = filteredItems, items.count > 0 {
-                itemFeedSpec = ItemFeedSpec.getMapEventsDataSpec(headerInfo: nil, events: items)
+            for dataElement in data {
+                guard let dataEvent = dataElement as? Event else { continue }
+                if (dataEvent.name + dataEvent.description).lowercased().contains(lowercaseText) {
+                    filteredEvents.append(dataEvent)
+                    filteredItems.append(dataEvent)
+                }
+            }
+            
+            if filteredItems.count > 0 {
+                itemFeedSpec = ItemFeedSpec.getMapEventsDataSpec(headerInfo: nil, events: filteredItems)
             }
         }
         
-        self.delegate?.didFindSearchResults(results: itemFeedSpec)
+        self.delegate?.didFindSearchResults(results: itemFeedSpec, events: filteredEvents)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -98,6 +98,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
                 color: Colors.brand,
                 font: Fonts.subtitleFont)
             leftStackView.addArrangedSubview(dateLabel!)
+            dateLabel?.numberOfLines = 0
         }
         
         //add the title header
@@ -114,6 +115,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
                                       color: Colors.primary,
                                       font: Fonts.bodyFont)
             leftStackView.addArrangedSubview(locationLabel!)
+            locationLabel?.numberOfLines = 0
         }
         
         tagView = TagView(tags: [])

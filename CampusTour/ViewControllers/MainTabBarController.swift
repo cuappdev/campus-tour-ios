@@ -24,6 +24,16 @@ class MainTabBarController: UITabBarController {
             campusTourNavigationViewController(root: bookmarksVC),
             ], animated: false)
     }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if tabBar.items?.index(of: item) == 0 {
+            let currVC = (feedVC.viewType == .List) ? feedVC.itemFeedViewController : feedVC.poiMapViewController
+            if currVC == feedVC.itemFeedViewController {
+                let tv = feedVC.itemFeedViewController.tableView
+                tv.scrollToRow(at: IndexPath(row: 0,section: 0), at: UITableViewScrollPosition.top, animated: true)
+            }
+        }
+    }
 }
 
 extension MainTabBarController: FeaturedViewControllerDelegate, BookmarksViewControllerDelegate {

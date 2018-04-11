@@ -54,7 +54,7 @@ class FeaturedViewController: UIViewController {
         didSet {
             if !isModal {
                 popupViewController.view.isHidden = true
-                UIView.animate(withDuration: 0.6, animations: {
+                UIView.animate(withDuration: 0.8, animations: {
                     self.blackView.alpha = 0
                 })
             } else {
@@ -255,8 +255,10 @@ class FeaturedViewController: UIViewController {
         isModal = false
         updateButtons()
         filterBarView.layoutIfNeeded()
-        let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus)
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: filteredEvents))
+        if searchManager.searchBar.text != "" {
+            let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus)
+            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: filteredEvents))
+        }
         self.popupViewController.view.snp.remakeConstraints { (make) in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -316,6 +318,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
+        view.bringSubview(toFront: filterBarView)
         
         //update nav bar
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -333,16 +336,15 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+        
         popupViewController.removeFromParentViewController()
-        navigationController?.navigationBar.layoutIfNeeded()
-        searchManager.searchBar.layoutIfNeeded()
-        isModal = false
         updateButtons()
     }
     
-    func didFindSearchResults(results: ItemFeedSpec) {
+    func didFindSearchResults(results: ItemFeedSpec, events: [Event]) {
         if self.searchManager.searchIsActive {
             self.itemFeedViewController.updateItems(newSpec: results)
+            self.poiMapViewController.updateEventMarkers(events: events)
         }
     }
     
@@ -358,13 +360,14 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
+        
         currVC.view.snp.remakeConstraints { make in
             make.edges.equalToSuperview()
         }
         UIView.animate(
             withDuration: 0.5,
-            animations: {self.view.layoutIfNeeded()},
-            completion: {_ in
+            animations: self.view.layoutIfNeeded,
+            completion: { _ in
                 self.filterBarView.isHidden = true
                 self.updateButtons()
         })
@@ -374,7 +377,6 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         
         //remove popup viewcontroller
         popupViewController.removeFromParentViewController()
-        isModal = false
         
         searchManager.searchBar.resignFirstResponder()
         

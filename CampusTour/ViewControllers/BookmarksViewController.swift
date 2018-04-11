@@ -38,6 +38,7 @@ class BookmarksViewController: UIViewController {
     func updateTableView() {
         loadBookmarkedEvents()
         spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
+        
         tableView.reloadData()
     }
     

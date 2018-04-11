@@ -21,7 +21,7 @@ class MapTableViewCell: UITableViewCell {
     
     func cellWillAppear () {
         guard mapView == nil else { return }
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 12.0)) // Randomly map to Cornell Store location
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 16.0)) // Randomly map to Cornell Store location
         mapView.isUserInteractionEnabled = false
         mapView.layer.cornerRadius = 4
         
