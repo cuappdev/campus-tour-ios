@@ -209,7 +209,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         self.tagView?.set(tags: model.tags)
         
         //get image
-        self.imageView?.image = nil
+        self.itemImageView?.image = nil
         self.wantedImageUrl = model.imageUrl
         self.itemImageView?.af_setImage(withURL: model.imageUrl)
         self.bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(model.id!) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
