@@ -18,9 +18,11 @@ class DataLoadingViewController: UIViewController {
         showLoadingIndicator()
 
         loadEventsData { (success) in
-            if success {
-                self.hideLoadingIndicator()
-                AppDelegate.shared?.window?.rootViewController = MainTabBarController()
+            DispatchQueue.main.async {
+                if success {
+                    self.hideLoadingIndicator()
+                    AppDelegate.shared?.window?.rootViewController = MainTabBarController()
+                }
             }
         }
     }
@@ -55,9 +57,25 @@ class DataLoadingViewController: UIViewController {
     }
     
     func loadEventsData(completion: @escaping ((_ success: Bool) -> Void)) {
-        let events = DataManager.sharedInstance.events
-        print("Loaded \(events.count) events")
-        completion(true)
+        let success = true
+        
+        DataManager.sharedInstance.onDataFetchingComplete = {
+            if success {
+                let events = DataManager.sharedInstance.events
+                print("Loaded \(events.count) events")
+                
+                completion(true)
+            } else {
+                let alertController = UIAlertController(title: "Uh oh!", message: "We're unable to fetch events at this time.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                
+                completion(false)
+            }
+        }
+        
+        DataManager.sharedInstance.getEvents() {_ in }
+        DataManager.sharedInstance.getLocations() {_ in}
     }
 
 }
