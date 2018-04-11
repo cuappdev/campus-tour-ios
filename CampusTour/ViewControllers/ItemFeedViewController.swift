@@ -71,6 +71,7 @@ extension ItemFeedViewController: ItemOfInterestCellDelegate {
 extension ItemFeedViewController: DetailViewControllerDelegate {
     func updateBookmarkedCell() {
         tableView.reloadData()
+        delegate.didUpdateBookmark()
     }
 }
 
