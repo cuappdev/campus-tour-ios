@@ -14,14 +14,23 @@ enum ViewType {
     case Map
 }
 
-class FeaturedViewController: UIViewController, PopupFilterProtocol {
+protocol FeaturedViewControllerDelegate {
+    func didUpdateBookmarkFromFeaturedVC()
+}
+
+class FeaturedViewController: UIViewController {
+    
+    var delegate: FeaturedViewControllerDelegate!
     let itemFeedViewController = ItemFeedViewController()
     let poiMapViewController = POIMapViewController()
+    let searchManager = ItemFeedSearchManager()
+    
     var arButton: UIBarButtonItem!
     var viewTypeButton: UIBarButtonItem!
     var searchCancelButton: UIBarButtonItem!
     var viewType: ViewType!
-    let searchManager = ItemFeedSearchManager()
+    var tabBarHeight: CGFloat = 49
+    
     private var blackView: UIView = {
         let bv = UIView()
         bv.backgroundColor = .black
@@ -85,6 +94,8 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         popupViewController = PopupViewController()
         popupViewController.delegate = self
         
+        poiMapViewController.tabBarHeight = tabBarHeight
+        
         setTopNavBar()
         setBottomView()
         
@@ -98,6 +109,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         blackView.addGestureRecognizer(touchView)
     }
     
+    //MARK: Button functions
     @IBAction func openARMode() {
         let popupViewController = ARExplorerViewController.withDefaultData()
         self.present(popupViewController, animated: true, completion: nil)
@@ -123,7 +135,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         searchManager.detachFrom(navigationItem: navigationItem)
     }
     
-    //Setup filter & search portion of ViewController
+    //MARK: Set up viewcontroller's views
     func setTopNavBar() {
         let cancelButton = UIButton()
         cancelButton.setImage(#imageLiteral(resourceName: "ExitIconBrand"), for: .normal)
@@ -167,13 +179,17 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         }
         
         viewType = .List
+        itemFeedViewController.delegate = self
         itemFeedViewController.didMove(toParentViewController: self)
     }
     
+    //MARK: Toggling views
     func toggleVC(oldVC: UIViewController, newVC: UIViewController) {
         oldVC.willMove(toParentViewController: nil)
         addChildViewController(newVC)
         view.addSubview(newVC.view)
+        
+        if let nvc = newVC as? ItemFeedViewController { nvc.delegate = self }
         
         newVC.view.snp.remakeConstraints { make in
             make.top.equalTo(filterBarView.snp.bottom)
@@ -251,11 +267,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         }
     }
     
-    func updateFilterBar(_ status: FilterBarCurrentStatus) {
-        filterBarCurrentStatus = status
-        closePopupView()
-    }
-    
+    //MARK: Setting default data for feed
     func setItemFeedDefaultSpec() {
         itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
     }
@@ -265,7 +277,23 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
     }
 }
 
+//MARK: Custom class protocols
+extension FeaturedViewController: PopupFilterProtocol {
+    func updateFilterBar(_ status: FilterBarCurrentStatus) {
+        filterBarCurrentStatus = status
+        closePopupView()
+    }
+}
+
+extension FeaturedViewController: ItemFeedViewControllerDelegate {
+    func didUpdateBookmark() {
+        delegate.didUpdateBookmarkFromFeaturedVC()
+    }
+}
+
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
+    //MARK: Handle search
+    
     func didStartSearchMode() {
         setItemFeedSearchSpec()
         
@@ -306,9 +334,15 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
                 make.right.equalToSuperview()
                 make.bottom.equalToSuperview()
             }
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            UIView.animate(
+                withDuration: 0.5,
+                animations: {
+                    currVC.view.transform = CGAffineTransform(translationX: 0, y: 44)
+            })
         }
         
         popupViewController.removeFromParentViewController()
@@ -339,15 +373,17 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             }
             UIView.animate(
                 withDuration: 0.5,
-                animations: {self.view.layoutIfNeeded()},
-                completion: {_ in
+                animations: self.view.layoutIfNeeded,
+                completion: { _ in
                     self.filterBarView.isHidden = true
                     self.updateButtons()
             })
         } else {
             UIView.animate(
                 withDuration: 0.5,
-                animations: {self.filterBarView.layoutIfNeeded()},
+                animations: {
+                    currVC.view.transform = CGAffineTransform(translationX: 0, y: -44)
+            },
                 completion: {_ in
                     self.filterBarView.isHidden = true
                     self.updateButtons()

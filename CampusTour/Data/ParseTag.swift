@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Map tag id to human-readable data
 extension EventTag {
     func collegeTagMap(id: String) -> (String, String)? {
         guard let tag = schoolTagMapping[id] else { return nil }
@@ -20,6 +21,7 @@ extension EventTag {
     }
 }
 
+//MARK: Class for managing all data about possible tags to be used in filters
 class Tag {
     static let schoolFilters: [(String, String)] = [
         ("All Schools", ""),

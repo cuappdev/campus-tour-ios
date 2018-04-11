@@ -10,10 +10,15 @@ import UIKit
 import GoogleMaps
 import DZNEmptyDataSet
 
+protocol ItemFeedViewControllerDelegate {
+    func didUpdateBookmark()
+}
+
 class ItemFeedViewController: UIViewController {
     
     var loadingIndicator: UIView!
     var currentlySearching: Bool = false
+    var delegate: ItemFeedViewControllerDelegate!
     
     private var spec = ItemFeedSpec(sections: [])
     
@@ -39,7 +44,7 @@ class ItemFeedViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.tableHeaderView?.backgroundColor = UIColor.white
+        tableView.tableHeaderView?.backgroundColor = .white
         tableView.estimatedRowHeight = 50
         tableView.insetsContentViewsToSafeArea = true
         
@@ -52,6 +57,24 @@ class ItemFeedViewController: UIViewController {
     
 }
 
+//MARK: Custom class protocols
+extension ItemFeedViewController: ItemOfInterestCellDelegate {
+    func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
+        BookmarkHelper.updateBookmark(id: modelInfo.id!)
+        delegate.didUpdateBookmark()
+        tableView.reloadRows(at: [IndexPath(row: modelInfo.index!-1, section: spec.sections.count-1)], with: .none)
+        
+    }
+}
+
+extension ItemFeedViewController: DetailViewControllerDelegate {
+    func updateBookmarkedCell() {
+        tableView.reloadData()
+        delegate.didUpdateBookmark()
+    }
+}
+
+//MARK: Conforming to tableview protocols
 extension ItemFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +87,7 @@ extension ItemFeedViewController: UITableViewDataSource {
             let itemModel = items[indexPath.row].toItemFeedModelInfo(index: indexPath.row + 1)
             let cell = tableView.dequeueReusableCell(withIdentifier: itemModel.layout.reuseId()) as! ItemOfInterestTableViewCell
             cell.setCellModel(model: itemModel)
+            cell.delegate = self
             return cell
         }
     }
@@ -105,7 +129,7 @@ extension ItemFeedViewController: UITableViewDelegate {
         }
         
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.white
+        headerView.backgroundColor = .white
         
         let stack = UIStackView()
         stack.axis = .vertical
@@ -113,13 +137,13 @@ extension ItemFeedViewController: UITableViewDelegate {
             UILabel.label(
                 text: subtitle,
                 color: Colors.tertiary,
-                font: UIFont.systemFont(ofSize: 14, weight: .medium)
+                font: Fonts.actionFont
         ))
         stack.addArrangedSubview(
             UILabel.label(
                 text: title,
                 color: Colors.primary,
-                font: UIFont.systemFont(ofSize: 28, weight: .semibold)
+                font: Fonts.sectionHeaderFont
         ))
         
         headerView.addSubview(stack)
@@ -150,6 +174,7 @@ extension ItemFeedViewController: UITableViewDelegate {
                 let vc = DetailViewController()
                 vc.event = item
                 vc.title = item.toItemFeedModelInfo().title
+                vc.delegate = self
                 return vc
             }()
             
@@ -174,19 +199,8 @@ extension ItemFeedViewController: UITableViewDelegate {
         switch spec.sections[indexPath.section] {
         case .map: return
         case _:
-            if firstLoad{
-                cell.layer.shadowColor = UIColor.black.cgColor
-                cell.layer.shadowOffset = CGSize(width: 10, height: 10)
-                cell.transform = CGAffineTransform(translationX: 0, y: cell.frame.height)
-                cell.alpha = 0
-                
-                UIView.beginAnimations("load", context: nil)
-                UIView.setAnimationDelay(0.2*delayCount)
-                UIView.setAnimationDuration(0.6)
-                cell.transform = CGAffineTransform(translationX: 0, y: 0)
-                cell.alpha = 1
-                cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-                UIView.commitAnimations()
+            if firstLoad {
+                cell.animateUponLoad(delayCount: self.delayCount)
                 delayCount += 1
             }
         }
@@ -216,7 +230,7 @@ extension ItemFeedViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         }
         
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .medium)
+        titleLabel.font = Fonts.titleFont
         titleLabel.textColor = Colors.tertiary
         titleLabel.text = currentlySearching ? "Loading events..." : "Oops, there are no events that match your search!"
         titleLabel.textAlignment = .center

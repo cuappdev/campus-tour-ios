@@ -9,7 +9,7 @@
 import UIKit
 
 private func tagLabel(text: String, color: UIColor, tagInsets: UIEdgeInsets) -> UIView {
-    let label = UILabel.label(text: text, color: color, font: UIFont.systemFont(ofSize: 10, weight: .medium))
+    let label = UILabel.label(text: text, color: color, font: Fonts.tagFont)
     let wrapper = UIView.insetWrapper(view: label, insets: UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
     wrapper.layer.cornerRadius = 4
     wrapper.layer.borderColor = color.cgColor

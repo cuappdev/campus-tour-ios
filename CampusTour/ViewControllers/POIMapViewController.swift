@@ -156,6 +156,7 @@ class POIMapViewController: UIViewController {
 
 }
 
+//MARK: Tableview protocols
 extension POIMapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -189,7 +190,7 @@ extension POIMapViewController: UITableViewDelegate {
         let directionsButton = UIButton()
         directionsButton.setTitle("Directions", for: .normal)
         directionsButton.setTitleColor(Colors.systemBlue, for: .normal)
-        directionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        directionsButton.titleLabel?.font = Fonts.bodyFont
         directionsButton.contentHorizontalAlignment = .trailing
         directionsButton.addTarget(self, action: #selector(self.directionsButtonPressed(_:)), for: .touchUpInside)
         directionsButton.sizeToFit()
@@ -242,6 +243,7 @@ extension POIMapViewController: UITableViewDelegate {
     
 }
 
+//MARK: Mapview delegate
 extension POIMapViewController: GMSMapViewDelegate {
     
     // Display and hide the popup view based on tapping the marker pin

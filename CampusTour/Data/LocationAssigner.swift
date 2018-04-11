@@ -49,20 +49,18 @@ private func getClosestLocation(
     
     let fullLocationNameTokens = tokenize(str: fullLocationName)
     
-    var similarityInfo: [(similarWords: Int, location: Location)] = []
+    var mostSimilarLocation = (similarWords: -1,
+                               location: Location.init(name: "", lat: 0, lng: 0))
     for (i, tokenSet) in locationTokens.enumerated() {
         let location = locations[i]
-        similarityInfo.append(
-            (similarWords: similarWords(a: fullLocationNameTokens, b: tokenSet),
-             location: location.with(name: fullLocationName, address: getAddress(location: location)))
-        )
+        let newSimilarityInfo = (similarWords: similarWords(a: fullLocationNameTokens, b: tokenSet),
+                                 location: location.with(name: fullLocationName, address: getAddress(location: location)))
+        if newSimilarityInfo.similarWords > mostSimilarLocation.similarWords {
+            mostSimilarLocation = newSimilarityInfo
+        }
     }
     
-    similarityInfo.sort { a, b in
-        a.similarWords < b.similarWords
-    }
-    
-    return similarityInfo.last?.location
+    return mostSimilarLocation.location
 }
 
 func tokenize(str: String) -> [String] {

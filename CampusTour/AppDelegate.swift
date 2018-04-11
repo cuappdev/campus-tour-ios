@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //set up gui
         window = UIWindow()
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = .white
         window?.tintColor = Colors.brand
         window?.rootViewController = DataLoadingViewController()
         window?.makeKeyAndVisible()

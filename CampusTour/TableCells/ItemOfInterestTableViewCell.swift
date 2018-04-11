@@ -11,6 +11,10 @@ import SwiftDate
 import Alamofire
 import AlamofireImage
 
+protocol ItemOfInterestCellDelegate {
+    func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo)
+}
+
 class ItemOfInterestTableViewCell: UITableViewCell {
     static let reuseIdEvent = "ItemOfInterestTableViewCell.event"
     static let reuseIdPlace = "ItemOfInterestTableViewCell.place"
@@ -35,6 +39,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         let tags: [String]
         let imageUrl: URL
         let layout: Layout
+        let id: String?
     }
     
     struct LocationLineViewSpec {
@@ -49,8 +54,11 @@ class ItemOfInterestTableViewCell: UITableViewCell {
     var dateLabel: UILabel?
     var titleLabel: UILabel?
     var locationLabel: UILabel?
+    var bookmarkButton: UIButton!
     var tagView: TagView?
     var wantedImageUrl: URL?
+    var delegate: ItemOfInterestCellDelegate!
+    private var privateInfo: ModelInfo!
     
     func titleHeaderView(model: ModelInfo) -> UIView {
         let header = UIStackView()
@@ -58,7 +66,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         
         let titleLabel = UILabel.label(text: model.title,
                                        color: Colors.primary,
-                                       font: UIFont.systemFont(ofSize: 16, weight: .semibold))
+                                       font: Fonts.titleFont)
         header.addArrangedSubview(titleLabel)
         
         return header
@@ -71,11 +79,12 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         let label = UILabel.label(
             text: spec.locationName,
             color: Colors.secondary,
-            font: UIFont.systemFont(ofSize: 14))
+            font: Fonts.bodyFont)
         hStack.addArrangedSubview(label)
         return (hStack, label)
     }
     
+    //MARK: Creating view layout
     func createLeftStackView(layout: Layout) -> UIStackView {
         let leftStackView = UIStackView()
         leftStackView.axis = .vertical
@@ -87,7 +96,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
             dateLabel = UILabel.label(
                 text: "",
                 color: Colors.brand,
-                font: UIFont.systemFont(ofSize: 12, weight: .medium))
+                font: Fonts.subtitleFont)
             leftStackView.addArrangedSubview(dateLabel!)
         }
         
@@ -95,14 +104,15 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         titleLabel = UILabel.label(
             text: "",
             color: Colors.primary,
-            font: UIFont.boldSystemFont(ofSize: 16))
+            font: Fonts.titleFont)
+        titleLabel?.numberOfLines = 0
         leftStackView.addArrangedSubview(titleLabel!)
         
         //add location line
         if layout == .event {
             locationLabel = UILabel.label(text: "",
                                       color: Colors.primary,
-                                      font: UIFont.systemFont(ofSize: 14))
+                                      font: Fonts.bodyFont)
             leftStackView.addArrangedSubview(locationLabel!)
         }
         
@@ -129,11 +139,26 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         }
         rightView.addArrangedSubview(itemImageView!)
         
-        rightView.addArrangedSubview(UIView())
+        let bookmarkView = UIView()
+        let bookmarkHeightWidthRatio = CGFloat(28.9 / 17.4)
+        let bookmarkPadding = CGFloat(15)
+        bookmarkButton = UIButton()
+        bookmarkView.addSubview(bookmarkButton)
+        bookmarkButton?.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
+        //improve button clicking UI
+        bookmarkButton.contentEdgeInsets = UIEdgeInsetsMake(bookmarkHeightWidthRatio*6.0, bookmarkPadding, bookmarkHeightWidthRatio*6.0, bookmarkPadding)
+        bookmarkButton.snp.makeConstraints { (make) in
+            make.width.equalTo(12 + bookmarkPadding*2)
+            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(bookmarkHeightWidthRatio).offset(-2*bookmarkPadding)
+            make.trailing.equalToSuperview().offset(-14 + bookmarkPadding)
+            make.bottom.equalToSuperview().offset(-12 + bookmarkHeightWidthRatio*4)
+        }
+        rightView.addArrangedSubview(bookmarkView)
         
         return rightView
     }
     
+    //MARK: Updating views
     func setUpViewsIfNecessary(layout: Layout) {
         if self.currentLayout == layout { return }
         
@@ -161,7 +186,10 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: Updating view contents
     func setCellModel(model: ModelInfo) {
+        privateInfo = model
+        
         let layout = model.layout
         setUpViewsIfNecessary(layout: layout)
         
@@ -178,9 +206,15 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         self.tagView?.set(tags: model.tags)
         
         //get image
-        self.imageView?.image = nil
+        self.itemImageView?.image = nil
         self.wantedImageUrl = model.imageUrl
         self.itemImageView?.af_setImage(withURL: model.imageUrl)
+        self.bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(model.id!) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+    }
+    
+    //MARK: Button functions
+    @objc func toggleBookmark() {
+        delegate.updateBookmark(modelInfo: privateInfo)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

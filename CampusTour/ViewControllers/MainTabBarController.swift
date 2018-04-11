@@ -9,27 +9,40 @@ func campusTourNavigationViewController(root: UIViewController) -> UINavigationC
 }
 
 class MainTabBarController: UITabBarController {
-    let searchVC = FeaturedViewController()
-    let poiMapVC = POIMapViewController()
+    let feedVC = FeaturedViewController()
+    let bookmarksVC = BookmarksViewController()
     
     override func viewDidLoad() {
-        let tabBarHeight = self.tabBar.frame.size.height
-        searchVC.tabBarItem = UITabBarItem.feedItem
-        poiMapVC.tabBarItem = UITabBarItem.poiMapItem
-        poiMapVC.tabBarHeight = tabBarHeight
+        feedVC.delegate = self
+        bookmarksVC.delegate = self
+        let tabBarHeight = tabBar.frame.size.height
+        feedVC.tabBarItem = .feedItem
+        bookmarksVC.tabBarItem = .bookmarkItem
+        feedVC.tabBarHeight = tabBarHeight
         setViewControllers([
-            campusTourNavigationViewController(root: searchVC),
-            campusTourNavigationViewController(root: poiMapVC),
+            campusTourNavigationViewController(root: feedVC),
+            campusTourNavigationViewController(root: bookmarksVC),
             ], animated: false)
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if tabBar.items?.index(of: item) == 0 {
-            let currVC = (searchVC.viewType == .List) ? searchVC.itemFeedViewController : searchVC.poiMapViewController
-            if currVC == searchVC.itemFeedViewController {
-                let tv = searchVC.itemFeedViewController.tableView
+            let currVC = (feedVC.viewType == .List) ? feedVC.itemFeedViewController : feedVC.poiMapViewController
+            if currVC == feedVC.itemFeedViewController {
+                let tv = feedVC.itemFeedViewController.tableView
                 tv.scrollToRow(at: IndexPath(row: 0,section: 0), at: UITableViewScrollPosition.top, animated: true)
             }
         }
+    }
+}
+
+extension MainTabBarController: FeaturedViewControllerDelegate, BookmarksViewControllerDelegate {
+    func didUpdateBookmarkFromBookmarkVC() {
+        let tableView = feedVC.itemFeedViewController.tableView
+        tableView.reloadData()
+    }
+    
+    func didUpdateBookmarkFromFeaturedVC() {
+        bookmarksVC.updateTableView()
     }
 }

@@ -10,6 +10,10 @@ import UIKit
 import GoogleMaps
 import AlamofireImage
 
+protocol DetailViewControllerDelegate {
+    func updateBookmarkedCell()
+}
+
 class DetailViewController: UIViewController {
     
     let scrollView = UIScrollView()
@@ -21,7 +25,9 @@ class DetailViewController: UIViewController {
     
     var descriptionView: UILabel!
     var titleLabel: UILabel!
+    var bookmarkButton: UIButton!
     var event: Event!
+    var delegate: DetailViewControllerDelegate!
     
     private let textInset = CGFloat(20)
     private let textPadding = CGFloat(12)
@@ -33,9 +39,7 @@ class DetailViewController: UIViewController {
         initializeViews()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("vc disappearing")
-    }
+    //MARK: Update Views
     
     func initializeViews() {
         view.backgroundColor = .white
@@ -52,8 +56,7 @@ class DetailViewController: UIViewController {
             make.trailing.equalToSuperview()
         }
         scrollView.alwaysBounceVertical = true
-        //Scrollview keeps disappearing under tabbar
-    
+        
         let contentView = UIView.insetWrapper(view: UIView(), insets: UIEdgeInsetsMake(0, 0, self.additionalSafeAreaInsets.bottom, 0))
         
         scrollView.addSubview(contentView)
@@ -131,36 +134,36 @@ class DetailViewController: UIViewController {
         
         let imageOverlay = UIView()
         imageOverlay.backgroundColor = .black
-        imageOverlay.alpha = 0.2
+        imageOverlay.alpha = 0.3
         
         let titleLabel = UILabel()
         titleLabel.text = event.name
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        titleLabel.font = Fonts.headerFont
         titleLabel.numberOfLines = 0
 
         let tagView = TagView(
             tags: event.tags.flatMap {$0.generalTagMap(id: $0.id)},
             style: TagView.Style(
                 tagInsets: UIEdgeInsetsMake(7, 14, 7, 14),
-                color: UIColor.white))
+                color: .white))
         
         imageView.addSubview(imageOverlay)
-        imageView.addSubview(tagView)
         imageView.addSubview(titleLabel)
+        imageView.addSubview(tagView)
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(tagView.snp.top).offset(-10)
+            make.leading.equalToSuperview().offset(textInset)
+            make.trailing.equalToSuperview()
+        }
         
         tagView.snp.makeConstraints { (make) in
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(25)
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(tagView.snp.top).offset(-10)
-            make.leading.equalToSuperview().offset(textInset)
-            make.trailing.equalToSuperview()
         }
         
         topView.addSubview(imageView)
@@ -172,23 +175,26 @@ class DetailViewController: UIViewController {
     private func createScheduleView() {
         let mainTitleLabel = UILabel()
         let dateLocationLabel = UILabel()
-        //TODO Create bookmark
-        let bookmarkButton = UIButton()
         
         mainTitleLabel.text = "Happening \(DateHelper.getFormattedDate(event.startTime))"
         mainTitleLabel.textColor = Colors.brand
-        mainTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         mainTitleLabel.numberOfLines = 0
+        mainTitleLabel.font = Fonts.titleFont
         
         let time = DateHelper.getStartEndTime(startTime: event.startTime, endTime: event.endTime)
         let loc = event.location.name
         dateLocationLabel.text = "\(time) · \(loc)"
         dateLocationLabel.textColor = Colors.tertiary
-        dateLocationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         dateLocationLabel.numberOfLines = 0
+        dateLocationLabel.font = Fonts.bodyFont
+        
+        bookmarkButton = UIButton()
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        bookmarkButton.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
         
         scheduleView.addSubview(mainTitleLabel)
         scheduleView.addSubview(dateLocationLabel)
+        scheduleView.addSubview(bookmarkButton)
         
         mainTitleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(textInset)
@@ -201,6 +207,14 @@ class DetailViewController: UIViewController {
             make.leading.equalTo(mainTitleLabel)
             make.bottom.equalToSuperview().offset(-textInset)
         }
+        
+        bookmarkButton.snp.makeConstraints { (make) in
+            make.top.equalTo(mainTitleLabel.snp.top)
+            make.trailing.equalToSuperview().offset(-textInset)
+            make.width.equalTo(18)
+            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(28.9 / 17.4)
+        }
+        
     }
     
     private func createAboutView() {
@@ -209,7 +223,7 @@ class DetailViewController: UIViewController {
             let label = UILabel()
             label.text = "About the Event"
             label.textColor = Colors.primary
-            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            label.font = Fonts.titleFont
             return label
         }()
         
@@ -217,22 +231,22 @@ class DetailViewController: UIViewController {
             let desc = UILabel()
             desc.text = description
             desc.textColor = Colors.secondary
-            desc.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            desc.font = Fonts.bodyFont
             desc.numberOfLines = 0
             return desc
         }()
         
-        let descHeight = description!.height(withConstrainedWidth: view.frame.width - textInset*2, font: UIFont.systemFont(ofSize: 14))
+        let descHeight = description!.height(withConstrainedWidth: view.frame.width - textInset*2, font: Fonts.bodyFont)
         let minDescHeight = min(descHeight, 80)
         
         //TODO: fix button (maybe use external framework)
         let showMoreButton: UIButton = {
             let button = UIButton()
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            button.titleLabel?.font = Fonts.actionFont
             button.setTitle("Show More", for: .normal)
             button.setTitleColor(Colors.brand, for: .normal)
             button.addTarget(self, action: #selector(showMore), for: .touchUpInside)
-            button.tag = Int(description!.height(withConstrainedWidth: view.frame.width, font: UIFont.systemFont(ofSize: 14)))
+            button.tag = Int(description!.height(withConstrainedWidth: view.frame.width, font: Fonts.bodyFont))
             return button
         }()
         
@@ -293,13 +307,13 @@ class DetailViewController: UIViewController {
         
         let addressLabel = UILabel()
         addressLabel.text = address
-        addressLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        addressLabel.font = Fonts.bodyFont
         addressLabel.textColor = Colors.secondary
         
         let directionsButton = UIButton()
         directionsButton.setTitle("Directions", for: .normal)
         directionsButton.setTitleColor(Colors.systemBlue, for: .normal)
-        directionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        directionsButton.titleLabel?.font = Fonts.bodyFont
         directionsButton.contentHorizontalAlignment = .trailing
         directionsButton.addTarget(self, action: #selector(self.directionsButtonPressed(_:)), for: .touchUpInside)
         directionsButton.sizeToFit()
@@ -331,6 +345,16 @@ class DetailViewController: UIViewController {
             make.top.equalTo(directionsView.snp.bottom).offset(-1)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    //MARK: Button interactions
+    
+    @IBAction func toggleBookmark() {
+        BookmarkHelper.updateBookmark(id: event.id)
+        
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        delegate.updateBookmarkedCell()
+        print("event bookmarked: ", BookmarkHelper.isEventBookmarked(event.id))
     }
     
     @objc func directionsButtonPressed(_ sender: UIButton) {

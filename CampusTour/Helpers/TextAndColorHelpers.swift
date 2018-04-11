@@ -26,9 +26,19 @@ enum Colors {
     static let rbgaInt = rgbaInt
 }
 
+enum Fonts {
+    static let sectionHeaderFont = UIFont.systemFont(ofSize: 28, weight: .semibold)
+    static let headerFont = UIFont.systemFont(ofSize: 22, weight: .semibold)
+    static let titleFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+    static let subtitleFont = UIFont.systemFont(ofSize: 12, weight: .medium)
+    static let bodyFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+    static let actionFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+    static let markerFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
+    static let tagFont = UIFont.systemFont(ofSize: 10, weight: .medium)
+}
+
 extension UILabel {
-    static func label(text: String, color: UIColor = UIColor.black, font: UIFont = UIFont.systemFont(ofSize: 18)) -> UILabel {
-        Date().toString(dateFormat: "MMMM")
+    static func label(text: String, color: UIColor = .black, font: UIFont = UIFont.systemFont(ofSize: 18)) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textColor = color
@@ -40,7 +50,7 @@ extension UILabel {
 extension String {
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
 
         return ceil(boundingBox.height)
     }
