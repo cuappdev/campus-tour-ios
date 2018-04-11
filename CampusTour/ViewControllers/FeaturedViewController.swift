@@ -45,7 +45,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         didSet {
             if !isModal {
                 popupViewController.view.isHidden = true
-                UIView.animate(withDuration: 0.6, animations: {
+                UIView.animate(withDuration: 0.8, animations: {
                     self.blackView.alpha = 0
                 })
             } else {
@@ -307,15 +307,10 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
                 make.bottom.equalToSuperview()
             }
         }
-//        if currVC == itemFeedViewController {
-            UIView.animate(withDuration: 0.3) {
-                self.view.layoutIfNeeded()
-            }
-//        } else {
-//            UIView.animate(withDuration: 0.3) {
-//                self.filterBarView.layoutIfNeeded()
-//            }
-//        }
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
         popupViewController.removeFromParentViewController()
         updateButtons()
     }
