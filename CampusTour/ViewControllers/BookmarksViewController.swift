@@ -91,7 +91,7 @@ class BookmarksViewController: UIViewController {
 extension BookmarksViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
-        
+        updateBookmarkedCell()
         updateTableView()
     }
 }

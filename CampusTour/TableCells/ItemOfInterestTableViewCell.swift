@@ -141,14 +141,18 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         rightView.addArrangedSubview(itemImageView!)
         
         let bookmarkView = UIView()
+        let bookmarkHeightWidthRatio = CGFloat(28.9 / 17.4)
+        let bookmarkPadding = CGFloat(15)
         bookmarkButton = UIButton()
         bookmarkView.addSubview(bookmarkButton)
         bookmarkButton?.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
+        //improve button clicking UI
+        bookmarkButton.contentEdgeInsets = UIEdgeInsetsMake(bookmarkHeightWidthRatio*6.0, bookmarkPadding, bookmarkHeightWidthRatio*6.0, bookmarkPadding)
         bookmarkButton.snp.makeConstraints { (make) in
-            make.width.equalTo(12)
-            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(28.9 / 17.4)
-            make.trailing.equalToSuperview().offset(-14)
-            make.bottom.equalToSuperview().offset(-12)
+            make.width.equalTo(12 + bookmarkPadding*2)
+            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(bookmarkHeightWidthRatio).offset(-2*bookmarkPadding)
+            make.trailing.equalToSuperview().offset(-14 + bookmarkPadding)
+            make.bottom.equalToSuperview().offset(-12 + bookmarkHeightWidthRatio*4)
         }
         rightView.addArrangedSubview(bookmarkView)
         
