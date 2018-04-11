@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol BookmarksViewControllerDelegate {
+    func didUpdateBookmarkFromBookmarkVC()
+}
+
 class BookmarksViewController: UIViewController {
     
     private var tableView: UITableView!
-    
+    var delegate: BookmarksViewControllerDelegate!
     private var firstLoad = true
     
     private var spec = ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: [])
@@ -31,16 +35,26 @@ class BookmarksViewController: UIViewController {
         events = tempEvents
     }
     
-    func updateItems(newSpec: ItemFeedSpec) {
-        self.spec = newSpec
+    func updateTableView() {
+        loadBookmarkedEvents()
+        spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
         tableView.reloadData()
     }
-
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        tableView = UITableView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.title = "Bookmarked Events"
-        tableView = UITableView(frame: view.bounds)
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -62,9 +76,7 @@ class BookmarksViewController: UIViewController {
         
         tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
         
-        loadBookmarkedEvents()
-        spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
-        updateItems(newSpec: spec)
+        updateTableView()
     }
 
     @objc func pullToRefresh() {
@@ -77,15 +89,14 @@ extension BookmarksViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
         
-        loadBookmarkedEvents()
-        spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
-        updateItems(newSpec: spec)
+        updateTableView()
     }
 }
 
 extension BookmarksViewController: DetailViewControllerDelegate {
     func updateBookmarkedCell() {
-        tableView.reloadData()
+        updateTableView()
+        delegate.didUpdateBookmarkFromBookmarkVC()
     }
 }
 

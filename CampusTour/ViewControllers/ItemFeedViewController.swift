@@ -10,17 +10,22 @@ import UIKit
 import GoogleMaps
 import DZNEmptyDataSet
 
+protocol ItemFeedViewControllerDelegate {
+    func didUpdateBookmark()
+}
+
 class ItemFeedViewController: UIViewController {
     
     var loadingIndicator: UIView!
     var currentlySearching: Bool = false
+    var delegate: ItemFeedViewControllerDelegate!
     
     private var spec = ItemFeedSpec(sections: [])
     
     private var firstLoad = true
     private var delayCount = 0.0
     
-    private var tableView: UITableView {
+    var tableView: UITableView {
         return self.view as! UITableView
     }
     
@@ -55,8 +60,9 @@ class ItemFeedViewController: UIViewController {
 extension ItemFeedViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
-        
+        delegate.didUpdateBookmark()
         tableView.reloadRows(at: [IndexPath(row: modelInfo.index!-1, section: spec.sections.count-1)], with: .none)
+        
     }
 }
 

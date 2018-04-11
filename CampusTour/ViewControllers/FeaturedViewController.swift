@@ -14,8 +14,13 @@ enum ViewType {
     case Map
 }
 
-class FeaturedViewController: UIViewController, PopupFilterProtocol {
+protocol FeaturedViewControllerDelegate {
+    func didUpdateBookmarkFromFeaturedVC()
+}
+
+class FeaturedViewController: UIViewController {
     
+    var delegate: FeaturedViewControllerDelegate!
     let itemFeedViewController = ItemFeedViewController()
     let poiMapViewController = POIMapViewController()
     let searchManager = ItemFeedSearchManager()
@@ -173,6 +178,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         }
         
         viewType = .List
+        itemFeedViewController.delegate = self
         itemFeedViewController.didMove(toParentViewController: self)
     }
     
@@ -180,6 +186,8 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         oldVC.willMove(toParentViewController: nil)
         addChildViewController(newVC)
         view.addSubview(newVC.view)
+        
+        if let nvc = newVC as? ItemFeedViewController { nvc.delegate = self }
         
         newVC.view.snp.remakeConstraints { make in
             make.top.equalTo(filterBarView.snp.bottom)
@@ -255,11 +263,6 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         }
     }
     
-    func updateFilterBar(_ status: FilterBarCurrentStatus) {
-        filterBarCurrentStatus = status
-        closePopupView()
-    }
-    
     func setItemFeedDefaultSpec() {
         itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
     }
@@ -268,6 +271,20 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec(headerInfo: nil, events: []))
     }
 }
+
+extension FeaturedViewController: PopupFilterProtocol {
+    func updateFilterBar(_ status: FilterBarCurrentStatus) {
+        filterBarCurrentStatus = status
+        closePopupView()
+    }
+}
+
+extension FeaturedViewController: ItemFeedViewControllerDelegate {
+    func didUpdateBookmark() {
+        delegate.didUpdateBookmarkFromFeaturedVC()
+    }
+}
+
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
     func didStartSearchMode() {
