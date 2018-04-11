@@ -31,6 +31,15 @@ extension float4x4 {
     static func scale(_ v: Float) -> float4x4 {
         return float4x4(diagonal: float4(x: v, y: v, z: v, w: 1.0))
     }
+    
+    static func translation(_ v: float3) -> float4x4 {
+        return float4x4.init([
+            float4(1.0, 0.0, 0.0, 0.0),
+            float4(0.0, 1.0, 0.0, 0.0),
+            float4(1.0, 0.0, 1.0, 0.0),
+            float4(v.x, v.y, v.z, 1.0),
+            ])
+    }
 }
 
 extension float4 {
@@ -71,6 +80,10 @@ extension float3 {
     
     func normalize() -> float3 {
         return self / norm()
+    }
+    
+    func upgrade(homogeneous: Float) -> float4 {
+        return float4(x: x, y: y, z: z, w: homogeneous)
     }
 }
 

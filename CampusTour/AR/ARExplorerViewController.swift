@@ -12,6 +12,13 @@ import CoreLocation
 import ARKit
 import SnapKit
 
+let maximumDistanceOfARMarkersMeters: Double = 200.0
+
+private func makeArLoadingIndicator() -> UIView {
+    let indicator = LoadingIndicator()
+    return indicator
+}
+
 struct ItemViewInfo {
     let item: ARItemOfInterest
     let view: ARItemOfInterestView
@@ -19,6 +26,8 @@ struct ItemViewInfo {
 }
 
 class ARExplorerViewController: UIViewController {
+    
+    private let arQueue = DispatchQueue.init(label: "ARExplorerViewController.arQueue")
     
     var itemsOfInterestAndViews: [ItemViewInfo] = []
     
@@ -28,28 +37,23 @@ class ARExplorerViewController: UIViewController {
     
     private var sceneView: ARSCNView! = nil
     
+    private var loadingIndicatorView: UIView? = nil
+    
+    private var previousRecordedLocation: CLLocation? = nil
+    
     static func withDefaultData() -> ARExplorerViewController {
-        let arVc = ARExplorerViewController()
-        
-        do {
-            DataManager.sharedInstance.getLocations { (success) in
-                if success {
-                    let locations = DataManager.sharedInstance.locations
-                    
-                    arVc.setItems(items:
-                        locations.map { ARItemOfInterest(
-                            name: $0.name,
-                            location: CLLocation(
-                                latitude: CLLocationDegrees($0.lat),
-                                longitude: CLLocationDegrees($0.lng)))
-                    })
-
-                    print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
-                }
-            }
-        } catch let e {
-            print(e)
+        let locations = DataManager.sharedInstance.locations
+        let items = locations.map { ARItemOfInterest(
+            name: $0.name,
+            location: CLLocation(
+                latitude: CLLocationDegrees($0.lat),
+                longitude: CLLocationDegrees($0.lng)))
         }
+        
+        let arVc = ARExplorerViewController()
+        arVc.setItems(items:items)
+        
+        print("init arVc parsed items with count: \(arVc.itemsOfInterestAndViews.count)")
         
         return arVc
     }
@@ -72,6 +76,14 @@ class ARExplorerViewController: UIViewController {
             $0.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(24)
         }
+        
+        self.loadingIndicatorView = makeArLoadingIndicator()
+        self.view.addSubview(self.loadingIndicatorView!)
+        self.loadingIndicatorView!.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
     }
 
     override func viewDidLoad() {
@@ -92,6 +104,11 @@ class ARExplorerViewController: UIViewController {
     func initializeAr() {
         AppDelegate.shared!.locationProvider.addLocationListener(repeats: true) { [weak self] currentLocation in
             DispatchQueue.main.async {
+                self?.loadingIndicatorView?.removeFromSuperview()
+                self?.loadingIndicatorView = nil
+            }
+            self?.arQueue.async {
+                self?.previousRecordedLocation = currentLocation
                 self?.updateLocation(currentLocation: currentLocation)
             }
         }
@@ -108,15 +125,21 @@ class ARExplorerViewController: UIViewController {
     }
     
     func setItems(items: [ARItemOfInterest]) {
-        DispatchQueue.main.async {
-            for info in self.itemsOfInterestAndViews {
-                info.node?.removeFromParentNode()
+        self.arQueue.sync {
+            DispatchQueue.main.async {
+                for info in self.itemsOfInterestAndViews {
+                    info.node?.removeFromParentNode()
+                }
+                
+                self.itemsOfInterestAndViews = items.map {
+                    ItemViewInfo(item: $0,
+                                 view: ARItemOfInterestView(item: $0),
+                                 node: nil)
+                }
             }
             
-            self.itemsOfInterestAndViews = items.map {
-                ItemViewInfo(item: $0,
-                             view: ARItemOfInterestView(item: $0),
-                             node: nil)
+            if let location = self.previousRecordedLocation {
+                self.updateLocation(currentLocation: location)
             }
         }
     }
@@ -157,17 +180,39 @@ class ARExplorerViewController: UIViewController {
         })
     }
     
-    
+    /// Updates scene based on new location. Must be called on the arQueue thread
     func updateLocation(currentLocation: CLLocation) {
-        for (i, info) in self.itemsOfInterestAndViews.enumerated() {
-            if info.node == nil { //initialize node
+        guard let camera = self.camera else {
+            print("Error: could not get camera in AR")
+            return
+        }
+        
+        for (i, infoBefore) in self.itemsOfInterestAndViews.enumerated() {
+            
+            /// unrotatedCameraSpaceDisplacement is the worldspace displacement transformed by
+            /// the translation component of the camera matrix
+            func worldSpaceDisplacement(camera: ARCamera, unrotatedCameraSpaceDisplacement: SCNVector3) -> SCNVector3 {
+                let cameraTranslateTransform = float4x4.translation(camera.transform.extractTranslation())
+                let worldspaceDisplacement =
+                    cameraTranslateTransform.inverse * float3(unrotatedCameraSpaceDisplacement).upgrade(homogeneous: 1.0)
+                return SCNVector3(worldspaceDisplacement.downgrade())
+            }
+            
+            //initialize the marker's node if it doesn't exist
+            if infoBefore.node == nil {
                 let planeWidth = CGFloat(2) //maximum width for the scene view in meters
-                let plane = SCNPlane(width: planeWidth,
-                                     height: planeWidth * (info.view.frame.height / info.view.frame.width))
-                plane.firstMaterial!.diffuse.contents = info.view.layer
+                var plane : SCNPlane!
+                DispatchQueue.main.sync {
+                    plane = SCNPlane(width: planeWidth,
+                                     height: planeWidth * (infoBefore.view.frame.height / infoBefore.view.frame.width))
+                    plane.firstMaterial!.diffuse.contents = infoBefore.view.layer
+                }
                 plane.firstMaterial?.isDoubleSided = true
                 let itemNode = SCNNode(geometry: plane)
-                let displacement = ARGps.estimateDisplacement(from: currentLocation, to: info.item.location)
+                
+                let displacement = worldSpaceDisplacement(
+                    camera: camera,
+                    unrotatedCameraSpaceDisplacement: ARGps.estimateDisplacement(from: currentLocation, to: infoBefore.item.location))
                 
                 itemNode.position = displacement
                 itemNode.constraints = [
@@ -177,11 +222,24 @@ class ARExplorerViewController: UIViewController {
                 self.itemsOfInterestAndViews[i].node = itemNode
             }
             
-            if let camera = self.camera,
-                let node = info.node
-            {
+            //TODO update existing nodes and filter based on distance
+            if let node = self.itemsOfInterestAndViews[i].node {
+                
+                let newDisplacement = worldSpaceDisplacement(
+                    camera: camera,
+                    unrotatedCameraSpaceDisplacement: ARGps.estimateDisplacement(from: currentLocation, to: infoBefore.item.location))
+                node.position = newDisplacement
+                
                 let distance = (camera.transform.extractTranslation() - node.simdPosition).norm()
-                info.view.updateSubtitleWithDistance(meters: Double(distance))
+                if Double(distance) > maximumDistanceOfARMarkersMeters {
+                    node.isHidden = true
+                } else {
+                    node.isHidden = false
+                }
+                
+                DispatchQueue.main.sync {
+                    self.itemsOfInterestAndViews[i].view.updateSubtitleWithDistance(meters: Double(distance))
+                }
             }
         }
     }

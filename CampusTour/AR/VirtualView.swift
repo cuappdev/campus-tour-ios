@@ -20,7 +20,12 @@ class ARItemOfInterestView : UIView {
     var subtitleLabel: UILabel?
     
     func updateSubtitleWithDistance(meters: Double) {
-        subtitleLabel?.text = String.init(format: "%.1f m", meters)
+        if Locale.current.usesMetricSystem {
+            subtitleLabel?.text = String.init(format: "%.1f m", meters)
+        } else {
+            subtitleLabel?.text = String.init(format: "%.1f ft", metersToFeet(meters: meters))
+        }
+        
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
@@ -45,7 +50,7 @@ class ARItemOfInterestView : UIView {
         vStack.alignment = .center
         
         //no idea why but these views appear in reverse order
-        subtitleLabel = UILabel.label(text: "SUBTITLE",
+        subtitleLabel = UILabel.label(text: "Loading Location...",
                                       color: Colors.secondary,
                                       font: UIFont.systemFont(ofSize: 20 * scaling, weight: .medium))
         vStack.addArrangedSubview(subtitleLabel!)
