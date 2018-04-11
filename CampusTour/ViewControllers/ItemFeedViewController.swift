@@ -39,7 +39,7 @@ class ItemFeedViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.tableHeaderView?.backgroundColor = UIColor.white
+        tableView.tableHeaderView?.backgroundColor = .white
         tableView.estimatedRowHeight = 50
         tableView.insetsContentViewsToSafeArea = true
         
@@ -105,7 +105,7 @@ extension ItemFeedViewController: UITableViewDelegate {
         }
         
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.white
+        headerView.backgroundColor = .white
         
         let stack = UIStackView()
         stack.axis = .vertical
@@ -113,13 +113,13 @@ extension ItemFeedViewController: UITableViewDelegate {
             UILabel.label(
                 text: subtitle,
                 color: Colors.tertiary,
-                font: UIFont.systemFont(ofSize: 14, weight: .medium)
+                font: Fonts.actionFont
         ))
         stack.addArrangedSubview(
             UILabel.label(
                 text: title,
                 color: Colors.primary,
-                font: UIFont.systemFont(ofSize: 28, weight: .semibold)
+                font: Fonts.sectionHeaderFont
         ))
         
         headerView.addSubview(stack)
@@ -216,7 +216,7 @@ extension ItemFeedViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         }
         
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .medium)
+        titleLabel.font = Fonts.titleFont
         titleLabel.textColor = Colors.tertiary
         titleLabel.text = currentlySearching ? "Loading events..." : "Oops, there are no events that match your search!"
         titleLabel.textAlignment = .center

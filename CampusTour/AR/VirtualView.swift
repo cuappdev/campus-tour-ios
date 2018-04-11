@@ -38,7 +38,7 @@ class ARItemOfInterestView : UIView {
         self.init(frame:
             CGRect(x: 0, y: 0, width: width, height: height))
         self.clipsToBounds = true
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         
         let wrapperView = UIView()
         wrapperView.backgroundColor = UIColor(white: 0.8, alpha: 0.5)

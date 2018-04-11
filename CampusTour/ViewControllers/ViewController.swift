@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     }
     
     func buildUI() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = .white
         
         let root = UIStackView()
         root.axis = .vertical

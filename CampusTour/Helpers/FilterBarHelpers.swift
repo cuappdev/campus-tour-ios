@@ -52,7 +52,7 @@ extension FeaturedViewController {
             //TODO : Add white arrow :: harder than it seems
             button.layer.cornerRadius = 4.0
             button.clipsToBounds = true
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
+            button.titleLabel?.font = Fonts.bodyFont
             button.translatesAutoresizingMaskIntoConstraints = false
             button.tag = index
             button.contentEdgeInsets = UIEdgeInsetsMake(0, padding, 0, padding)

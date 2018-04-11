@@ -50,9 +50,9 @@ class FilterTableViewCell: UITableViewCell {
        
         subtitleLabel.isHidden = true
         subtitleLabel.textColor = Colors.tertiary
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        subtitleLabel.font = Fonts.bodyFont
         
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        titleLabel.font = Fonts.titleFont
         titleLabel.textColor = Colors.primary
         
         //Set to checkmark

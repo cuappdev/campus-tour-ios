@@ -58,7 +58,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         
         let titleLabel = UILabel.label(text: model.title,
                                        color: Colors.primary,
-                                       font: UIFont.systemFont(ofSize: 16, weight: .semibold))
+                                       font: Fonts.titleFont)
         header.addArrangedSubview(titleLabel)
         
         return header
@@ -71,7 +71,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         let label = UILabel.label(
             text: spec.locationName,
             color: Colors.secondary,
-            font: UIFont.systemFont(ofSize: 14))
+            font: Fonts.bodyFont)
         hStack.addArrangedSubview(label)
         return (hStack, label)
     }
@@ -87,7 +87,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
             dateLabel = UILabel.label(
                 text: "",
                 color: Colors.brand,
-                font: UIFont.systemFont(ofSize: 12, weight: .medium))
+                font: Fonts.subtitleFont)
             leftStackView.addArrangedSubview(dateLabel!)
         }
         
@@ -95,14 +95,14 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         titleLabel = UILabel.label(
             text: "",
             color: Colors.primary,
-            font: UIFont.boldSystemFont(ofSize: 16))
+            font: Fonts.titleFont)
         leftStackView.addArrangedSubview(titleLabel!)
         
         //add location line
         if layout == .event {
             locationLabel = UILabel.label(text: "",
                                       color: Colors.primary,
-                                      font: UIFont.systemFont(ofSize: 14))
+                                      font: Fonts.bodyFont)
             leftStackView.addArrangedSubview(locationLabel!)
         }
         

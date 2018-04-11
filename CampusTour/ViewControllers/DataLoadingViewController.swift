@@ -29,7 +29,7 @@ class DataLoadingViewController: UIViewController {
         loadingIndicator = LoadingIndicator()
         
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 14.0)
+        titleLabel.font = Fonts.bodyFont
         titleLabel.textColor = Colors.tertiary
         titleLabel.text = "Loading events..."
         titleLabel.sizeToFit()
