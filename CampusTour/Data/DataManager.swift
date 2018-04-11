@@ -107,21 +107,15 @@ public class DataManager: Codable {
             if isClassEvent {
                 let name = event.title
                 let location = Location(name: "Day Hall", lat: 0, lng: 0)
-                guard let firstEvent = events.first else {
+                guard let firstEventTime = event.times.first else {
                     continue
                 }
                 
-                let startTime = events
-                    .map {$0.startTime}
-                    .reduce(firstEvent.startTime) { start0, start1 in
-                        start0 < start1 ? start0 : start1
-                }
+                let startTimes = event.times.map{$0.startTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")}
+                let endTimes = event.times.map {$0.endTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")}
                 
-                let endTime = events
-                    .map {$0.endTime}
-                    .reduce(firstEvent.endTime) { end0, end1 in
-                        end0 > end1 ? end0 : end1
-                }
+                let startTime = startTimes.sorted().first!
+                let endTime = endTimes.sorted().first!
                 
                 let singleEvent = Event(
                     id: event.id,
