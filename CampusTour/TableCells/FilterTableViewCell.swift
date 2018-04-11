@@ -16,6 +16,7 @@ class FilterTableViewCell: UITableViewCell {
     let checkImageView = UIImageView()
     var filterMode: Filter?
 
+    //Data that handles how to display data in filtercell
     struct FilterTableViewInfo {
         let maintitle: String
         let subtitle: String?
@@ -55,7 +56,7 @@ class FilterTableViewCell: UITableViewCell {
         titleLabel.font = Fonts.titleFont
         titleLabel.textColor = Colors.primary
         
-        //Set to checkmark
+        //Set checkmark if cell was previously selected
         if ischeckImageView {
             checkImageView.isHidden = false
             titleLabel.textColor = Colors.brand

@@ -27,6 +27,7 @@ class DataLoadingViewController: UIViewController {
         }
     }
     
+    //MARK: Handle loading animation
     func showLoadingIndicator() {
         loadingIndicator = LoadingIndicator()
         

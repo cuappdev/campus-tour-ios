@@ -9,16 +9,30 @@ func campusTourNavigationViewController(root: UIViewController) -> UINavigationC
 }
 
 class MainTabBarController: UITabBarController {
+    let feedVC = FeaturedViewController()
+    let bookmarksVC = BookmarksViewController()
+    
     override func viewDidLoad() {
-        let searchVC = FeaturedViewController()
-        let poiMapVC = POIMapViewController()
-        let tabBarHeight = self.tabBar.frame.size.height
-        searchVC.tabBarItem = UITabBarItem.feedItem
-        poiMapVC.tabBarItem = UITabBarItem.poiMapItem
-        poiMapVC.tabBarHeight = tabBarHeight
+        feedVC.delegate = self
+        bookmarksVC.delegate = self
+        let tabBarHeight = tabBar.frame.size.height
+        feedVC.tabBarItem = .feedItem
+        bookmarksVC.tabBarItem = .bookmarkItem
+        feedVC.tabBarHeight = tabBarHeight
         setViewControllers([
-            campusTourNavigationViewController(root: searchVC),
-            campusTourNavigationViewController(root: poiMapVC),
+            campusTourNavigationViewController(root: feedVC),
+            campusTourNavigationViewController(root: bookmarksVC),
             ], animated: false)
+    }
+}
+
+extension MainTabBarController: FeaturedViewControllerDelegate, BookmarksViewControllerDelegate {
+    func didUpdateBookmarkFromBookmarkVC() {
+        let tableView = feedVC.itemFeedViewController.tableView
+        tableView.reloadData()
+    }
+    
+    func didUpdateBookmarkFromFeaturedVC() {
+        bookmarksVC.updateTableView()
     }
 }

@@ -66,4 +66,11 @@ class SearchHelper {
         
         return filteredEvents
     }
+    
+    static func getEventById(_ id: String, events: [Event]) -> Event? {
+        for event in events {
+            if event.id == id { return event }
+        }
+        return nil
+    }
 }

@@ -10,6 +10,10 @@ import UIKit
 import GoogleMaps
 import AlamofireImage
 
+protocol DetailViewControllerDelegate {
+    func updateBookmarkedCell()
+}
+
 class DetailViewController: UIViewController {
     
     let scrollView = UIScrollView()
@@ -21,7 +25,9 @@ class DetailViewController: UIViewController {
     
     var descriptionView: UILabel!
     var titleLabel: UILabel!
+    var bookmarkButton: UIButton!
     var event: Event!
+    var delegate: DetailViewControllerDelegate!
     
     private let textInset = CGFloat(20)
     private let textPadding = CGFloat(12)
@@ -32,6 +38,8 @@ class DetailViewController: UIViewController {
         
         initializeViews()
     }
+    
+    //MARK: Update Views
     
     func initializeViews() {
         view.backgroundColor = .white
@@ -163,8 +171,6 @@ class DetailViewController: UIViewController {
     private func createScheduleView() {
         let mainTitleLabel = UILabel()
         let dateLocationLabel = UILabel()
-        //TODO Create bookmark
-        let bookmarkButton = UIButton()
         
         mainTitleLabel.text = "Happening \(DateHelper.getFormattedDate(event.startTime))"
         mainTitleLabel.textColor = Colors.brand
@@ -176,8 +182,13 @@ class DetailViewController: UIViewController {
         dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = Fonts.bodyFont
         
+        bookmarkButton = UIButton()
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        bookmarkButton.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
+        
         scheduleView.addSubview(mainTitleLabel)
         scheduleView.addSubview(dateLocationLabel)
+        scheduleView.addSubview(bookmarkButton)
         
         mainTitleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(textInset)
@@ -192,6 +203,14 @@ class DetailViewController: UIViewController {
             make.height.equalTo(18)
             make.bottom.equalToSuperview().offset(-textInset)
         }
+        
+        bookmarkButton.snp.makeConstraints { (make) in
+            make.top.equalTo(mainTitleLabel.snp.top)
+            make.trailing.equalToSuperview().offset(-textInset)
+            make.width.equalTo(18)
+            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(28.9 / 17.4)
+        }
+        
     }
     
     private func createAboutView() {
@@ -315,6 +334,16 @@ class DetailViewController: UIViewController {
             make.top.equalTo(directionsView.snp.bottom).offset(-1)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    //MARK: Button interactions
+    
+    @IBAction func toggleBookmark() {
+        BookmarkHelper.updateBookmark(id: event.id)
+        
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        delegate.updateBookmarkedCell()
+        print("event bookmarked: ", BookmarkHelper.isEventBookmarked(event.id))
     }
     
     @objc func directionsButtonPressed(_ sender: UIButton) {

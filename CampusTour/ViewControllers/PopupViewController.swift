@@ -12,7 +12,7 @@ protocol PopupFilterProtocol {
     func updateFilterBar(_ status: FilterBarCurrentStatus) -> ()
 }
 
-class PopupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PopupViewController: UIViewController {
     
     var data: PopupData = PopupData(filterBarStatus: FilterBarCurrentStatus(), filterMode: Filter.general, filterBarLocationCenterX: 0)
     let reuseID = "reuseID"
@@ -47,6 +47,25 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.bounces = false
     }
     
+    //Maintain highlighted index
+    func resetVariables(status: FilterBarCurrentStatus, filterMode: Filter) {
+        var indexPath: IndexPath!
+        switch filterMode {
+        case .general:
+            let i = Tag.schoolFilters.index(where: { (a,_) -> Bool in
+                a == status.schoolSelected
+            })
+            indexPath = IndexPath(row: i!, section: 0)
+        case .date:
+            indexPath = IndexPath(row: Tag.allDates.index(of: status.dateSelected)!, section: 0)
+        case .type:
+            indexPath = IndexPath(row: Tag.typeFilters.index(of: status.typeSelected)!, section: 0)
+        case .specialInterest:
+            indexPath = IndexPath(row: Tag.specialInterestFilters.index(of: status.specialInterestSelected)!, section: 0)
+        }
+        currentCheckedCellIndex = indexPath
+    }
+    
     func remakeConstraints() {
         triangleView.snp.remakeConstraints { (make) in
             make.centerX.equalTo(data.filterBarLocationCenterX)
@@ -55,7 +74,10 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
             make.width.equalTo(triangleViewLength)
         }
     }
-    
+}
+
+//MARK: Tableview protocols
+extension PopupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID) as! FilterTableViewCell
         cell.filterMode = self.data.filterMode
@@ -95,6 +117,9 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         return cell
     }
+}
+
+extension PopupViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data.filterMode {
@@ -128,24 +153,5 @@ class PopupViewController: UIViewController, UITableViewDataSource, UITableViewD
         case .specialInterest:
             return Tag.specialInterestFilters.count
         }
-    }
-    
-    //Maintain highlighted index
-    func resetVariables(status: FilterBarCurrentStatus, filterMode: Filter) {
-        var indexPath: IndexPath!
-        switch filterMode {
-        case .general:
-            let i = Tag.schoolFilters.index(where: { (a,_) -> Bool in
-                a == status.schoolSelected
-            })
-            indexPath = IndexPath(row: i!, section: 0)
-        case .date:
-            indexPath = IndexPath(row: Tag.allDates.index(of: status.dateSelected)!, section: 0)
-        case .type:
-            indexPath = IndexPath(row: Tag.typeFilters.index(of: status.typeSelected)!, section: 0)
-        case .specialInterest:
-            indexPath = IndexPath(row: Tag.specialInterestFilters.index(of: status.specialInterestSelected)!, section: 0)
-        }
-        currentCheckedCellIndex = indexPath
     }
 }

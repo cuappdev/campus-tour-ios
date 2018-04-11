@@ -56,6 +56,39 @@ extension UIView {
     }
 }
 
+extension UIImage {
+    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+extension UITableViewCell {
+    
+    func animateUponLoad(delayCount: Double) {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 10, height: 10)
+        self.transform = CGAffineTransform(translationX: 0, y: self.frame.height)
+        self.alpha = 0
+        
+        UIView.beginAnimations("load", context: nil)
+        UIView.setAnimationDelay(0.2*delayCount)
+        UIView.setAnimationDuration(0.6)
+        
+        self.transform = CGAffineTransform(translationX: 0, y: 0)
+        self.alpha = 1
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        UIView.commitAnimations()
+    }
+    
+}
+
 class SeparatorView: UIView {
     
     override init(frame: CGRect) {
