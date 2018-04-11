@@ -45,7 +45,7 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         didSet {
             if !isModal {
                 popupViewController.view.isHidden = true
-                UIView.animate(withDuration: 0.6, animations: {
+                UIView.animate(withDuration: 0.8, animations: {
                     self.blackView.alpha = 0
                 })
             } else {
