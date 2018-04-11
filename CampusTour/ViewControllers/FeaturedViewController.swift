@@ -15,13 +15,17 @@ enum ViewType {
 }
 
 class FeaturedViewController: UIViewController, PopupFilterProtocol {
+    
     let itemFeedViewController = ItemFeedViewController()
     let poiMapViewController = POIMapViewController()
+    let searchManager = ItemFeedSearchManager()
+    
     var arButton: UIBarButtonItem!
     var viewTypeButton: UIBarButtonItem!
     var searchCancelButton: UIBarButtonItem!
     var viewType: ViewType!
-    let searchManager = ItemFeedSearchManager()
+    var tabBarHeight: CGFloat = 49
+    
     private var blackView: UIView = {
         let bv = UIView()
         bv.backgroundColor = .black
@@ -84,6 +88,8 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         
         popupViewController = PopupViewController()
         popupViewController.delegate = self
+        
+        poiMapViewController.tabBarHeight = tabBarHeight
         
         setTopNavBar()
         setBottomView()

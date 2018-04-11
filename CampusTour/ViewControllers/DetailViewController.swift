@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     
     var descriptionView: UILabel!
     var titleLabel: UILabel!
+    var bookmarkButton: UIButton!
     var event: Event!
     
     private let textInset = CGFloat(20)
@@ -160,11 +161,16 @@ class DetailViewController: UIViewController {
         imageOverlay.snp.makeConstraints{ $0.edges.equalToSuperview() }
     }
     
+    @IBAction func toggleBookmark() {
+        event.isBookmarked = !event.isBookmarked
+        
+        bookmarkButton.setImage(event.isBookmarked ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        print("event bookmarked: ", event.isBookmarked)
+    }
+    
     private func createScheduleView() {
         let mainTitleLabel = UILabel()
         let dateLocationLabel = UILabel()
-        //TODO Create bookmark
-        let bookmarkButton = UIButton()
         
         mainTitleLabel.text = "Happening \(DateHelper.getFormattedDate(event.startTime))"
         mainTitleLabel.textColor = Colors.brand
@@ -176,8 +182,13 @@ class DetailViewController: UIViewController {
         dateLocationLabel.textColor = Colors.tertiary
         dateLocationLabel.font = Fonts.bodyFont
         
+        bookmarkButton = UIButton()
+        bookmarkButton.setImage(#imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        bookmarkButton.addTarget(self, action: #selector(toggleBookmark), for: .touchUpInside)
+        
         scheduleView.addSubview(mainTitleLabel)
         scheduleView.addSubview(dateLocationLabel)
+        scheduleView.addSubview(bookmarkButton)
         
         mainTitleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(textInset)
@@ -192,6 +203,14 @@ class DetailViewController: UIViewController {
             make.height.equalTo(18)
             make.bottom.equalToSuperview().offset(-textInset)
         }
+        
+        bookmarkButton.snp.makeConstraints { (make) in
+            make.top.equalTo(mainTitleLabel.snp.top)
+            make.trailing.equalToSuperview().offset(-textInset)
+            make.width.equalTo(18)
+            make.height.equalTo(bookmarkButton.snp.width).multipliedBy(28.9 / 17.4)
+        }
+        
     }
     
     private func createAboutView() {

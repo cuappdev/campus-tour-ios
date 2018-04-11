@@ -18,7 +18,6 @@ class ItemFeedViewController: UIViewController {
     private var spec = ItemFeedSpec(sections: [])
     
     private var firstLoad = true
-    private var delayCount = 0.0
     
     private var tableView: UITableView {
         return self.view as! UITableView
@@ -174,20 +173,8 @@ extension ItemFeedViewController: UITableViewDelegate {
         switch spec.sections[indexPath.section] {
         case .map: return
         case _:
-            if firstLoad{
-                cell.layer.shadowColor = UIColor.black.cgColor
-                cell.layer.shadowOffset = CGSize(width: 10, height: 10)
-                cell.transform = CGAffineTransform(translationX: 0, y: cell.frame.height)
-                cell.alpha = 0
-                
-                UIView.beginAnimations("load", context: nil)
-                UIView.setAnimationDelay(0.2*delayCount)
-                UIView.setAnimationDuration(0.6)
-                cell.transform = CGAffineTransform(translationX: 0, y: 0)
-                cell.alpha = 1
-                cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-                UIView.commitAnimations()
-                delayCount += 1
+            if firstLoad {
+                cell.animateUponLoad()
             }
         }
     }

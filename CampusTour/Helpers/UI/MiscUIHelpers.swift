@@ -56,6 +56,30 @@ extension UIView {
     }
 }
 
+extension UITableViewCell {
+    
+    func animateUponLoad() {
+        var delayCount: Double = 0.0
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 10, height: 10)
+        self.transform = CGAffineTransform(translationX: 0, y: self.frame.height)
+        self.alpha = 0
+        
+        UIView.beginAnimations("load", context: nil)
+        UIView.setAnimationDelay(0.2*delayCount)
+        UIView.setAnimationDuration(0.6)
+        
+        self.transform = CGAffineTransform(translationX: 0, y: 0)
+        self.alpha = 1
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        UIView.commitAnimations()
+        delayCount += 1
+    }
+    
+}
+
 class SeparatorView: UIView {
     
     override init(frame: CGRect) {
