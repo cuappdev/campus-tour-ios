@@ -55,7 +55,7 @@ class POIMapViewController: UIViewController {
 //        AppDelegate.shared?.locationProvider.addLocationListener(repeats: false, listener: locationListener!)
         
         // For testing: Cornell Store location
-        let cameraPos = GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 12.0)
+        let cameraPos = GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 16.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPos)
         mapView.delegate = self
         

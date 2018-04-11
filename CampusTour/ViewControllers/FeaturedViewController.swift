@@ -239,8 +239,10 @@ class FeaturedViewController: UIViewController, PopupFilterProtocol {
         isModal = false
         updateButtons()
         filterBarView.layoutIfNeeded()
-        let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus)
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: filteredEvents))
+        if searchManager.searchBar.text != "" {
+            let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus)
+            itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: filteredEvents))
+        }
         self.popupViewController.view.snp.remakeConstraints { (make) in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -288,6 +290,7 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
             make.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
+        view.bringSubview(toFront: filterBarView)
         
         //update nav bar
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -296,19 +299,24 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         print("START search")
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
-        currVC.view.snp.remakeConstraints { make in
-            make.top.equalTo(filterBarView.snp.bottom)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+        if currVC == itemFeedViewController {
+            currVC.view.snp.remakeConstraints { make in
+                make.top.equalTo(filterBarView.snp.bottom)
+                make.left.equalToSuperview()
+                make.right.equalToSuperview()
+                make.bottom.equalToSuperview()
+            }
         }
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+//        if currVC == itemFeedViewController {
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+//        } else {
+//            UIView.animate(withDuration: 0.3) {
+//                self.filterBarView.layoutIfNeeded()
+//            }
+//        }
         popupViewController.removeFromParentViewController()
-        navigationController?.navigationBar.layoutIfNeeded()
-        searchManager.searchBar.layoutIfNeeded()
-        isModal = false
         updateButtons()
     }
     
@@ -330,23 +338,33 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
-        currVC.view.snp.remakeConstraints { make in
-            make.edges.equalToSuperview()
+        if currVC == itemFeedViewController {
+            currVC.view.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            UIView.animate(
+                withDuration: 0.5,
+                animations: {self.view.layoutIfNeeded()},
+                completion: {_ in
+                    self.filterBarView.isHidden = true
+                    self.updateButtons()
+            })
+        } else {
+            UIView.animate(
+                withDuration: 0.5,
+                animations: {self.filterBarView.layoutIfNeeded()},
+                completion: {_ in
+                    self.filterBarView.isHidden = true
+                    self.updateButtons()
+            })
         }
-        UIView.animate(
-            withDuration: 0.5,
-            animations: {self.view.layoutIfNeeded()},
-            completion: {_ in
-                self.filterBarView.isHidden = true
-                self.updateButtons()
-        })
+        
         
         //update nav bar
         navigationItem.setLeftBarButton(arButton, animated: false)
         
         //remove popup viewcontroller
         popupViewController.removeFromParentViewController()
-        isModal = false
         
         searchManager.searchBar.resignFirstResponder()
         

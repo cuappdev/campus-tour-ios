@@ -20,7 +20,7 @@ class ItemFeedViewController: UIViewController {
     private var firstLoad = true
     private var delayCount = 0.0
     
-    private var tableView: UITableView {
+    var tableView: UITableView {
         return self.view as! UITableView
     }
     

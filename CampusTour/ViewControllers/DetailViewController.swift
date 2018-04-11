@@ -40,6 +40,10 @@ class DetailViewController: UIViewController {
     func initializeViews() {
         view.backgroundColor = .white
         
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        titleView.text = event.name
+        navigationItem.titleView = titleView
+        
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
