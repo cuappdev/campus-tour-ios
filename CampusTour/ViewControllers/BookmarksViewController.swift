@@ -38,7 +38,8 @@ class BookmarksViewController: UIViewController {
     func updateTableView() {
         loadBookmarkedEvents()
         spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
-        UIView.animate(withDuration: 0.3, animations: tableView.reloadData)
+        
+        tableView.reloadData()
     }
     
     //Call init to prevent running into nil when calling tableView.reloadData before viewDidLoad

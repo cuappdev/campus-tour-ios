@@ -198,7 +198,7 @@ class DetailViewController: UIViewController {
         
         mainTitleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(textInset)
-            make.trailing.equalToSuperview().offset(-textInset)
+            make.trailing.equalTo(bookmarkButton).offset(-textInset)
             make.leading.equalToSuperview().offset(textInset)
         }
         dateLocationLabel.snp.makeConstraints { (make) in
