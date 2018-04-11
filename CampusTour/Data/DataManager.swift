@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 // Data Manager for handling the Cornell Days Data
 public class DataManager: Codable {
@@ -17,7 +18,7 @@ public class DataManager: Codable {
     var onDataFetchingComplete : (() -> ())? = nil
     
     // Gives a shared instance of `DataManager`
-    public static let sharedInstance = try! DataManager.precomputed()
+    public static let sharedInstance = DataManager()
     
     // List of all composite events
     private (set) public var compositeEvents: [CompositeEvent] = []
@@ -101,17 +102,54 @@ public class DataManager: Codable {
         var uniqueTimes: Set<String> = []
         
         for event in compEvents {
-            for time in event.times {
-                let name = "\(event.title): \(time.note)"
-                let locationName = (time.locationName != "") ? time.locationName : event.locationName
+            let isClassEvent = event.tags.contains {$0.label == "Class"}
+            
+            if isClassEvent {
+                let name = event.title
+                let location = Location(name: "Day Hall", lat: 0, lng: 0)
+                guard let firstEvent = events.first else {
+                    continue
+                }
                 
-                let location = Location(name: locationName, lat: 0, lng: 0)
+                let startTime = events
+                    .map {$0.startTime}
+                    .reduce(firstEvent.startTime) { start0, start1 in
+                        start0 < start1 ? start0 : start1
+                }
                 
-                let startTime = time.startTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")
-                let endTime = time.endTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")
-                let singleEvent = Event(id: time.id, compEventId: event.id, name: name, description: event.description, startTime: startTime, endTime: endTime, location: location, college: nil, type: nil, tags: event.tags)
+                let endTime = events
+                    .map {$0.endTime}
+                    .reduce(firstEvent.endTime) { end0, end1 in
+                        end0 > end1 ? end0 : end1
+                }
+                
+                let singleEvent = Event(
+                    id: event.id,
+                    compEventId: event.id,
+                    name: name,
+                    description: event.description,
+                    startTime: startTime,
+                    endTime: endTime,
+                    location: location,
+                    college: nil,
+                    type: nil,
+                    tags: event.tags)
                 singleEvents.append(singleEvent)
                 uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
+            } else {
+                
+                for time in event.times {
+                    let name = "\(event.title): \(time.note)"
+                    let locationName = (time.locationName != "") ? time.locationName : event.locationName
+                    
+                    let location = Location(name: locationName, lat: 0, lng: 0)
+                    
+                    let startTime = time.startTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")
+                    let endTime = time.endTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")
+                    let singleEvent = Event(id: time.id, compEventId: event.id, name: name, description: event.description, startTime: startTime, endTime: endTime, location: location, college: nil, type: nil, tags: event.tags)
+                    singleEvents.append(singleEvent)
+                    uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
+                }
             }
         }
         times = Array(uniqueTimes).sorted()
