@@ -84,6 +84,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         return (hStack, label)
     }
     
+    //**** MARK ****
+    //Creating view layout
     func createLeftStackView(layout: Layout) -> UIStackView {
         let leftStackView = UIStackView()
         leftStackView.axis = .vertical
@@ -153,6 +155,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         return rightView
     }
     
+    //**** MARK ****
+    //Updating views
     func setUpViewsIfNecessary(layout: Layout) {
         if self.currentLayout == layout { return }
         
@@ -180,6 +184,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         }
     }
     
+    //**** MARK ****
+    //Updating view contents
     func setCellModel(model: ModelInfo) {
         privateInfo = model
         
@@ -205,6 +211,8 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         self.bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(model.id!) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
     }
     
+    //**** MARK ****
+    //Button functions
     @objc func toggleBookmark() {
         delegate.updateBookmark(modelInfo: privateInfo)
     }

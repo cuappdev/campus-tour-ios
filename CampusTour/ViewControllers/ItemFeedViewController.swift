@@ -57,6 +57,8 @@ class ItemFeedViewController: UIViewController {
     
 }
 
+//**** MARK ****
+//Custom class protocols
 extension ItemFeedViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
@@ -72,6 +74,8 @@ extension ItemFeedViewController: DetailViewControllerDelegate {
     }
 }
 
+//**** MARK ****
+//Conforming to tableview protocols
 extension ItemFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

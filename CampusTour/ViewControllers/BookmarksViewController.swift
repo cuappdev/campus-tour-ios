@@ -41,6 +41,7 @@ class BookmarksViewController: UIViewController {
         tableView.reloadData()
     }
     
+    //Call init to prevent running into nil when calling tableView.reloadData before viewDidLoad
     init() {
         super.init(nibName: nil, bundle: nil)
         tableView = UITableView()
@@ -85,6 +86,8 @@ class BookmarksViewController: UIViewController {
     }
 }
 
+//**** MARK ****
+//Custom view protocols
 extension BookmarksViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
@@ -100,6 +103,9 @@ extension BookmarksViewController: DetailViewControllerDelegate {
     }
 }
 
+
+//**** MARK ****
+//Tableview protocols
 extension BookmarksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
