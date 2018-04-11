@@ -10,6 +10,7 @@
 		0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */; };
 		0C2DD75A207DBE4300333603 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DD759207DBE4300333603 /* BookmarksViewController.swift */; };
 		0C2DD75C207DD26F00333603 /* BookmarkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DD75B207DD26F00333603 /* BookmarkHelpers.swift */; };
+		0C2DD75E207DF76400333603 /* FeaturedVC+filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DD75D207DF76400333603 /* FeaturedVC+filter.swift */; };
 		0C3C39652076C84500CA41DA /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C39642076C84500CA41DA /* DateHelpers.swift */; };
 		0C6398442077AB990080E71B /* PopupViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6398432077AB990080E71B /* PopupViewHelpers.swift */; };
 		0C6398462077DD600080E71B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6398452077DD600080E71B /* Assets.xcassets */; };
@@ -40,7 +41,6 @@
 		CCBF7FF0207A87AE000CEC56 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */; };
 		CCBF803C207BABA1000CEC56 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF803B207BABA1000CEC56 /* TagView.swift */; };
 		CCBF803E207D2DBE000CEC56 /* MiscMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF803D207D2DBE000CEC56 /* MiscMath.swift */; };
-		CCC583D5207867AC009538A1 /* FilterBarHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC583D4207867AC009538A1 /* FilterBarHelpers.swift */; };
 		CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE123C20476BA900DCCC39 /* AppDelegate.swift */; };
 		CCCE124720476BA900DCCC39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCE124520476BA900DCCC39 /* LaunchScreen.storyboard */; };
 		CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7389A206878FF00563DBF /* ARExplorerViewController.swift */; };
@@ -58,6 +58,7 @@
 		0C0B0F4620681B4700D8D6DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0C2DD759207DBE4300333603 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		0C2DD75B207DD26F00333603 /* BookmarkHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkHelpers.swift; sourceTree = "<group>"; };
+		0C2DD75D207DF76400333603 /* FeaturedVC+filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeaturedVC+filter.swift"; sourceTree = "<group>"; };
 		0C3C39642076C84500CA41DA /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		0C6398432077AB990080E71B /* PopupViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewHelpers.swift; sourceTree = "<group>"; };
 		0C6398452077DD600080E71B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		CCBF803B207BABA1000CEC56 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		CCBF803D207D2DBE000CEC56 /* MiscMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscMath.swift; sourceTree = "<group>"; };
-		CCC583D4207867AC009538A1 /* FilterBarHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterBarHelpers.swift; sourceTree = "<group>"; };
 		CCCE123920476BA900DCCC39 /* CampusTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCE123C20476BA900DCCC39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCCE124620476BA900DCCC39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -247,8 +247,8 @@
 				CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */,
 				0CB5C0AF207B434400659E6A /* SearchHelpers.swift */,
 				CCE0A4EE2051B3B10083BAE7 /* TabBarHelpers.swift */,
+				0C2DD75D207DF76400333603 /* FeaturedVC+filter.swift */,
 				0C2DD75B207DD26F00333603 /* BookmarkHelpers.swift */,
-				CCC583D4207867AC009538A1 /* FilterBarHelpers.swift */,
 				CC642456207554BC004FEAD0 /* ItemFeedSectionInfo.swift */,
 				0C3C39642076C84500CA41DA /* DateHelpers.swift */,
 				CC6F88FA2063160700D14711 /* StackViewHelpers.swift */,
@@ -414,7 +414,6 @@
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,
 				CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */,
 				0C2DD75C207DD26F00333603 /* BookmarkHelpers.swift in Sources */,
-				CCC583D5207867AC009538A1 /* FilterBarHelpers.swift in Sources */,
 				0CBFF7542076D8BB00FAF047 /* ParseTag.swift in Sources */,
 				CCE0A4EC2051AD860083BAE7 /* MainTabBarController.swift in Sources */,
 				CCBF803E207D2DBE000CEC56 /* MiscMath.swift in Sources */,
@@ -425,6 +424,7 @@
 				CC6F88FB2063160700D14711 /* StackViewHelpers.swift in Sources */,
 				0CB5C0B0207B434400659E6A /* SearchHelpers.swift in Sources */,
 				CC32B02B205EB59400D08D9F /* ItemOfInterestTableViewCell.swift in Sources */,
+				0C2DD75E207DF76400333603 /* FeaturedVC+filter.swift in Sources */,
 				CC642457207554BC004FEAD0 /* ItemFeedSectionInfo.swift in Sources */,
 				CCBF803C207BABA1000CEC56 /* TagView.swift in Sources */,
 				0C6398442077AB990080E71B /* PopupViewHelpers.swift in Sources */,
@@ -574,7 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
@@ -590,7 +590,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TD73A242XE;
+				DEVELOPMENT_TEAM = A5GB6MS7YX;
 				INFOPLIST_FILE = CampusTour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cuappdev.CampusTour;
