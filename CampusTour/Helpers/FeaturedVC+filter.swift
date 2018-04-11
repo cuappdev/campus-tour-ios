@@ -37,8 +37,7 @@ fileprivate let filters: [Filter] = [
     .specialInterest
 ]
 
-//**** MARK ****
-//Functionality for adding filterbar
+//MARK: Functionality for adding filterbar
 extension FeaturedViewController {
     
     func addFilterButton() {

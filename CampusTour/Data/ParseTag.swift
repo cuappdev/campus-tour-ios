@@ -21,8 +21,7 @@ extension EventTag {
     }
 }
 
-//**** MARK ****
-//Class for managing all data about possible tags to be used in filters
+//MARK: Class for managing all data about possible tags to be used in filters
 class Tag {
     static let schoolFilters: [(String, String)] = [
         ("All Schools", ""),

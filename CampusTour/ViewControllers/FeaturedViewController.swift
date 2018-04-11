@@ -109,8 +109,7 @@ class FeaturedViewController: UIViewController {
         blackView.addGestureRecognizer(touchView)
     }
     
-    //**** MARK ****
-    //Button functions
+    //MARK: Button functions
     @IBAction func openARMode() {
         let popupViewController = ARExplorerViewController.withDefaultData()
         self.present(popupViewController, animated: true, completion: nil)
@@ -136,8 +135,7 @@ class FeaturedViewController: UIViewController {
         searchManager.detachFrom(navigationItem: navigationItem)
     }
     
-    //**** MARK ****
-    //Set up viewcontroller's views
+    //MARK: Set up viewcontroller's views
     func setTopNavBar() {
         let cancelButton = UIButton()
         cancelButton.setImage(#imageLiteral(resourceName: "ExitIconBrand"), for: .normal)
@@ -185,8 +183,7 @@ class FeaturedViewController: UIViewController {
         itemFeedViewController.didMove(toParentViewController: self)
     }
     
-    //**** MARK ****
-    //Toggling views
+    //MARK: Toggling views
     func toggleVC(oldVC: UIViewController, newVC: UIViewController) {
         oldVC.willMove(toParentViewController: nil)
         addChildViewController(newVC)
@@ -268,8 +265,7 @@ class FeaturedViewController: UIViewController {
         }
     }
     
-    //**** MARK ****
-    //Setting default data for feed
+    //MARK: Setting default data for feed
     func setItemFeedDefaultSpec() {
         itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
     }
@@ -279,8 +275,7 @@ class FeaturedViewController: UIViewController {
     }
 }
 
-//**** MARK ****
-//Custom class protocols
+//MARK: Custom class protocols
 extension FeaturedViewController: PopupFilterProtocol {
     func updateFilterBar(_ status: FilterBarCurrentStatus) {
         filterBarCurrentStatus = status
@@ -295,8 +290,7 @@ extension FeaturedViewController: ItemFeedViewControllerDelegate {
 }
 
 extension FeaturedViewController: ItemFeedSearchManagerDelegate {
-    //**** MARK ****
-    //Handle search
+    //MARK: Handle search
     
     func didStartSearchMode() {
         setItemFeedSearchSpec()

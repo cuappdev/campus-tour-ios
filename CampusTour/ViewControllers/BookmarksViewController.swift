@@ -86,8 +86,7 @@ class BookmarksViewController: UIViewController {
     }
 }
 
-//**** MARK ****
-//Custom view protocols
+//MARK: Custom view protocols
 extension BookmarksViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
@@ -104,8 +103,7 @@ extension BookmarksViewController: DetailViewControllerDelegate {
 }
 
 
-//**** MARK ****
-//Tableview protocols
+//MARK: Tableview protocols
 extension BookmarksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

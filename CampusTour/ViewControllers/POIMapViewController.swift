@@ -156,8 +156,7 @@ class POIMapViewController: UIViewController {
 
 }
 
-//**** MARK ****
-//Tableview protocols
+//MARK: Tableview protocols
 extension POIMapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -244,8 +243,7 @@ extension POIMapViewController: UITableViewDelegate {
     
 }
 
-//**** MARK ****
-//Mapview delegate
+//MARK: Mapview delegate
 extension POIMapViewController: GMSMapViewDelegate {
     
     // Display and hide the popup view based on tapping the marker pin

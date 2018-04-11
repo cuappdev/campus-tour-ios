@@ -39,8 +39,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         }
     }
     
-    //**** MARK ****
-    //Connecting to another viewcontroller
+    //MARK: Connecting to another viewcontroller
     func attachTo(navigationItem: UINavigationItem) {
         navigationItem.titleView = searchBar
     }
@@ -51,8 +50,7 @@ class ItemFeedSearchManager: NSObject, UISearchBarDelegate {
         }
     }
     
-    //**** MARK ****
-    //Handle search functionality
+    //MARK: Handle search functionality
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.placeholder = "Search"

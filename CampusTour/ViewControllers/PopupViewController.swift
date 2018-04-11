@@ -76,8 +76,7 @@ class PopupViewController: UIViewController {
     }
 }
 
-//**** MARK ****
-//Tableview protocols
+//MARK: Tableview protocols
 extension PopupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID) as! FilterTableViewCell

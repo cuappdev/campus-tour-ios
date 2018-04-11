@@ -39,8 +39,7 @@ class DetailViewController: UIViewController {
         initializeViews()
     }
     
-    //**** MARK ****
-    //Update Views
+    //MARK: Update Views
     
     func initializeViews() {
         view.backgroundColor = .white
@@ -337,8 +336,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    //**** MARK ****
-    //Button interactions
+    //MARK: Button interactions
     
     @IBAction func toggleBookmark() {
         BookmarkHelper.updateBookmark(id: event.id)
