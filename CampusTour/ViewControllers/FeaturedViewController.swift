@@ -327,31 +327,24 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         print("START search")
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
-        if currVC == itemFeedViewController {
-            currVC.view.snp.remakeConstraints { make in
-                make.top.equalTo(filterBarView.snp.bottom)
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.bottom.equalToSuperview()
-            }
-            UIView.animate(withDuration: 0.3) {
-                self.view.layoutIfNeeded()
-            }
-        } else {
-            UIView.animate(
-                withDuration: 0.5,
-                animations: {
-                    currVC.view.transform = CGAffineTransform(translationX: 0, y: 44)
-            })
+        currVC.view.snp.remakeConstraints { make in
+            make.top.equalTo(filterBarView.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
         
         popupViewController.removeFromParentViewController()
         updateButtons()
     }
     
-    func didFindSearchResults(results: ItemFeedSpec) {
+    func didFindSearchResults(results: ItemFeedSpec, events: [Event]) {
         if self.searchManager.searchIsActive {
             self.itemFeedViewController.updateItems(newSpec: results)
+            self.poiMapViewController.updateEventMarkers(events: events)
         }
     }
     
@@ -367,29 +360,17 @@ extension FeaturedViewController: ItemFeedSearchManagerDelegate {
         }
         
         let currVC = (viewType == .List) ? itemFeedViewController : poiMapViewController
-        if currVC == itemFeedViewController {
-            currVC.view.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            UIView.animate(
-                withDuration: 0.5,
-                animations: self.view.layoutIfNeeded,
-                completion: { _ in
-                    self.filterBarView.isHidden = true
-                    self.updateButtons()
-            })
-        } else {
-            UIView.animate(
-                withDuration: 0.5,
-                animations: {
-                    currVC.view.transform = CGAffineTransform(translationX: 0, y: -44)
-            },
-                completion: {_ in
-                    self.filterBarView.isHidden = true
-                    self.updateButtons()
-            })
-        }
         
+        currVC.view.snp.remakeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        UIView.animate(
+            withDuration: 0.5,
+            animations: self.view.layoutIfNeeded,
+            completion: { _ in
+                self.filterBarView.isHidden = true
+                self.updateButtons()
+        })
         
         //update nav bar
         navigationItem.setLeftBarButton(arButton, animated: false)

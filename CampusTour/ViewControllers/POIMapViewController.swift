@@ -55,18 +55,20 @@ class POIMapViewController: UIViewController {
 //        AppDelegate.shared?.locationProvider.addLocationListener(repeats: false, listener: locationListener!)
         
         // For testing: Cornell Store location
-        let cameraPos = GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 16.0)
+        let cameraPos = GMSCameraPosition.camera(withLatitude: 42.447699, longitude: -76.484617, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPos)
         mapView.delegate = self
         
-        showEventMarkers()
+        updateEventMarkers(events: DataManager.sharedInstance.events)
     }
     
-    func showEventMarkers() {
+    func updateEventMarkers(events: [Event]) {
         // TODO: show only events for today
-        events = Array(DataManager.sharedInstance.events.prefix(upTo: 5))
+        self.events = Array(events.prefix(upTo: min(5, events.count)))
+        mapView.clear()
+        markers = [:]
         
-        for (idx, event) in events.enumerated() {
+        for (idx, event) in self.events.enumerated() {
             let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(event.location.lat), longitude: CLLocationDegrees(event.location.lng))
             let marker = GMSMarker(position: location)
             marker.userData = event
