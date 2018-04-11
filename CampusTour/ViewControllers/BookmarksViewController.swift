@@ -18,6 +18,7 @@ class BookmarksViewController: UIViewController {
     
     var events: [Event] = []
     private var delayCount = 0.0
+    private let refreshControl = UIRefreshControl()
     
     func loadBookmarkedEvents() {
         let bookmarks = UserDefaults.standard.stringArray(forKey: "bookmarks") ?? []
@@ -33,16 +34,6 @@ class BookmarksViewController: UIViewController {
     func updateItems(newSpec: ItemFeedSpec) {
         self.spec = newSpec
         tableView.reloadData()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.tableHeaderView?.backgroundColor = .white
-        tableView.estimatedRowHeight = 50
-        tableView.insetsContentViewsToSafeArea = true
-        tableView.alwaysBounceVertical = true
-        
-        tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
     }
 
     override func viewDidLoad() {
@@ -51,21 +42,50 @@ class BookmarksViewController: UIViewController {
         self.navigationItem.title = "Bookmarked Events"
         tableView = UITableView(frame: view.bounds)
         view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.tableHeaderView?.backgroundColor = .white
+        tableView.estimatedRowHeight = 50
+        tableView.insetsContentViewsToSafeArea = true
+        tableView.alwaysBounceVertical = true
+        tableView.refreshControl = refreshControl
+        
+        refreshControl.tintColor = Colors.brand
+        refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        
+        tableView.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
         
         loadBookmarkedEvents()
         spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
         updateItems(newSpec: spec)
     }
 
+    @objc func pullToRefresh() {
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
 }
 
 extension BookmarksViewController: ItemOfInterestCellDelegate {
     func updateBookmark(modelInfo: ItemOfInterestTableViewCell.ModelInfo) {
         BookmarkHelper.updateBookmark(id: modelInfo.id!)
         
-        tableView.deleteRows(at: [IndexPath(row: modelInfo.index!, section: 0)], with: UITableViewRowAnimation.bottom)
         loadBookmarkedEvents()
         spec = ItemFeedSpec.getMapEventsDataSpec(events: events)
+        updateItems(newSpec: spec)
+    }
+}
+
+extension BookmarksViewController: DetailViewControllerDelegate {
+    func updateBookmarkedCell() {
+        tableView.reloadData()
     }
 }
 
@@ -74,8 +94,8 @@ extension BookmarksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemOfInterestTableViewCell.reuseIdEvent) as! ItemOfInterestTableViewCell
         
-        cell.setCellModel(model: events[indexPath.row].toItemFeedModelInfo())
-        
+        cell.setCellModel(model: events[indexPath.row].toItemFeedModelInfo(index: indexPath.row + 1))
+        cell.delegate = self
         return cell
     }
 
@@ -96,6 +116,7 @@ extension BookmarksViewController: UITableViewDelegate {
             let vc = DetailViewController()
             vc.event = selectedEvent
             vc.title = selectedEvent.name
+            vc.delegate = self
             return vc
         }()
         
@@ -103,16 +124,16 @@ extension BookmarksViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row > 6 {
-            firstLoad = false
-            return
-        }
         switch spec.sections[indexPath.section] {
         case _:
             if firstLoad {
                 cell.animateUponLoad(delayCount: self.delayCount)
                 delayCount += 1
             }
+        }
+        if indexPath.row > 4 || indexPath.row == events.count-1 {
+            firstLoad = false
+            return
         }
     }
 }

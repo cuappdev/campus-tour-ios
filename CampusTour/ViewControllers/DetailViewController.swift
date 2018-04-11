@@ -10,6 +10,10 @@ import UIKit
 import GoogleMaps
 import AlamofireImage
 
+protocol DetailViewControllerDelegate {
+    func updateBookmarkedCell()
+}
+
 class DetailViewController: UIViewController {
     
     let scrollView = UIScrollView()
@@ -23,6 +27,7 @@ class DetailViewController: UIViewController {
     var titleLabel: UILabel!
     var bookmarkButton: UIButton!
     var event: Event!
+    var delegate: DetailViewControllerDelegate!
     
     private let textInset = CGFloat(20)
     private let textPadding = CGFloat(12)
@@ -33,6 +38,9 @@ class DetailViewController: UIViewController {
         
         initializeViews()
     }
+    
+    //**** MARK ****
+    //Update Views
     
     func initializeViews() {
         view.backgroundColor = .white
@@ -159,13 +167,6 @@ class DetailViewController: UIViewController {
         
         imageView.snp.makeConstraints{ $0.edges.equalToSuperview() }
         imageOverlay.snp.makeConstraints{ $0.edges.equalToSuperview() }
-    }
-    
-    @IBAction func toggleBookmark() {
-        BookmarkHelper.updateBookmark(id: event.id)
-        
-        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
-        print("event bookmarked: ", BookmarkHelper.isEventBookmarked(event.id))
     }
     
     private func createScheduleView() {
@@ -334,6 +335,17 @@ class DetailViewController: UIViewController {
             make.top.equalTo(directionsView.snp.bottom).offset(-1)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    //**** MARK ****
+    //Button interactions
+    
+    @IBAction func toggleBookmark() {
+        BookmarkHelper.updateBookmark(id: event.id)
+        
+        bookmarkButton.setImage(BookmarkHelper.isEventBookmarked(event.id) ? #imageLiteral(resourceName: "FilledBookmarkIcon") : #imageLiteral(resourceName: "EmptyBookmarkIcon"), for: .normal)
+        delegate.updateBookmarkedCell()
+        print("event bookmarked: ", BookmarkHelper.isEventBookmarked(event.id))
     }
     
     @objc func directionsButtonPressed(_ sender: UIButton) {

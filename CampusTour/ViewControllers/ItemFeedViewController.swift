@@ -60,6 +60,12 @@ extension ItemFeedViewController: ItemOfInterestCellDelegate {
     }
 }
 
+extension ItemFeedViewController: DetailViewControllerDelegate {
+    func updateBookmarkedCell() {
+        tableView.reloadData()
+    }
+}
+
 extension ItemFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -159,6 +165,7 @@ extension ItemFeedViewController: UITableViewDelegate {
                 let vc = DetailViewController()
                 vc.event = item
                 vc.title = item.toItemFeedModelInfo().title
+                vc.delegate = self
                 return vc
             }()
             
