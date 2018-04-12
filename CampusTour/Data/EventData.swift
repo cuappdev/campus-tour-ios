@@ -153,3 +153,13 @@ public struct Event: Codable {
         return result
     }
 }
+
+extension Array where Element == Event {
+    func sortedChronologically() -> [Event] {
+        return self.sorted {$0.startTime < $1.startTime}
+    }
+    
+    func afterNow() -> [Event] {
+        return self.filter {Date() < $0.endTime}
+    }
+}

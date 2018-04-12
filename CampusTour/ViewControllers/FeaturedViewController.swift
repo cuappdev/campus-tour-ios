@@ -269,7 +269,11 @@ class FeaturedViewController: UIViewController {
     
     //MARK: Setting default data for feed
     func setItemFeedDefaultSpec() {
-        itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getEventsDataSpec())
+        itemFeedViewController.updateItems(
+            newSpec: ItemFeedSpec.getEventsDataSpec(
+                events: DataManager.sharedInstance.events
+                    .sortedChronologically()
+                    .afterNow()))
     }
     
     func setItemFeedSearchSpec() {
