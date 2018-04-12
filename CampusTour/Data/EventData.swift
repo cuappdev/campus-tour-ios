@@ -138,4 +138,18 @@ public struct Event: Codable {
         }
         return strTags
     }
+    
+    static func removeDuplicateLocations(events: [Event]) -> [Event] {
+        var result = [Event]()
+        for event in events {
+            if result.contains (where: {
+                $0.location.lng == event.location.lng && $0.location.lat == event.location.lat
+            }) {
+                continue
+            } else {
+                result.append(event)
+            }
+        }
+        return result
+    }
 }

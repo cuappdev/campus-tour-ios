@@ -64,7 +64,10 @@ class POIMapViewController: UIViewController {
     
     func updateEventMarkers(events: [Event]) {
         // TODO: show only events for today
-        self.events = Array(events.prefix(upTo: min(5, events.count)))
+        
+        self.events = Event.removeDuplicateLocations(events: events)
+            .prefix(upTo: min(5, events.count))
+            .map{$0}
         mapView.clear()
         markers = [:]
         
