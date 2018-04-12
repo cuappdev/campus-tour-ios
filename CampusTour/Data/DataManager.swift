@@ -133,7 +133,7 @@ public class DataManager: Codable {
             } else {
                 
                 for time in event.times {
-                    let name = "\(event.title): \(time.note)"
+                    let name = time.note == "" ? event.title : "\(event.title): \(time.note)"
                     let locationName = (time.locationName != "") ? time.locationName : event.locationName
                     
                     let location = Location(name: locationName, lat: 0, lng: 0)
