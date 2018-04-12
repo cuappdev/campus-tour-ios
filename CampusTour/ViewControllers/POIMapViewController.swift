@@ -73,6 +73,7 @@ class POIMapViewController: UIViewController {
             let marker = GMSMarker(position: location)
             marker.userData = event
             marker.iconView = EventMarker(markerText: String(idx+1))
+            marker.zIndex = Int32(idx)
             marker.map = mapView
             markers[event.id] = (idx, marker)
         }
