@@ -71,8 +71,8 @@ class POIMapViewController: UIViewController {
             .sortedChronologically()
         
         self.events = Event.removeDuplicateLocations(events: dateSortedEvents)
-            .prefix(upTo: min(5, events.count))
-            .map{$0}
+        //Two steps here to prevent indexOutOfRange error for prefix
+        self.events = Array(self.events.prefix(upTo: min(5, self.events.count)))
         mapView.clear()
         markers = [:]
         
