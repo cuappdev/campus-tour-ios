@@ -129,7 +129,9 @@ public class DataManager: Codable {
                     type: nil,
                     tags: event.tags)
                 singleEvents.append(singleEvent)
-                uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
+                if Date() < endTime {
+                    uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
+                }
             } else {
                 
                 for time in event.times {
@@ -142,7 +144,9 @@ public class DataManager: Codable {
                     let endTime = time.endTime.toDate(dateFormat: "MMMM, d yyyy HH:mm:ss")
                     let singleEvent = Event(id: time.id, compEventId: event.id, name: name, description: event.description, startTime: startTime, endTime: endTime, location: location, college: nil, type: nil, tags: event.tags)
                     singleEvents.append(singleEvent)
-                    uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
+                    if Date() < endTime {
+                        uniqueTimes.insert(DateHelper.getFormattedMonthAndDay(startTime))
+                    }
                 }
             }
         }
