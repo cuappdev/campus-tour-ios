@@ -64,7 +64,15 @@ class POIMapViewController: UIViewController {
     
     func updateEventMarkers(events: [Event]) {
         // TODO: show only events for today
-        self.events = Array(events.prefix(upTo: min(5, events.count)))
+        // TODO: might want to export some of this functionality outside of POIMapViewController (SOLID).
+        
+        let dateSortedEvents = events
+            .afterNow()
+            .sortedChronologically()
+        
+        self.events = Event.removeDuplicateLocations(events: dateSortedEvents)
+        //Two steps here to prevent indexOutOfRange error for prefix
+        self.events = Array(self.events.prefix(upTo: min(5, self.events.count)))
         mapView.clear()
         markers = [:]
         
@@ -73,6 +81,7 @@ class POIMapViewController: UIViewController {
             let marker = GMSMarker(position: location)
             marker.userData = event
             marker.iconView = EventMarker(markerText: String(idx+1))
+            marker.zIndex = Int32(idx)
             marker.map = mapView
             markers[event.id] = (idx, marker)
         }
