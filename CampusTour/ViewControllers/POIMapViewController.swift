@@ -67,8 +67,8 @@ class POIMapViewController: UIViewController {
         // TODO: might want to export some of this functionality outside of POIMapViewController (SOLID).
         
         let dateSortedEvents = events
-            .filter { Date() < $0.endTime }
-            .sorted { $0.startTime < $1.startTime }
+            .afterNow()
+            .sortedChronologically()
         
         self.events = Event.removeDuplicateLocations(events: dateSortedEvents)
             .prefix(upTo: min(5, events.count))
