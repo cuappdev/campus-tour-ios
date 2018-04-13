@@ -41,6 +41,7 @@
 		CCBF7FF0207A87AE000CEC56 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */; };
 		CCBF803C207BABA1000CEC56 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF803B207BABA1000CEC56 /* TagView.swift */; };
 		CCBF803E207D2DBE000CEC56 /* MiscMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF803D207D2DBE000CEC56 /* MiscMath.swift */; };
+		CCBF804020816E5E000CEC56 /* CircleCompositeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBF803F20816E5E000CEC56 /* CircleCompositeView.swift */; };
 		CCCE123D20476BA900DCCC39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE123C20476BA900DCCC39 /* AppDelegate.swift */; };
 		CCCE124720476BA900DCCC39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCE124520476BA900DCCC39 /* LaunchScreen.storyboard */; };
 		CCD7389B206878FF00563DBF /* ARExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7389A206878FF00563DBF /* ARExplorerViewController.swift */; };
@@ -91,6 +92,7 @@
 		CCBF7FEF207A87AE000CEC56 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		CCBF803B207BABA1000CEC56 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		CCBF803D207D2DBE000CEC56 /* MiscMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscMath.swift; sourceTree = "<group>"; };
+		CCBF803F20816E5E000CEC56 /* CircleCompositeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCompositeView.swift; sourceTree = "<group>"; };
 		CCCE123920476BA900DCCC39 /* CampusTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCE123C20476BA900DCCC39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCCE124620476BA900DCCC39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				CC6F88FE20631BD000D14711 /* MiscUIHelpers.swift */,
+				CCBF803F20816E5E000CEC56 /* CircleCompositeView.swift */,
 				D14A2C1C2076A22F00B0CA96 /* LocationMarker.swift */,
 				CCBF803B207BABA1000CEC56 /* TagView.swift */,
 			);
@@ -410,6 +413,7 @@
 				CC64244E2072A026004FEAD0 /* VirtualView.swift in Sources */,
 				0C0B0F4720681B4700D8D6DC /* DetailViewController.swift in Sources */,
 				0CBFF7522076D4A600FAF047 /* FilterTableViewCell.swift in Sources */,
+				CCBF804020816E5E000CEC56 /* CircleCompositeView.swift in Sources */,
 				CC1B744220767C8300A4012A /* DataManager.swift in Sources */,
 				0C933604204E8579004668CE /* LocationData.swift in Sources */,
 				CC32B02D205EBC1F00D08D9F /* MapTableViewCell.swift in Sources */,
