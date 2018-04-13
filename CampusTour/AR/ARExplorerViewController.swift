@@ -66,13 +66,15 @@ class ARExplorerViewController: UIViewController {
         sceneView.snp.makeConstraints { $0.edges.equalToSuperview() }
         
         let backButton = UIButton() //TODO make this look better
-        backButton.setTitle("X", for: .normal)
-        backButton.backgroundColor = .red
-        backButton.layer.cornerRadius = 10
-        backButton.clipsToBounds = true
+        backButton.setImage(#imageLiteral(resourceName: "ExitIcon"), for: .normal)
         backButton.addTarget(self, action: #selector(closeArAndReturn), for: .touchUpInside)
-        self.view.addSubview(backButton)
-        backButton.snp.makeConstraints {
+        
+        let backButtonCircle = CircleCompositeView(
+            child: UIView.insetWrapper(view: backButton,
+                                       insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)))
+        backButtonCircle.backgroundColor = UIColor.red
+        self.view.addSubview(backButtonCircle)
+        backButtonCircle.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(24)
         }
