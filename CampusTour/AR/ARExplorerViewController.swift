@@ -202,7 +202,7 @@ class ARExplorerViewController: UIViewController {
             
             //initialize the marker's node if it doesn't exist
             if infoBefore.node == nil {
-                let planeWidth = CGFloat(2) //maximum width for the scene view in meters
+                let planeWidth = CGFloat(1000 / UIScreen.main.bounds.width) //maximum width for the scene view in meters
                 var plane : SCNPlane!
                 DispatchQueue.main.sync {
                     plane = SCNPlane(width: planeWidth,
