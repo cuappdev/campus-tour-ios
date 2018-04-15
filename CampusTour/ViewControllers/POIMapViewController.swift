@@ -99,11 +99,11 @@ class POIMapViewController: UIViewController {
         }
     }
     
-    func createPopupView() {
-        popupView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: popupHeight)
+    func createPopupView(additionalViewHeight: CGFloat) {
+        popupView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: popupHeight+additionalViewHeight)
         popupView.backgroundColor = .white
         
-        popupTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: popupHeight))
+        popupTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: popupHeight+additionalViewHeight))
         popupTableView!.delegate = self
         popupTableView!.dataSource = self
         popupTableView!.register(ItemOfInterestTableViewCell.self, forCellReuseIdentifier: ItemOfInterestTableViewCell.reuseIdEvent)
@@ -129,10 +129,11 @@ class POIMapViewController: UIViewController {
     func displayPopupView(event: Event) {
         let marker: GMSMarker = markers[event.id]!.1
         selectedEvent = event
-        createPopupView()
+        let popupViewAdditionalHeight = event.name.height(withConstrainedWidth: view.frame.width*0.67, font: Fonts.titleFont) - 20
+        createPopupView(additionalViewHeight: popupViewAdditionalHeight)
         
         UIView.animate(withDuration: 0.2, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            self.popupView.frame.origin.y = self.view.frame.height - self.tabBarHeight - self.popupHeight
+            self.popupView.frame.origin.y = self.view.frame.height - self.tabBarHeight - self.popupHeight - popupViewAdditionalHeight
             self.animateMarker(marker: marker, select: true)
         }, completion: { _ in })
     }

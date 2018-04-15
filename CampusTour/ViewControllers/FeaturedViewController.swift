@@ -48,13 +48,14 @@ class FeaturedViewController: UIViewController {
     var selectedFilters = [Filter]()
     var buttons = [UIButton]()
     var filterBarCurrentStatus: FilterBarCurrentStatus = FilterBarCurrentStatus()
+    var selectedButton: UIButton?
     
     //for popupViewController
     private var isModal = false {
         didSet {
             if !isModal {
                 popupViewController.view.isHidden = true
-                UIView.animate(withDuration: 0.8, animations: {
+                UIView.animate(withDuration: 0.4, animations: {
                     self.blackView.alpha = 0
                 })
             } else {
@@ -265,7 +266,7 @@ class FeaturedViewController: UIViewController {
         isModal = false
         updateButtons()
         filterBarView.layoutIfNeeded()
-        let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus)
+        let filteredEvents = SearchHelper.getFilteredEvents(filterBarCurrentStatus).afterNow().sortedChronologically()
         if searchManager.searchBar.text != "" {
             itemFeedViewController.updateItems(newSpec: ItemFeedSpec.getMapEventsDataSpec(events: filteredEvents))
         } else {
