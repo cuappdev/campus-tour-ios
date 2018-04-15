@@ -167,6 +167,7 @@ class ItemOfInterestTableViewCell: UITableViewCell {
         rootStackView?.removeFromSuperview()
         rootStackView = UIStackView()
         rootStackView?.axis = .horizontal
+        rootStackView?.spacing = 8
         
         let leftStack = createLeftStackView(layout: layout)
         let rightView = createRightView(layout: layout)
